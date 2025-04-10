@@ -23,6 +23,7 @@ D_INC			=		inc/
 
 # Source Directories
 D_DEBUG			=		debug/
+D_INIT			=		init/
 D_UTILS			=		utils/
 D_U_EVENT		=		event/
 
@@ -44,9 +45,12 @@ SRC				=		main.c				\
 SRC_DEBUG		=		ft_debug_1.c		\
 						ft_debug_2.c
 
-SRC_UTILS		=		ft_close.c			\
-						ft_init_maps.c		\
+
+SRC_INIT		=		ft_init_maps.c		\
 						ft_init_mlx.c
+
+
+SRC_UTILS		=		ft_close.c
 
 
 SRC_U_EVENT		=		ft_key_event.c		\
@@ -63,6 +67,7 @@ SRC_U_EVENT		=		ft_key_event.c		\
 # All src in his Src Directories
 SRCS			=		$(addprefix $(D_SRC), $(SRC))								\
 						$(addprefix $(D_SRC)$(D_DEBUG), $(SRC_DEBUG))				\
+						$(addprefix $(D_SRC)$(D_INIT), $(SRC_INIT))					\
 						$(addprefix $(D_SRC)$(D_UTILS), $(SRC_UTILS))				\
 						$(addprefix $(D_SRC)$(D_UTILS)$(D_U_EVENT), $(SRC_U_EVENT))
 
