@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 08:34:21 by fcretin           #+#    #+#             */
-/*   Updated: 2025/03/29 11:44:43 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/03 16:15:24 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ int			ft_atoi_u(const char *str, int *error);
 int			ft_atoi_error(const char *str, int *error);
 int			ft_size_base(int nbr, int base);
 char		ft_convert_base(unsigned long nbr, int base, const char format);
+void		*ft_free_null(void *ptr);
 char		*ft_itoa(int n);
 void		ft_sort_tab(char **tab);
 int			ft_tolower(int c);

@@ -6,18 +6,16 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:26:50 by fcretin           #+#    #+#             */
-/*   Updated: 2025/04/03 14:23:41 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/04/19 13:21:54 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	ft_is_str_digit(char *str)
 {
-	int	i;
-
-	i = 0;
 	while (*str)
 	{
-		if (!((*str > 47 && *str < 58) || *str == ' '))
+		if (!((*str > 47 && *str < 58) || *str == ' '
+				|| *str == '-' || *str == '+'))
 			return (0);
 		str++;
 	}

@@ -2,7 +2,7 @@
 
 NAME			=	Cub3D
 CC				=	cc
-CFLAG			=	-Wall -Wextra -Werror
+CFLAGS			=	-Wall -Wextra -Werror
 CFLAGSS			=	-Weverything -Wno-padded
 RM				=	rm -fr
 MLX_FLAG		=	-Lminilibx-linux -lmlx -lX11 -lXext
@@ -46,11 +46,14 @@ SRC_DEBUG		=		ft_debug_1.c		\
 						ft_debug_2.c
 
 
-SRC_INIT		=		ft_init_maps.c		\
-						ft_init_mlx.c
+SRC_INIT		=		ft_init_mlx.c		\
+						ft_parsing_scene.c
 
 
-SRC_UTILS		=		ft_close.c
+SRC_UTILS		=		ft_close.c			\
+						ft_error.c			\
+						ft_is.c
+
 
 
 SRC_U_EVENT		=		ft_key_event.c		\

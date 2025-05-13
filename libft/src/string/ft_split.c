@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 15:34:46 by fcretin           #+#    #+#             */
-/*   Updated: 2025/01/28 12:31:22 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/03 16:13:56 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,8 +127,10 @@ char	**ft_split(char const *s, char c)
 		while (*s && *s == c)
 			s++;
 		str[i] = ft_substr(s, 0, ft_len_word(s, c));
-		if (!str[i])
+		if (!str[i] && i != 0)
 			return (ft_freetab(str, i));
+		else if (!str[i] && i == 0)
+			return (ft_free_null(str));
 		s = s + ft_len_word(s, c);
 		i++;
 	}

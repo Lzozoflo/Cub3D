@@ -102,6 +102,7 @@ SRC_STRING		=		ft_split.c			\
 
 SRC_UTILITY		=		ft_atoi.c			\
 						ft_base.c			\
+						ft_free_null.c		\
 						ft_itoa.c			\
 						ft_sort_tab.c		\
 						ft_tolower.c		\
