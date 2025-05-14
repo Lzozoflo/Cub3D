@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/14 14:17:37 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/14 14:21:59 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ int		ft_init_mlx(t_data *data);
 //								ft_init_mlx.c								|
 //--------------------------------------------------------------------------|
 
-int		ft_parsing_scene(t_data *data, char *scene_cub);
+int		ft_parsing_cub(t_data *data, char *scene_cub);
 
 
 

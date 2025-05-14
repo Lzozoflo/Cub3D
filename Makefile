@@ -39,8 +39,9 @@ INC				=		ft_cub.h			\
 						ft_debug.h
 
 
-SRC				=		main.c				\
-						laussel/ft_compare_map.c
+SRC				=		main.c
+
+# laussel/ft_compare_map.c
 
 SRC_DEBUG		=		ft_debug_1.c		\
 						ft_debug_2.c

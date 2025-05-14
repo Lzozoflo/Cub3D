@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parsing_cub.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 09:39:16 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/14 14:09:58 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/14 14:26:56 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,6 @@
 #include "libft.h"
 #include <fcntl.h>
 
-// int	ft_type_param_bis(t_maps *maps, int i, int j)
-// {
-// 	if (maps->tab[i][j] == 'F')
-// 		if (maps->floor)
-// 			free(maps->floor);
-// 	else if (maps->tab[i][j] == 'C')
-// 		if (maps->sky)
-// 			free(maps->sky);
-// 	else if (maps->tab[i][j] == 'E')
-// 		if (maps->texture_ea)
-// 			free(maps->texture_ea);
-// 	else if (maps->tab[i][j] == 'N')
-// 		if (maps->texture_no)
-// 			free(maps->texture_no);
-// 	else if (maps->tab[i][j] == 'S')
-// 		if (maps->texture_so)
-// 			free(maps->texture_so);
-// 	else if (maps->tab[i][j] == 'W')
-// 		if (maps->texture_we)
-// 			free(maps->texture_we);
-// 	else
-// 	return (0);
-// }
 
 int	ft_type_param(t_maps *maps, int i, int j)
 {
@@ -114,6 +91,7 @@ static int	ft_parsing_param(t_maps *maps)
 		if (ft_type_param(maps, i, j))
 			return (-1);
 	}
+	//ici pour le test de la maps
 	return (0);
 }
 
