@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 09:39:16 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/14 13:10:28 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/14 13:26:49 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,22 @@
 #include "libft.h"
 #include <fcntl.h>
 
-int	ft_parsing_param(t_data *data)
-{
-	char	**tab;
 
-	tab = ft_split(data->maps.file_in_a_line, '\n');
-	if (!tab)
+
+int	ft_parsing_param(t_maps *maps)
+{
+	int		i;
+
+	i = 0;
+	maps->tab = ft_split(maps->file_in_a_line, '\n');
+	if (!maps->tab)
 		return (-1);
+	debug_put_tab("test :", maps->tab, 32, 320);
+	while (i++ != 6)
+	{
+
+	}
+	return (0);
 }
 
 
@@ -70,7 +79,7 @@ int	ft_parsing_cub(t_data *data, char *scene_cub)
 			free(data->maps.file_in_a_line);
 		return (-1);
 	}
-	ft_parsing_param(t_data *data);
-	debug_put_tab("test :", tab, 31, 310);
+	if (ft_parsing_param(&data->maps) == -1)
+		return (-1);
 	return (0);
 }

@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_init_maps.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/11 18:58:30 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/14 13:27:13 by fcretin          ###   ########.fr       */
+/*   Created: 2025/05/14 13:26:06 by fcretin           #+#    #+#             */
+/*   Updated: 2025/05/14 13:29:36 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
+#include "libft.h"
 
-int	main(int ac, char **av, char **env)
+void	ft_init_maps(t_maps *maps)
 {
-	t_data	data;
-
-	(void)av;
-	if (ac != 2 || !env[0])
-		return (1);
-	ft_init_maps(&data.maps);
-	if (ft_parsing_cub(&data, av[1]))
-		return (1);
-	if (!ft_init_mlx(&data))
-		return (1);
-	mlx_loop(data.mlx);
+	maps->file_in_a_line = NULL;
+	maps->tab = NULL;
+	maps->texture_ea = NULL;
+	maps->texture_no = NULL;
+	maps->texture_so = NULL;
+	maps->texture_we = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/14 13:12:30 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/14 13:29:38 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,12 @@ typedef struct s_maps	t_maps;
 
 struct		s_maps
 {
+	char	**tab;
 	char	*file_in_a_line;
+	char	*texture_ea;
 	char	*texture_no;
 	char	*texture_so;
 	char	*texture_we;
-	char	*texture_ea;
 };
 
 struct		s_image
@@ -113,6 +114,13 @@ int		ft_is_camera_move(int keycode);
 //						src/init						|
 //														|
 //------------------------------------------------------|
+
+//
+//--------------------------------------------------------------------------|
+//								ft_init_maps.c								|
+//--------------------------------------------------------------------------|
+
+void	ft_init_maps(t_maps *maps);
 
 //
 //--------------------------------------------------------------------------|
