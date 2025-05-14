@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:58:30 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/14 13:27:13 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/14 14:03:44 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	main(int ac, char **av, char **env)
 	(void)av;
 	if (ac != 2 || !env[0])
 		return (1);
-	ft_init_maps(&data.maps);
+	ft_init_data(&data);
 	if (ft_parsing_cub(&data, av[1]))
-		return (1);
+		ft_clean_close(&data, 1);
 	if (!ft_init_mlx(&data))
 		return (1);
 	mlx_loop(data.mlx);

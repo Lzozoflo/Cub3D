@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 09:39:16 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/14 13:26:49 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/14 14:09:58 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,104 @@
 #include "libft.h"
 #include <fcntl.h>
 
+// int	ft_type_param_bis(t_maps *maps, int i, int j)
+// {
+// 	if (maps->tab[i][j] == 'F')
+// 		if (maps->floor)
+// 			free(maps->floor);
+// 	else if (maps->tab[i][j] == 'C')
+// 		if (maps->sky)
+// 			free(maps->sky);
+// 	else if (maps->tab[i][j] == 'E')
+// 		if (maps->texture_ea)
+// 			free(maps->texture_ea);
+// 	else if (maps->tab[i][j] == 'N')
+// 		if (maps->texture_no)
+// 			free(maps->texture_no);
+// 	else if (maps->tab[i][j] == 'S')
+// 		if (maps->texture_so)
+// 			free(maps->texture_so);
+// 	else if (maps->tab[i][j] == 'W')
+// 		if (maps->texture_we)
+// 			free(maps->texture_we);
+// 	else
+// 	return (0);
+// }
+
+int	ft_type_param(t_maps *maps, int i, int j)
+{
+	ft_putstr(&maps->tab[i][j]);
+	if (ft_strncmp(&maps->tab[i][j], "F ", 2) == 0)
+	{
+		if (maps->floor)
+			return (ft_error_parsing("double F\n", NULL));
+		maps->floor = ft_strdup(maps->tab[i]);
+		if (!maps)
+			return (1);
+	}
+	else if (ft_strncmp(&maps->tab[i][j], "C ", 2) == 0)
+	{
+		if (maps->sky)
+			return (ft_error_parsing("double C\n", NULL));
+		maps->sky = ft_strdup(maps->tab[i]);
+		if (!maps)
+			return (1);
+	}
+	else if (ft_strncmp(&maps->tab[i][j], "EA ", 3) == 0)
+	{
+		if (maps->texture_ea)
+			return (ft_error_parsing("double EA\n", NULL));
+		maps->texture_ea = ft_strdup(maps->tab[i]);
+		if (!maps)
+			return (1);
+	}
+	else if (ft_strncmp(&maps->tab[i][j], "NO ", 3) == 0)
+	{
+		if (maps->texture_no)
+			return (ft_error_parsing("double NO\n", NULL));
+		maps->texture_no = ft_strdup(maps->tab[i]);
+		if (!maps)
+			return (1);
+	}
+	else if (ft_strncmp(&maps->tab[i][j], "SO ", 3) == 0)
+	{
+		if (maps->texture_so)
+			return (ft_error_parsing("double SO\n", NULL));
+		maps->texture_so = ft_strdup(maps->tab[i]);
+		if (!maps)
+			return (1);
+	}
+	else if (ft_strncmp(&maps->tab[i][j], "WE ", 3) == 0)
+	{
+		if (maps->texture_we)
+			return (ft_error_parsing("double WE\n", NULL));
+		maps->texture_we = ft_strdup(maps->tab[i]);
+		if (!maps)
+			return (1);
+	}
+	else
+		return (ft_error_parsing("Bad paramaters\n", NULL));
+	return (0);
+}
 
 
-int	ft_parsing_param(t_maps *maps)
+static int	ft_parsing_param(t_maps *maps)
 {
 	int		i;
+	int		j;
 
-	i = 0;
+	i = -1;
 	maps->tab = ft_split(maps->file_in_a_line, '\n');
 	if (!maps->tab)
 		return (-1);
 	debug_put_tab("test :", maps->tab, 32, 320);
-	while (i++ != 6)
+	while (i++ != 5)
 	{
-
+		j = 0;
+		while (maps->tab[i][j] && ft_is_white_space(maps->tab[i][j]))
+			j++;
+		if (ft_type_param(maps, i, j))
+			return (-1);
 	}
 	return (0);
 }

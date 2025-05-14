@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/14 13:29:38 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/14 14:03:51 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ struct		s_maps
 	char	*texture_no;
 	char	*texture_so;
 	char	*texture_we;
+	char	*floor;
+	char	*sky;
 };
 
 struct		s_image
@@ -67,7 +69,6 @@ struct		s_data
 	t_maps	maps;
 	int		floor;
 	int		sky;
-
 };
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -98,7 +99,7 @@ int		ft_cross(t_data *data);
 //								ft_error.c									|
 //--------------------------------------------------------------------------|
 
-void	ft_error_parsing(char *str, char *type);
+int		ft_error_parsing(char *str, char *type);
 
 //
 //--------------------------------------------------------------------------|
@@ -117,10 +118,10 @@ int		ft_is_camera_move(int keycode);
 
 //
 //--------------------------------------------------------------------------|
-//								ft_init_maps.c								|
+//								ft_init_struct.c							|
 //--------------------------------------------------------------------------|
 
-void	ft_init_maps(t_maps *maps);
+void	ft_init_data(t_data *data);
 
 //
 //--------------------------------------------------------------------------|

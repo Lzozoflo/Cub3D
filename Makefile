@@ -46,8 +46,8 @@ SRC_DEBUG		=		ft_debug_1.c		\
 						ft_debug_2.c
 
 
-SRC_INIT		=		ft_init_maps.c		\
-						ft_init_mlx.c		\
+SRC_INIT		=		ft_init_mlx.c	\
+						ft_init_struct.c		\
 						ft_parsing_cub.c
 
 
