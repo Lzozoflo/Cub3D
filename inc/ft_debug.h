@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_debug.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 09:55:51 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/14 13:15:21 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/14 15:24:54 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_DEBUG_H
 # define FT_DEBUG_H
 
+# include "ft_cub.h"
 # include <stdio.h>
 
 /*-------DEBUG Flags
@@ -32,13 +33,14 @@
  *	3	=	parsing
  *		31	=	read file
  *		32	=	tab
+ *		33	=	list gnl
  *-------------------------------------------------------------------------------
  *-------------------------------------------------------------------------------
  *-------------------------------------------------------------------------------
  *
  *
  */
-# define DEBUG 32
+# define DEBUG 33
 
 /*
  *---------------src/debug/ft_debug_1.c
@@ -50,6 +52,7 @@ void	debug_put_ptr_d1(const char *str, void *ptr, int f, int s);
 //without debug == 1
 void	debug_put_tab(const char *str, char **tab, int f, int s);
 void	debug_put_ptr(const char *str, void *ptr, int f, int s);
+void	debug_put_gnl_list(const char *str, t_gnl *tmp, int f, int s);
 
 /*
  *---------------src/debug/ft_debug_2.c

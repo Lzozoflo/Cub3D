@@ -26,6 +26,7 @@ D_DEBUG			=		debug/
 D_INIT			=		init/
 D_UTILS			=		utils/
 D_U_EVENT		=		event/
+D_U_STRUCT		=		struct/
 
 
 #############################################################################################
@@ -56,6 +57,7 @@ SRC_UTILS		=		ft_close.c			\
 						ft_error.c			\
 						ft_is.c
 
+SRC_U_STRUCT	=		t_gnl.c
 
 
 SRC_U_EVENT		=		ft_key_event.c		\
@@ -70,10 +72,11 @@ SRC_U_EVENT		=		ft_key_event.c		\
 
 
 # All src in his Src Directories
-SRCS			=		$(addprefix $(D_SRC), $(SRC))								\
-						$(addprefix $(D_SRC)$(D_DEBUG), $(SRC_DEBUG))				\
-						$(addprefix $(D_SRC)$(D_INIT), $(SRC_INIT))					\
-						$(addprefix $(D_SRC)$(D_UTILS), $(SRC_UTILS))				\
+SRCS			=		$(addprefix $(D_SRC), $(SRC))									\
+						$(addprefix $(D_SRC)$(D_DEBUG), $(SRC_DEBUG))					\
+						$(addprefix $(D_SRC)$(D_INIT), $(SRC_INIT))						\
+						$(addprefix $(D_SRC)$(D_UTILS), $(SRC_UTILS))					\
+						$(addprefix $(D_SRC)$(D_UTILS)$(D_U_STRUCT), $(SRC_U_STRUCT))	\
 						$(addprefix $(D_SRC)$(D_UTILS)$(D_U_EVENT), $(SRC_U_EVENT))
 
 

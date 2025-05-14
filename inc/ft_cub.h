@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/14 14:21:59 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/14 15:10:58 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,18 @@
 typedef struct s_data	t_data;
 typedef struct s_image	t_image;
 typedef struct s_maps	t_maps;
+typedef struct s_gnl	t_gnl;
+
+struct s_gnl
+{
+	char	*str;
+	t_gnl	*prev;
+	t_gnl	*next;
+};
 
 struct		s_maps
 {
+	t_gnl	*gnl;
 	char	**tab;
 	char	*file_in_a_line;
 	char	*texture_ea;
@@ -137,7 +146,7 @@ int		ft_init_mlx(t_data *data);
 
 int		ft_parsing_cub(t_data *data, char *scene_cub);
 
-
-
+void	t_gnl_clear(t_maps *maps);
+int		t_gnl_add_end(t_maps *maps, char *str);
 
 #endif

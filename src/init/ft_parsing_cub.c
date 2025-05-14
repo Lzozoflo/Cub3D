@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 09:39:16 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/14 14:26:56 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/14 15:24:12 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ static int	ft_parsing_param(t_maps *maps)
 		if (ft_type_param(maps, i, j))
 			return (-1);
 	}
+	debug_put_gnl_list("list", maps->gnl, 33, 330);
 	//ici pour le test de la maps
 	return (0);
 }
@@ -105,6 +106,8 @@ static int	ft_get_all_file(t_data *data, int fd)
 	line = get_next_line(fd, &error);
 	if (!line && error != 1)
 		return (-1);
+	if (t_gnl_add_end(&data->maps, ft_strdup(line)) == -1)
+		return (-1);
 	data->maps.file_in_a_line = line;
 	while (1)
 	{
@@ -113,15 +116,14 @@ static int	ft_get_all_file(t_data *data, int fd)
 			break ;
 		if (!line && error != 0)
 			return (-1);
+		if (t_gnl_add_end(&data->maps, line) == -1)
+			return (-1);
 		tmp = ft_strjoin(data->maps.file_in_a_line, line);
-		free(data->maps.file_in_a_line);
-		free(line);
 		if (!tmp)
 			return (-1);
+		free(data->maps.file_in_a_line);
 		data->maps.file_in_a_line = tmp;
 	}
-	debug_put_str("ft_parsing_cub", data->maps.file_in_a_line, 31, 310);
-	close(fd);
 	return (0);
 }
 
@@ -141,6 +143,8 @@ int	ft_parsing_cub(t_data *data, char *scene_cub)
 			free(data->maps.file_in_a_line);
 		return (-1);
 	}
+	debug_put_str("ft_parsing_cub", data->maps.file_in_a_line, 31, 310);
+	close(fd);
 	if (ft_parsing_param(&data->maps) == -1)
 		return (-1);
 	return (0);

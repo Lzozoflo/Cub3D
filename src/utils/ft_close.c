@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_close.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 08:46:51 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/14 13:43:30 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/14 15:15:00 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ static void	ft_clear_maps(t_maps *maps)
 		free(maps->texture_so);
 	if (maps->texture_we)
 		free(maps->texture_we);
+	ft_putstr("ici");
+	if (maps->gnl)
+		t_gnl_clear(maps);
 }
 
 
