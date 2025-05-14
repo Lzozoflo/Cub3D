@@ -47,7 +47,7 @@ SRC_DEBUG		=		ft_debug_1.c		\
 
 
 SRC_INIT		=		ft_init_mlx.c		\
-						ft_parsing_scene.c
+						ft_parsing_cub.c
 
 
 SRC_UTILS		=		ft_close.c			\

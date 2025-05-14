@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parsing_scene.c                                 :+:      :+:    :+:   */
+/*   ft_parsing_cub.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 09:39:16 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/14 12:52:21 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/14 13:10:28 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,16 @@
 #include "ft_debug.h"
 #include "libft.h"
 #include <fcntl.h>
+
+int	ft_parsing_param(t_data *data)
+{
+	char	**tab;
+
+	tab = ft_split(data->maps.file_in_a_line, '\n');
+	if (!tab)
+		return (-1);
+}
+
 
 static int	ft_get_all_file(t_data *data, int fd)
 {
@@ -39,15 +49,14 @@ static int	ft_get_all_file(t_data *data, int fd)
 			return (-1);
 		data->maps.file_in_a_line = tmp;
 	}
-	debug_put_str("ft_parsing_scene", data->maps.file_in_a_line, 31, 310);
+	debug_put_str("ft_parsing_cub", data->maps.file_in_a_line, 31, 310);
 	close(fd);
 	return (0);
 }
 
-int	ft_parsing_scene(t_data *data, char *scene_cub)
+int	ft_parsing_cub(t_data *data, char *scene_cub)
 {
 	int		fd;
-	char	**tab;
 
 	if (!ft_is_a_good_extension(scene_cub))
 		return (-1);
@@ -61,7 +70,7 @@ int	ft_parsing_scene(t_data *data, char *scene_cub)
 			free(data->maps.file_in_a_line);
 		return (-1);
 	}
-	tab = ft_split(data->maps.file_in_a_line, '\n');
+	ft_parsing_param(t_data *data);
 	debug_put_tab("test :", tab, 31, 310);
 	return (0);
 }

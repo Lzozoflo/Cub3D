@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/14 12:09:18 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/14 13:12:30 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ typedef struct s_maps	t_maps;
 struct		s_maps
 {
 	char	*file_in_a_line;
+	char	*texture_no;
+	char	*texture_so;
+	char	*texture_we;
+	char	*texture_ea;
 };
 
 struct		s_image
@@ -90,7 +94,7 @@ int		ft_cross(t_data *data);
 
 //
 //--------------------------------------------------------------------------|
-//								ft_error.c										|
+//								ft_error.c									|
 //--------------------------------------------------------------------------|
 
 void	ft_error_parsing(char *str, char *type);
@@ -122,8 +126,7 @@ int		ft_init_mlx(t_data *data);
 //								ft_init_mlx.c								|
 //--------------------------------------------------------------------------|
 
-int		ft_parsing_scene(t_data *data, char *scene_cub);
-
+int		ft_parsing_cub(t_data *data, char *scene_cub);
 
 
 
