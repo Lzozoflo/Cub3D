@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 09:39:16 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/13 10:53:10 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/14 12:39:01 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,50 @@
 #include "libft.h"
 #include <fcntl.h>
 
-int	ft_parsing_scene(t_data *data, char *scene_cub)
+static int	ft_get_all_file(t_data *data, int fd)
 {
+	char	*tmp;
 	char	*line;
-	int		fd;
+	int		error;
 
-	(void)data;
-	if (!ft_is_a_good_extension(scene_cub))
-		return (1);
-
-
-	fd = open(scene_cub, O_RDONLY);
-	line = get_next_line(fd);
+	line = get_next_line(fd, &error);
+	if (!line && error != 1)
+		return (-1);
+	data->maps.file_in_a_line = line;
 	while (1)
 	{
-		printf("%s", line);
-		free(line);
-		line = get_next_line(fd);
-		if (!line)
-		{
-			ft_putstr_fd("NULL", 2);
+		line = get_next_line(fd, &error);
+		if (!line && error == 0)
 			break ;
-		}
+		if (!line && error != 0)
+			return (-1);
+		tmp = ft_strjoin(data->maps.file_in_a_line, line);
+		free(data->maps.file_in_a_line);
+		free(line);
+		if (!tmp)
+			return (-1);
+		data->maps.file_in_a_line = tmp;
 	}
-
-
+	debug_put_str("ft_parsing_scene", data->maps.file_in_a_line, 31, 310);
 	close(fd);
+	return (0);
+}
+
+int	ft_parsing_scene(t_data *data, char *scene_cub)
+{
+	int		fd;
+
+	if (!ft_is_a_good_extension(scene_cub))
+		return (-1);
+	fd = open(scene_cub, O_RDONLY);
+	if (fd == -1)
+		return (-1);
+	if (ft_get_all_file(data, fd) == -1)
+	{
+		close(fd);
+		if (data->maps.file_in_a_line)
+			free(data->maps.file_in_a_line);
+		return (-1);
+	}
 	return (0);
 }

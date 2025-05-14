@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 09:49:31 by fcretin           #+#    #+#             */
-/*   Updated: 2025/01/22 17:52:42 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/14 12:35:52 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,24 +78,24 @@ static char	*ft_check_strjoin(char *s1, const char *s2)
 }
 
 // ft_bzero(buff, BUFFER_SIZE);
-static char	*ft_reader(int fd, char *buff, char *line)
+static char	*ft_reader(int fd, char *buff, char *line, int *r_read)
 {
-	int		r_read;
+	// int		r_read;
 
 	while (1)
 	{
 		if (buff[0] == '\0')
 		{
-			r_read = read(fd, buff, BUFFER_SIZE);
-			if (r_read < 0)
+			*r_read = read(fd, buff, BUFFER_SIZE);
+			if (*r_read < 0)
 			{
 				if (line)
 					free(line);
 				return (NULL);
 			}
-			if (r_read == 0)
+			if (*r_read == 0)
 				return (line);
-			buff[r_read] = '\0';
+			buff[*r_read] = '\0';
 		}
 		line = ft_check_strjoin(line, buff);
 		if (!line)
@@ -106,16 +106,17 @@ static char	*ft_reader(int fd, char *buff, char *line)
 	}
 }
 
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, int *error)
 {
 	static char	buff[BUFFER_SIZE + 1];
 	char		*line;
 
+	*error = 0;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	line = NULL;
-	line = ft_reader(fd, buff, line);
-	if (!line)
-		return (NULL);
+	line = ft_reader(fd, buff, line, error);
+	if (!line){ft_putstr("test2");
+		return (NULL);}
 	return (line);
 }

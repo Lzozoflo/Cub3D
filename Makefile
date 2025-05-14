@@ -2,7 +2,7 @@
 
 NAME			=	Cub3D
 CC				=	cc
-CFLAGS			=	-Wall -Wextra -Werror
+CFLAGS			=	-Wall -Wextra -Werror -g3
 CFLAGSS			=	-Weverything -Wno-padded
 RM				=	rm -fr
 MLX_FLAG		=	-Lminilibx-linux -lmlx -lX11 -lXext
@@ -89,10 +89,10 @@ INCS			=		$(addprefix $(D_INC), $(INC))
 #############################################################################################
 
 
-all : libmlx libft $(NAME)
+all : libft libmlx $(NAME)
 
 
-$(NAME)			:	$(OBJS)
+$(NAME)			:	libft $(OBJS)
 			$(CC) $(CFLAGS) $(OBJS) $(MLX_FLAG) $(NAME_LIB) -o $(NAME)
 
 $(D_OBJ)%.o		:	$(D_SRC)%.c Makefile $(INCS) $(NAME_LIB)

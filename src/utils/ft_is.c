@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 09:16:51 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/13 10:24:25 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/14 11:56:51 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_is_player_move(int keycode)
 
 int	ft_is_camera_move(int keycode)
 {
-	if (keycode == LEFT || keycode == UP || keycode == RIGHT || keycode == DOWN)
+	if (keycode == LEFT || keycode == RIGHT)
 		return (1);
 	return (0);
 }

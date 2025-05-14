@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 08:34:21 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/03 16:15:24 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/14 12:13:24 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ char		*ft_strnstr(const char *str, const char *cmp, size_t len);
 char		*ft_strrchr(const char *str, int search_char);
 char		*ft_strtrim(char const *s1, char const *set);
 char		*ft_substr(char const *s, unsigned int i, size_t len);
-char		*get_next_line(int fd);
+char	*get_next_line(int fd, int *error);
 
 // utility Directorie
 int			ft_atoi(const char *str);
