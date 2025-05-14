@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 09:39:16 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/13 10:34:32 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/13 10:53:10 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	ft_parsing_scene(t_data *data, char *scene_cub)
 	(void)data;
 	if (!ft_is_a_good_extension(scene_cub))
 		return (1);
+
+
 	fd = open(scene_cub, O_RDONLY);
 	line = get_next_line(fd);
 	while (1)
@@ -33,9 +35,11 @@ int	ft_parsing_scene(t_data *data, char *scene_cub)
 		if (!line)
 		{
 			ft_putstr_fd("NULL", 2);
-			break;
+			break ;
 		}
 	}
+
+
 	close(fd);
 	return (0);
 }

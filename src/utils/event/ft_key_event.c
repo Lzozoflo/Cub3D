@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:59:35 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/13 09:30:55 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/14 11:09:10 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,9 @@ static int	ft_arrow(int keycode, t_data *data)
 	{
 		debug_put_str("[LEFT] is pressed", NULL, 2, 21);
 	}
-	else if (keycode == UP)
-	{
-		debug_put_str("[UP] is pressed", NULL, 2, 21);
-	}
 	else if (keycode == RIGHT)
 	{
 		debug_put_str("[RIGHT] is pressed", NULL, 2, 21);
-	}
-	else if (keycode == DOWN)
-	{
-		debug_put_str("[DOWN] is pressed", NULL, 2, 21);
 	}
 	return (1);
 }
