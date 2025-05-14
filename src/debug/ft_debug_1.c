@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_debug_1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 12:37:07 by fcretin           #+#    #+#             */
-/*   Updated: 2025/04/10 16:41:51 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/14 15:51:32 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,13 @@ void	debug_put_ptr(const char *str, void *ptr, int f, int s)
 	if (DEBUG == f || DEBUG == s)
 	{
 		printf("\nDEBUG -> %s: [%p]\n", str, ptr);
+	}
+}
+
+void	debug_str(const char *str, int f, int s)
+{
+	if (DEBUG == f || DEBUG == s)
+	{
+		printf("\n\nDEBUG -> %s\n\n", str);
 	}
 }

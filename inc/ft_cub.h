@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/14 15:10:58 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/14 15:39:53 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,5 +148,9 @@ int		ft_parsing_cub(t_data *data, char *scene_cub);
 
 void	t_gnl_clear(t_maps *maps);
 int		t_gnl_add_end(t_maps *maps, char *str);
+
+
+/*LAUSSEL*/
+int	ft_split_and_replace(t_maps *maps);
 
 #endif

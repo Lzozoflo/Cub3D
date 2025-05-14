@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 09:55:51 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/14 15:24:54 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/14 15:51:12 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,14 @@
  *		31	=	read file
  *		32	=	tab
  *		33	=	list gnl
+ *		34	=	compare maps
  *-------------------------------------------------------------------------------
  *-------------------------------------------------------------------------------
  *-------------------------------------------------------------------------------
  *
  *
  */
-# define DEBUG 33
+# define DEBUG 34
 
 /*
  *---------------src/debug/ft_debug_1.c
@@ -65,4 +66,6 @@ void	debug_put_int_d1(const char *str1, int value, int f, int s);
 void	debug_put_str(const char *str1, char *str2, int f, int s);
 void	debug_put_int(const char *str1, int value, int f, int s);
 
+
+void	debug_str(const char *str, int f, int s);
 #endif

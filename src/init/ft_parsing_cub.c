@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 09:39:16 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/14 15:24:12 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/14 15:39:17 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,8 @@ static int	ft_parsing_param(t_maps *maps)
 			return (-1);
 	}
 	debug_put_gnl_list("list", maps->gnl, 33, 330);
-	//ici pour le test de la maps
+
+	ft_split_and_replace(maps);//ici pour le test de la maps
 	return (0);
 }
 
