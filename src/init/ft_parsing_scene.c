@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 09:39:16 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/14 12:52:21 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/14 14:04:57 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ static int	ft_get_all_file(t_data *data, int fd)
 int	ft_parsing_scene(t_data *data, char *scene_cub)
 {
 	int		fd;
-	char	**tab;
 
 	if (!ft_is_a_good_extension(scene_cub))
 		return (-1);
@@ -61,7 +60,6 @@ int	ft_parsing_scene(t_data *data, char *scene_cub)
 			free(data->maps.file_in_a_line);
 		return (-1);
 	}
-	tab = ft_split(data->maps.file_in_a_line, '\n');
-	debug_put_tab("test :", tab, 31, 310);
+	ft_split_and_replace(data);
 	return (0);
 }

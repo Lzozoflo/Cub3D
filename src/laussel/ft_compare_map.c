@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 13:06:37 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/05/14 13:59:23 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/14 14:14:01 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,26 +75,34 @@ static void	ft_replace_n(char *map)
 	while (map[i])
 	{
 		if (map[i] == '\n' && map[i + 1] && map[i + 1] == '\n')
+		{
+			i++;
 			map[i] = -42;
+
+			// if (map[i + 1])
+			// 	i++;
+		}
 		i++;
 	}
+	debug_put_str("replace - 42 : ",map, 31, 310);
 }
 
 int	ft_split_and_replace(t_data *data)
 {
 	char	**map_1;
 	char	**map_2;
-	int		size;
 
 	map_1 = ft_split(data->maps.file_in_a_line, '\n');
 	if (map_1 == NULL)
 		return (-1);
-	debug_put_tab("test :", map_1, 31, 310);
+	debug_put_tab("split \\n :", map_1, 31, 310);
 	ft_replace_n(data->maps.file_in_a_line);
-	map_2 = ft_split(data->maps.file_in_a_line, '-42');
+	map_2 = ft_split(data->maps.file_in_a_line, '\n');
 	if (map_2 == NULL)
 		return (-1);
+	debug_put_tab("split -42 :", map_1, 31, 310);
 	ft_compare_map(map_1, map_2);
+	return (1);
 }
 
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cub.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/14 12:09:18 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/14 14:01:50 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,11 @@ int		ft_init_mlx(t_data *data);
 
 int		ft_parsing_scene(t_data *data, char *scene_cub);
 
+
+
+
+/*LAUSSEL*/
+int	ft_split_and_replace(t_data *data);
 
 
 
