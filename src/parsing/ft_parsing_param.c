@@ -6,13 +6,19 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 10:41:28 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/15 11:44:10 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/15 13:17:15 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 #include "ft_debug.h"
 #include "libft.h"
+
+// static int	ft_open_texture(t_maps *maps)
+// {
+
+// }
+
 
 static int	ft_check_extension_texture(t_maps *maps)
 {
@@ -29,8 +35,12 @@ static int	ft_check_extension_texture(t_maps *maps)
 
 int	ft_check_param(t_maps *maps)
 {
+	// if (ft_clear_str_of_texture(maps))
+	// 	return (1);
 	if (ft_check_extension_texture(maps) != 0)
 		return (1);
+	// if (ft_clear_str_of_color(maps))
+	// 	return (1);
 	// if (ft_open_texture(maps) != 0)
 	// 	return (1);
 	// if (ft_check_rgb(maps))

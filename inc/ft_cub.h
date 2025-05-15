@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/15 11:44:03 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/15 12:02:04 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,7 @@ int		ft_key_press(int keycode, void *param);
 //								ft_close.c									|
 //--------------------------------------------------------------------------|
 
+void	ft_clear_maps(t_maps *maps);
 int		ft_clean_close(t_data *data, int error);
 int		ft_cross(t_data *data);
 

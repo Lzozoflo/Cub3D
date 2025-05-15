@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 08:46:51 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/15 09:25:25 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/15 12:01:45 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-static void	ft_clear_maps(t_maps *maps)
+void	ft_clear_maps(t_maps *maps)
 {
 	if (maps->file_in_a_line)
 		free(maps->file_in_a_line);
