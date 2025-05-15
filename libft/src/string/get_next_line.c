@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 09:49:31 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/14 12:35:52 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/15 09:26:00 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ char	*get_next_line(int fd, int *error)
 		return (NULL);
 	line = NULL;
 	line = ft_reader(fd, buff, line, error);
-	if (!line){ft_putstr("test2");
-		return (NULL);}
+	if (!line)
+		return (NULL);
 	return (line);
 }

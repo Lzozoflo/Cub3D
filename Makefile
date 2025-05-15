@@ -25,6 +25,7 @@ D_INC			=		inc/
 D_DEBUG			=		debug/
 D_INIT			=		init/
 D_UTILS			=		utils/
+D_PARSING		=		parsing/
 D_U_EVENT		=		event/
 D_U_STRUCT		=		struct/
 
@@ -36,7 +37,7 @@ D_U_STRUCT		=		struct/
 #############################################################################################
 
 
-INC				=		ft_cub.h			\
+INC				=		ft_cub.h					\
 						ft_debug.h
 
 
@@ -44,23 +45,25 @@ SRC				=		main.c
 
 # laussel/ft_compare_map.c
 
-SRC_DEBUG		=		ft_debug_1.c		\
+SRC_DEBUG		=		ft_debug_1.c				\
 						ft_debug_2.c
 
 
-SRC_INIT		=		ft_init_mlx.c	\
-						ft_init_struct.c		\
+SRC_INIT		=		ft_init_mlx.c				\
+						ft_init_struct.c
+
+SRC_PARSING		=		ft_find_param.c				\
 						ft_parsing_cub.c
 
-
-SRC_UTILS		=		ft_close.c			\
-						ft_error.c			\
+SRC_UTILS		=		ft_close.c					\
+						ft_error.c					\
+						ft_get_file_in_oneline.c	\
 						ft_is.c
 
 SRC_U_STRUCT	=		t_gnl.c
 
 
-SRC_U_EVENT		=		ft_key_event.c		\
+SRC_U_EVENT		=		ft_key_event.c				\
 						ft_mouse_event.c
 
 
@@ -76,6 +79,7 @@ SRCS			=		$(addprefix $(D_SRC), $(SRC))									\
 						$(addprefix $(D_SRC)$(D_DEBUG), $(SRC_DEBUG))					\
 						$(addprefix $(D_SRC)$(D_INIT), $(SRC_INIT))						\
 						$(addprefix $(D_SRC)$(D_UTILS), $(SRC_UTILS))					\
+						$(addprefix $(D_SRC)$(D_PARSING), $(SRC_PARSING))				\
 						$(addprefix $(D_SRC)$(D_UTILS)$(D_U_STRUCT), $(SRC_U_STRUCT))	\
 						$(addprefix $(D_SRC)$(D_UTILS)$(D_U_EVENT), $(SRC_U_EVENT))
 

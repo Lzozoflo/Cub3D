@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cub.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/14 15:10:58 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/15 09:38:59 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,13 @@ int		ft_error_parsing(char *str, char *type);
 
 //
 //--------------------------------------------------------------------------|
+//						ft_get_file_in_oneline.c							|
+//--------------------------------------------------------------------------|
+
+int		ft_get_all_file(t_data *data, int fd, int error);
+
+//
+//--------------------------------------------------------------------------|
 //								ft_is.c										|
 //--------------------------------------------------------------------------|
 
@@ -144,9 +151,16 @@ int		ft_init_mlx(t_data *data);
 //								ft_init_mlx.c								|
 //--------------------------------------------------------------------------|
 
-int		ft_parsing_cub(t_data *data, char *scene_cub);
+//------------------------------------------------------|
+//														|
+//						src/parsing						|
+//														|
+//------------------------------------------------------|
 
+int		ft_find_line_texture(t_maps *maps, int i, int j);
 void	t_gnl_clear(t_maps *maps);
 int		t_gnl_add_end(t_maps *maps, char *str);
+int		ft_parsing_cub(t_data *data, char *scene_cub);
+
 
 #endif
