@@ -84,7 +84,8 @@ SRC_PRINT		=		ft_printf.c				\
 						ft_putstr_fd.c
 
 
-SRC_STRING		=		ft_split.c				\
+SRC_STRING		=		ft_split_white_space.c	\
+						ft_split.c				\
 						ft_strchr.c				\
 						ft_strdup.c				\
 						ft_striteri.c			\

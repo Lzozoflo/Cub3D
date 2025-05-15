@@ -53,6 +53,7 @@ SRC_INIT		=		ft_init_mlx.c				\
 						ft_init_struct.c
 
 SRC_PARSING		=		ft_check_param.c			\
+						ft_clear_str_of_texture.c	\
 						ft_find_param.c				\
 						ft_parsing_cub.c
 

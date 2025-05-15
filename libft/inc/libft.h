@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 08:34:21 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/15 09:49:53 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/15 17:25:15 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ ssize_t		ft_putstr_fd(char *s, int fd);
 ssize_t		ft_putstr(char *s);
 
 // string Directorie
+char		**ft_split_white_space(char const *s);
 char		**ft_split(char const *s, char c);
 char		**ft_freetab(char **tab, unsigned int j);
 char		*ft_strchr(const char *str, int c);
