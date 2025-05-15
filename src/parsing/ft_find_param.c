@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 09:23:09 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/15 09:26:59 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/15 10:43:10 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,3 +69,60 @@ int	ft_find_line_texture(t_maps *maps, int i, int j)
 		return (1);
 	return (0);
 }
+
+
+// int	ft_type_param(t_maps *maps, int i, int j)
+// {
+// 	ft_putstr(&maps->tab[i][j]);
+// 	if (ft_strncmp(&maps->tab[i][j], "F ", 2) == 0)
+// 	{
+// 		if (maps->floor)
+// 			return (ft_error_parsing("double F\n", NULL));
+// 		maps->floor = ft_strdup(maps->tab[i]);
+// 		if (!maps->floor)
+// 			return (1);
+// 	}
+// 	else if (ft_strncmp(&maps->tab[i][j], "C ", 2) == 0)
+// 	{
+// 		if (maps->sky)
+// 			return (ft_error_parsing("double C\n", NULL));
+// 		maps->sky = ft_strdup(maps->tab[i]);
+// 		if (!maps->sky)
+// 			return (1);
+// 	}
+// 	else if (ft_strncmp(&maps->tab[i][j], "EA ", 3) == 0)
+// 	{
+// 		if (maps->texture_ea)
+// 			return (ft_error_parsing("double EA\n", NULL));
+// 		maps->texture_ea = ft_strdup(maps->tab[i]);
+// 		if (!maps->texture_ea)
+// 			return (1);
+// 	}
+// 	else if (ft_strncmp(&maps->tab[i][j], "NO ", 3) == 0)
+// 	{
+// 		if (maps->texture_no)
+// 			return (ft_error_parsing("double NO\n", NULL));
+// 		maps->texture_no = ft_strdup(maps->tab[i]);
+// 		if (!maps->texture_no)
+// 			return (1);
+// 	}
+// 	else if (ft_strncmp(&maps->tab[i][j], "SO ", 3) == 0)
+// 	{
+// 		if (maps->texture_so)
+// 			return (ft_error_parsing("double SO\n", NULL));
+// 		maps->texture_so = ft_strdup(maps->tab[i]);
+// 		if (!maps->texture_so)
+// 			return (1);
+// 	}
+// 	else if (ft_strncmp(&maps->tab[i][j], "WE ", 3) == 0)
+// 	{
+// 		if (maps->texture_we)
+// 			return (ft_error_parsing("double WE\n", NULL));
+// 		maps->texture_we = ft_strdup(maps->tab[i]);
+// 		if (!maps->texture_we)
+// 			return (1);
+// 	}
+// 	else
+// 		return (ft_error_parsing("Bad paramaters\n", NULL));
+// 	return (0);
+// }
