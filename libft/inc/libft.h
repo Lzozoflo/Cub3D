@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 08:34:21 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/15 17:25:15 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/15 18:09:57 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_list
 
 // is Directorie
 int			ft_is_good_extension(char *scene_cub, char *search, int len_search);
+int			ft_is_openable(char *file_path_name);
 int			ft_is_white_space(int c);
 int			ft_no_input(char **av);
 int			ft_isalnum(int c);

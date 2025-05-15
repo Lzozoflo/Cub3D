@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 10:41:28 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/15 18:02:43 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/15 18:12:30 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,18 @@
 // #include "ft_debug.h"
 #include "libft.h"
 
-// static int	ft_open_texture(t_maps *maps)
-// {
-
-// }
-
+static int	ft_open_texture(t_maps *maps)
+{
+	if (!ft_is_openable(maps->texture_ea))
+		return (ft_error_parsing("texture 'EA' can't be open.\n", NULL));
+	if (!ft_is_openable(maps->texture_no))
+		return (ft_error_parsing("texture 'NO' can't be open.\n", NULL));
+	if (!ft_is_openable(maps->texture_so))
+		return (ft_error_parsing("texture 'SO' can't be open.\n", NULL));
+	if (!ft_is_openable(maps->texture_we))
+		return (ft_error_parsing("texture 'WE' can't be open.\n", NULL));
+	return (0);
+}
 
 static int	ft_check_extension_texture(t_maps *maps)
 {
@@ -39,9 +46,9 @@ int	ft_check_param(t_maps *maps)
 		return (1);
 	if (ft_check_extension_texture(maps) != 0)
 		return (1);
-	// if (ft_clear_str_of_color(maps))
-	// 	return (1);
-	// if (ft_open_texture(maps) != 0)
+	if (ft_open_texture(maps) != 0)
+		return (1);
+	// if (ft_check_fomat_color(maps))
 	// 	return (1);
 	// if (ft_check_rgb(maps))
 	// 	return (1);

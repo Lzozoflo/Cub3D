@@ -48,6 +48,7 @@ INC				=		libft.h
 
 
 SRC_IS			=		ft_is_good_extension.c	\
+						ft_is_openable.c		\
 						ft_is_space.c			\
 						ft_isalnum.c			\
 						ft_isalpha.c			\
