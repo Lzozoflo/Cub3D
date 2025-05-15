@@ -47,65 +47,66 @@ D_UTILITY		=		utility/
 INC				=		libft.h
 
 
-SRC_IS			=		ft_is_space.c		\
-						ft_isalnum.c		\
-						ft_isalpha.c		\
-						ft_isascii.c		\
-						ft_isdigit.c		\
+SRC_IS			=		ft_is_good_extension.c	\
+						ft_is_space.c			\
+						ft_isalnum.c			\
+						ft_isalpha.c			\
+						ft_isascii.c			\
+						ft_isdigit.c			\
 						ft_isprint.c
 
 
-SRC_LST			=		ft_lstadd_back.c	\
-						ft_lstadd_front.c	\
-						ft_lstclear.c		\
-						ft_lstdelone.c		\
-						ft_lstiter.c		\
-						ft_lstlast.c		\
-						ft_lstmap.c			\
-						ft_lstnew.c			\
+SRC_LST			=		ft_lstadd_back.c		\
+						ft_lstadd_front.c		\
+						ft_lstclear.c			\
+						ft_lstdelone.c			\
+						ft_lstiter.c			\
+						ft_lstlast.c			\
+						ft_lstmap.c				\
+						ft_lstnew.c				\
 						ft_lstsize.c
 
 
-SRC_MEM			=		ft_atoi_alloc.c		\
-						ft_memchr.c			\
-						ft_memcmp.c			\
-						ft_memcpy.c			\
-						ft_memmove.c		\
-						ft_memset.c			\
-						ft_bzero.c			\
+SRC_MEM			=		ft_atoi_alloc.c			\
+						ft_memchr.c				\
+						ft_memcmp.c				\
+						ft_memcpy.c				\
+						ft_memmove.c			\
+						ft_memset.c				\
+						ft_bzero.c				\
 						ft_calloc.c
 
 
-SRC_PRINT		=		ft_printf.c			\
-						ft_putchar_fd.c		\
-						ft_putendl_fd.c		\
-						ft_putnbr_fd.c		\
+SRC_PRINT		=		ft_printf.c				\
+						ft_putchar_fd.c			\
+						ft_putendl_fd.c			\
+						ft_putnbr_fd.c			\
 						ft_putstr_fd.c
 
 
-SRC_STRING		=		ft_split.c			\
-						ft_strchr.c			\
-						ft_strdup.c			\
-						ft_striteri.c		\
-						ft_strjoin.c		\
-						ft_strlcat.c		\
-						ft_strlcpy.c		\
-						ft_strlen.c			\
-						ft_strmapi.c		\
-						ft_strncmp.c		\
-						ft_strnstr.c		\
-						ft_strrchr.c		\
-						ft_strtrim.c		\
-						ft_substr.c			\
+SRC_STRING		=		ft_split.c				\
+						ft_strchr.c				\
+						ft_strdup.c				\
+						ft_striteri.c			\
+						ft_strjoin.c			\
+						ft_strlcat.c			\
+						ft_strlcpy.c			\
+						ft_strlen.c				\
+						ft_strmapi.c			\
+						ft_strncmp.c			\
+						ft_strnstr.c			\
+						ft_strrchr.c			\
+						ft_strtrim.c			\
+						ft_substr.c				\
 						get_next_line.c
 
 
-SRC_UTILITY		=		ft_atoi.c			\
-						ft_base.c			\
-						ft_free_null.c		\
-						ft_itoa.c			\
-						ft_sort_tab.c		\
-						ft_tolower.c		\
+SRC_UTILITY		=		ft_atoi.c				\
+						ft_base.c				\
+						ft_free_null.c			\
+						ft_itoa.c				\
+						ft_sort_tab.c			\
+						ft_tolower.c			\
 						ft_toupper.c
 
 

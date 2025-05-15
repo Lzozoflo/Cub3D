@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/15 09:38:59 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/15 09:49:21 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,6 @@ int		ft_get_all_file(t_data *data, int fd, int error);
 //								ft_is.c										|
 //--------------------------------------------------------------------------|
 
-int		ft_is_a_good_extension(char *scene_cub);
 int		ft_is_player_move(int keycode);
 int		ft_is_camera_move(int keycode);
 

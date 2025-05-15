@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 09:39:16 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/15 09:39:07 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/15 10:01:18 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,26 @@
 #include "ft_debug.h"
 #include "libft.h"
 #include <fcntl.h>
+
+int	ft_check_extension_texture(t_maps *maps)
+{
+	if (!ft_is_good_extension(maps->texture_ea, ".xpm", 5))
+		return (ft_error_parsing("texture 'EA' has a bad extension.\n", NULL));
+	if (!ft_is_good_extension(maps->texture_no, ".xpm", 5))
+		return (ft_error_parsing("texture 'NO' has a bad extension.\n", NULL));
+	if (!ft_is_good_extension(maps->texture_so, ".xpm", 5))
+		return (ft_error_parsing("texture 'SO' has a bad extension.\n", NULL));
+	if (!ft_is_good_extension(maps->texture_we, ".xpm", 5))
+		return (ft_error_parsing("texture 'WE' has a bad extension.\n", NULL));
+	return (0);
+}
+
+static int	ft_check_param(t_maps *maps)
+{
+	if (ft_check_extension_texture(maps))
+		return (1);
+	return (0);
+}
 
 static int	ft_parsing_param(t_maps *maps)
 {
@@ -41,6 +61,8 @@ static int	ft_core_parsing(t_maps *maps)
 {
 	if (ft_parsing_param(maps) == -1)
 		return (-1);
+	if (ft_check_param(maps))
+		return (-1);
 	//ici pour le test de la maps
 	return (0);
 }
@@ -50,7 +72,7 @@ int	ft_parsing_cub(t_data *data, char *scene_cub)
 {
 	int		fd;
 
-	if (!ft_is_a_good_extension(scene_cub))
+	if (!ft_is_good_extension(scene_cub, ".cub", 5))
 		return (-1);
 	fd = open(scene_cub, O_RDONLY);
 	if (fd == -1)
