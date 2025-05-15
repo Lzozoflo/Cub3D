@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 09:39:16 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/15 17:00:12 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/15 17:07:30 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,27 @@
 #include "libft.h"
 #include <fcntl.h>
 
+static int	ft_parsing_param(t_maps *maps)
+{
+	int		i;
+	int		j;
+
+	i = -1;
+	maps->tab = ft_split(maps->file_in_a_line, '\n');
+	if (!maps->tab)
+		return (1);
+	debug_put_tab("test :", maps->tab, 32, 320);
+	while (i++ != 5)
+	{
+		j = 0;
+		while (maps->tab[i][j] && ft_is_white_space(maps->tab[i][j]))
+			j++;
+		if (ft_find_line_texture(maps, i, j) != 0)
+			return (1);
+	}
+	debug_put_gnl_list("list", maps->gnl, 33, 330);
+	return (0);
+}
 
 static int	ft_core_parsing(t_data *data)
 {

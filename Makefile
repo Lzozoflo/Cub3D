@@ -52,9 +52,10 @@ SRC_DEBUG		=		ft_debug_1.c				\
 SRC_INIT		=		ft_init_mlx.c				\
 						ft_init_struct.c
 
-SRC_PARSING		=		ft_find_param.c				\
-						ft_parsing_cub.c			\
-						ft_parsing_param.c
+SRC_PARSING		=		ft_check_param.c			\
+						ft_find_param.c				\
+						ft_parsing_cub.c
+
 
 SRC_UTILS		=		ft_close.c					\
 						ft_error.c					\
