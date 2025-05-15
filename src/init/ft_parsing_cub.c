@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 09:39:16 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/15 09:17:29 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/15 09:18:22 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	ft_check_double(char **str, char *str_int_tab, char *find)
 {
 	if (*str)
 		return (ft_error_parsing(find, " was found 2 time"));
-	*str = ft_strdup(maps->tab[i]);
+	*str = ft_strdup(str_int_tab);
 	if (!*str)
 		return (1);
 	return (0);
@@ -30,12 +30,12 @@ static int	ft_find_line_floor_sky_or_error(t_maps *maps, int i, int j)
 
 	if (ft_strncmp(&maps->tab[i][j], "F ", 2) == 0)
 	{
-		if (ft_check_double(&maps->floor, maps->tab[i]), "F ")
+		if (ft_check_double(&maps->floor, maps->tab[i], "F "))
 			return (1);
 	}
 	else if (ft_strncmp(&maps->tab[i][j], "C ", 2))
 	{
-		if (ft_check_double(&maps->sky, maps->tab[i]), "C ")
+		if (ft_check_double(&maps->sky, maps->tab[i], "C "))
 			return (1);
 	}
 	else
@@ -87,7 +87,7 @@ static int	ft_parsing_param(t_maps *maps)
 		j = 0;
 		while (maps->tab[i][j] && ft_is_white_space(maps->tab[i][j]))
 			j++;
-		if (ft_type_param(maps, i, j))
+		if (ft_find_line_texture(maps, i, j))
 			return (-1);
 	}
 	debug_put_gnl_list("list", maps->gnl, 33, 330);
