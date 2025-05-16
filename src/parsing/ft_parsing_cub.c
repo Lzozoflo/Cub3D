@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 09:39:16 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/15 17:07:30 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/16 11:39:00 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,22 @@
 #include "ft_debug.h"
 #include "libft.h"
 #include <fcntl.h>
+
+static void	ft_keep_and_trash_params(t_maps *maps)
+{
+	if (maps->file_in_a_line)
+		free(maps->file_in_a_line);
+	if (maps->str_floor)
+		free(maps->str_floor);
+	if (maps->str_sky)
+		free(maps->str_sky);
+	if (maps->gnl)
+		t_gnl_clear(maps);
+	maps->file_in_a_line = NULL;
+	maps->str_floor = NULL;
+	maps->str_sky = NULL;
+	maps->gnl = NULL;
+}
 
 static int	ft_parsing_param(t_maps *maps)
 {
@@ -43,10 +59,9 @@ static int	ft_core_parsing(t_data *data)
 		return (-1);
 	if (ft_check_param(&data->maps) != 0)
 		return (-1);
-	// if (ft_save_rgb(maps))
-	// 	return (1);
-	// if (ft_check_maps(&data->maps) != 0)miro
-	// 	return (-1);					//ici pour le test de la maps
+		// if (ft_check_maps(&data->maps) != 0)
+		// 	return (-1);					//ici pour le test de la maps
+	ft_keep_and_trash_params(&data->maps);
 	return (0);
 }
 
