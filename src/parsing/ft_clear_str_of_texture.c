@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 17:09:23 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/15 18:03:58 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/16 09:58:35 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ int	ft_clear_parameters(t_maps *maps)
 		return (1);
 	if (ft_check_one_parameters(&maps->texture_we))
 		return (1);
-	if (ft_check_one_parameters(&maps->sky))
+	if (ft_check_one_parameters(&maps->str_sky))
 		return (1);
-	if (ft_check_one_parameters(&maps->floor))
+	if (ft_check_one_parameters(&maps->str_floor))
 		return (1);
 	return (0);
 }

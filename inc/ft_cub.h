@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/15 18:03:10 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/16 10:58:54 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,17 @@ struct s_gnl
 
 struct		s_maps
 {
-	t_gnl	*gnl;
-	char	**tab;
-	char	*file_in_a_line;
-	char	*texture_ea;
-	char	*texture_no;
-	char	*texture_so;
-	char	*texture_we;
-	char	*floor;
-	char	*sky;
+	t_gnl			*gnl;
+	char			**tab;
+	char			*file_in_a_line;
+	char			*texture_ea;
+	char			*texture_no;
+	char			*texture_so;
+	char			*texture_we;
+	char			*str_floor;
+	char			*str_sky;
+	unsigned int	floor;
+	unsigned int	sky;
 };
 
 struct		s_image
@@ -76,8 +78,6 @@ struct		s_data
 	int		name;
 	t_image	img;
 	t_maps	maps;
-	int		floor;
-	int		sky;
 };
 
 //------------------------------------------------------|
@@ -110,6 +110,8 @@ int		ft_init_mlx(t_data *data);
 //						src/parsing						|
 //														|
 //------------------------------------------------------|
+
+int		ft_check_format_save_color(t_maps *maps);
 
 //
 //--------------------------------------------------------------------------|

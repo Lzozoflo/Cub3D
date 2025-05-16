@@ -37,7 +37,7 @@ D_STRUCT		=		utils_struct/
 #############################################################################################
 
 
-INC				=		ft_cub.h					\
+INC				=		ft_cub.h						\
 						ft_debug.h
 
 
@@ -45,26 +45,27 @@ SRC				=		main.c
 
 # laussel/ft_compare_map.c
 
-SRC_DEBUG		=		ft_debug_1.c				\
+SRC_DEBUG		=		ft_debug_1.c					\
 						ft_debug_2.c
 
 
-SRC_INIT		=		ft_init_mlx.c				\
+SRC_INIT		=		ft_init_mlx.c					\
 						ft_init_struct.c
 
-SRC_PARSING		=		ft_check_param.c			\
-						ft_clear_str_of_texture.c	\
-						ft_find_param.c				\
+SRC_PARSING		=		ft_check_format_save_color.c	\
+						ft_check_param.c				\
+						ft_clear_str_of_texture.c		\
+						ft_find_param.c					\
 						ft_parsing_cub.c
 
 
-SRC_UTILS		=		ft_close.c					\
-						ft_error.c					\
-						ft_get_file_in_oneline.c	\
+SRC_UTILS		=		ft_close.c						\
+						ft_error.c						\
+						ft_get_file_in_oneline.c		\
 						ft_is.c
 
 
-SRC_U_EVENT		=		ft_key_event.c				\
+SRC_U_EVENT		=		ft_key_event.c					\
 						ft_mouse_event.c
 
 

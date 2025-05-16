@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 08:46:51 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/15 12:01:45 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/16 09:58:20 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	ft_clear_maps(t_maps *maps)
 {
 	if (maps->file_in_a_line)
 		free(maps->file_in_a_line);
-	if (maps->floor)
-		free(maps->floor);
-	if (maps->sky)
-		free(maps->sky);
+	if (maps->str_floor)
+		free(maps->str_floor);
+	if (maps->str_sky)
+		free(maps->str_sky);
 	if (maps->tab)
 		ft_freetab(maps->tab, 0);
 	if (maps->texture_ea)

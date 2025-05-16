@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 12:00:39 by fcretin           #+#    #+#             */
-/*   Updated: 2025/02/05 16:56:47 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/16 09:44:42 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,22 @@
 
 inline int	ft_is_white_space(int c)
 {
-	if (c == 32 || (c >= 9 && c <= 13))
-		return (1);
-	return (0);
+	return (c == 32 || (c >= 9 && c <= 13));
 }
 
-int	ft_no_input(char **av)
+int	ft_is_str_white_space(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] && ft_is_white_space(str[i]))
+		i++;
+	if (str[i])
+		return (0);
+	return (1);
+}
+
+	int	ft_no_input(char **av)
 {
 	int	i;
 	int	j;

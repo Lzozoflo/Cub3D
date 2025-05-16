@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 10:41:28 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/15 18:12:30 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/16 09:48:52 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,7 @@ int	ft_check_param(t_maps *maps)
 		return (1);
 	if (ft_open_texture(maps) != 0)
 		return (1);
-	// if (ft_check_fomat_color(maps))
-	// 	return (1);
-	// if (ft_check_rgb(maps))
-	// 	return (1);
+	if (ft_check_format_save_color(maps))
+		return (1);
 	return (0);
 }

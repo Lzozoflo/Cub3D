@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_struct.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 13:26:06 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/14 14:33:14 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/16 09:57:31 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static void	ft_init_maps(t_maps *maps)
 {
 	maps->gnl = NULL;
 	maps->file_in_a_line = NULL;
-	maps->floor = NULL;
-	maps->sky = NULL;
+	maps->str_floor = NULL;
+	maps->str_sky = NULL;
 	maps->tab = NULL;
 	maps->texture_ea = NULL;
 	maps->texture_no = NULL;

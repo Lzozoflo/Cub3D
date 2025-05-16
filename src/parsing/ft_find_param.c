@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 09:23:09 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/15 10:43:10 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/16 09:59:08 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ static int	ft_find_line_floor_sky_or_error(t_maps *maps, int i, int j)
 
 	if (ft_strncmp(&maps->tab[i][j], "F ", 2) == 0)
 	{
-		if (ft_check_double(&maps->floor, maps->tab[i], "F "))
+		if (ft_check_double(&maps->str_floor, maps->tab[i], "F "))
 			return (1);
 	}
 	else if (ft_strncmp(&maps->tab[i][j], "C ", 2) == 0)
 	{
-		if (ft_check_double(&maps->sky, maps->tab[i], "C "))
+		if (ft_check_double(&maps->str_sky, maps->tab[i], "C "))
 			return (1);
 	}
 	else
