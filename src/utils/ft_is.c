@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 09:16:51 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/15 09:47:46 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/16 14:35:50 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,24 @@
 #include "ft_debug.h"
 #include "libft.h"
 
-int	ft_is_player_move(int keycode)
+inline int	ft_is_player_char(int c)
 {
-	if (keycode == A || keycode == W || keycode == D ||keycode == S)
-		return (1);
-	return (0);
+	return (c == 'E' || c == 'N' || c == 'S' || c == 'W');
+}
+
+inline int	ft_is_valid_char(int c)
+{
+	return (c != '\0' && (c == '1' || c == '0' || c == ' '
+			|| ft_is_player_char(c)));
+}
+
+inline int	ft_is_player_move(int keycode)
+{
+	return (keycode == A || keycode == W || keycode == D ||keycode == S);
 }
 
 
-int	ft_is_camera_move(int keycode)
+inline int	ft_is_camera_move(int keycode)
 {
-	if (keycode == LEFT || keycode == RIGHT)
-		return (1);
-	return (0);
+	return (keycode == LEFT || keycode == RIGHT);
 }

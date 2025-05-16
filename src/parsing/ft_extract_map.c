@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tabdup.c                                        :+:      :+:    :+:   */
+/*   ft_format_maps.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/16 11:48:28 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/16 15:20:56 by fcretin          ###   ########.fr       */
+/*   Created: 2025/05/16 15:00:09 by fcretin           #+#    #+#             */
+/*   Updated: 2025/05/16 15:16:13 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_cub.h"
+// #include "ft_debug.h"
 #include "libft.h"
 
-char	**ft_tabdup(char **tab)
+int	ft_extract_map(t_maps *maps)
 {
-	char	**dup_tab;
-	size_t	len;
-	size_t	i;
+	char	**new_tab;
 
-	i = 0;
-	len = ft_len_tab(tab);
-	dup_tab = malloc(sizeof(char *) * (len + 1));
-	if (!dup_tab)
-		return (NULL);
-	while (i != len)
-	{
-		dup_tab[i] = ft_strdup(tab[i]);
-		if (!dup_tab[i] && i != 0)
-			return (ft_freetab(dup_tab, i));
-		else if (!dup_tab[i] && i == 0)
-			return (ft_free_null(dup_tab));
-		i++;
-	}
-	dup_tab[i] = NULL;
-	return (dup_tab);
+	if (!maps->tab[6])
+		return (ft_error_parsing("no maps", NULL));
+	new_tab = ft_tabdup(&maps->tab[6]);
+	ft_freetab(maps->tab, 0);
+	maps->tab = new_tab;
+	return (!new_tab);
 }

@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 09:39:16 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/16 11:39:00 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/16 15:23:00 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	ft_parsing_param(t_maps *maps)
 	maps->tab = ft_split(maps->file_in_a_line, '\n');
 	if (!maps->tab)
 		return (1);
-	debug_put_tab("test :", maps->tab, 32, 320);
+	debug_put_tab("tab :", maps->tab, 32, 320);
 	while (i++ != 5)
 	{
 		j = 0;
@@ -59,8 +59,11 @@ static int	ft_core_parsing(t_data *data)
 		return (-1);
 	if (ft_check_param(&data->maps) != 0)
 		return (-1);
-		// if (ft_check_maps(&data->maps) != 0)
-		// 	return (-1);					//ici pour le test de la maps
+	if (ft_extract_map(&data->maps) != 0)
+		return (-1);
+	debug_put_tab("maps extracted :", data->maps.tab, 35, 350);
+	if (ft_check_maps(&data->maps) != 0)
+		return (-1);
 	ft_keep_and_trash_params(&data->maps);
 	return (0);
 }
