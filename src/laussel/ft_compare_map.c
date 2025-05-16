@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_compare_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 13:06:37 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/05/14 14:14:01 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/16 11:47:28 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ static void	ft_replace_n(char *map)
 		}
 		i++;
 	}
-	debug_put_str("replace - 42 : ",map, 31, 310);
+	debug_put_str("replace -42 : ",map, 31, 310);
 }
 
 int	ft_split_and_replace(t_data *data)

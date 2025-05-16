@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 08:34:21 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/16 09:44:11 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/16 11:57:05 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,8 @@ char		*ft_strnstr(const char *str, const char *cmp, size_t len);
 char		*ft_strrchr(const char *str, int search_char);
 char		*ft_strtrim(char const *s1, char const *set);
 char		*ft_substr(char const *s, unsigned int i, size_t len);
-char	*get_next_line(int fd, int *error);
+char		**ft_tabdup(char **tab);
+char		*get_next_line(int fd, int *error);
 
 // utility Directorie
 int			ft_atoi(const char *str);
@@ -106,6 +107,7 @@ int			ft_size_base(int nbr, int base);
 char		ft_convert_base(unsigned long nbr, int base, const char format);
 void		*ft_free_null(void *ptr);
 char		*ft_itoa(int n);
+size_t		ft_len_tab(char **tab);
 void		ft_sort_tab(char **tab);
 int			ft_tolower(int c);
 int			ft_toupper(int c);

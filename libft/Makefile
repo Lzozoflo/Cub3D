@@ -100,6 +100,7 @@ SRC_STRING		=		ft_split_white_space.c	\
 						ft_strrchr.c			\
 						ft_strtrim.c			\
 						ft_substr.c				\
+						ft_tabdup.c				\
 						get_next_line.c
 
 
@@ -107,7 +108,7 @@ SRC_UTILITY		=		ft_atoi.c				\
 						ft_base.c				\
 						ft_free_null.c			\
 						ft_itoa.c				\
-						ft_sort_tab.c			\
+						ft_tab.c				\
 						ft_tolower.c			\
 						ft_toupper.c
 
