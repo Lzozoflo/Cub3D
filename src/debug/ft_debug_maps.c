@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 15:19:37 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/17 15:31:57 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 17:00:46 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static	void	ft_put_in_color(char c)
 		printf("%s%c%s", YELLOW, c, RESET);
 }
 
-void	debug_put_maps(char **tab, int f, int s)
+void	debug_put_parsing(char **tab, int f, int s)
 {
 	int	i;
 	int	j;

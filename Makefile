@@ -41,8 +41,7 @@ INC				=		ft_cub.h						\
 						ft_debug.h
 
 
-SRC				=		main.c\
-						laussel/
+SRC				=		main.c
 
 SRC_DEBUG		=		ft_debug_maps.c					\
 						ft_debug_str_int.c				\

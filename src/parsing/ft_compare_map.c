@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/14 13:06:37 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/05/17 16:37:20 by fcretin          ###   ########.fr       */
+/*   Created: 2025/05/17 17:05:40 by fcretin           #+#    #+#             */
+/*   Updated: 2025/05/17 17:05:50 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,7 @@
 #include "libft.h"
 #include <fcntl.h>
 
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_compare_map.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/14 13:06:37 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/05/14 15:57:53 by mlaussel         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "ft_cub.h"
-#include "ft_debug.h"
-#include "libft.h"
-#include <fcntl.h>
-
-static int    ft_size_map(char **map)
+static int	ft_size_map(char **map)
 {
 	int	i;
 
@@ -68,10 +50,10 @@ static int	ft_compare_map(t_gnl *gnl, char **map)
 	return (1);
 }
 
-int	ft_split_and_replace(t_maps *maps)
+int	ft_split_and_replace(t_parsing *parsing)
 {
-	debug_put_tab("split \\n :", maps->tab, 31, 310);
-	if (ft_compare_map(maps->gnl, maps->tab) == 0)
+	debug_put_tab("split \\n :", parsing->tab, 31, 310);
+	if (ft_compare_map(parsing->gnl, parsing->tab) == 0)
 		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 09:23:09 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/16 09:59:08 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 17:06:13 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,17 @@ static int	ft_check_double(char **str, char *str_int_tab, char *find)
 	return (0);
 }
 
-static int	ft_find_line_floor_sky_or_error(t_maps *maps, int i, int j)
+static int	ft_find_line_floor_sky_or_error(t_parsing *parsing, int i, int j)
 {
 
-	if (ft_strncmp(&maps->tab[i][j], "F ", 2) == 0)
+	if (ft_strncmp(&parsing->tab[i][j], "F ", 2) == 0)
 	{
-		if (ft_check_double(&maps->str_floor, maps->tab[i], "F "))
+		if (ft_check_double(&parsing->str_floor, parsing->tab[i], "F "))
 			return (1);
 	}
-	else if (ft_strncmp(&maps->tab[i][j], "C ", 2) == 0)
+	else if (ft_strncmp(&parsing->tab[i][j], "C ", 2) == 0)
 	{
-		if (ft_check_double(&maps->str_sky, maps->tab[i], "C "))
+		if (ft_check_double(&parsing->str_sky, parsing->tab[i], "C "))
 			return (1);
 	}
 	else
@@ -43,35 +43,35 @@ static int	ft_find_line_floor_sky_or_error(t_maps *maps, int i, int j)
 	return (0);
 }
 
-int	ft_find_line_texture(t_maps *maps, int i, int j)
+int	ft_find_line_texture(t_parsing *parsing, int i, int j)
 {
-	if (ft_strncmp(&maps->tab[i][j], "EA ", 3) == 0)
+	if (ft_strncmp(&parsing->tab[i][j], "EA ", 3) == 0)
 	{
-		if (ft_check_double(&maps->texture_ea, maps->tab[i], "EA "))
+		if (ft_check_double(&parsing->texture_ea, parsing->tab[i], "EA "))
 			return (1);
 	}
-	else if (ft_strncmp(&maps->tab[i][j], "NO ", 3) == 0)
+	else if (ft_strncmp(&parsing->tab[i][j], "NO ", 3) == 0)
 	{
-		if (ft_check_double(&maps->texture_no, maps->tab[i], "NO "))
+		if (ft_check_double(&parsing->texture_no, parsing->tab[i], "NO "))
 			return (1);
 	}
-	else if (ft_strncmp(&maps->tab[i][j], "SO ", 3) == 0)
+	else if (ft_strncmp(&parsing->tab[i][j], "SO ", 3) == 0)
 	{
-		if (ft_check_double(&maps->texture_so, maps->tab[i], "SO "))
+		if (ft_check_double(&parsing->texture_so, parsing->tab[i], "SO "))
 			return (1);
 	}
-	else if (ft_strncmp(&maps->tab[i][j], "WE ", 3) == 0)
+	else if (ft_strncmp(&parsing->tab[i][j], "WE ", 3) == 0)
 	{
-		if (ft_check_double(&maps->texture_we, maps->tab[i], "WE "))
+		if (ft_check_double(&parsing->texture_we, parsing->tab[i], "WE "))
 			return (1);
 	}
-	else if (ft_find_line_floor_sky_or_error(maps, i, j))
+	else if (ft_find_line_floor_sky_or_error(parsing, i, j))
 		return (1);
 	return (0);
 }
 
 
-// int	ft_type_param(t_maps *maps, int i, int j)
+// int	ft_type_param(t_parsing *maps, int i, int j)
 // {
 // 	ft_putstr(&maps->tab[i][j]);
 // 	if (ft_strncmp(&maps->tab[i][j], "F ", 2) == 0)

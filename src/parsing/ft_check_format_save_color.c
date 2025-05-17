@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 09:34:57 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/17 13:13:49 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 17:04:16 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,11 @@ static int	ft_is_format_color(char *str, unsigned int *color)
 	return (1);
 }
 
-int	ft_check_format_save_color(t_maps *maps)
+int	ft_check_format_save_color(t_parsing *parsing)
 {
-	if (!ft_is_format_color(maps->str_floor, &maps->floor))
-		return (ft_error_parsing("format rgb is not correct: ", maps->str_floor));
-	if (!ft_is_format_color(maps->str_sky, &maps->sky))
-		return (ft_error_parsing("format rgb is not correct: ", maps->str_sky));
+	if (!ft_is_format_color(parsing->str_floor, &parsing->floor))
+		return (ft_error_parsing("format rgb is not correct: ", parsing->str_floor));
+	if (!ft_is_format_color(parsing->str_sky, &parsing->sky))
+		return (ft_error_parsing("format rgb is not correct: ", parsing->str_sky));
 	return (0);
 }

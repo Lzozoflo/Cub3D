@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 08:46:51 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/17 11:57:37 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 17:08:11 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,28 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void	ft_clear_maps(t_maps *maps)
+void	ft_clear_parsing(t_parsing *parsing)
 {
-	if (maps->file_in_a_line)
-		free(maps->file_in_a_line);
-	if (maps->str_floor)
-		free(maps->str_floor);
-	if (maps->str_sky)
-		free(maps->str_sky);
-	if (maps->tab)
-		ft_freetab(maps->tab, 0);
-	if (maps->dup_check)
-		ft_freetab(maps->dup_check, 0);
-	if (maps->texture_ea)
-		free(maps->texture_ea);
-	if (maps->texture_no)
-		free(maps->texture_no);
-	if (maps->texture_so)
-		free(maps->texture_so);
-	if (maps->texture_we)
-		free(maps->texture_we);
-	if (maps->gnl)
-		t_gnl_clear(maps);
+	if (parsing->file_in_a_line)
+		free(parsing->file_in_a_line);
+	if (parsing->str_floor)
+		free(parsing->str_floor);
+	if (parsing->str_sky)
+		free(parsing->str_sky);
+	if (parsing->tab)
+		ft_freetab(parsing->tab, 0);
+	if (parsing->dup_check)
+		ft_freetab(parsing->dup_check, 0);
+	if (parsing->texture_ea)
+		free(parsing->texture_ea);
+	if (parsing->texture_no)
+		free(parsing->texture_no);
+	if (parsing->texture_so)
+		free(parsing->texture_so);
+	if (parsing->texture_we)
+		free(parsing->texture_we);
+	if (parsing->gnl)
+		t_gnl_clear(parsing);
 }
 
 
@@ -51,7 +51,7 @@ int	ft_clean_close(t_data *data, int error)
 		mlx_destroy_display(data->mlx);
 		free(data->mlx);
 	}
-	ft_clear_maps(&data->maps);
+	ft_clear_parsing(&data->parsing);
 	printf("Exiting program.\n");
 	exit(error);
 }

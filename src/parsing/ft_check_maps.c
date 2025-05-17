@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 11:59:59 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/17 16:41:20 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 17:09:15 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,49 +14,49 @@
 #include "ft_debug.h"
 #include "libft.h"
 
-static int	ft_create_bordered_tab(t_maps *maps)
+static int	ft_create_bordered_tab(t_parsing *parsing)
 {
-	const int	new_y = maps->max_height + 2;
-	const int	new_x = maps->max_width + 2;
+	const int	new_y = parsing->max_height + 2;
+	const int	new_x = parsing->max_width + 2;
 	int			i;
 
-	maps->dup_check = ft_calloc(new_y + 1, sizeof(char *));
-	if (!maps->dup_check)
+	parsing->dup_check = ft_calloc(new_y + 1, sizeof(char *));
+	if (!parsing->dup_check)
 		return (1);
 	i = 0;
 	while (i < new_y)
 	{
-		maps->dup_check[i] = malloc(sizeof(char) * (new_x + 1));
-		if (!maps->dup_check[i] && i == 0)
+		parsing->dup_check[i] = malloc(sizeof(char) * (new_x + 1));
+		if (!parsing->dup_check[i] && i == 0)
 		{
-			free(maps->dup_check);
-			maps->dup_check = NULL;
+			free(parsing->dup_check);
+			parsing->dup_check = NULL;
 			return (1);
 		}
-		else if (!maps->dup_check[i])
+		else if (!parsing->dup_check[i])
 			return (1);
-		ft_memset(maps->dup_check[i], ' ', new_x);
-		maps->dup_check[i++][new_x] = '\0';
+		ft_memset(parsing->dup_check[i], ' ', new_x);
+		parsing->dup_check[i++][new_x] = '\0';
 	}
 	return (0);
 }
 
-static int	ft_dup_format_and_check_maps(t_maps *maps, char **tab)
+static int	ft_dup_format_and_check_maps(t_parsing *parsing, char **tab)
 {
 	int		i;
 	int		new_y;
 
-	new_y = maps->max_height;
-	if (ft_create_bordered_tab(maps))
+	new_y = parsing->max_height;
+	if (ft_create_bordered_tab(parsing))
 		return (1);
 	i = -1;
 	while (++i < new_y)
-		ft_memcpy(&maps->dup_check[i + 1][1], tab[i], ft_strlen(tab[i]));
-	debug_put_tab("maps with borde :", maps->dup_check, 37, 370);
+		ft_memcpy(&parsing->dup_check[i + 1][1], tab[i], ft_strlen(tab[i]));
+	debug_put_tab("parsing with borde :", parsing->dup_check, 37, 370);
 	return (0);
 }
 
-static int	ft_check_all_char_in_maps(t_maps *maps, char *str)
+static int	ft_check_all_char_in_maps(t_parsing *parsing, char *str)
 {
 	static int	player = 0;
 	int			i;
@@ -74,12 +74,12 @@ static int	ft_check_all_char_in_maps(t_maps *maps, char *str)
 	}
 	if (str[i])
 		return (1);
-	if (maps->max_width < i)
-		maps->max_width = i;
+	if (parsing->max_width < i)
+		parsing->max_width = i;
 	return (0);
 }
 
-static int	ft_check_all_string_in_maps(t_maps *maps, char **tab)
+static int	ft_check_all_string_in_maps(t_parsing *parsing, char **tab)
 {
 	int	v_return;
 	int	j;
@@ -87,31 +87,31 @@ static int	ft_check_all_string_in_maps(t_maps *maps, char **tab)
 	j = -1;
 	while (tab[++j])
 	{
-		v_return = ft_check_all_char_in_maps(maps, tab[j]);
+		v_return = ft_check_all_char_in_maps(parsing, tab[j]);
 		if (v_return)
 			return (v_return);
 	}
-	maps->max_height = j;
-	debug_put_int("max_height:", maps->max_height, 36, 360);
-	debug_put_int("max_width:", maps->max_width, 36, 360);
+	parsing->max_height = j;
+	debug_put_int("max_height:", parsing->max_height, 36, 360);
+	debug_put_int("max_width:", parsing->max_width, 36, 360);
 	return (0);
 }
 
-int	ft_check_maps(t_maps *maps)
+int	ft_check_maps(t_parsing *parsing)
 {
-	const int	v_return = ft_check_all_string_in_maps(maps, maps->tab);
+	const int	v_return = ft_check_all_string_in_maps(parsing, parsing->tab);
 
 	if (v_return == 1)
 		return (ft_error_parsing("unvalid char in the maps\n", NULL));
 	else if (v_return == 2)
 		return (ft_error_parsing("2 char to define a character\n", NULL));
-	if (ft_split_and_replace(maps))					//ici pour le test de la maps
+	if (ft_split_and_replace(parsing))
 		return (ft_error_parsing("2 maps\n", NULL));
-	if (ft_dup_format_and_check_maps(maps, maps->tab))
+	if (ft_dup_format_and_check_maps(parsing, parsing->tab))
 		return (1);
-	if (ft_check_maps_closed(maps, maps->dup_check))
+	if (ft_check_maps_closed(parsing, parsing->dup_check))
 	{
-		debug_put_maps(maps->dup_check, 38, 380);
+		debug_put_parsing(parsing->dup_check, 38, 380);
 		return (ft_error_parsing("maps not close\n", NULL));
 	}
 	return (0);

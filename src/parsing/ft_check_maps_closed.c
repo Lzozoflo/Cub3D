@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 12:20:43 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/17 16:39:53 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 17:04:26 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 // #include "ft_debug.h"
 #include "libft.h"
 
-static int	check_surroundings(t_maps *maps, char **tab, int y, int x)
+static int	check_surroundings(t_parsing *parsing, char **tab, int y, int x)
 {
-	const int	height = maps->max_height + 2;
-	const int	width = maps->max_width + 2;
+	const int	height = parsing->max_height + 2;
+	const int	width = parsing->max_width + 2;
 
 	if (y > 0 && ft_is_invalid_neighbor(tab[y - 1][x]))
 	{
@@ -43,16 +43,16 @@ static int	check_surroundings(t_maps *maps, char **tab, int y, int x)
 }
 
 
-static int	ft_check_closed(t_maps *maps, char **tab, int x, int y)
+static int	ft_check_closed(t_parsing *parsing, char **tab, int x, int y)
 {
-	const int	height = maps->max_height + 2;
-	const int	width = maps->max_width + 2;
+	const int	height = parsing->max_height + 2;
+	const int	width = parsing->max_width + 2;
 
 	if (y == 0 || y == height - 1 || x == 0 || x == width - 1)
 		;
 	else if (tab[y][x] == ' ')
 	{
-		if (!check_surroundings(maps, tab, y, x))
+		if (!check_surroundings(parsing, tab, y, x))
 			return (1);
 	}
 	else if (ft_is_player_char(tab[y][x]))
@@ -64,10 +64,10 @@ static int	ft_check_closed(t_maps *maps, char **tab, int x, int y)
 	return (0);
 }
 
-int	ft_check_maps_closed(t_maps *maps, char **tab)
+int	ft_check_maps_closed(t_parsing *parsing, char **tab)
 {
-	const int	height = maps->max_height + 2;
-	const int	width = maps->max_width + 2;
+	const int	height = parsing->max_height + 2;
+	const int	width = parsing->max_width + 2;
 	int			y;
 	int			x;
 
@@ -77,7 +77,7 @@ int	ft_check_maps_closed(t_maps *maps, char **tab)
 		x = -1;
 		while (++x < width)
 		{
-			if (ft_check_closed(maps, tab, x, y))
+			if (ft_check_closed(parsing, tab, x, y))
 				return (1);
 		}
 	}

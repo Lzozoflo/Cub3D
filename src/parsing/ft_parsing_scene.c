@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parsing_scene.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 09:39:16 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/14 14:04:57 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/17 17:06:55 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	ft_get_all_file(t_data *data, int fd)
 	line = get_next_line(fd, &error);
 	if (!line && error != 1)
 		return (-1);
-	data->maps.file_in_a_line = line;
+	data->parsing.file_in_a_line = line;
 	while (1)
 	{
 		line = get_next_line(fd, &error);
@@ -32,14 +32,14 @@ static int	ft_get_all_file(t_data *data, int fd)
 			break ;
 		if (!line && error != 0)
 			return (-1);
-		tmp = ft_strjoin(data->maps.file_in_a_line, line);
-		free(data->maps.file_in_a_line);
+		tmp = ft_strjoin(data->parsing.file_in_a_line, line);
+		free(data->parsing.file_in_a_line);
 		free(line);
 		if (!tmp)
 			return (-1);
-		data->maps.file_in_a_line = tmp;
+		data->parsing.file_in_a_line = tmp;
 	}
-	debug_put_str("ft_parsing_scene", data->maps.file_in_a_line, 31, 310);
+	debug_put_str("ft_parsing_scene", data->parsing.file_in_a_line, 31, 310);
 	close(fd);
 	return (0);
 }
@@ -56,8 +56,8 @@ int	ft_parsing_scene(t_data *data, char *scene_cub)
 	if (ft_get_all_file(data, fd) == -1)
 	{
 		close(fd);
-		if (data->maps.file_in_a_line)
-			free(data->maps.file_in_a_line);
+		if (data->parsing.file_in_a_line)
+			free(data->parsing.file_in_a_line);
 		return (-1);
 	}
 	ft_split_and_replace(data);

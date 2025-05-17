@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_format_maps.c                                   :+:      :+:    :+:   */
+/*   ft_format_parsing.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,14 +14,14 @@
 // #include "ft_debug.h"
 #include "libft.h"
 
-int	ft_extract_map(t_maps *maps)
+int	ft_extract_map(t_parsing *parsing)
 {
 	char	**new_tab;
 
-	if (!maps->tab[6])
+	if (!parsing->tab[6])
 		return (ft_error_parsing("no maps", NULL));
-	new_tab = ft_tabdup(&maps->tab[6]);
-	ft_freetab(maps->tab, 0);
-	maps->tab = new_tab;
+	new_tab = ft_tabdup(&parsing->tab[6]);
+	ft_freetab(parsing->tab, 0);
+	parsing->tab = new_tab;
 	return (!new_tab);
 }

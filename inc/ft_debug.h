@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 09:55:51 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/17 16:10:06 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 17:00:46 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	debug_put_int(const char *str1, int value, int f, int s);
 /*
  *---------------src/debug/ft_debug_maps.c
  */
-void	debug_put_maps(char **tab, int f, int s);
+void	debug_put_parsing(char **tab, int f, int s);
 
 # define RESET "\033[0m"
 # define RED "\033[31m"

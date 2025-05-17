@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 09:29:31 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/15 09:31:15 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 17:07:38 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int	ft_get_all_file(t_data *data, int fd, int error)
 	line = get_next_line(fd, &error);
 	if (!line && error != 1)
 		return (-1);
-	if (t_gnl_add_end(&data->maps, ft_strdup(line)) == -1)
+	if (t_gnl_add_end(&data->parsing, ft_strdup(line)) == -1)
 		return (-1);
-	data->maps.file_in_a_line = line;
+	data->parsing.file_in_a_line = line;
 	while (1)
 	{
 		line = get_next_line(fd, &error);
@@ -32,13 +32,13 @@ int	ft_get_all_file(t_data *data, int fd, int error)
 			break ;
 		if (!line && error != 0)
 			return (-1);
-		if (t_gnl_add_end(&data->maps, line) == -1)
+		if (t_gnl_add_end(&data->parsing, line) == -1)
 			return (-1);
-		tmp = ft_strjoin(data->maps.file_in_a_line, line);
+		tmp = ft_strjoin(data->parsing.file_in_a_line, line);
 		if (!tmp)
 			return (-1);
-		free(data->maps.file_in_a_line);
-		data->maps.file_in_a_line = tmp;
+		free(data->parsing.file_in_a_line);
+		data->parsing.file_in_a_line = tmp;
 	}
 	return (0);
 }

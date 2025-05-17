@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   t_gnl.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:30:32 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/05/14 15:05:11 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/17 17:07:48 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static t_gnl	*t_gnl_new(char *str)
 	return (new);
 }
 
-int	t_gnl_add_end(t_maps *maps, char *str)
+int	t_gnl_add_end(t_parsing *parsing, char *str)
 {
 	t_gnl	*tmp;
 	t_gnl	*new;
@@ -40,12 +40,12 @@ int	t_gnl_add_end(t_maps *maps, char *str)
 			free(str);
 		return (-1);
 	}
-	if (maps->gnl == NULL)
+	if (parsing->gnl == NULL)
 	{
-		maps->gnl = new;
+		parsing->gnl = new;
 		return (0);
 	}
-	tmp = maps->gnl;
+	tmp = parsing->gnl;
 	while (tmp->next != NULL)
 		tmp = tmp->next;
 	tmp->next = new;
@@ -53,14 +53,14 @@ int	t_gnl_add_end(t_maps *maps, char *str)
 	return (0);
 }
 
-void	t_gnl_clear(t_maps *maps)
+void	t_gnl_clear(t_parsing *parsing)
 {
 	t_gnl	*tmp;
 
-	while (maps->gnl != NULL)
+	while (parsing->gnl != NULL)
 	{
-		tmp = maps->gnl;
-		maps->gnl = maps->gnl->next;
+		tmp = parsing->gnl;
+		parsing->gnl = parsing->gnl->next;
 		if (tmp->str)
 			free(tmp->str);
 		free(tmp);

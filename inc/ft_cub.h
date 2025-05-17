@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/17 16:04:24 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 17:08:11 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 //typedef of all structure
 typedef struct s_data	t_data;
 typedef struct s_image	t_image;
-typedef struct s_maps	t_maps;
+typedef struct s_parsing	t_parsing;
 typedef struct s_gnl	t_gnl;
 
 struct s_gnl
@@ -47,7 +47,7 @@ struct s_gnl
 	t_gnl	*next;
 };
 
-struct		s_maps
+struct		s_parsing
 {
 	t_gnl			*gnl;
 	char			**tab;
@@ -80,11 +80,11 @@ struct		s_data
 	void	*win;
 	int		name;
 	t_image	img;
-	t_maps	maps;
+	t_parsing	parsing;
 };
 
 
-int	ft_split_and_replace(t_maps *maps);
+int	ft_split_and_replace(t_parsing *parsing);
 /*	src/init	*/
 
 //		ft_init_struct.c
@@ -97,31 +97,31 @@ int		ft_init_mlx(t_data *data);
 /*	src/parsing	*/
 //		ft_check_format_save_color.c
 
-int		ft_check_format_save_color(t_maps *maps);
+int		ft_check_format_save_color(t_parsing *parsing);
 
 //		ft_check_maps_closed.c
 
-int		ft_check_maps_closed(t_maps *maps, char **tab);
+int		ft_check_maps_closed(t_parsing *parsing, char **tab);
 
 //		ft_check_maps.c
 
-int		ft_check_maps(t_maps *maps);
+int		ft_check_maps(t_parsing *parsing);
 
 //		ft_check_param.c
 
-int		ft_check_param(t_maps *maps);
+int		ft_check_param(t_parsing *parsing);
 
 //		ft_clear_str_of_texture.c
 
-int		ft_clear_parameters(t_maps *maps);
+int		ft_clear_parameters(t_parsing *parsing);
 
 //		ft_find_param.c
 
-int		ft_find_line_texture(t_maps *maps, int i, int j);
+int		ft_find_line_texture(t_parsing *parsing, int i, int j);
 
 //		ft_extract_map.c
 
-int		ft_extract_map(t_maps *maps);
+int		ft_extract_map(t_parsing *parsing);
 
 //		ft_parsing_cub.c
 
@@ -135,7 +135,7 @@ int		ft_key_press(int keycode, void *param);
 
 //		ft_close.c
 
-void	ft_clear_maps(t_maps *maps);
+void	ft_clear_parsing(t_parsing *parsing);
 int		ft_clean_close(t_data *data, int error);
 int		ft_cross(t_data *data);
 
@@ -159,7 +159,7 @@ int		ft_is_camera_move(int keycode);
 
 //		t_gnl.c
 
-void	t_gnl_clear(t_maps *maps);
-int		t_gnl_add_end(t_maps *maps, char *str);
+void	t_gnl_clear(t_parsing *parsing);
+int		t_gnl_add_end(t_parsing *parsing, char *str);
 
 #endif

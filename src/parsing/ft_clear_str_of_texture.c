@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 17:09:23 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/16 09:58:35 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 17:08:27 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,19 +56,19 @@ static int	ft_check_one_parameters(char **str)
 	return (0);
 }
 
-int	ft_clear_parameters(t_maps *maps)
+int	ft_clear_parameters(t_parsing *parsing)
 {
-	if (ft_check_one_parameters(&maps->texture_ea))
+	if (ft_check_one_parameters(&parsing->texture_ea))
 		return (1);
-	if (ft_check_one_parameters(&maps->texture_no))
+	if (ft_check_one_parameters(&parsing->texture_no))
 		return (1);
-	if (ft_check_one_parameters(&maps->texture_so))
+	if (ft_check_one_parameters(&parsing->texture_so))
 		return (1);
-	if (ft_check_one_parameters(&maps->texture_we))
+	if (ft_check_one_parameters(&parsing->texture_we))
 		return (1);
-	if (ft_check_one_parameters(&maps->str_sky))
+	if (ft_check_one_parameters(&parsing->str_sky))
 		return (1);
-	if (ft_check_one_parameters(&maps->str_floor))
+	if (ft_check_one_parameters(&parsing->str_floor))
 		return (1);
 	return (0);
 }
