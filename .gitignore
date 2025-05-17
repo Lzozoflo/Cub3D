@@ -2,12 +2,13 @@ a.out
 txt
 *.txt
 .vscode
+.objs
+deps
 
-object
-1object
 error
-1error
 
 minilibx-linux
 Cub3D
 fr.subject.pdf
+mlx.h
+x.h

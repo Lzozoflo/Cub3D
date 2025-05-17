@@ -1,6 +1,7 @@
 .PHONY: all clean fclean re f fclear c clear libmlx libft
 
 NAME			=	Cub3D
+INCLUDES		=	-I$(HEADERS_DIR) -I$(D_INC_LIBFT)
 CC				=	cc
 CFLAGS			=	-Wall -Wextra -Werror -g3
 CFLAGSS			=	-Weverything -Wno-padded
@@ -16,9 +17,8 @@ MLX_FLAG		=	-Lminilibx-linux -lmlx -lX11 -lXext
 
 
 # Directories
-D_SRC			=		src/
-D_OBJ			=		object/
-D_INC			=		inc/
+D_SRC			=		./src/
+HEADERS_DIR		:=		./inc/
 
 
 # Source Directories
@@ -38,7 +38,8 @@ D_STRUCT		=		utils_struct/
 
 
 INC				=		ft_cub.h						\
-						ft_debug.h
+						ft_debug.h						\
+						ft_parsing_error.h
 
 
 SRC				=		main.c
@@ -84,21 +85,25 @@ SRC_STRUCT		=		t_gnl.c
 
 
 # All src in his Src Directories
-SRCS			=		$(addprefix $(D_SRC), $(SRC))									\
-						$(addprefix $(D_SRC)$(D_DEBUG), $(SRC_DEBUG))					\
-						$(addprefix $(D_SRC)$(D_INIT), $(SRC_INIT))						\
-						$(addprefix $(D_SRC)$(D_PARSING), $(SRC_PARSING))				\
-						$(addprefix $(D_SRC)$(D_UTILS), $(SRC_UTILS))					\
-						$(addprefix $(D_SRC)$(D_UTILS)$(D_U_EVENT), $(SRC_U_EVENT))		\
-						$(addprefix $(D_SRC)$(D_STRUCT), $(SRC_STRUCT))
+SRCS			=		$(SRC)													\
+						$(addprefix $(D_DEBUG), $(SRC_DEBUG))					\
+						$(addprefix $(D_INIT), $(SRC_INIT))						\
+						$(addprefix $(D_PARSING), $(SRC_PARSING))				\
+						$(addprefix $(D_UTILS), $(SRC_UTILS))					\
+						$(addprefix $(D_UTILS)$(D_U_EVENT), $(SRC_U_EVENT))		\
+						$(addprefix $(D_STRUCT), $(SRC_STRUCT))
 
 
-# Changing all source directories to object directories
-OBJS			=		$(subst $(D_SRC), $(D_OBJ), $(SRCS:.c=.o))
 
+INCS				=		$(addprefix $(HEADERS_DIR), $(INC))
 
-INCS			=		$(addprefix $(D_INC), $(INC))
+OBJS_DIR			:=		.objs/
+OBJS_FILES			:=		$(SRCS:.c=.o)
+OBJS				:=		$(addprefix $(OBJS_DIR), $(OBJS_FILES))
 
+DEPS_DIR			:=		deps/
+DEPS_FILES			:=		$(OBJS_FILES:.o=.d)
+DEPS				:=		$(addprefix $(DEPS_DIR), $(DEPS_FILES))
 
 #############################################################################################
 #																							#
@@ -107,15 +112,19 @@ INCS			=		$(addprefix $(D_INC), $(INC))
 #############################################################################################
 
 
-all : libft libmlx $(NAME)
+all : $(NAME)
 
 
-$(NAME)			:	libft $(OBJS)
+$(NAME)				:	libmlx libft $(OBJS)
 			$(CC) $(CFLAGS) $(OBJS) $(MLX_FLAG) $(NAME_LIB) -o $(NAME)
 
-$(D_OBJ)%.o		:	$(D_SRC)%.c Makefile $(INCS) $(NAME_LIB)
+$(DEPS_DIR) 		:
+		mkdir -p $(DEPS_DIR)
+
+$(OBJS_DIR)%.o		:	$(D_SRC)%.c Makefile | $(DEPS_DIR)
 			@mkdir -p $(dir $@)
-			$(CC) $(CFLAGS) -c $< -o $@ -I $(D_INC) -I $(D_INC_LIBFT)
+			@mkdir -p $(dir $(DEPS_DIR)$*)
+			$(CC) $(CFLAGS) $(INCLUDES) -MP -MMD -MF $(DEPS_DIR)$*.d -c $< -o $@
 
 libmlx			:
 			$(MAKE) -C minilibx-linux
@@ -145,15 +154,13 @@ libft			:
 
 
 clean			:
-			$(RM) $(D_OBJ)
+			$(RM) $(OBJS_DIR) $(DEPS_DIR)
 			$(MAKE) -C minilibx-linux clean
 			$(MAKE) -C libft clean
 
 
-fclean			:
-			$(RM) $(D_OBJ)
+fclean			: clean
 			$(RM) $(NAME)
-			$(MAKE) -C minilibx-linux clean
 			$(MAKE) -C libft fclean
 
 
@@ -172,3 +179,5 @@ clear			:	clean
 
 f				:	fclean
 fclear			:	fclean
+
+-include $(DEPS)

@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 08:46:51 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/17 17:08:11 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 17:22:18 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	ft_clear_parsing(t_parsing *parsing)
 	if (parsing->gnl)
 		t_gnl_clear(parsing);
 }
-
 
 int	ft_clean_close(t_data *data, int error)
 {

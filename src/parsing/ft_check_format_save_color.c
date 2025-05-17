@@ -6,12 +6,13 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 09:34:57 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/17 17:04:16 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 17:37:18 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 // #include "ft_debug.h"
+#include "ft_parsing_error.h"
 #include "libft.h"
 #include <stdint.h>
 
@@ -64,7 +65,7 @@ static int	ft_save_rgb(char **tab, unsigned int *color)
 	if (error)
 		return (1);
 	*color = ft_rgb(r, g, b);
-	return (0);//!ft_error_parsing("Wrong value R,G,B: ", str)
+	return (0);
 }
 
 static int	ft_is_format_color(char *str, unsigned int *color)
@@ -75,15 +76,18 @@ static int	ft_is_format_color(char *str, unsigned int *color)
 	i = 0;
 	tab = ft_split(str, ',');
 	if (!tab)
-		return (0);
+		return (1);
 	while (tab[i])
 		i++;
-	if (i != 3)
-		return (0);
+	if (i != 4)
+	{
+		ft_freetab(tab, 0);
+		return (ft_error_parsing(ERROR_RGB_FORMAT, str));
+	}
 	if (ft_save_rgb(tab, color))
 	{
 		ft_freetab(tab, 0);
-		return (0);//
+		return (ft_error_parsing(ERROR_RGB_VALUE, str));
 	}
 	ft_freetab(tab, 0);
 	return (1);
@@ -91,9 +95,9 @@ static int	ft_is_format_color(char *str, unsigned int *color)
 
 int	ft_check_format_save_color(t_parsing *parsing)
 {
-	if (!ft_is_format_color(parsing->str_floor, &parsing->floor))
-		return (ft_error_parsing("format rgb is not correct: ", parsing->str_floor));
-	if (!ft_is_format_color(parsing->str_sky, &parsing->sky))
-		return (ft_error_parsing("format rgb is not correct: ", parsing->str_sky));
+	if (ft_is_format_color(parsing->str_floor, &parsing->floor))
+		return (1);
+	if (ft_is_format_color(parsing->str_sky, &parsing->sky))
+		return (1);
 	return (0);
 }

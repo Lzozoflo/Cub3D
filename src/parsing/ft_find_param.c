@@ -6,19 +6,20 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 09:23:09 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/17 17:06:13 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 17:54:11 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 #include "ft_debug.h"
+#include "ft_parsing_error.h"
 #include "libft.h"
 #include <fcntl.h>
 
 static int	ft_check_double(char **str, char *str_int_tab, char *find)
 {
 	if (*str)
-		return (ft_error_parsing(find, "was found 2 time\n"));
+		return (ft_error_parsing(ERROR_DOUBLE_PARAM, find));
 	*str = ft_strdup(str_int_tab);
 	if (!*str)
 		return (1);
@@ -27,7 +28,6 @@ static int	ft_check_double(char **str, char *str_int_tab, char *find)
 
 static int	ft_find_line_floor_sky_or_error(t_parsing *parsing, int i, int j)
 {
-
 	if (ft_strncmp(&parsing->tab[i][j], "F ", 2) == 0)
 	{
 		if (ft_check_double(&parsing->str_floor, parsing->tab[i], "F "))
@@ -39,7 +39,7 @@ static int	ft_find_line_floor_sky_or_error(t_parsing *parsing, int i, int j)
 			return (1);
 	}
 	else
-		return (ft_error_parsing("Bad paramaters\n", NULL));
+		return (ft_error_parsing(ERROR_BAD_PARAM, NULL));
 	return (0);
 }
 
@@ -69,7 +69,6 @@ int	ft_find_line_texture(t_parsing *parsing, int i, int j)
 		return (1);
 	return (0);
 }
-
 
 // int	ft_type_param(t_parsing *maps, int i, int j)
 // {

@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/17 17:08:11 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 17:21:30 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,11 @@
 # define LEFT 65361
 # define RIGHT 65363
 
-
 //typedef of all structure
-typedef struct s_data	t_data;
-typedef struct s_image	t_image;
+typedef struct s_data		t_data;
+typedef struct s_image		t_image;
 typedef struct s_parsing	t_parsing;
-typedef struct s_gnl	t_gnl;
+typedef struct s_gnl		t_gnl;
 
 struct s_gnl
 {
@@ -76,15 +75,14 @@ struct		s_image
 
 struct		s_data
 {
-	void	*mlx;
-	void	*win;
-	int		name;
-	t_image	img;
+	void		*mlx;
+	void		*win;
+	int			name;
+	t_image		img;
 	t_parsing	parsing;
 };
 
-
-int	ft_split_and_replace(t_parsing *parsing);
+int		ft_check_no_nl_in_maps(t_parsing *parsing);
 /*	src/init	*/
 
 //		ft_init_struct.c

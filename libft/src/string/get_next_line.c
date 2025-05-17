@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 09:49:31 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/15 09:26:00 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 17:20:56 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,8 @@ static char	*ft_check_strjoin(char *s1, const char *s2)
 	return (str);
 }
 
-// ft_bzero(buff, BUFFER_SIZE);
 static char	*ft_reader(int fd, char *buff, char *line, int *r_read)
 {
-	// int		r_read;
-
 	while (1)
 	{
 		if (buff[0] == '\0')

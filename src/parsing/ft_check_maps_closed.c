@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 12:20:43 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/17 17:04:26 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 17:23:40 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ static int	check_surroundings(t_parsing *parsing, char **tab, int y, int x)
 	}
 	return (1);
 }
-
 
 static int	ft_check_closed(t_parsing *parsing, char **tab, int x, int y)
 {

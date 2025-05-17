@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 09:55:51 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/17 17:00:46 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 17:21:34 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void	debug_put_int_d1(const char *str1, int value, int f, int s);
 //without debug == 1
 void	debug_put_str(const char *str1, char *str2, int f, int s);
 void	debug_put_int(const char *str1, int value, int f, int s);
-
 
 /*
  *---------------src/debug/ft_debug_maps.c

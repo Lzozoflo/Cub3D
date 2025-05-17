@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 17:05:40 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/17 17:05:50 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 17:15:35 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	ft_compare_map(t_gnl *gnl, char **map)
 	return (1);
 }
 
-int	ft_split_and_replace(t_parsing *parsing)
+int	ft_check_no_nl_in_maps(t_parsing *parsing)
 {
 	debug_put_tab("split \\n :", parsing->tab, 31, 310);
 	if (ft_compare_map(parsing->gnl, parsing->tab) == 0)

@@ -6,12 +6,13 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 11:59:59 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/17 17:09:15 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 17:46:34 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 #include "ft_debug.h"
+#include "ft_parsing_error.h"
 #include "libft.h"
 
 static int	ft_create_bordered_tab(t_parsing *parsing)
@@ -41,7 +42,7 @@ static int	ft_create_bordered_tab(t_parsing *parsing)
 	return (0);
 }
 
-static int	ft_dup_format_and_check_maps(t_parsing *parsing, char **tab)
+static int	ft_dup_and_format(t_parsing *parsing, char **tab)
 {
 	int		i;
 	int		new_y;
@@ -102,17 +103,17 @@ int	ft_check_maps(t_parsing *parsing)
 	const int	v_return = ft_check_all_string_in_maps(parsing, parsing->tab);
 
 	if (v_return == 1)
-		return (ft_error_parsing("unvalid char in the maps\n", NULL));
+		return (ft_error_parsing(ERROR_INVALID_CHAR, NULL));
 	else if (v_return == 2)
-		return (ft_error_parsing("2 char to define a character\n", NULL));
-	if (ft_split_and_replace(parsing))
-		return (ft_error_parsing("2 maps\n", NULL));
-	if (ft_dup_format_and_check_maps(parsing, parsing->tab))
+		return (ft_error_parsing(ERROR_TWO_PLAYER, NULL));
+	if (ft_check_no_nl_in_maps(parsing))
+		return (ft_error_parsing(ERROR_MAP_SEPARATE, NULL));
+	if (ft_dup_and_format(parsing, parsing->tab))
 		return (1);
 	if (ft_check_maps_closed(parsing, parsing->dup_check))
 	{
 		debug_put_parsing(parsing->dup_check, 38, 380);
-		return (ft_error_parsing("maps not close\n", NULL));
+		return (ft_error_parsing(ERROR_MAP_CLOSE, NULL));
 	}
 	return (0);
 }

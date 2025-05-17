@@ -6,12 +6,13 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 09:39:16 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/17 17:09:25 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 17:47:41 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 #include "ft_debug.h"
+#include "ft_parsing_error.h"
 #include "libft.h"
 #include <fcntl.h>
 
@@ -59,30 +60,27 @@ static int	ft_core_parsing(t_data *data)
 		return (-1);
 	if (ft_check_param(&data->parsing) != 0)
 		return (-1);
-	if (ft_extract_map(&data->parsing) != 0)// miro rajoute
+	if (ft_extract_map(&data->parsing) != 0)
 		return (-1);
 	debug_put_tab(" extracted :", data->parsing.tab, 35, 350);
-	if (ft_check_(&data->parsing) != 0)
+	if (ft_check_maps(&data->parsing) != 0)
 		return (-1);
 	ft_keep_and_trash_params(&data->parsing);
 	return (0);
 }
-
 
 int	ft_parsing_cub(t_data *data, char *scene_cub)
 {
 	int		fd;
 
 	if (!ft_is_good_extension(scene_cub, ".cub", 5))
-		return (ft_error_parsing(scene_cub, " has a bad extension.\n"));
+		return (ft_error_parsing(scene_cub, ERROR_EXTENSION));
 	fd = open(scene_cub, O_RDONLY);
 	if (fd == -1)
-		return (ft_error_parsing("can't open", scene_cub));
+		return (ft_error_parsing(scene_cub, ERROR_OPEN));
 	if (ft_get_all_file(data, fd, 0) != 0)
 	{
 		close(fd);
-		if (data->parsing.file_in_a_line)
-			free(data->parsing.file_in_a_line);
 		return (-1);
 	}
 	close(fd);
