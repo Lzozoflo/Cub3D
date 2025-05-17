@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 09:34:57 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/16 11:02:23 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 13:13:49 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static int	ft_save_rgb(char **tab, unsigned int *color)
 	if (error)
 		return (1);
 	*color = ft_rgb(r, g, b);
-	return (0);
+	return (0);//!ft_error_parsing("Wrong value R,G,B: ", str)
 }
 
 static int	ft_is_format_color(char *str, unsigned int *color)
@@ -83,7 +83,7 @@ static int	ft_is_format_color(char *str, unsigned int *color)
 	if (ft_save_rgb(tab, color))
 	{
 		ft_freetab(tab, 0);
-		return (!ft_error_parsing("Wrong value R,G,B: ", str));
+		return (0);//
 	}
 	ft_freetab(tab, 0);
 	return (1);

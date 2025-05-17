@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/16 15:16:33 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 14:22:56 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ struct		s_maps
 {
 	t_gnl			*gnl;
 	char			**tab;
+	char			**dup_check;
 	char			*file_in_a_line;
 	char			*texture_ea;
 	char			*texture_no;
@@ -60,6 +61,8 @@ struct		s_maps
 	char			*str_sky;
 	unsigned int	floor;
 	unsigned int	sky;
+	int				max_width;
+	int				max_height;
 };
 
 struct		s_image
@@ -93,6 +96,10 @@ int		ft_init_mlx(t_data *data);
 //		ft_check_format_save_color.c
 
 int		ft_check_format_save_color(t_maps *maps);
+
+//		ft_check_maps_closed.c
+
+int		ft_check_maps_closed(t_maps *maps, char **tab);
 
 //		ft_check_maps.c
 
@@ -140,6 +147,7 @@ int		ft_get_all_file(t_data *data, int fd, int error);
 
 //		ft_is.c
 
+int		ft_is_invalid_neighbor(char c);
 int		ft_is_player_char(int c);
 int		ft_is_valid_char(int c);
 int		ft_is_player_move(int keycode);

@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 09:55:51 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/16 15:04:02 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 15:34:37 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,19 @@
  *		33	=	list gnl
  *		34	=	swap ptr
  *		35	=	tab after format
+ *		36	=	max_height && max_width
+ *		37	=	maps bordered
+ *		38	=	maps not closed
  *-------------------------------------------------------------------------------
  *-------------------------------------------------------------------------------
  *-------------------------------------------------------------------------------
  *
  *
  */
-# define DEBUG 35
+# define DEBUG 38
 
 /*
- *---------------src/debug/ft_debug_1.c
+ *---------------src/debug/ft_debug_tab_ptr.c
  */
 
 void	debug_put_tab_d1(const char *str, char **tab, int f, int s);
@@ -57,7 +60,7 @@ void	debug_put_ptr(const char *str, void *ptr, int f, int s);
 void	debug_put_gnl_list(const char *str, t_gnl *tmp, int f, int s);
 
 /*
- *---------------src/debug/ft_debug_2.c
+ *---------------src/debug/ft_debug_str_int.c
  */
 
 void	debug_put_str_d1(const char *str1, char *str2, int f, int s);
@@ -66,5 +69,17 @@ void	debug_put_int_d1(const char *str1, int value, int f, int s);
 //without debug == 1
 void	debug_put_str(const char *str1, char *str2, int f, int s);
 void	debug_put_int(const char *str1, int value, int f, int s);
+
+
+/*
+ *---------------src/debug/ft_debug_maps.c
+ */
+void	debug_put_maps(char **tab, int f, int s);
+
+# define RESET "\033[0m"
+# define RED "\033[31m"
+# define GREEN  "\033[32m"
+# define BLUE  "\033[34m"
+# define YELLOW "\033[33m"
 
 #endif

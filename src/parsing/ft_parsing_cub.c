@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 09:39:16 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/16 15:23:00 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 13:14:50 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static int	ft_core_parsing(t_data *data)
 		return (-1);
 	if (ft_check_param(&data->maps) != 0)
 		return (-1);
-	if (ft_extract_map(&data->maps) != 0)
+	if (ft_extract_map(&data->maps) != 0)// miro rajoute
 		return (-1);
 	debug_put_tab("maps extracted :", data->maps.tab, 35, 350);
 	if (ft_check_maps(&data->maps) != 0)

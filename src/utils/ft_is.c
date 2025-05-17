@@ -6,13 +6,18 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 09:16:51 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/16 14:35:50 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 13:25:17 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 #include "ft_debug.h"
 #include "libft.h"
+
+inline int	ft_is_invalid_neighbor(char c)//
+{
+	return (c == '0' || ft_is_player_char(c));
+}
 
 inline int	ft_is_player_char(int c)
 {

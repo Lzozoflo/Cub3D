@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 13:26:06 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/16 09:57:31 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 13:08:19 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,13 @@ static void	ft_init_maps(t_maps *maps)
 	maps->str_floor = NULL;
 	maps->str_sky = NULL;
 	maps->tab = NULL;
+	maps->dup_check = NULL;
 	maps->texture_ea = NULL;
 	maps->texture_no = NULL;
 	maps->texture_so = NULL;
 	maps->texture_we = NULL;
+	maps->max_height = 0;
+	maps->max_width = 0;
 }
 
 void	ft_init_data(t_data *data)

@@ -45,8 +45,9 @@ SRC				=		main.c
 
 # laussel/ft_compare_map.c
 
-SRC_DEBUG		=		ft_debug_1.c					\
-						ft_debug_2.c
+SRC_DEBUG		=		ft_debug_maps.c					\
+						ft_debug_str_int.c				\
+						ft_debug_tab_ptr.c
 
 
 SRC_INIT		=		ft_init_mlx.c					\
@@ -54,6 +55,7 @@ SRC_INIT		=		ft_init_mlx.c					\
 
 
 SRC_PARSING		=		ft_check_format_save_color.c	\
+						ft_check_maps_closed.c			\
 						ft_check_maps.c					\
 						ft_check_param.c				\
 						ft_clear_str_of_texture.c		\
