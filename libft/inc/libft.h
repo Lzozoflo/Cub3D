@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 08:34:21 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/16 11:57:05 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 18:58:00 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ char		*ft_strjoin(char const *s1, char const *s2);
 char		*ft_reajoin(char *s1, char const *s2);
 size_t		ft_strlcat(char *dst, const char *src, size_t size);
 size_t		ft_strlcpy(char *dst, const char *src, size_t size);
+int			ft_count_char(char *str, char c);
 size_t		ft_strlen(const char *str);
 char		*ft_strmapi(const char *s, char (*f)(unsigned int, char));
 int			ft_strncmp(const char *str1, const char *str2, size_t len);

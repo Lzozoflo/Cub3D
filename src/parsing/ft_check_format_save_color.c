@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 09:34:57 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/17 17:37:18 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 19:00:31 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,14 @@ static int	ft_is_format_color(char *str, unsigned int *color)
 	int		i;
 
 	i = 0;
+	if (ft_count_char(str, ',') != 2)
+		return (ft_error_parsing(ERROR_RGB_FORMAT, str));
 	tab = ft_split(str, ',');
 	if (!tab)
 		return (1);
 	while (tab[i])
 		i++;
-	if (i != 4)
+	if (i != 3)
 	{
 		ft_freetab(tab, 0);
 		return (ft_error_parsing(ERROR_RGB_FORMAT, str));
@@ -90,7 +92,7 @@ static int	ft_is_format_color(char *str, unsigned int *color)
 		return (ft_error_parsing(ERROR_RGB_VALUE, str));
 	}
 	ft_freetab(tab, 0);
-	return (1);
+	return (0);
 }
 
 int	ft_check_format_save_color(t_parsing *parsing)

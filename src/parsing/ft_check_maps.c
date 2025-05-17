@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 11:59:59 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/17 17:46:34 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 18:47:30 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int	ft_check_maps(t_parsing *parsing)
 		return (1);
 	if (ft_check_maps_closed(parsing, parsing->dup_check))
 	{
-		debug_put_parsing(parsing->dup_check, 38, 380);
+		debug_put_parsing(parsing->dup_check, 39, 390);
 		return (ft_error_parsing(ERROR_MAP_CLOSE, NULL));
 	}
 	return (0);

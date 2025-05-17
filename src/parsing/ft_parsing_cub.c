@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 09:39:16 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/17 17:47:41 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 18:43:59 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,29 @@
 #include "libft.h"
 #include <fcntl.h>
 
-static void	ft_keep_and_trash_params(t_parsing *parsing)
+static int	ft_keep_and_trash_parsing(t_parsing *parsing, t_exec *exec)
 {
-	if (parsing->file_in_a_line)
-		free(parsing->file_in_a_line);
-	if (parsing->str_floor)
-		free(parsing->str_floor);
-	if (parsing->str_sky)
-		free(parsing->str_sky);
-	if (parsing->gnl)
-		t_gnl_clear(parsing);
-	parsing->file_in_a_line = NULL;
-	parsing->str_floor = NULL;
-	parsing->str_sky = NULL;
-	parsing->gnl = NULL;
+	exec->floor = parsing->floor;
+	exec->max_height = parsing->max_height;
+	exec->max_width = parsing->max_width;
+	exec->sky = parsing->sky;
+	exec->texture_ea = ft_strdup(parsing->texture_ea);
+	if (!exec->texture_ea)
+		return (1);
+	exec->texture_no = ft_strdup(parsing->texture_no);
+	if (!exec->texture_no)
+		return (1);
+	exec->texture_so = ft_strdup(parsing->texture_so);
+	if (!exec->texture_so)
+		return (1);
+	exec->texture_we = ft_strdup(parsing->texture_we);
+	if (!exec->texture_we)
+		return (1);
+	exec->tab = ft_tabdup(parsing->tab);
+	if (!exec->tab)
+		return (1);
+	ft_clear_parsing(parsing);
+	return (0);
 }
 
 static int	ft_parsing_param(t_parsing *parsing)
@@ -65,7 +74,8 @@ static int	ft_core_parsing(t_data *data)
 	debug_put_tab(" extracted :", data->parsing.tab, 35, 350);
 	if (ft_check_maps(&data->parsing) != 0)
 		return (-1);
-	ft_keep_and_trash_params(&data->parsing);
+	if (ft_keep_and_trash_parsing(&data->parsing, &data->exec))
+		return (1);
 	return (0);
 }
 

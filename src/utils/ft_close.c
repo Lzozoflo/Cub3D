@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 08:46:51 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/17 17:22:18 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 19:03:48 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,20 @@
 #include "libft.h"
 #include <stdlib.h>
 #include <stdio.h>
+
+void	ft_clear_exec(t_exec *exec)
+{
+	if (exec->tab)
+		ft_freetab(exec->tab, 0);
+	if (exec->texture_ea)
+		free(exec->texture_ea);
+	if (exec->texture_no)
+		free(exec->texture_no);
+	if (exec->texture_so)
+		free(exec->texture_so);
+	if (exec->texture_we)
+		free(exec->texture_we);
+}
 
 void	ft_clear_parsing(t_parsing *parsing)
 {
@@ -37,6 +51,7 @@ void	ft_clear_parsing(t_parsing *parsing)
 		free(parsing->texture_we);
 	if (parsing->gnl)
 		t_gnl_clear(parsing);
+	ft_init_parsing(parsing);
 }
 
 int	ft_clean_close(t_data *data, int error)
@@ -51,6 +66,7 @@ int	ft_clean_close(t_data *data, int error)
 		free(data->mlx);
 	}
 	ft_clear_parsing(&data->parsing);
+	ft_clear_exec(&data->exec);
 	printf("Exiting program.\n");
 	exit(error);
 }

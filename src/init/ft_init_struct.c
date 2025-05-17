@@ -6,14 +6,27 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 13:26:06 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/17 17:04:09 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 18:41:46 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 #include "libft.h"
 
-static void	ft_init_parsing(t_parsing *parsing)
+static void	ft_init_exec(t_exec *exec)
+{
+	exec->floor = 0;
+	exec->max_height = 0;
+	exec->max_width = 0;
+	exec->sky = 0;
+	exec->tab = NULL;
+	exec->texture_ea = NULL;
+	exec->texture_no = NULL;
+	exec->texture_so = NULL;
+	exec->texture_we = NULL;
+}
+
+void	ft_init_parsing(t_parsing *parsing)
 {
 	parsing->gnl = NULL;
 	parsing->file_in_a_line = NULL;
@@ -36,4 +49,5 @@ void	ft_init_data(t_data *data)
 	data->img.img_ptr = NULL;
 	data->img.addr = NULL;
 	ft_init_parsing(&data->parsing);
+	ft_init_exec(&data->exec);
 }

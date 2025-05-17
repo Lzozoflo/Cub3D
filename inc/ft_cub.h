@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/17 17:21:30 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 18:39:17 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,11 @@
 # define RIGHT 65363
 
 //typedef of all structure
-typedef struct s_data		t_data;
-typedef struct s_image		t_image;
-typedef struct s_parsing	t_parsing;
 typedef struct s_gnl		t_gnl;
+typedef struct s_parsing	t_parsing;
+typedef struct s_image		t_image;
+typedef struct s_exec		t_exec;
+typedef struct s_data		t_data;
 
 struct s_gnl
 {
@@ -63,7 +64,18 @@ struct		s_parsing
 	int				max_width;
 	int				max_height;
 };
-
+struct		s_exec
+{
+	int				max_width;
+	int				max_height;
+	unsigned int	floor;
+	unsigned int	sky;
+	char			*texture_ea;
+	char			*texture_no;
+	char			*texture_so;
+	char			*texture_we;
+	char			**tab;
+};
 struct		s_image
 {
 	void	*img_ptr;
@@ -80,6 +92,7 @@ struct		s_data
 	int			name;
 	t_image		img;
 	t_parsing	parsing;
+	t_exec		exec;
 };
 
 int		ft_check_no_nl_in_maps(t_parsing *parsing);
@@ -87,9 +100,11 @@ int		ft_check_no_nl_in_maps(t_parsing *parsing);
 
 //		ft_init_struct.c
 
+void	ft_init_parsing(t_parsing *parsing);
 void	ft_init_data(t_data *data);
 
 //		ft_init_mlx.c
+
 int		ft_init_mlx(t_data *data);
 
 /*	src/parsing	*/

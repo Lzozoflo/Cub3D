@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 17:05:40 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/17 17:15:35 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 18:47:41 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ static int	ft_compare_map(t_gnl *gnl, char **map)
 		len = ft_strlen(map[i]);
 		if (ft_strncmp(map[i], gnl->str, len) != 0)
 		{
-			debug_put_str(NULL, "map wrong", 34, 340);
+			debug_put_str(NULL, "map wrong", 38, 380);
 			return (0);
 		}
 		i--;
 		gnl = gnl->prev;
 	}
-	debug_put_str(NULL, "map ok", 34, 340);
+	debug_put_str(NULL, "map ok", 38, 380);
 	return (1);
 }
 
