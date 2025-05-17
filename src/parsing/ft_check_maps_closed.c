@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 12:20:43 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/17 14:26:07 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 16:39:53 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,19 +53,13 @@ static int	ft_check_closed(t_maps *maps, char **tab, int x, int y)
 	else if (tab[y][x] == ' ')
 	{
 		if (!check_surroundings(maps, tab, y, x))
-		{
-			printf("Error\nSpace at [%d][%d] touches 0 or player\n", y, x);
 			return (1);
-		}
 	}
 	else if (ft_is_player_char(tab[y][x]))
 	{
 		if (tab[y - 1][x] == ' ' || tab[y + 1][x] == ' ' ||
 			tab[y][x - 1] == ' ' || tab[y][x + 1] == ' ')
-		{
-			printf("Error: Player at [%d][%d] touches space\n", y, x);
 			return (1);
-		}
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 11:59:59 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/17 15:29:29 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 16:41:20 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ static int	ft_dup_format_and_check_maps(t_maps *maps, char **tab)
 	debug_put_tab("maps with borde :", maps->dup_check, 37, 370);
 	return (0);
 }
-
 
 static int	ft_check_all_char_in_maps(t_maps *maps, char *str)
 {
@@ -106,26 +105,14 @@ int	ft_check_maps(t_maps *maps)
 		return (ft_error_parsing("unvalid char in the maps\n", NULL));
 	else if (v_return == 2)
 		return (ft_error_parsing("2 char to define a character\n", NULL));
-	// if (ft_no_nl_in_maps())					//ici pour le test de la maps
-	// 	return (1);
+	if (ft_split_and_replace(maps))					//ici pour le test de la maps
+		return (ft_error_parsing("2 maps\n", NULL));
 	if (ft_dup_format_and_check_maps(maps, maps->tab))
 		return (1);
 	if (ft_check_maps_closed(maps, maps->dup_check))
 	{
 		debug_put_maps(maps->dup_check, 38, 380);
-		return (1);
+		return (ft_error_parsing("maps not close\n", NULL));
 	}
-
-
-
-
-
-
-
-
-
-
-
-
 	return (0);
 }

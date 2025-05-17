@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/17 14:22:56 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/17 16:04:24 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ struct		s_data
 	t_maps	maps;
 };
 
+
+int	ft_split_and_replace(t_maps *maps);
 /*	src/init	*/
 
 //		ft_init_struct.c

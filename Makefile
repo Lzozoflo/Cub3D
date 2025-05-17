@@ -41,9 +41,8 @@ INC				=		ft_cub.h						\
 						ft_debug.h
 
 
-SRC				=		main.c
-
-# laussel/ft_compare_map.c
+SRC				=		main.c\
+						laussel/
 
 SRC_DEBUG		=		ft_debug_maps.c					\
 						ft_debug_str_int.c				\
@@ -59,6 +58,7 @@ SRC_PARSING		=		ft_check_format_save_color.c	\
 						ft_check_maps.c					\
 						ft_check_param.c				\
 						ft_clear_str_of_texture.c		\
+						ft_compare_map.c				\
 						ft_find_param.c					\
 						ft_extract_map.c				\
 						ft_parsing_cub.c
