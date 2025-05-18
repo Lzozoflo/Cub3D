@@ -6,23 +6,13 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 09:44:21 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/18 13:56:41 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/18 15:25:32 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
+#include "ft_define.h"
 
-// t_pos	t_pos_set(int y, int x, int size)
-// {
-// 	t_pos	pos;
-
-// 	pos.size = size;
-// 	pos.px_x = x;
-// 	pos.px_y = y;
-// 	pos.while_x = 9;
-// 	pos.while_y = 9;
-// 	return (pos);
-// }
 
 void	t_pos_set_draw_max(t_pos *pos, int zoom, int x)
 {

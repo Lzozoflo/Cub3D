@@ -6,33 +6,22 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 08:01:22 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/18 14:58:49 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/18 15:24:20 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 #include "ft_debug.h"
 #include "libft.h"
+#include "ft_define.h"
 #include <math.h>
 
-static void	ft_color_pixel(int color, int x, int y, t_data *data)
-{
-	t_image	img;
-	int		index;
-
-	if (x < 0 || y < 0 || x >= WIN_SIZE || y >= WIN_SIZE)
-		return ;
-	img = data->img;
-	index = (y * img.line_len) + (x * (img.bpp));
-	*(unsigned int *)(data->img.addr + index) = color;
-}
-
-static int	ft_color_for_square_px(int c)
+static inline int	ft_color_for_square_px(int c)
 {
 	if (c == '1')
-		return (COULEUR_1O);
+		return (COULEUR_REDO);
 	else if (c == '0')
-		return (COULEUR_0);
+		return (COULEUR_GREEN);
 	else if (ft_is_player_char(c))
 		return (COULEUR_BLUE);
 	return (0);

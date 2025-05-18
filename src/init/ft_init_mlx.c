@@ -6,12 +6,13 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 12:51:58 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/18 13:10:35 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/18 15:24:30 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 #include "libft.h"
+#include "ft_define.h"
 #include <stdlib.h>
 
 static void	ft_hook_event(t_data *data)

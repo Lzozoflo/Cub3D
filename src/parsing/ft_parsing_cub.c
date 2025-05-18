@@ -6,13 +6,13 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 09:39:16 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/18 13:07:48 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/18 15:25:09 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 #include "ft_debug.h"
-#include "ft_parsing_error.h"
+#include "ft_define.h"
 #include "libft.h"
 #include <fcntl.h>
 

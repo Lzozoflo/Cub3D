@@ -1,7 +1,7 @@
 .PHONY: all clean fclean re f fclear c clear libmlx libft
 
 NAME			:=	Cub3D
-INCLUDES		=	-I$(HEADERS_DIR) -I$(D_INC_LIBFT)
+INCLUDES		=	-I $(HEADERS_DIR) -I $(D_INC_LIBFT)
 CC				:=	cc
 CFLAGS			:=	-Wall -Wextra -Werror -g3
 CFLAGSS			:=	-Weverything -Wno-padded
@@ -40,7 +40,7 @@ D_STRUCT		:=		utils_struct/
 
 INC				:=		ft_cub.h						\
 						ft_debug.h						\
-						ft_parsing_error.h
+						ft_define.h
 
 
 SRC				:=		main.c
@@ -70,12 +70,14 @@ SRC_PARSING		:=		ft_check_format_save_color.c	\
 
 
 SRC_UTILS		:=		ft_close.c						\
+						ft_color.c						\
 						ft_error.c						\
 						ft_get_file_in_oneline.c		\
 						ft_is.c
 
 
-SRC_U_EVENT		:=		ft_key_event.c					\
+SRC_U_EVENT		:=		ft_is_event.c					\
+						ft_key_event.c					\
 						ft_mouse_event.c
 
 
@@ -94,7 +96,7 @@ SRC_STRUCT		:=		ft_clear_struct.c				\
 # All src in his Src Directories
 SRCS			=		$(SRC)													\
 						$(addprefix $(D_DEBUG), $(SRC_DEBUG))					\
-						$(addprefix $(D_DRAW), $(SRC_DRAW))					\
+						$(addprefix $(D_DRAW), $(SRC_DRAW))						\
 						$(addprefix $(D_INIT), $(SRC_INIT))						\
 						$(addprefix $(D_PARSING), $(SRC_PARSING))				\
 						$(addprefix $(D_UTILS), $(SRC_UTILS))					\

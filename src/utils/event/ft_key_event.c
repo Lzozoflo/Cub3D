@@ -6,14 +6,28 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:59:35 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/14 11:09:10 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/18 15:34:20 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_cub.h"
 #include "ft_debug.h"
+#include "ft_define.h"
 #include "libft.h"
+#include "ft_cub.h"
 
+static int	ft_zoom_minimaps(t_data *data)
+{
+	int	*value;
+
+	value = &data->exec.zoom;
+	if (*value == -1)
+		*value = 0;
+	else if (*value)
+		*value = 1;
+	else
+		*value = -1;
+	return (0);
+}
 
 static int	ft_arrow(int keycode, t_data *data)
 {
@@ -66,9 +80,14 @@ int	ft_key_press(int keycode, void *param)
 		return (-1);
 	if (ft_is_camera_move(keycode) && ft_arrow(keycode, data) == -1)
 		return (-1);
-	if (ft_is_player_move(keycode) || ft_is_camera_move(keycode))
+	if (keycode == M && ft_zoom_minimaps(data))
+		return (-1);
+	if (ft_is_player_move(keycode) || ft_is_camera_move(keycode) || keycode == M)
 	{
 		debug_put_str("ft_key_press -> refresh view", NULL, 2, 21);
+		ft_bzero(data->img.addr, WIN_SIZE * WIN_SIZE * data->img.bpp);
+		ft_draw_map_2d(data);
+		mlx_put_image_to_window(data->mlx, data->win, data->img.img_ptr, 0, 0);
 		// ft_refresh_views(data);
 	}
 	return (1);

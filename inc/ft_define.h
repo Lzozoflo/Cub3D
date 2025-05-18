@@ -1,17 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parsing_error.h                                 :+:      :+:    :+:   */
+/*   ft_define.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 17:32:29 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/18 11:47:14 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/18 15:23:47 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PARSING_ERROR_H
-# define FT_PARSING_ERROR_H
+#ifndef FT_DEFINE_H
+# define FT_DEFINE_H
+
+// Window params
+# define WIN_SIZE 2000
+# define WIN_NAME "Cub3D"
+
+// Key_press
+# define ESC 65307
+// Key Code moving player
+# define A 97
+# define W 119
+# define D 100
+# define S 115
+// Key Code moving camera
+# define LEFT 65361
+# define RIGHT 65363
+// Key Code
+# define M 109
+
+// Color square px
+	// Red
+#define COULEUR_RED 0x00FF0000
+	// Green
+#define COULEUR_GREEN 0x0000FF00
+	// Blue
+#define COULEUR_BLUE  0x000000FF
+	// Red opaque
+#define COULEUR_REDO 0xFFFF0000
+	// Blue opaque
+#define COULEUR_BLUEO 0xFF0000FF
+	// Green opaque
+#define COULEUR_GREENO 0xFF00FF00
+
 
 # define ERROR_EXTENSION " has a bad extension."
 # define ERROR_OPEN " can't be open."

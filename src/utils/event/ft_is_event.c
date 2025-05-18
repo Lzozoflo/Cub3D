@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_extract_map.c                                   :+:      :+:    :+:   */
+/*   ft_is_event.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/17 17:23:50 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/18 15:25:04 by fcretin          ###   ########.fr       */
+/*   Created: 2025/05/18 15:19:37 by fcretin           #+#    #+#             */
+/*   Updated: 2025/05/18 15:35:50 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_cub.h"
 #include "ft_define.h"
-#include "libft.h"
 
-int	ft_extract_map(t_parsing *parsing)
+inline int	ft_is_player_move(int keycode)
 {
-	char	**new_tab;
+	return (keycode == A || keycode == W || keycode == D || keycode == S);
+}
 
-	if (!parsing->tab[6])
-		return (ft_error_parsing(ERROR_MAPS_NULL, NULL));
-	new_tab = ft_tabdup(&parsing->tab[6]);
-	ft_freetab(parsing->tab, 0);
-	parsing->tab = new_tab;
-	return (!new_tab);
+inline int	ft_is_camera_move(int keycode)
+{
+	return (keycode == LEFT || keycode == RIGHT);
 }

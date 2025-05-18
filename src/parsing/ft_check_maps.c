@@ -6,13 +6,13 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 11:59:59 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/18 14:46:35 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/18 15:24:45 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 #include "ft_debug.h"
-#include "ft_parsing_error.h"
+#include "ft_define.h"
 #include "libft.h"
 
 static int	ft_create_bordered_tab(t_parsing *parsing)

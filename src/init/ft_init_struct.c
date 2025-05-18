@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 13:26:06 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/18 13:56:48 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/18 15:13:10 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	ft_init_exec(t_exec *exec)
 	exec->floor = 0;
 	exec->max_height = 0;
 	exec->max_width = 0;
-	exec->zoom = 1;
+	exec->zoom = -1;
 	exec->sky = 0;
 	exec->tab = NULL;
 	ft_init_texture(&exec->texture);
