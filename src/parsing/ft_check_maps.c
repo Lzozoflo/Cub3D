@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 11:59:59 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/18 11:47:15 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/18 14:46:35 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static int	ft_check_all_char_in_maps(t_parsing *parsing, char *str)
 	if (parsing->max_width < i)
 		parsing->max_width = i;
 	if (!player)
-		return (2);
+		return (3);
 	return (0);
 }
 
@@ -91,14 +91,14 @@ static int	ft_check_all_string_in_maps(t_parsing *parsing, char **tab)
 	while (tab[++j])
 	{
 		v_return = ft_check_all_char_in_maps(parsing, tab[j]);
-		if (v_return == 1)
+		if (v_return == 1 || v_return == 2)
 			return (v_return);
 	}
-	if (v_return == 2)
-		return (3);
 	parsing->max_height = j;
 	debug_put_int("max_height:", parsing->max_height, 36, 360);
 	debug_put_int("max_width:", parsing->max_width, 36, 360);
+	if (v_return == 3)
+		return (3);
 	return (0);
 }
 

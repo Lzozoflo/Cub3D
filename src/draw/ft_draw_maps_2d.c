@@ -6,14 +6,14 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 08:01:22 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/18 12:42:46 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/18 14:58:49 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
+#include "ft_debug.h"
 #include "libft.h"
 #include <math.h>
-
 
 static void	ft_color_pixel(int color, int x, int y, t_data *data)
 {
@@ -38,7 +38,6 @@ static int	ft_color_for_square_px(int c)
 	return (0);
 }
 
-
 void	ft_draw_square_px(t_pos pos, t_data *data, int c)
 {
 	const int	color = ft_color_for_square_px(c);
@@ -58,32 +57,46 @@ void	ft_draw_square_px(t_pos pos, t_data *data, int c)
 	}
 }
 
-void	ft_draw_map_2d(t_data *data, int zoom)
-{//manefunc
-	const char	**tab = (const char **)data->exec.tab;
-	t_pos		pos;
-	int			x_start;
-	int			y_start;
+void	ft_draw_map_2d_bis(t_data *data, int y_start, int x_start, t_exec *exec)
+{
+	const char	*str = (const char *)exec->tab[y_start];
+	const int	max_width = exec->max_width;
+	t_pos		*pos;
+	int			i;
 
-	y_start = round(data->exec.player.pos_y) - 4;
-	t_pos_set_draw_max(&pos, zoom, 0);
-	while (pos.while_y--)
+	i = 9;
+	pos = &exec->pos;
+	while (y_start >= 0 && i-- && x_start < max_width)
 	{
-		x_start = round(data->exec.player.pos_x) - 4;
-		while (y_start >= 0 && pos.while_x--)
+		if (x_start >= 0 && x_start < max_width)
 		{
-			if (x_start >= 0 && y_start < data->exec.max_height
-				&& x_start < data->exec.max_width)
-				ft_draw_square_px(pos, data, tab[y_start][x_start]);
-			pos.px_x += pos.size;
-			x_start++;
+			ft_draw_square_px(*pos, data, str[x_start]);
 		}
-		t_pos_set_draw_max(&pos, zoom, 1);
-		pos.px_y += pos.size;
+		pos->px_x += pos->size;
+		x_start++;
+	}
+	t_pos_set_draw_max(pos, exec->zoom, 1);
+	pos->px_y += pos->size;
+}
+
+void	ft_draw_map_2d(t_data *data)
+{
+	t_exec	*exec;
+	int		y_start;
+	int		x_start;
+	int		i;
+
+	i = 9;
+	exec = &data->exec;
+	t_pos_set_draw_max(&exec->pos, exec->zoom, 0);
+	x_start = round(exec->player.pos_x) - 4;
+	y_start = round(exec->player.pos_y) - 4;
+	while (i-- && y_start < exec->max_height)
+	{
+		ft_draw_map_2d_bis(data, y_start, x_start, exec);
 		y_start++;
 	}
 }
-
 
 // void	ft_draw_square_px(t_data *data, int c)
 // {

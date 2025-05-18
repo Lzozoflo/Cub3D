@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/18 11:49:16 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/18 13:55:50 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,6 @@ struct		s_pos
 	int	px_y;
 	int	px_x;
 	int	size;
-	int	while_y;
-	int	while_x;
 };
 
 struct		s_gnl
@@ -117,6 +115,8 @@ struct		s_exec
 	char			**tab;
 	t_texture		texture;
 	t_player		player;
+	t_pos			pos;
+	int				zoom;
 };
 
 struct		s_image
@@ -146,7 +146,8 @@ void	ft_clear_parsing(t_parsing *parsing);
 
 void	t_pos_set_draw_max(t_pos *pos, int zoom, int x);
 
-void	ft_draw_map_2d(t_data *data, int zoom);
+void	ft_draw_map_2d(t_data *data);
+
 
 // void	ft_draw_square_px(t_data *data, int c);
 
