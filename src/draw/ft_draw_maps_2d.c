@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 08:01:22 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/18 11:52:15 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/18 12:42:46 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ void	ft_draw_map_2d(t_data *data, int zoom)
 		x_start = round(data->exec.player.pos_x) - 4;
 		while (y_start >= 0 && pos.while_x--)
 		{
-			if (x_start >= 0)
+			if (x_start >= 0 && y_start < data->exec.max_height
+				&& x_start < data->exec.max_width)
 				ft_draw_square_px(pos, data, tab[y_start][x_start]);
 			pos.px_x += pos.size;
 			x_start++;

@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 12:51:58 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/18 11:36:41 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/18 12:38:37 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	ft_init_mlx(t_data *data)
 	data->img.bpp = data->img.bpp >> 3;
 	ft_init_texture_mlx_ptr(data, &data->exec.texture);
 	ft_hook_event(data);
-	ft_draw_map_2d(data, 1);
+	ft_draw_map_2d(data, 0);
 
 	// ft_draw_square_px(data, '1');
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img_ptr, 0, 0);

@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 09:44:21 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/18 11:42:46 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/18 12:37:20 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ void	t_pos_set_draw_max(t_pos *pos, int zoom, int x)
 	{
 		if (!x)
 		{
-			pos->size = 100;//
-			pos->px_y = 0;
+			pos->size = WIN_SIZE / 10;//
+			pos->px_y = 100;
 		}
-		pos->px_x = 0;
+		pos->px_x = 100;
 	}
 }
