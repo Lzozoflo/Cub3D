@@ -1,12 +1,12 @@
 .PHONY: all clean fclean re f fclear c clear libmlx libft
 
-NAME			=	Cub3D
+NAME			:=	Cub3D
 INCLUDES		=	-I$(HEADERS_DIR) -I$(D_INC_LIBFT)
-CC				=	cc
-CFLAGS			=	-Wall -Wextra -Werror -g3
-CFLAGSS			=	-Weverything -Wno-padded
-RM				=	rm -fr
-MLX_FLAG		=	-Lminilibx-linux -lmlx -lX11 -lXext
+CC				:=	cc
+CFLAGS			:=	-Wall -Wextra -Werror -g3
+CFLAGSS			:=	-Weverything -Wno-padded
+RM				:=	rm -fr
+MLX_FLAG		:=	-Lminilibx-linux -lmlx -lX11 -lXext
 
 
 #############################################################################################
@@ -17,17 +17,18 @@ MLX_FLAG		=	-Lminilibx-linux -lmlx -lX11 -lXext
 
 
 # Directories
-D_SRC			=		./src/
+D_SRC			:=		./src/
 HEADERS_DIR		:=		./inc/
 
 
 # Source Directories
-D_DEBUG			=		debug/
-D_INIT			=		init/
-D_UTILS			=		utils/
-D_PARSING		=		parsing/
-D_U_EVENT		=		event/
-D_STRUCT		=		utils_struct/
+D_DEBUG			:=		debug/
+D_DRAW			:=		draw/
+D_INIT			:=		init/
+D_UTILS			:=		utils/
+D_PARSING		:=		parsing/
+D_U_EVENT		:=		event/
+D_STRUCT		:=		utils_struct/
 
 
 #############################################################################################
@@ -37,23 +38,26 @@ D_STRUCT		=		utils_struct/
 #############################################################################################
 
 
-INC				=		ft_cub.h						\
+INC				:=		ft_cub.h						\
 						ft_debug.h						\
 						ft_parsing_error.h
 
 
-SRC				=		main.c
+SRC				:=		main.c
 
-SRC_DEBUG		=		ft_debug_maps.c					\
+SRC_DEBUG		:=		ft_debug_maps.c					\
 						ft_debug_str_int.c				\
 						ft_debug_tab_ptr.c
 
 
-SRC_INIT		=		ft_init_mlx.c					\
+SRC_DRAW		:=		ft_draw_maps_2d.c
+
+
+SRC_INIT		:=		ft_init_mlx.c					\
 						ft_init_struct.c
 
 
-SRC_PARSING		=		ft_check_format_save_color.c	\
+SRC_PARSING		:=		ft_check_format_save_color.c	\
 						ft_check_maps_closed.c			\
 						ft_check_maps.c					\
 						ft_check_param.c				\
@@ -61,20 +65,23 @@ SRC_PARSING		=		ft_check_format_save_color.c	\
 						ft_compare_map.c				\
 						ft_find_param.c					\
 						ft_extract_map.c				\
+						ft_find_player_pos.c			\
 						ft_parsing_cub.c
 
 
-SRC_UTILS		=		ft_close.c						\
+SRC_UTILS		:=		ft_close.c						\
 						ft_error.c						\
 						ft_get_file_in_oneline.c		\
 						ft_is.c
 
 
-SRC_U_EVENT		=		ft_key_event.c					\
+SRC_U_EVENT		:=		ft_key_event.c					\
 						ft_mouse_event.c
 
 
-SRC_STRUCT		=		t_gnl.c
+SRC_STRUCT		:=		ft_clear_struct.c				\
+						t_gnl.c							\
+						t_pos.c
 
 
 #############################################################################################
@@ -87,6 +94,7 @@ SRC_STRUCT		=		t_gnl.c
 # All src in his Src Directories
 SRCS			=		$(SRC)													\
 						$(addprefix $(D_DEBUG), $(SRC_DEBUG))					\
+						$(addprefix $(D_DRAW), $(SRC_DRAW))					\
 						$(addprefix $(D_INIT), $(SRC_INIT))						\
 						$(addprefix $(D_PARSING), $(SRC_PARSING))				\
 						$(addprefix $(D_UTILS), $(SRC_UTILS))					\
@@ -116,7 +124,7 @@ all : $(NAME)
 
 
 $(NAME)				:	libmlx libft $(OBJS)
-			$(CC) $(CFLAGS) $(OBJS) $(MLX_FLAG) $(NAME_LIB) -o $(NAME)
+			$(CC) $(CFLAGS) $(OBJS) $(MLX_FLAG) $(NAME_LIB) -o $(NAME)  -lm
 
 $(DEPS_DIR) 		:
 		mkdir -p $(DEPS_DIR)

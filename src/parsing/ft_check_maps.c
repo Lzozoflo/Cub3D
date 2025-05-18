@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 11:59:59 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/17 18:47:30 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/18 11:47:15 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ static int	ft_check_all_char_in_maps(t_parsing *parsing, char *str)
 		return (1);
 	if (parsing->max_width < i)
 		parsing->max_width = i;
+	if (!player)
+		return (2);
 	return (0);
 }
 
@@ -89,9 +91,11 @@ static int	ft_check_all_string_in_maps(t_parsing *parsing, char **tab)
 	while (tab[++j])
 	{
 		v_return = ft_check_all_char_in_maps(parsing, tab[j]);
-		if (v_return)
+		if (v_return == 1)
 			return (v_return);
 	}
+	if (v_return == 2)
+		return (3);
 	parsing->max_height = j;
 	debug_put_int("max_height:", parsing->max_height, 36, 360);
 	debug_put_int("max_width:", parsing->max_width, 36, 360);
@@ -106,6 +110,8 @@ int	ft_check_maps(t_parsing *parsing)
 		return (ft_error_parsing(ERROR_INVALID_CHAR, NULL));
 	else if (v_return == 2)
 		return (ft_error_parsing(ERROR_TWO_PLAYER, NULL));
+	else if (v_return == 3)
+		return (ft_error_parsing(ERROR_ZERO_PLAYER, NULL));
 	if (ft_check_no_nl_in_maps(parsing))
 		return (ft_error_parsing(ERROR_MAP_SEPARATE, NULL));
 	if (ft_dup_and_format(parsing, parsing->tab))

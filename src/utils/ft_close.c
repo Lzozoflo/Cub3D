@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 08:46:51 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/17 19:03:48 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/18 07:48:11 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,44 +15,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void	ft_clear_exec(t_exec *exec)
-{
-	if (exec->tab)
-		ft_freetab(exec->tab, 0);
-	if (exec->texture_ea)
-		free(exec->texture_ea);
-	if (exec->texture_no)
-		free(exec->texture_no);
-	if (exec->texture_so)
-		free(exec->texture_so);
-	if (exec->texture_we)
-		free(exec->texture_we);
-}
-
-void	ft_clear_parsing(t_parsing *parsing)
-{
-	if (parsing->file_in_a_line)
-		free(parsing->file_in_a_line);
-	if (parsing->str_floor)
-		free(parsing->str_floor);
-	if (parsing->str_sky)
-		free(parsing->str_sky);
-	if (parsing->tab)
-		ft_freetab(parsing->tab, 0);
-	if (parsing->dup_check)
-		ft_freetab(parsing->dup_check, 0);
-	if (parsing->texture_ea)
-		free(parsing->texture_ea);
-	if (parsing->texture_no)
-		free(parsing->texture_no);
-	if (parsing->texture_so)
-		free(parsing->texture_so);
-	if (parsing->texture_we)
-		free(parsing->texture_we);
-	if (parsing->gnl)
-		t_gnl_clear(parsing);
-	ft_init_parsing(parsing);
-}
 
 int	ft_clean_close(t_data *data, int error)
 {

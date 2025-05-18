@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 17:32:29 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/17 18:21:51 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/18 11:47:14 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define ERROR_RGB_VALUE "R,G,B Wrong value: "
 
 # define ERROR_INVALID_CHAR "Invalid char in the maps."
+# define ERROR_ZERO_PLAYER "Zero player was define."
 # define ERROR_TWO_PLAYER "Two player was define."
 # define ERROR_MAP_SEPARATE "A new line in a maps was not accepted."
 # define ERROR_MAP_CLOSE "A Player or a Ground not on the maps."

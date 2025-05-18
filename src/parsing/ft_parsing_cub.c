@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 09:39:16 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/17 18:43:59 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/18 07:52:54 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,26 @@
 
 static int	ft_keep_and_trash_parsing(t_parsing *parsing, t_exec *exec)
 {
-	exec->floor = parsing->floor;
 	exec->max_height = parsing->max_height;
 	exec->max_width = parsing->max_width;
+	exec->floor = parsing->floor;
 	exec->sky = parsing->sky;
-	exec->texture_ea = ft_strdup(parsing->texture_ea);
-	if (!exec->texture_ea)
-		return (1);
-	exec->texture_no = ft_strdup(parsing->texture_no);
-	if (!exec->texture_no)
-		return (1);
-	exec->texture_so = ft_strdup(parsing->texture_so);
-	if (!exec->texture_so)
-		return (1);
-	exec->texture_we = ft_strdup(parsing->texture_we);
-	if (!exec->texture_we)
-		return (1);
 	exec->tab = ft_tabdup(parsing->tab);
 	if (!exec->tab)
 		return (1);
+	exec->texture.texture_ea = ft_strdup(parsing->texture_ea);
+	if (!exec->texture.texture_ea)
+		return (1);
+	exec->texture.texture_no = ft_strdup(parsing->texture_no);
+	if (!exec->texture.texture_no)
+		return (1);
+	exec->texture.texture_so = ft_strdup(parsing->texture_so);
+	if (!exec->texture.texture_so)
+		return (1);
+	exec->texture.texture_we = ft_strdup(parsing->texture_we);
+	if (!exec->texture.texture_we)
+		return (1);
+	ft_find_player_pos(exec->tab, &exec->player);
 	ft_clear_parsing(parsing);
 	return (0);
 }

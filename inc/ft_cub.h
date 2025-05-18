@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/17 18:39:17 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/18 11:49:16 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "mlx.h"
 
 // Window params
-# define WIN_SIZE 1000
+# define WIN_SIZE 2000
 # define WIN_NAME "Cub3D"
 
 // Key_press
@@ -33,14 +33,41 @@
 # define LEFT 65361
 # define RIGHT 65363
 
+// Color square px
+// Red
+#define COULEUR_1 0x00FF0000
+// Green
+#define COULEUR_0 0x0000FF00
+// bleu
+#define COULEUR_BLUE  0x000000FF
+// Red opaque
+#define COULEUR_1O 0xFFFF0000
+// bleu opaque
+#define COULEUR_BLUEO 0xFF0000FF
+// Green opaque
+#define COULEUR_0O 0xFF00FF00
+
 //typedef of all structure
+typedef struct s_pos		t_pos;
 typedef struct s_gnl		t_gnl;
 typedef struct s_parsing	t_parsing;
 typedef struct s_image		t_image;
+typedef struct s_texture	t_texture;
+typedef struct s_player		t_player;
 typedef struct s_exec		t_exec;
 typedef struct s_data		t_data;
 
-struct s_gnl
+
+struct		s_pos
+{
+	int	px_y;
+	int	px_x;
+	int	size;
+	int	while_y;
+	int	while_x;
+};
+
+struct		s_gnl
 {
 	char	*str;
 	t_gnl	*prev;
@@ -64,18 +91,34 @@ struct		s_parsing
 	int				max_width;
 	int				max_height;
 };
+
+struct		s_texture
+{
+	void	*texture_ea;
+	void	*texture_no;
+	void	*texture_so;
+	void	*texture_we;
+};
+
+struct		s_player
+{
+	double		pos_y;
+	double		pos_x;
+	int			dir_y;
+	int			dir_x;
+};
+
 struct		s_exec
 {
-	int				max_width;
 	int				max_height;
+	int				max_width;
 	unsigned int	floor;
 	unsigned int	sky;
-	char			*texture_ea;
-	char			*texture_no;
-	char			*texture_so;
-	char			*texture_we;
 	char			**tab;
+	t_texture		texture;
+	t_player		player;
 };
+
 struct		s_image
 {
 	void	*img_ptr;
@@ -94,6 +137,23 @@ struct		s_data
 	t_parsing	parsing;
 	t_exec		exec;
 };
+
+
+void	ft_find_player_pos(char **tab, t_player *player);
+
+void	ft_clear_exec(t_exec *exec);
+void	ft_clear_parsing(t_parsing *parsing);
+
+void	t_pos_set_draw_max(t_pos *pos, int zoom, int x);
+
+void	ft_draw_map_2d(t_data *data, int zoom);
+
+// void	ft_draw_square_px(t_data *data, int c);
+
+
+
+
+
 
 int		ft_check_no_nl_in_maps(t_parsing *parsing);
 /*	src/init	*/
@@ -148,7 +208,6 @@ int		ft_key_press(int keycode, void *param);
 
 //		ft_close.c
 
-void	ft_clear_parsing(t_parsing *parsing);
 int		ft_clean_close(t_data *data, int error);
 int		ft_cross(t_data *data);
 
