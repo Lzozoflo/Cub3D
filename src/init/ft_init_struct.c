@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 13:26:06 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/18 15:13:10 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/18 17:01:54 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,5 @@ void	ft_init_data(t_data *data)
 	data->img.addr = NULL;
 	ft_init_parsing(&data->parsing);
 	ft_init_exec(&data->exec);
+	data->exec.player.data = data;
 }

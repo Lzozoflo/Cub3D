@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/18 15:28:31 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/18 17:01:29 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ struct		s_player
 	double		pos_x;
 	int			dir_y;
 	int			dir_x;
+	t_data		*data;
 };
 
 struct		s_exec
@@ -180,6 +181,7 @@ int		ft_key_press(int keycode, void *param);
 
 int		ft_is_player_move(int keycode);
 int		ft_is_camera_move(int keycode);
+int		ft_refresh_event(int keycode);
 
 //		ft_close.c
 

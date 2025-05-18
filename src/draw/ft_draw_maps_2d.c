@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 08:01:22 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/18 15:24:20 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/18 16:56:20 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@
 static inline int	ft_color_for_square_px(int c)
 {
 	if (c == '1')
-		return (COULEUR_REDO);
+		return (PX_REDO);
 	else if (c == '0')
-		return (COULEUR_GREEN);
+		return (PX_GREEN);
 	else if (ft_is_player_char(c))
-		return (COULEUR_BLUE);
+		return (PX_BLUE);
 	return (0);
 }
 
@@ -68,6 +68,25 @@ void	ft_draw_map_2d_bis(t_data *data, int y_start, int x_start, t_exec *exec)
 	pos->px_y += pos->size;
 }
 
+void	ft_draw_circle(t_data *data, int cx, int cy, int radius)
+{
+	int	x;
+	int	y;
+
+	y = -radius;
+	while (y <= radius)
+	{
+		x = -radius;
+		while (x <= radius)
+		{
+			if (x * x + y * y <= radius * radius)
+				ft_color_pixel(PX_GRAY, cx + x, cy + y, data);
+			x++;
+		}
+		y++;
+	}
+}
+
 void	ft_draw_map_2d(t_data *data)
 {
 	t_exec	*exec;
@@ -77,6 +96,8 @@ void	ft_draw_map_2d(t_data *data)
 
 	i = 9;
 	exec = &data->exec;
+	if (exec->zoom == -1)
+		return ;
 	t_pos_set_draw_max(&exec->pos, exec->zoom, 0);
 	x_start = round(exec->player.pos_x) - 4;
 	y_start = round(exec->player.pos_y) - 4;
@@ -85,6 +106,14 @@ void	ft_draw_map_2d(t_data *data)
 		ft_draw_map_2d_bis(data, y_start, x_start, exec);
 		y_start++;
 	}
+	t_pos_set_draw_max(&exec->pos, exec->zoom, 0);
+	i = exec->pos.size * 4.5;
+	y_start = exec->pos.px_y + i;
+	x_start = exec->pos.px_x + i;
+	if (exec->zoom == 1)
+		ft_draw_circle(data, x_start, y_start, exec->pos.size >> 1);
+	else if (exec->zoom == 0)
+		ft_draw_circle(data, x_start, y_start, exec->pos.size >> 1);
 }
 
 // void	ft_draw_square_px(t_data *data, int c)

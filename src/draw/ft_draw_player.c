@@ -1,29 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_event.c                                      :+:      :+:    :+:   */
+/*   ft_draw_player.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/18 15:19:37 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/18 15:59:47 by fcretin          ###   ########.fr       */
+/*   Created: 2025/05/18 16:07:37 by fcretin           #+#    #+#             */
+/*   Updated: 2025/05/18 16:18:44 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_cub.h"
 #include "ft_define.h"
 
-int	ft_is_player_move(int keycode)
+void	ft_draw_circle(t_data *data, int cx, int cy, int radius)
 {
-	return (keycode == A || keycode == W || keycode == D || keycode == S);
+	int	x;
+	int	y;
+
+	y = -radius;
+	while (y <= radius)
+	{
+		x = -radius;
+		while (x <= radius)
+		{
+			if (x * x + y * y <= radius * radius)
+				ft_color_pixel(PX_GRAY_DARK, cx + x, cy + y, data);
+			x++;
+		}
+		y++;
+	}
 }
 
-int	ft_is_camera_move(int keycode)
+
+
+void	ft_draw_player(t_data *data)
 {
-	return (keycode == LEFT || keycode == RIGHT);
+	const int	center = WIN_SIZE >> 1;
+
+
+
+
 }
 
-int	ft_refresh_event(int keycode)
-{
-	return (ft_is_player_move(keycode) || ft_is_camera_move(keycode)
-		|| keycode == M);
-}
