@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/19 09:19:26 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/19 09:47:49 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,9 +111,16 @@ struct		s_data
 
 //------------[  ft_draw_maps_2d.c  ]
 
-void	ft_draw_map_2d(t_data *data);
+void	ft_draw_map_tile(t_data *data);
 
-int		ft_check_no_nl_in_maps(t_parsing *parsing);
+//------------[  ft_draw_sky_floor.c  ]
+
+void	ft_draw_sky_floor(t_data *data);
+
+//------------[  ft_refresh_view.c  ]
+
+void	ft_refresh_view(t_data *data);
+
 /*-----------------src/init-----------------*/
 
 //------------[  ft_init_struct.c  ]
@@ -149,6 +156,10 @@ int		ft_clear_parameters(t_parsing *parsing);
 //------------[  ft_find_param.c  ]
 
 int		ft_find_line_texture(t_parsing *parsing, int i, int j);
+
+//------------[  ft_compare_maps.c  ]
+
+int		ft_check_no_nl_in_maps(t_parsing *parsing);
 
 //------------[  ft_extract_map.c  ]
 

@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:59:35 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/19 09:20:36 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/19 09:35:55 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,10 +110,7 @@ int	ft_key_press(int keycode, void *param)
 	if (ft_is_player_move(keycode) || ft_is_camera_move(keycode) || keycode == M)
 	{
 		debug_put_str("ft_key_press -> refresh view", NULL, 2, 21);
-		ft_bzero(data->img.addr, WIN_SIZE * WIN_SIZE * data->img.bpp);
-		ft_draw_map_2d(data);
-		mlx_put_image_to_window(data->mlx, data->win, data->img.img_ptr, 0, 0);
-		// ft_refresh_views(data);
+		ft_refresh_view(data);
 	}
 	return (1);
 }

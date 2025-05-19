@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 08:01:22 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/18 16:56:20 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/19 09:35:19 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_draw_square_px(t_pos pos, t_data *data, int c)
 	}
 }
 
-void	ft_draw_map_2d_bis(t_data *data, int y_start, int x_start, t_exec *exec)
+static void	ft_draw_map(t_data *data, int y_start, int x_start, t_exec *exec)
 {
 	const char	*str = (const char *)exec->tab[y_start];
 	const int	max_width = exec->max_width;
@@ -87,7 +87,7 @@ void	ft_draw_circle(t_data *data, int cx, int cy, int radius)
 	}
 }
 
-void	ft_draw_map_2d(t_data *data)
+void	ft_draw_map_tile(t_data *data)
 {
 	t_exec	*exec;
 	int		y_start;
@@ -96,14 +96,12 @@ void	ft_draw_map_2d(t_data *data)
 
 	i = 9;
 	exec = &data->exec;
-	if (exec->zoom == -1)
-		return ;
 	t_pos_set_draw_max(&exec->pos, exec->zoom, 0);
 	x_start = round(exec->player.pos_x) - 4;
 	y_start = round(exec->player.pos_y) - 4;
 	while (i-- && y_start < exec->max_height)
 	{
-		ft_draw_map_2d_bis(data, y_start, x_start, exec);
+		ft_draw_map(data, y_start, x_start, exec);
 		y_start++;
 	}
 	t_pos_set_draw_max(&exec->pos, exec->zoom, 0);

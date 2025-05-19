@@ -50,7 +50,9 @@ SRC_DEBUG		:=		ft_debug_maps.c					\
 						ft_debug_tab_ptr.c
 
 
-SRC_DRAW		:=		ft_draw_maps_2d.c
+SRC_DRAW		:=		ft_draw_maps_2d.c				\
+						ft_draw_sky_floor.c				\
+						ft_refresh_view.c
 
 
 SRC_INIT		:=		ft_init_mlx.c					\

@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_refresh_view.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/11 18:58:30 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/19 09:33:18 by fcretin          ###   ########.fr       */
+/*   Created: 2025/05/19 09:25:27 by fcretin           #+#    #+#             */
+/*   Updated: 2025/05/19 09:48:36 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
+#include "ft_define.h"
+#include "libft.h"
 
-int	main(int ac, char **av, char **env)
+void	ft_refresh_view(t_data *data)
 {
-	t_data	data;
+	const size_t	res = WIN_SIZE * WIN_SIZE * data->img.bpp;
 
-	if (ac != 2 || !env[0])
-		return (1);
-	ft_init_data(&data);
-	if (ft_parsing_cub(&data, av[1]))
-	{
-		ft_clear_parsing(&data.parsing);
-		return (1);
-	}
-	if (!ft_init_mlx(&data))
-		return (1);
-	ft_print_settings();
-	ft_refresh_view(&data);
-	mlx_loop(data.mlx);
+
+	ft_bzero(data->img.addr, res);
+	ft_draw_sky_floor(data);
+	if (data->exec.zoom != -1)
+		ft_draw_map_tile(data);
+
+	mlx_put_image_to_window(data->mlx, data->win, data->img.img_ptr, 0, 0);
 }
-
-	// ft_draw_map_2d(&data);
-	// mlx_put_image_to_window(data.mlx, data.win, data.img.img_ptr, 0, 0);
