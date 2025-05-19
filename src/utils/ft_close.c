@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 08:46:51 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/18 07:48:11 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/19 09:20:17 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "libft.h"
 #include <stdlib.h>
 #include <stdio.h>
-
 
 int	ft_clean_close(t_data *data, int error)
 {

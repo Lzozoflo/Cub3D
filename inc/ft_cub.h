@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/18 17:01:29 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/19 09:19:26 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ typedef struct s_texture	t_texture;
 typedef struct s_player		t_player;
 typedef struct s_exec		t_exec;
 typedef struct s_data		t_data;
-
 
 struct		s_pos
 {
@@ -108,105 +107,113 @@ struct		s_data
 	t_exec		exec;
 };
 
+/*-----------------src/draw-----------------*/
 
-void	ft_find_player_pos(char **tab, t_player *player);
-
-void	ft_clear_exec(t_exec *exec);
-void	ft_clear_parsing(t_parsing *parsing);
-
-void	t_pos_set_draw_max(t_pos *pos, int zoom, int x);
+//------------[  ft_draw_maps_2d.c  ]
 
 void	ft_draw_map_2d(t_data *data);
 
-void	ft_color_pixel(int color, int x, int y, t_data *data);
-
-
-
-
-
-
-
 int		ft_check_no_nl_in_maps(t_parsing *parsing);
-/*	src/init	*/
+/*-----------------src/init-----------------*/
 
-//		ft_init_struct.c
+//------------[  ft_init_struct.c  ]
 
 void	ft_init_parsing(t_parsing *parsing);
 void	ft_init_data(t_data *data);
 
-//		ft_init_mlx.c
+//------------[  ft_init_mlx.c  ]
 
 int		ft_init_mlx(t_data *data);
 
-/*	src/parsing	*/
-//		ft_check_format_save_color.c
+/*-----------------src/parsing-----------------*/
+//------------[  ft_check_format_save_color.c  ]
 
 int		ft_check_format_save_color(t_parsing *parsing);
 
-//		ft_check_maps_closed.c
+//------------[  ft_check_maps_closed.c  ]
 
 int		ft_check_maps_closed(t_parsing *parsing, char **tab);
 
-//		ft_check_maps.c
+//------------[  ft_check_maps.c  ]
 
 int		ft_check_maps(t_parsing *parsing);
 
-//		ft_check_param.c
+//------------[  ft_check_param.c  ]
 
 int		ft_check_param(t_parsing *parsing);
 
-//		ft_clear_str_of_texture.c
+//------------[  ft_clear_str_of_texture.c  ]
 
 int		ft_clear_parameters(t_parsing *parsing);
 
-//		ft_find_param.c
+//------------[  ft_find_param.c  ]
 
 int		ft_find_line_texture(t_parsing *parsing, int i, int j);
 
-//		ft_extract_map.c
+//------------[  ft_extract_map.c  ]
 
 int		ft_extract_map(t_parsing *parsing);
 
-//		ft_parsing_cub.c
+//------------[  ft_find_player_pos.c  ]
+
+void	ft_find_player_pos(char **tab, t_player *player);
+
+//------------[  ft_parsing_cub.c  ]
 
 int		ft_parsing_cub(t_data *data, char *scene_cub);
 
-/*	src/utils	*/
-
-//		event/ft_key_event.c
+/*-----------------src/utils-----------------*/
+//------------[  event/ft_key_event.c  ]
 
 int		ft_key_press(int keycode, void *param);
 
-//		event/ft_is_event.c
+//------------[  event/ft_is_event.c  ]
 
 int		ft_is_player_move(int keycode);
 int		ft_is_camera_move(int keycode);
 int		ft_refresh_event(int keycode);
 
-//		ft_close.c
+//------------[  ft_close.c  ]
 
 int		ft_clean_close(t_data *data, int error);
 int		ft_cross(t_data *data);
 
-//		ft_error.c
+//------------[  ft_color.c  ]
+
+void	ft_color_pixel(int color, int x, int y, t_data *data);
+
+//------------[  ft_error.c  ]
 
 int		ft_error_parsing(char *str, char *type);
 
-//ft_get_file_in_oneline.c
+//------------[  ft_get_file_in_oneline.c  ]
 
 int		ft_get_all_file(t_data *data, int fd, int error);
 
-//		ft_is.c
+//------------[  ft_is.c  ]
 
 int		ft_is_player_char(int c);
 int		ft_is_invalid_neighbor(char c);
 int		ft_is_valid_char(int c);
 
-/*	src/utils_struct	*/
+//------------[  ft_print_settings.c  ]
 
-//		t_gnl.c
+void	ft_print_settings(void);
+
+/*-----------------src/utils_struct-----------------*/
+
+//------------[  ft_clear_struct.c  ]
+
+void	ft_clear_exec(t_exec *exec);
+void	ft_clear_parsing(t_parsing *parsing);
+
+//------------[  t_gnl.c  ]
 
 void	t_gnl_clear(t_parsing *parsing);
 int		t_gnl_add_end(t_parsing *parsing, char *str);
+
+//------------[  t_pos.c  ]
+
+void	t_pos_set_draw_max(t_pos *pos, int zoom, int x);
 
 #endif

@@ -73,7 +73,8 @@ SRC_UTILS		:=		ft_close.c						\
 						ft_color.c						\
 						ft_error.c						\
 						ft_get_file_in_oneline.c		\
-						ft_is.c
+						ft_is.c							\
+						ft_print_settings.c
 
 
 SRC_U_EVENT		:=		ft_is_event.c					\

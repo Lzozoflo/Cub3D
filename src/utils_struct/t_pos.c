@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 09:44:21 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/18 16:49:58 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/19 09:20:49 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,4 @@ void	t_pos_set_draw_max(t_pos *pos, int zoom, int x)
 		}
 		pos->px_x = cal;
 	}
-
 }

@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:59:35 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/18 17:14:26 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/19 09:20:36 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int	ft_check_pos(t_player *p, double x, double y)
 	return (tab[cy][cx] == '1');
 
 }
-
 
 static int	ft_wasd(int keycode, t_player *player)
 {

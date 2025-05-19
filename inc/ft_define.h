@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 17:32:29 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/18 17:12:23 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/19 09:13:35 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@
 # define PX_GRAY       0x888888
 # define PX_GRAY_DARK  0x444444
 
-
-# define MS 0.2
+// Mouvement speed
+# define MS 3
 
 # define ERROR_EXTENSION " has a bad extension."
 # define ERROR_OPEN " can't be open."

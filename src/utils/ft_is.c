@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 09:16:51 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/18 15:35:20 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/19 09:20:21 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	ft_is_invalid_neighbor(char c)
 {
 	return (c == '0' || ft_is_player_char(c));
 }
-
 
 int	ft_is_valid_char(int c)
 {
