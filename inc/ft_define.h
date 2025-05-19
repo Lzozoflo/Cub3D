@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 17:32:29 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/19 10:22:43 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/19 13:50:32 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@
 
 # define ERROR_RGB_FORMAT "R,G,B Format is not correct: "
 # define ERROR_RGB_VALUE "R,G,B Wrong value: "
+# define ERROR_RGS_SPACE " has separate parametes.\n"
 
 # define ERROR_INVALID_CHAR "Invalid char in the maps."
 # define ERROR_ZERO_PLAYER "Zero player was define."

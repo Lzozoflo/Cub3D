@@ -6,12 +6,13 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 17:09:23 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/17 17:08:27 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/19 13:24:34 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 #include "ft_debug.h"
+#include "ft_define.h"
 #include "libft.h"
 
 static void	ft_swap_ptr(char **str, char **tab)
@@ -42,13 +43,7 @@ static int	ft_check_one_parameters(char **str)
 	{
 		ft_putstr_fd("Error\n", 2);
 		ft_putstr_fd(tab[0], 2);
-		ft_putstr_fd(" has multiply parametes:\n", 2);
-		i = 0;
-		while (tab[++i])
-		{
-			ft_putstr_fd(tab[i], 2);
-			ft_putstr_fd("\n", 2);
-		}
+		ft_putstr_fd(ERROR_RGS_SPACE, 2);
 		ft_freetab(tab, 0);
 		return (-1);
 	}

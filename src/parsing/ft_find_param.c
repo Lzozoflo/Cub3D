@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 09:23:09 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/18 15:24:58 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/19 13:13:22 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,39 +28,46 @@ static int	ft_check_double(char **str, char *str_int_tab, char *find)
 
 static int	ft_find_line_floor_sky_or_error(t_parsing *parsing, int i, int j)
 {
-	if (ft_strncmp(&parsing->tab[i][j], "F ", 2) == 0)
+	const char	*str = &parsing->tab[i][j];
+
+	if (ft_strncmp(str, "F", 1) == 0 && ft_is_white_space(str[1]))
 	{
 		if (ft_check_double(&parsing->str_floor, parsing->tab[i], "F "))
 			return (1);
 	}
-	else if (ft_strncmp(&parsing->tab[i][j], "C ", 2) == 0)
+	else if (ft_strncmp(str, "C", 1) == 0 && ft_is_white_space(str[1]))
 	{
 		if (ft_check_double(&parsing->str_sky, parsing->tab[i], "C "))
 			return (1);
 	}
 	else
+	{
+		debug_put_str(ERROR_BAD_PARAM, parsing->tab[i], 40, 400);
 		return (ft_error_parsing(ERROR_BAD_PARAM, NULL));
+	}
 	return (0);
 }
 
 int	ft_find_line_texture(t_parsing *parsing, int i, int j)
 {
-	if (ft_strncmp(&parsing->tab[i][j], "EA ", 3) == 0)
+	const char	*str = &parsing->tab[i][j];
+
+	if (ft_strncmp(str, "EA", 2) == 0 && ft_is_white_space(str[2]))
 	{
 		if (ft_check_double(&parsing->texture_ea, parsing->tab[i], "EA "))
 			return (1);
 	}
-	else if (ft_strncmp(&parsing->tab[i][j], "NO ", 3) == 0)
+	else if (ft_strncmp(str, "NO", 2) == 0 && ft_is_white_space(str[2]))
 	{
 		if (ft_check_double(&parsing->texture_no, parsing->tab[i], "NO "))
 			return (1);
 	}
-	else if (ft_strncmp(&parsing->tab[i][j], "SO ", 3) == 0)
+	else if (ft_strncmp(str, "SO", 2) == 0 && ft_is_white_space(str[2]))
 	{
 		if (ft_check_double(&parsing->texture_so, parsing->tab[i], "SO "))
 			return (1);
 	}
-	else if (ft_strncmp(&parsing->tab[i][j], "WE ", 3) == 0)
+	else if (ft_strncmp(str, "WE", 2) == 0 && ft_is_white_space(str[2]))
 	{
 		if (ft_check_double(&parsing->texture_we, parsing->tab[i], "WE "))
 			return (1);

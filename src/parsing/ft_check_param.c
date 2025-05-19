@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 10:41:28 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/18 15:24:54 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/19 13:37:38 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ static int	ft_open_texture(t_parsing *parsing)
 
 static int	ft_check_extension_texture(t_parsing *parsing)
 {
-	if (!ft_is_good_extension(parsing->texture_ea, ".xpm", 5))
-		return (ft_error_parsing("texture 'EA'", ERROR_EXTENSION));
 	if (!ft_is_good_extension(parsing->texture_no, ".xpm", 5))
 		return (ft_error_parsing("texture 'NO'", ERROR_EXTENSION));
 	if (!ft_is_good_extension(parsing->texture_so, ".xpm", 5))
 		return (ft_error_parsing("texture 'SO'", ERROR_EXTENSION));
 	if (!ft_is_good_extension(parsing->texture_we, ".xpm", 5))
 		return (ft_error_parsing("texture 'WE'", ERROR_EXTENSION));
+	if (!ft_is_good_extension(parsing->texture_ea, ".xpm", 5))
+		return (ft_error_parsing("texture 'EA'", ERROR_EXTENSION));
 	return (0);
 }
 
