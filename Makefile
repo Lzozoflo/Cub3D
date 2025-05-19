@@ -43,7 +43,8 @@ INC				:=		ft_cub.h						\
 						ft_define.h
 
 
-SRC				:=		main.c
+SRC				:=		main.c							\
+						ft_start.c
 
 SRC_DEBUG		:=		ft_debug_maps.c					\
 						ft_debug_str_int.c				\

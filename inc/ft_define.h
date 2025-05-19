@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_define.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 17:32:29 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/19 10:22:43 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/19 10:46:19 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FT_DEFINE_H
 
 // Window params
-# define WIN_SIZE 2000
+# define WIN_SIZE 1000
 # define WIN_NAME "Cub3D"
 
 // Key_press

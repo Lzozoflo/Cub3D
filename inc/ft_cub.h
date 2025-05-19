@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cub.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/19 09:47:49 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/19 17:00:48 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_texture	t_texture;
 typedef struct s_player		t_player;
 typedef struct s_exec		t_exec;
 typedef struct s_data		t_data;
+typedef struct s_start		t_start;
 
 struct		s_pos
 {
@@ -70,9 +71,19 @@ struct		s_player
 {
 	double		pos_y;
 	double		pos_x;
-	int			dir_y;
-	int			dir_x;
+	int			dir_y; //N = 0
+	int			dir_x; //N = 1
+	int			dir_z; //N = 0
+	double		fov_x;
+	double		fov_y;
 	t_data		*data;
+};
+
+struct s_start
+{
+	int	nx, ny, sx, sy, ex, ey, ox, oy;
+	int	nx2, ny2, sx2, sy2, ex2, ey2, ox2, oy2;
+	float	cx, cy, cz, ix, iy, iz;
 };
 
 struct		s_exec
@@ -85,6 +96,7 @@ struct		s_exec
 	t_texture		texture;
 	t_player		player;
 	t_pos			pos;
+	t_start			s;
 	int				zoom;
 };
 
@@ -106,6 +118,9 @@ struct		s_data
 	t_parsing	parsing;
 	t_exec		exec;
 };
+
+
+int	ft_start(t_exec *e, t_data *d);
 
 /*-----------------src/draw-----------------*/
 
