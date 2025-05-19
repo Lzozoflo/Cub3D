@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 17:32:29 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/19 13:50:32 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/19 14:10:41 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@
 # define ERROR_ZERO_PLAYER "Zero player was define."
 # define ERROR_TWO_PLAYER "Two player was define."
 # define ERROR_MAP_SEPARATE "A new line in a maps was not accepted."
-# define ERROR_MAP_CLOSE "A Player or a Ground not on the maps."
+# define ERROR_MAP_CLOSE "Adjacent to a playable empty space."// revoir unclose/space_in.cub
 
 # define ERROR_MAPS_NULL "The maps was not found."
 # define ERROR_DOUBLE_PARAM "This parameters was found 2 time: "
