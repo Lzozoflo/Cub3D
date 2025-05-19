@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 12:51:58 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/18 15:24:30 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/19 09:59:46 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 static void	ft_hook_event(t_data *data)
 {
 	mlx_hook(data->win, KeyPress, KeyPressMask, ft_key_press, data);
-	mlx_mouse_hook(data->win, NULL, data);
+	// mlx_mouse_hook(data->win, NULL, data);
 	mlx_hook(data->win, DestroyNotify, StructureNotifyMask, ft_cross, data);
 }
 

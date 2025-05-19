@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 17:32:29 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/19 09:13:35 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/19 10:22:43 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FT_DEFINE_H
 
 // Window params
-# define WIN_SIZE 1000
+# define WIN_SIZE 2000
 # define WIN_NAME "Cub3D"
 
 // Key_press
@@ -42,13 +42,13 @@
 	// Blue opaque
 # define PX_BLUEO 0xFF0000FF
 	// Green opaque
-# define PX_GREENO 0xFF00FF00
+# define PX_GREENO     0xFF00FF00
 # define PX_GRAY_LIGHT 0xCCCCCC
 # define PX_GRAY       0x888888
 # define PX_GRAY_DARK  0x444444
 
 // Mouvement speed
-# define MS 3
+# define MS 1
 
 # define ERROR_EXTENSION " has a bad extension."
 # define ERROR_OPEN " can't be open."
