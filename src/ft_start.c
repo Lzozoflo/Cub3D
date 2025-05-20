@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/05/20 11:57:28 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/20 12:35:49 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,6 @@ double	ft_find_t(t_exec *e, char c)
 int	ft_intersection(t_exec *e, t_data *d, char c)
 {
 	double	t;
-	int		px;
-	int		py;
 
 	t = ft_find_t(e, c);
 	if (t <= 0.0)
@@ -77,22 +75,22 @@ int	ft_intersection(t_exec *e, t_data *d, char c)
 	{
 		// px = (int)((e->s.ix + 1) * (WIN_SIZE / 2.0));
 		// py = (int)((1.0 - e->s.iz) * (WIN_SIZE - 1));
-		px = (int)((e->s.ix + 5) * (WIN_SIZE / 10.0));
-		py = (int)((1.5 - e->s.iz) * (WIN_SIZE / 3.0));
-		if (px >= 0 && px < WIN_SIZE && py >= 0 && py < WIN_SIZE)
+		e->s.px = (int)((e->s.ix + 5) * (WIN_SIZE / 10.0));
+		e->s.py = (int)((1.5 - e->s.iz) * (WIN_SIZE / 3.0));
+		if (e->s.px >= 0 && e->s.px < WIN_SIZE && e->s.py >= 0 && e->s.py < WIN_SIZE)
 		{
 			if (c == 'n')
-				ft_color_pixel(0xFFFFFF, px, py, d);
+				ft_color_pixel(0xFFFFFF, e->s.px, e->s.py, d);
 			else if (c == 'e')
 			{
-				ft_color_pixel(0xFF0000, px, py, d);
+				ft_color_pixel(0xFF0000, e->s.px, e->s.py, d);
 			}
 			else if (c == 'w')
 			{
-				ft_color_pixel(0x0000FF, px, py, d);
+				ft_color_pixel(0x0000FF, e->s.px, e->s.py, d);
 			}
 			else if (c == 's')
-				ft_color_pixel(0x00FF00, px, py, d);
+				ft_color_pixel(0x00FF00, e->s.px, e->s.py, d);
 		}
 	}
 	return (1);
@@ -220,7 +218,6 @@ int	ft_start(t_exec *e, t_data *d)
 	ft_north(e, d);
 	ft_east(e, d);
 	ft_west(e, d);
-
 	return (1);
 }
 
@@ -232,3 +229,5 @@ int	ft_start(t_exec *e, t_data *d)
 	e->s.sy2 = -3;
 
 	*/
+
+	//p31 bandes

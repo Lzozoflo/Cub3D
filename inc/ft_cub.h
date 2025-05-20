@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/20 09:56:04 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/20 12:21:00 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ struct s_start
 {
 	int	nx, ny, sx, sy, ex, ey, ox, oy;
 	int	nx2, ny2, sx2, sy2, ex2, ey2, ox2, oy2;
+	int	px, py;
 	float	cx, cy, cz, ix, iy, iz;
 	double fov, rh, rv;
 };
