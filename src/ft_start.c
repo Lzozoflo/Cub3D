@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/05/20 18:25:46 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/20 18:38:14 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	ft_start(t_exec *e, t_data *d)
 	ft_north(e, d);
 	ft_east(e, d);
 	ft_west(e, d);
-	//ft_south(e, d);
+	ft_south(e, d);
 	mlx_put_image_to_window(d->mlx, d->win, d->img.img_ptr, 0, 0);
 	return (1);
 }

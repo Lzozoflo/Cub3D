@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 13:16:30 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/05/20 18:25:39 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/20 18:51:10 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,6 @@ int	ft_intersection(t_exec *e, t_data *d, char c)
 	if (t <= 0.0)
 		return (0);
 	ft_intersection_coord(e, t);
-
 	if (e->s.iz >= 0.0 && e->s.iz < 1.0)
 	{
 		e->s.px = (int)((e->s.ix + 5) * (WIN_SIZE / 10.0));
@@ -136,4 +135,3 @@ int	ft_intersection(t_exec *e, t_data *d, char c)
 	}
 	return (1);
 }
-
