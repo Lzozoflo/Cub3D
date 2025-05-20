@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/20 15:05:36 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/20 18:05:13 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,8 +130,16 @@ void	ft_east(t_exec *e, t_data *d);
 void	ft_west(t_exec *e, t_data *d);
 void	ft_south(t_exec *e, t_data *d);
 void	ft_init_camera(t_exec *e);
-void	ft_radius(t_exec *e, int i, int j, char c);
+void	ft_director_vector(t_exec *e, int i, int j, char c);
 void	ft_fov_h_and_v_ratio(t_exec *e);
+double	ft_find_t(t_exec *e, char c);
+
+
+
+
+
+
+
 /*-----------------src/draw-----------------*/
 
 //------------[  ft_draw_maps_2d.c  ]

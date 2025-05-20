@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 13:16:30 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/05/20 16:44:01 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/20 18:25:39 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,16 @@
 #include <stdlib.h>
 #include <math.h>
 
+/**
+ * @brief `intersection between plane and straight line for west ans south wall`
+ *
+ * p.23 :	-(aOx + bOy + cOz + d)	--> numerator
+ *			/ (aux + buy + cuz)		--> denominator
+ *
+ * 			a, b, c, d : coord north, south, east or west
+ * 			ux, uy, uz : vectore director = dir_x, dir_y, dir_z
+ * 			Ox, Oy, Oz : camera = cx, cy, cz
+ */
 static void	ft_find_t_w_s(t_exec *e, char c, double *n, double *d)
 {
 	if (c == 'w')
@@ -39,9 +49,16 @@ static void	ft_find_t_w_s(t_exec *e, char c, double *n, double *d)
 /**
  * @brief `intersection between plane and straight line`
  *
- * p.23
+ * p.23 :	-(aOx + bOy + cOz + d)	--> numerator
+ *			/ (aux + buy + cuz)		--> denominator
+ *
+ * 			a, b, c, d : coord north, south, east or west
+ * 			ux, uy, uz : vectore director = dir_x, dir_y, dir_z
+ * 			Ox, Oy, Oz : camera = cx, cy, cz
+ *
+ * @return double @return t
  */
-static double	ft_find_t(t_exec *e, char c)
+double	ft_find_t(t_exec *e, char c)
 {
 	double	numerator;
 	double	denominator;
@@ -72,9 +89,9 @@ static double	ft_find_t(t_exec *e, char c)
 /**
  * @brief `intersection coord`
  *
- *	I = O + u * t //p.23
- * u = dir
- * O = camera = c
+ *p.23 :	I = O + u * t p.23
+ *			u = dir
+ *			O = camera = c
  */
 static void	ft_intersection_coord(t_exec *e, double t)
 {
@@ -86,19 +103,20 @@ static void	ft_intersection_coord(t_exec *e, double t)
 /**
  * @brief `if intersection, color`
  *
- * p.31
+ * p.25 :	t <= 0 to check if intersection point is behind us.
+ * p.25 :	iz >= 0 and iz < 1 because wall have size 1.
+ * 			size 1 thanks to tab**
+ * p.31 :	px and py
  */
 int	ft_intersection(t_exec *e, t_data *d, char c)
 {
 	double	t;
-	// static int i = 0;
 
-	//printf("dir_y in ft_intersection: %f\n", e->player.dir_y);
 	t = ft_find_t(e, c);
-	// printf("t : %f\n", t);
 	if (t <= 0.0)
 		return (0);
 	ft_intersection_coord(e, t);
+
 	if (e->s.iz >= 0.0 && e->s.iz < 1.0)
 	{
 		e->s.px = (int)((e->s.ix + 5) * (WIN_SIZE / 10.0));
@@ -109,15 +127,7 @@ int	ft_intersection(t_exec *e, t_data *d, char c)
 			if (c == 'n')
 				ft_color_pixel(0xFFFFFF, e->s.px, e->s.py, d);
 			else if (c == 'e')
-			{
-				// if (i++ < 50)
-				// {
-				// 	printf(" rh = %f, dir_x = %f, t = %f, ix = %f, px = %d\n",
-				// 		e->s.rh, e->player.dir_x, t, e->s.ix, e->s.px);
-				// // }
-
 				ft_color_pixel(0xFF0000, e->s.px, e->s.py, d);
-			}
 			else if (c == 'w')
 				ft_color_pixel(0x0000FF, e->s.px, e->s.py, d);
 			else if (c == 's')
@@ -126,3 +136,4 @@ int	ft_intersection(t_exec *e, t_data *d, char c)
 	}
 	return (1);
 }
+
