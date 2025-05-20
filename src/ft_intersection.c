@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 13:16:30 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/05/20 18:51:10 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/20 18:57:27 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,10 @@ int	ft_intersection(t_exec *e, t_data *d, char c)
 {
 	double	t;
 
+	static int i = 0;
 	t = ft_find_t(e, c);
+	if (i++ < 10)
+		printf("t : %f\n", t);
 	if (t <= 0.0)
 		return (0);
 	ft_intersection_coord(e, t);
