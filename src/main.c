@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:58:30 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/20 12:25:03 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/20 14:07:41 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int ac, char **av, char **env)
 	if (!ft_init_mlx(&data))
 		return (1);
 	ft_print_settings();
-	ft_refresh_view(&data);
+	//ft_refresh_view(&data);
 	ft_start(&data.exec, &data);
 	mlx_loop(data.mlx);
 

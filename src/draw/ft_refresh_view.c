@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_refresh_view.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:25:27 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/19 09:48:36 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/20 14:07:39 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ void	ft_refresh_view(t_data *data)
 	ft_draw_sky_floor(data);
 	if (data->exec.zoom != -1)
 		ft_draw_map_tile(data);
-
+	//ft_start(&data->exec, data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img_ptr, 0, 0);
 }
