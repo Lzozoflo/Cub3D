@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 17:32:29 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/19 10:46:19 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/20 09:47:16 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,7 @@
 # define ERROR_MAPS_NULL "The maps was not found."
 # define ERROR_DOUBLE_PARAM "This parameters was found 2 time: "
 # define ERROR_BAD_PARAM "Unknown parameter."
+
+# define PI 3.14159265358979323846
 
 #endif

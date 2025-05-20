@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/19 17:00:48 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/20 09:56:04 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ struct		s_player
 {
 	double		pos_y;
 	double		pos_x;
-	int			dir_y; //N = 0
-	int			dir_x; //N = 1
-	int			dir_z; //N = 0
+	double			dir_y;
+	double			dir_x;
+	double			dir_z;
 	double		fov_x;
 	double		fov_y;
 	t_data		*data;
@@ -84,6 +84,7 @@ struct s_start
 	int	nx, ny, sx, sy, ex, ey, ox, oy;
 	int	nx2, ny2, sx2, sy2, ex2, ey2, ox2, oy2;
 	float	cx, cy, cz, ix, iy, iz;
+	double fov, rh, rv;
 };
 
 struct		s_exec
