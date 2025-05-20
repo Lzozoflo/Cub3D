@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_define.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 17:32:29 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/19 14:10:41 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/20 12:49:38 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FT_DEFINE_H
 
 // Window params
-# define WIN_SIZE 2000
+# define WIN_SIZE 1000
 # define WIN_NAME "Cub3D"
 
 // Key_press
@@ -66,5 +66,7 @@
 # define ERROR_MAPS_NULL "The maps was not found."
 # define ERROR_DOUBLE_PARAM "This parameters was found 2 time: "
 # define ERROR_BAD_PARAM "Unknown parameter."
+
+# define PI 3.14159265358979323846
 
 #endif
