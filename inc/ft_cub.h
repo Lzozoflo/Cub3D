@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/21 10:29:10 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/21 10:43:09 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ struct		s_exec
 	char			**tab;
 	t_texture		texture;
 	t_player		player;
-	t_minimap			pos;
+	t_minimap		mini;
 	int				zoom;
 };
 
@@ -225,6 +225,6 @@ int		t_gnl_add_end(t_parsing *parsing, char *str);
 
 //------------[  t_minimap.c  ]
 
-void	t_minimap_set_draw_max(t_minimap *pos, int zoom, int x);
+void	t_minimap_set_draw_max(t_minimap *pos, int zoom, int i);
 
 #endif
