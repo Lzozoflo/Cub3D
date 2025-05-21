@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   t_pos.c                                            :+:      :+:    :+:   */
+/*   t_minimap.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,30 +13,30 @@
 #include "ft_cub.h"
 #include "ft_define.h"
 
-void	t_pos_set_draw_max(t_pos *pos, int zoom, int x)
+void	t_minimap_set_draw_max(t_minimap *mini, int zoom, int x)
 {
-	int	cal;
+	int	base_pos;
 
 	if (zoom == 0)
-		cal = WIN_SIZE * 0.015;
+		base_pos = WIN_SIZE * 0.015;
 	else if (zoom == 1)
-		cal = WIN_SIZE * 0.045;
+		base_pos = WIN_SIZE * 0.045;
 	if (zoom == 0)
 	{
 		if (!x)
 		{
-			pos->size = WIN_SIZE * 0.03;
-			pos->px_y = cal;
+			mini->size = WIN_SIZE * 0.03;
+			mini->px_y = base_pos;
 		}
-		pos->px_x = cal;
+		mini->px_x = base_pos;
 	}
 	else if (zoom == 1)
 	{
 		if (!x)
 		{
-			pos->size = WIN_SIZE * 0.1;
-			pos->px_y = cal;
+			mini->size = WIN_SIZE * 0.1;
+			mini->px_y = base_pos;
 		}
-		pos->px_x = cal;
+		mini->px_x = base_pos;
 	}
 }

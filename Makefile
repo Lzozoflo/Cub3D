@@ -86,7 +86,7 @@ SRC_U_EVENT		:=		ft_is_event.c					\
 
 SRC_STRUCT		:=		ft_clear_struct.c				\
 						t_gnl.c							\
-						t_pos.c
+						t_minimap.c
 
 
 #############################################################################################

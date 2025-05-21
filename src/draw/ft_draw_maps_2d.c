@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 08:01:22 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/19 10:34:55 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/21 10:29:37 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static inline int	ft_color_for_square_px(int c)
 	return (0);
 }
 
-void	ft_draw_square_px(t_pos pos, t_data *data, int c)
+void	ft_draw_square_px(t_minimap pos, t_data *data, int c)
 {
 	const int	color = ft_color_for_square_px(c);
 	int			i;
@@ -50,7 +50,7 @@ static void	ft_draw_map(t_data *data, int y_start, int x_start, t_exec *exec)
 {
 	const char	*str = (const char *)exec->tab[y_start];
 	const int	max_width = exec->max_width;
-	t_pos		*pos;
+	t_minimap		*pos;
 	int			i;
 
 	i = 9;
@@ -64,7 +64,7 @@ static void	ft_draw_map(t_data *data, int y_start, int x_start, t_exec *exec)
 		pos->px_x += pos->size;
 		x_start++;
 	}
-	t_pos_set_draw_max(pos, exec->zoom, 1);
+	t_minimap_set_draw_max(pos, exec->zoom, 1);
 	pos->px_y += pos->size;
 }
 
@@ -96,15 +96,15 @@ void	ft_draw_map_tile(t_data *data)
 
 	i = 9;
 	exec = &data->exec;
-	t_pos_set_draw_max(&exec->pos, exec->zoom, 0);
-	x_start = round(exec->player.pos_x) - 4;
-	y_start = round(exec->player.pos_y) - 4;
+	t_minimap_set_draw_max(&exec->pos, exec->zoom, 0);
+	x_start = floor(exec->player.pos_x) - 4;
+	y_start = floor(exec->player.pos_y) - 4;
 	while (i-- && y_start < exec->max_height)
 	{
 		ft_draw_map(data, y_start, x_start, exec);
 		y_start++;
 	}
-	t_pos_set_draw_max(&exec->pos, exec->zoom, 0);
+	t_minimap_set_draw_max(&exec->pos, exec->zoom, 0);
 	i = exec->pos.size * 4.5;
 	y_start = exec->pos.px_y + i;
 	x_start = exec->pos.px_x + i;

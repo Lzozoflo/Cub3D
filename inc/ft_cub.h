@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/19 09:47:49 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/21 10:29:10 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "mlx.h"
 
 //typedef of all structure
-typedef struct s_pos		t_pos;
+typedef struct s_minimap	t_minimap;
 typedef struct s_gnl		t_gnl;
 typedef struct s_parsing	t_parsing;
 typedef struct s_image		t_image;
@@ -26,7 +26,7 @@ typedef struct s_player		t_player;
 typedef struct s_exec		t_exec;
 typedef struct s_data		t_data;
 
-struct		s_pos
+struct		s_minimap
 {
 	int	px_y;
 	int	px_x;
@@ -84,7 +84,7 @@ struct		s_exec
 	char			**tab;
 	t_texture		texture;
 	t_player		player;
-	t_pos			pos;
+	t_minimap			pos;
 	int				zoom;
 };
 
@@ -223,8 +223,8 @@ void	ft_clear_parsing(t_parsing *parsing);
 void	t_gnl_clear(t_parsing *parsing);
 int		t_gnl_add_end(t_parsing *parsing, char *str);
 
-//------------[  t_pos.c  ]
+//------------[  t_minimap.c  ]
 
-void	t_pos_set_draw_max(t_pos *pos, int zoom, int x);
+void	t_minimap_set_draw_max(t_minimap *pos, int zoom, int x);
 
 #endif
