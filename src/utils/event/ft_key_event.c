@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:59:35 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/19 09:35:55 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/21 12:53:25 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	ft_zoom_minimaps(t_data *data)
 {
 	int	*value;
 
-	value = &data->exec.zoom;
+	value = &data->exec.mini.zoom;
 	if (*value == -1)
 		*value = 0;
 	else if (*value == 0)
@@ -44,17 +44,16 @@ static int	ft_arrow(int keycode, t_data *data)
 	return (1);
 }
 
-int	ft_check_pos(t_player *p, double x, double y)
+int	ft_check_pos_colision(t_player *p, double x, double y)
 {
 	const t_exec	*exec = (const t_exec *)&p->data->exec;
 	const char		**tab = (const char **)exec->tab;
-	const int		cx = round(x);
-	const int		cy = round(y);
+	const int		cx = floor(x);
+	const int		cy = floor(y);
 
 	if (y < 0 || x < 0 || y >= exec->max_height || x >= exec->max_width)
 		return (1);
 	return (tab[cy][cx] == '1');
-
 }
 
 static int	ft_wasd(int keycode, t_player *player)
@@ -62,28 +61,28 @@ static int	ft_wasd(int keycode, t_player *player)
 	if (keycode == W)
 	{
 		debug_put_str("[w] is pressed", NULL, 2, 21);
-		if (ft_check_pos(player, player->pos_x, player->pos_y - MS))
+		if (ft_check_pos_colision(player, player->pos_x, player->pos_y - MS))
 			return (1);
 		player->pos_y -= MS;
 	}
 	else if (keycode == A)
 	{
 		debug_put_str("[a] is pressed", NULL, 2, 21);
-		if (ft_check_pos(player, player->pos_x - MS, player->pos_y))
+		if (ft_check_pos_colision(player, player->pos_x - MS, player->pos_y))
 			return (1);
 		player->pos_x -= MS;
 	}
 	else if (keycode == S)
 	{
 		debug_put_str("[s] is pressed", NULL, 2, 21);
-		if (ft_check_pos(player, player->pos_x , player->pos_y + MS))
+		if (ft_check_pos_colision(player, player->pos_x , player->pos_y + MS))
 			return (1);
 		player->pos_y += MS;
 	}
 	else if (keycode == D)
 	{
 		debug_put_str("[d] is pressed", NULL, 2, 21);
-		if (ft_check_pos(player, player->pos_x + MS, player->pos_y))
+		if (ft_check_pos_colision(player, player->pos_x + MS, player->pos_y))
 			return (1);
 		player->pos_x += MS;
 	}

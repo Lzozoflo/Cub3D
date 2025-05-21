@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/21 10:43:09 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/21 14:56:04 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,37 @@
 # include "mlx.h"
 
 //typedef of all structure
-typedef struct s_minimap	t_minimap;
-typedef struct s_gnl		t_gnl;
-typedef struct s_parsing	t_parsing;
-typedef struct s_image		t_image;
-typedef struct s_texture	t_texture;
-typedef struct s_player		t_player;
-typedef struct s_exec		t_exec;
-typedef struct s_data		t_data;
+typedef struct s_draw_minimap	t_draw_minimap;
+typedef struct s_minimap		t_minimap;
+typedef struct s_gnl			t_gnl;
+typedef struct s_parsing		t_parsing;
+typedef struct s_image			t_image;
+typedef struct s_texture		t_texture;
+typedef struct s_player			t_player;
+typedef struct s_exec			t_exec;
+typedef struct s_data			t_data;
+
+
+struct		s_draw_minimap
+{
+	int			px_x;
+	int			px_y;
+	int			x;
+	int			y;
+};
 
 struct		s_minimap
 {
-	int	px_y;
-	int	px_x;
-	int	size;
+	double	frac_x;
+	double	frac_y;
+	int		int_x;
+	int		int_y;
+	int		tile_start_x;
+	int		tile_start_y;
+	int		zoom;
+	int		tile_size;
+	int		px_y_x_min;
+	int		px_y_x_max;
 };
 
 struct		s_gnl
@@ -85,7 +102,6 @@ struct		s_exec
 	t_texture		texture;
 	t_player		player;
 	t_minimap		mini;
-	int				zoom;
 };
 
 struct		s_image
@@ -111,7 +127,7 @@ struct		s_data
 
 //------------[  ft_draw_maps_2d.c  ]
 
-void	ft_draw_map_tile(t_data *data);
+void	ft_draw_map_tile(t_data *d, t_exec *e, t_minimap *m, t_player *p);
 
 //------------[  ft_draw_sky_floor.c  ]
 
@@ -225,6 +241,6 @@ int		t_gnl_add_end(t_parsing *parsing, char *str);
 
 //------------[  t_minimap.c  ]
 
-void	t_minimap_set_draw_max(t_minimap *pos, int zoom, int i);
-
+void	t_minimap_set(t_minimap *mini, t_player *p);
+t_draw_minimap	t_draw_minimap_set(int px_x, int px_y, int x, int y);
 #endif
