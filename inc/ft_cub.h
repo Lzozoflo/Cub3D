@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/21 14:56:04 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/23 11:23:06 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,34 @@ typedef struct s_data			t_data;
 
 struct		s_draw_minimap
 {
-	int			px_x;
-	int			px_y;
 	int			x;
 	int			y;
+	int			px_x;
+	int			px_y;
+	int		tile_size;
 };
 
 struct		s_minimap
 {
-	double	frac_x;
-	double	frac_y;
-	int		int_x;
-	int		int_y;
-	int		tile_start_x;
-	int		tile_start_y;
 	int		zoom;
 	int		tile_size;
-	int		px_y_x_min;
-	int		px_y_x_max;
+	// 1plane pos in tab
+	int		tab_start_x;//need to know the charatere to draw the right color when its negatif we just skip it
+	int		tab_start_y;//need to know the charatere to draw the right color when its negatif we just skip it
+	int		tab_end_x;//need to know the charatere to draw the right color when its negatif we just skip it
+	int		tab_end_y;//need to know the charatere to draw the right color when its negatif we just skip it
+
+	// 2plane px by tab
+	int		tab_px_x_min;//in px the pos on the left top corner (red) when its hitting this value we print in win_yx_min
+	int		tab_px_y_min;//in px the pos on the left top corner (red) when its hitting this value we print in win_yx_min
+	int		tab_px_x_max;//in px the pos on the right bottom corner (red) when its hitting this value we print in win_yx_max
+	int		tab_px_y_max;//in px the pos on the right bottom corner (red) when its hitting this value we print in win_yx_max
+
+	// 3plane
+	int		win_xy_min;//pos of the first px for the minimaps in the img RED its will change with the zoom
+	int		win_xy_max;//pos of the first px for the minimaps in the img RED its will change with the zoom
+
+
 };
 
 struct		s_gnl
@@ -241,6 +251,6 @@ int		t_gnl_add_end(t_parsing *parsing, char *str);
 
 //------------[  t_minimap.c  ]
 
-void	t_minimap_set(t_minimap *mini, t_player *p);
+void	t_minimaps_set(t_minimap *mini, t_player *p, int zoom);
 t_draw_minimap	t_draw_minimap_set(int px_x, int px_y, int x, int y);
 #endif

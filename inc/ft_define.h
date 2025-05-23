@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 17:32:29 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/21 15:22:00 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/23 12:28:58 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FT_DEFINE_H
 
 // Window params
-# define WIN_SIZE 2000
+# define WIN_SIZE 1000
 # define WIN_NAME "Cub3D"
 
 // Key_press
@@ -48,7 +48,7 @@
 # define PX_GRAY_DARK  0x444444
 
 // Mouvement speed
-# define MS 1
+# define MS 0.1
 //	number of tile on the minimaps
 # define MINIMAPS_SCREEN_TILES 10
 
