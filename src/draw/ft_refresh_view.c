@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:25:27 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/26 12:45:29 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/26 12:50:02 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	ft_refresh_view(t_data *d)
 	m = &exec->mini;
 	ft_bzero(d->img.addr, res);
 	ft_draw_sky_floor(d);
+	ft_start(&d->exec, d);
 	if (m->zoom != -1){
 		t_minimaps_set(m, &exec->player, m->zoom);
 		ft_draw_minimap(d, m);
