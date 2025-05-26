@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/23 11:23:06 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/26 09:23:45 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include "mlx.h"
 
 //typedef of all structure
-typedef struct s_draw_minimap	t_draw_minimap;
 typedef struct s_minimap		t_minimap;
 typedef struct s_gnl			t_gnl;
 typedef struct s_parsing		t_parsing;
@@ -27,37 +26,20 @@ typedef struct s_player			t_player;
 typedef struct s_exec			t_exec;
 typedef struct s_data			t_data;
 
-
-struct		s_draw_minimap
-{
-	int			x;
-	int			y;
-	int			px_x;
-	int			px_y;
-	int		tile_size;
-};
-
 struct		s_minimap
 {
 	int		zoom;
 	int		tile_size;
-	// 1plane pos in tab
-	int		tab_start_x;//need to know the charatere to draw the right color when its negatif we just skip it
-	int		tab_start_y;//need to know the charatere to draw the right color when its negatif we just skip it
-	int		tab_end_x;//need to know the charatere to draw the right color when its negatif we just skip it
-	int		tab_end_y;//need to know the charatere to draw the right color when its negatif we just skip it
-
-	// 2plane px by tab
-	int		tab_px_x_min;//in px the pos on the left top corner (red) when its hitting this value we print in win_yx_min
-	int		tab_px_y_min;//in px the pos on the left top corner (red) when its hitting this value we print in win_yx_min
-	int		tab_px_x_max;//in px the pos on the right bottom corner (red) when its hitting this value we print in win_yx_max
-	int		tab_px_y_max;//in px the pos on the right bottom corner (red) when its hitting this value we print in win_yx_max
-
-	// 3plane
-	int		win_xy_min;//pos of the first px for the minimaps in the img RED its will change with the zoom
-	int		win_xy_max;//pos of the first px for the minimaps in the img RED its will change with the zoom
-
-
+	int		tab_start_x;
+	int		tab_start_y;
+	int		tab_end_x;
+	int		tab_end_y;
+	int		win_xy_min;
+	int		win_xy_max;
+	double	center;
+	double	div;
+	double	offset_x;
+	double	offset_y;
 };
 
 struct		s_gnl
@@ -137,7 +119,7 @@ struct		s_data
 
 //------------[  ft_draw_maps_2d.c  ]
 
-void	ft_draw_map_tile(t_data *d, t_exec *e, t_minimap *m, t_player *p);
+void	ft_draw_minimap(t_data *data, t_minimap *m, t_player  *p);
 
 //------------[  ft_draw_sky_floor.c  ]
 
@@ -252,5 +234,4 @@ int		t_gnl_add_end(t_parsing *parsing, char *str);
 //------------[  t_minimap.c  ]
 
 void	t_minimaps_set(t_minimap *mini, t_player *p, int zoom);
-t_draw_minimap	t_draw_minimap_set(int px_x, int px_y, int x, int y);
 #endif
