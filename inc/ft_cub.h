@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/26 11:32:12 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/26 12:23:15 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,15 +123,13 @@ struct		s_data
 
 /*MATHS*/
 int		ft_start(t_exec *e, t_data *d);
-int	ft_intersection(t_exec *e, t_data *d, char c, int i, int j);
-void	ft_north(t_exec *e, t_data *d);
-void	ft_east(t_exec *e, t_data *d);
-void	ft_west(t_exec *e, t_data *d);
-void	ft_south(t_exec *e, t_data *d);
+int		ft_intersection(t_exec *e, t_data *d, char c, int i, int j);
+void	ft_init_point(t_exec *e);
 void	ft_init_camera(t_exec *e);
 void	ft_director_vector(t_exec *e, int i, int j, char c);
 void	ft_fov_h_and_v_ratio(t_exec *e);
 double	ft_find_t(t_exec *e, char c);
+int		ft_left_right(int keycode, t_exec *e, t_data *d);
 
 
 

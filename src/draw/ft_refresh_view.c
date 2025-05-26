@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:25:27 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/20 16:56:00 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/26 12:12:30 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_refresh_view(t_data *data)
 {
 	const size_t	res = WIN_SIZE * WIN_SIZE * data->img.bpp;
 
-
+	data->exec.player.angle = 0;
 	ft_bzero(data->img.addr, res);
 	ft_draw_sky_floor(data);
 	if (data->exec.zoom != -1)
