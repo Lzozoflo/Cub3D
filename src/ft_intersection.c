@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_intersection.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 13:16:30 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/05/26 16:19:12 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/26 16:34:35 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,17 @@ static void	ft_find_t_w_s(t_exec *e, char c, double *n, double *d)
 {
 	if (c == 'w')
 	{
-		*n = -((e->s.ox * e->s.cx) + (e->s.oy * e->s.cy) + (e->s.ox2
-					* e->s.cz) + e->s.oy2);
-		*d = ((e->s.ox * e->player.dir_x)
-				+ (e->s.oy * e->player.dir_y)
-				+ (e->s.ox2 * e->player.dir_z));
+		*n = -((e->s.w.a * e->s.cx) + (e->s.w.b * e->s.cy) + (e->s.w.c
+					* e->s.cz) + e->s.w.d);
+		*d = ((e->s.w.a * e->player.dir_x) + (e->s.w.b * e->player.dir_y)
+				+ (e->s.w.c * e->player.dir_z));
 	}
 	else if (c == 's')
 	{
-		*n = -((e->s.sx * e->s.cx) + (e->s.sy * e->s.cy) + (e->s.sx2
-					* e->s.cz) + e->s.sy2);
-		*d = ((e->s.sx * e->player.dir_x)
-				+ (e->s.sy * e->player.dir_y)
-				+ (e->s.sx2 * e->player.dir_z));
+		*n = -((e->s.s.a * e->s.cx) + (e->s.s.b * e->s.cy) + (e->s.s.c
+					* e->s.cz) + e->s.s.d);
+		*d = ((e->s.s.a * e->player.dir_x) + (e->s.s.b * e->player.dir_y)
+				+ (e->s.s.c * e->player.dir_z));
 	}
 }
 
@@ -67,17 +65,17 @@ double	ft_find_t(t_exec *e, char c)
 	numerator = 0;
 	if (c == 'n')
 	{
-		numerator = -((e->s.nx * e->s.cx) + (e->s.ny * e->s.cy) + (e->s.nx2
-					* e->s.cz) + e->s.ny2);
-		denominator = ((e->s.nx * e->player.dir_x) + (e->s.ny * e->player.dir_y)
-				+ (e->s.nx2 * e->player.dir_z));
+		numerator = -((e->s.n.a * e->s.cx) + (e->s.n.b * e->s.cy) + (e->s.n.c
+					* e->s.cz) + e->s.n.d);
+		denominator = ((e->s.n.a * e->player.dir_x) + (e->s.n.b * e->player.dir_y)
+				+ (e->s.n.c * e->player.dir_z));
 	}
 	else if (c == 'e')
 	{
-		numerator = -((e->s.ex * e->s.cx) + (e->s.ey * e->s.cy) + (e->s.ex2
-					* e->s.cz) + e->s.ey2);
-		denominator = ((e->s.ex * e->player.dir_x) + (e->s.ey * e->player.dir_y)
-				+ (e->s.ex2 * e->player.dir_z));
+		numerator = -((e->s.e.a * e->s.cx) + (e->s.e.b * e->s.cy) + (e->s.e.c
+					* e->s.cz) + e->s.e.d);
+		denominator = ((e->s.e.a * e->player.dir_x) + (e->s.e.b * e->player.dir_y)
+				+ (e->s.e.c * e->player.dir_z));
 	}
 	else
 		ft_find_t_w_s(e, c, &numerator, &denominator);

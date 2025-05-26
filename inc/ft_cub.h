@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cub.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/26 16:24:28 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/26 16:35:06 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,13 +101,7 @@ struct		s_player
 typedef struct s_start		t_start;
 struct s_start
 {
-	int	nx, ny, sx, sy, ex, ey, ox, oy;//supp
-	int	nx2, ny2, sx2, sy2, ex2, ey2, ox2, oy2;//supp
 	double	cx, cy, cz, ix, iy, iz; //seulement iz util
-
-
-
-
 	t_plane			n;
 	t_plane			s;
 	t_plane			e;
