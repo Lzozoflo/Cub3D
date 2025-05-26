@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 11:59:59 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/18 15:24:45 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/26 12:37:38 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 
 static int	ft_create_bordered_tab(t_parsing *parsing)
 {
-	const int	new_y = parsing->max_height + 2;
-	const int	new_x = parsing->max_width + 2;
-	int			i;
+	const size_t	new_y = parsing->max_height + 2;
+	const size_t	new_x = parsing->max_width + 2;
+	size_t			i;
 
 	parsing->dup_check = ft_calloc(new_y + 1, sizeof(char *));
 	if (!parsing->dup_check)
@@ -88,6 +88,7 @@ static int	ft_check_all_string_in_maps(t_parsing *parsing, char **tab)
 	int	j;
 
 	j = -1;
+	v_return = 0;
 	while (tab[++j])
 	{
 		v_return = ft_check_all_char_in_maps(parsing, tab[j]);
