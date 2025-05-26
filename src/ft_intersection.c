@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_intersection.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 13:16:30 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/05/26 14:33:14 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/26 16:19:12 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ static void	ft_intersection_coord(t_exec *e, double t)
 {
 	e->s.ix = e->s.cx + t * e->player.dir_x;
 	e->s.iy = e->s.cy + t * e->player.dir_y;
-	e->s.iz = e->s.cz + t * e->player.dir_z;
+	e->s.iz = e->s.cz + t * e->player.dir_z;//peu etre return
 }
 
 /**

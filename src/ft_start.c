@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_start.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/05/26 13:49:01 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/26 16:17:32 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,36 +36,18 @@ void	ft_fov_h_and_v_ratio(t_exec *e)
  *
  * y = -1 to north
  */
-void	ft_director_vector(t_exec *e, int i, int j, char c)
+void	ft_director_vector(t_exec *e, int i, int j)
 {
-	// if (c == 'w')
-	// {
-	// 	e->player.dir_x = -1;
-	// 	e->player.dir_y = ((i - WIN_SIZE * 0.5) * e->s.rh);
-	// 	e->player.dir_z = (-(j - WIN_SIZE * 0.5) * e->s.rv);
-	// }
-	// else if (c == 's')
-	// {
-	// 	e->player.dir_x = ((i - WIN_SIZE * 0.5) * e->s.rh);
-	// 	e->player.dir_y = 1;
-	// 	e->player.dir_z = (-(j - WIN_SIZE * 0.5) * e->s.rv);
-	// }
-	// else if (c == 'n')
-	// {
-	// 	e->player.dir_x = ((i - WIN_SIZE * 0.5) * e->s.rh);
-	// 	e->player.dir_y = -1;
-	// 	e->player.dir_z = (WIN_SIZE * 0.5 - j) * e->s.rv;
-	// }
-	// else if (c == 'e')
-	// {
-	// 	e->player.dir_x = 1;
-	// 	e->player.dir_y = ((i - WIN_SIZE * 0.5) * e->s.rh);
-	// 	e->player.dir_z = (WIN_SIZE * 0.5 - j) * e->s.rv;
-	// }
-	(void)c;
-	e->player.dir_x = ((i - WIN_SIZE * 0.5) * e->s.rh);
-	e->player.dir_y = -1;
-	e->player.dir_z = (WIN_SIZE * 0.5 - j) * e->s.rv;
+	if (e->player.dir_y)
+	{
+		e->player.dir_x = ((i - WIN_SIZE * 0.5) * e->s.rh);
+		e->player.dir_z = (WIN_SIZE * 0.5 - j) * e->s.rv;
+	}
+	else
+	{
+		e->player.dir_y = ((i - WIN_SIZE * 0.5) * e->s.rh);
+		e->player.dir_z = (WIN_SIZE * 0.5 - j) * e->s.rv;
+	}
 }
 
 
@@ -108,7 +90,7 @@ int	ft_start(t_exec *e, t_data *d)
 		j = 0;
 		while (j < WIN_SIZE)
 		{
-			ft_director_vector(e, i, j, 'n');
+			ft_director_vector(e, i, j);
 			ft_move_l_r(e);
 			ft_intersection(e, d, 'n', i, j);
 			ft_intersection(e, d, 'e', i, j);

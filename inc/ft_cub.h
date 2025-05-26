@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cub.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/26 14:01:29 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/26 16:24:28 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "mlx.h"
 
 //typedef of all structure
+typedef struct s_plane			t_plane;
 typedef struct s_minimap		t_minimap;
 typedef struct s_gnl			t_gnl;
 typedef struct s_parsing		t_parsing;
@@ -25,6 +26,16 @@ typedef struct s_texture		t_texture;
 typedef struct s_player			t_player;
 typedef struct s_exec			t_exec;
 typedef struct s_data			t_data;
+
+
+struct s_plane
+{
+	int	a;
+	int	b;
+	int	c;
+	int	d;
+};
+
 
 struct		s_minimap
 {
@@ -77,23 +88,33 @@ struct		s_texture
 
 struct		s_player
 {
-	double		pos_y;
-	double		pos_x;
-	double		dir_y;
-	double		dir_x;
-	double		dir_z;
-	double		angle;
-	t_data		*data;
+	double			pos_z;//a voir avec gigi//cam
+	double			pos_x;//cam
+	double			pos_y;//cam
+	double			dir_y;
+	double			dir_x;
+	double			dir_z;
+	double			angle;
+	t_data			*data;
 };
 
 typedef struct s_start		t_start;
 struct s_start
 {
-	int	nx, ny, sx, sy, ex, ey, ox, oy;
-	int	nx2, ny2, sx2, sy2, ex2, ey2, ox2, oy2;
-	int	px, py;
-	double	cx, cy, cz, ix, iy, iz;
-	double fov, rh, rv;
+	int	nx, ny, sx, sy, ex, ey, ox, oy;//supp
+	int	nx2, ny2, sx2, sy2, ex2, ey2, ox2, oy2;//supp
+	double	cx, cy, cz, ix, iy, iz; //seulement iz util
+
+
+
+
+	t_plane			n;
+	t_plane			s;
+	t_plane			e;
+	t_plane			w;
+	double			fov;
+	double			rh;
+	double			rv;
 };
 
 struct		s_exec
@@ -134,7 +155,6 @@ int		ft_start(t_exec *e, t_data *d);
 int		ft_intersection(t_exec *e, t_data *d, char c, int i, int j);
 void	ft_init_point(t_exec *e);
 void	ft_init_camera(t_exec *e);
-void	ft_director_vector(t_exec *e, int i, int j, char c);
 void	ft_fov_h_and_v_ratio(t_exec *e);
 double	ft_find_t(t_exec *e, char c);
 int		ft_left_right(int keycode, t_exec *e, t_data *d);

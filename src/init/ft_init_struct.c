@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_struct.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 13:26:06 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/26 13:54:33 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/26 16:17:12 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@ static void	ft_init_texture(t_texture *texture)
 
 static void	ft_init_player(t_player *player)
 {
-	player->dir_x = 0;
-	player->dir_y = 0;
 	player->pos_x = 0;
 	player->pos_y = 0;
+	player->pos_z = 0.5;
+	player->dir_x = 0;
+	player->dir_y = 0;
 	player->angle = 0;
 }
 
