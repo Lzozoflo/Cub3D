@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/20 18:53:29 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/26 11:02:05 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ struct		s_data
 
 /*MATHS*/
 int		ft_start(t_exec *e, t_data *d);
-int		ft_intersection(t_exec *e, t_data *d, char c);
+int	ft_intersection(t_exec *e, t_data *d, char c, int i, int j);
 void	ft_north(t_exec *e, t_data *d);
 void	ft_east(t_exec *e, t_data *d);
 void	ft_west(t_exec *e, t_data *d);

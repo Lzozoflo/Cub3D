@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 13:16:30 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/05/20 18:57:27 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/26 11:06:20 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,32 +108,26 @@ static void	ft_intersection_coord(t_exec *e, double t)
  * 			size 1 thanks to tab**
  * p.31 :	px and py
  */
-int	ft_intersection(t_exec *e, t_data *d, char c)
+int	ft_intersection(t_exec *e, t_data *d, char c, int i, int j)
 {
 	double	t;
 
-	static int i = 0;
 	t = ft_find_t(e, c);
-	if (i++ < 10)
-		printf("t : %f\n", t);
 	if (t <= 0.0)
 		return (0);
 	ft_intersection_coord(e, t);
 	if (e->s.iz >= 0.0 && e->s.iz < 1.0)
 	{
-		e->s.px = (int)((e->s.ix + 5) * (WIN_SIZE / 10.0));
-		e->s.py = (int)((1.5 - e->s.iz) * (WIN_SIZE / 3.0));
-		if (e->s.px >= 0 && e->s.px < WIN_SIZE
-			&& e->s.py >= 0 && e->s.py < WIN_SIZE)
+		if (e->s.px >= 0 && e->s.px < WIN_SIZE && e->s.py >= 0 && e->s.py < WIN_SIZE)
 		{
 			if (c == 'n')
-				ft_color_pixel(0xFFFFFF, e->s.px, e->s.py, d);
+				ft_color_pixel(0xFFFFFF, i,j, d);
 			else if (c == 'e')
-				ft_color_pixel(0xFF0000, e->s.px, e->s.py, d);
+				ft_color_pixel(0xFF0000, i, j, d);
 			else if (c == 'w')
-				ft_color_pixel(0x0000FF, e->s.px, e->s.py, d);
+				ft_color_pixel(0x0000FF, i, j, d);
 			else if (c == 's')
-				ft_color_pixel(0xFF00FF, e->s.px, e->s.py, d);
+				ft_color_pixel(0xFF00FF, i, j, d);
 		}
 	}
 	return (1);

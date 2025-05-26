@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 15:04:03 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/05/20 18:12:17 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/26 11:09:51 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,96 +18,36 @@
 
 void	ft_north(t_exec *e, t_data *d)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
+	(void)d;
 	e->s.nx = 0;
 	e->s.ny = 1;
 	e->s.nx2 = 0;
 	e->s.ny2 = 3;
-	while (i < WIN_SIZE)
-	{
-		j = 0;
-		while (j < WIN_SIZE)
-		{
-			ft_director_vector(e, i, j, 'n');
-			ft_intersection(e, d, 'n');
-			j++;
-		}
-		i++;
-	}
 }
 
 void	ft_east(t_exec *e, t_data *d)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	e->s.ex = -1;
+	(void)d;
+	e->s.ex = 1;
 	e->s.ey = 0;
 	e->s.ex2 = 0;
-	e->s.ey2 = 3;
-	while (i < WIN_SIZE)
-	{
-		j = 0;
-		while (j < WIN_SIZE)
-		{
-			ft_director_vector(e, i, j, 'e');
-			ft_intersection(e, d, 'e');
-			j++;
-		}
-		i++;
-	}
+	e->s.ey2 = -3;
 }
 
 void	ft_west(t_exec *e, t_data *d)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	e->s.ox = -1;
+	(void)d;
+	e->s.ox = 1;
 	e->s.oy = 0;
 	e->s.ox2 = 0;
-	e->s.oy2 = -3;
-	while (i < WIN_SIZE)
-	{
-		j = 0;
-		while (j < WIN_SIZE)
-		{
-			ft_director_vector(e, i, j, 'w');
-			ft_intersection(e, d, 'w');
-			j++;
-		}
-		i++;
-	}
+	e->s.oy2 = 3;
 }
 
 void	ft_south(t_exec *e, t_data *d)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
 	e->s.sx = 0;
 	e->s.sy = 1;
 	e->s.sx2 = 0;
 	e->s.sy2 = -3;
-	while (i < WIN_SIZE)
-	{
-		j = 0;
-		while (j < WIN_SIZE)
-		{
-			ft_director_vector(e, i, j, 's');
-			ft_intersection(e, d, 's');
-			j++;
-		}
-		i++;
-	}
+	(void)d;
 }

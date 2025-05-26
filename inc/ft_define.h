@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 17:32:29 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/20 12:52:02 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/26 10:52:46 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FT_DEFINE_H
 
 // Window params
-# define WIN_SIZE 2000
+# define WIN_SIZE 800
 # define WIN_NAME "Cub3D"
 
 // Key_press

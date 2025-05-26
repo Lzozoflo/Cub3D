@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/05/20 18:54:13 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/26 11:10:38 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,34 +38,34 @@ void	ft_fov_h_and_v_ratio(t_exec *e)
  */
 void	ft_director_vector(t_exec *e, int i, int j, char c)
 {
-	// if (c == 'w')
-	// {
-	// 	e->player.dir_x = -1;
-	// 	e->player.dir_y = ((i - WIN_SIZE * 0.5) * e->s.rh);
-	// 	e->player.dir_z = (-(j - WIN_SIZE * 0.5) * e->s.rv);
-	// }
-	// else if (c == 's')
-	// {
-	// 	e->player.dir_x = ((i - WIN_SIZE * 0.5) * e->s.rh);
-	// 	e->player.dir_y = 1;
-	// 	e->player.dir_z = (-(j - WIN_SIZE * 0.5) * e->s.rv);
-	// }
-	// else if (c == 'n')
-	// {
-	// 	e->player.dir_x = ((i - WIN_SIZE * 0.5) * e->s.rh);
-	// 	e->player.dir_y = -1;
-	// 	e->player.dir_z = (WIN_SIZE * 0.5 - j) * e->s.rv;
-	// }
-	// else if (c == 'e')
-	// {
-	// 	e->player.dir_x = 1;
-	// 	e->player.dir_y = ((i - WIN_SIZE * 0.5) * e->s.rh);
-	// 	e->player.dir_z = (WIN_SIZE * 0.5 - j) * e->s.rv;
-	// }
-	(void)c;
-	e->player.dir_x = ((i - WIN_SIZE * 0.5) * e->s.rh);
-	e->player.dir_y = -1;
-	e->player.dir_z = (WIN_SIZE * 0.5 - j) * e->s.rv;
+	if (c == 'w')
+	{
+		e->player.dir_x = -1;
+		e->player.dir_y = ((i - WIN_SIZE * 0.5) * e->s.rh);
+		e->player.dir_z = (-(j - WIN_SIZE * 0.5) * e->s.rv);
+	}
+	else if (c == 's')
+	{
+		e->player.dir_x = ((i - WIN_SIZE * 0.5) * e->s.rh);
+		e->player.dir_y = 1;
+		e->player.dir_z = (-(j - WIN_SIZE * 0.5) * e->s.rv);
+	}
+	else if (c == 'n')
+	{
+		e->player.dir_x = ((i - WIN_SIZE * 0.5) * e->s.rh);
+		e->player.dir_y = -1;
+		e->player.dir_z = (WIN_SIZE * 0.5 - j) * e->s.rv;
+	}
+	else if (c == 'e')
+	{
+		e->player.dir_x = 1;
+		e->player.dir_y = ((i - WIN_SIZE * 0.5) * e->s.rh);
+		e->player.dir_z = (WIN_SIZE * 0.5 - j) * e->s.rv;
+	}
+	// (void)c;
+	// e->player.dir_x = ((i - WIN_SIZE * 0.5) * e->s.rh);
+	// e->player.dir_y = -1;
+	// e->player.dir_z = (WIN_SIZE * 0.5 - j) * e->s.rv;
 }
 
 /**
@@ -84,12 +84,31 @@ void	ft_init_camera(t_exec *e)
 
 int	ft_start(t_exec *e, t_data *d)
 {
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
 	ft_init_camera(e);
 	ft_fov_h_and_v_ratio(e);
-	//ft_north(e, d);
+	ft_north(e, d);
 	ft_east(e, d);
-	//ft_west(e, d);
-	//ft_south(e, d);
+	ft_west(e, d);
+	ft_south(e, d);
+	while (i < WIN_SIZE)
+	{
+		j = 0;
+		while (j < WIN_SIZE)
+		{
+			ft_director_vector(e, i, j, 'n');
+			ft_intersection(e, d, 'n', i, j);
+			ft_intersection(e, d, 'e', i, j);
+			ft_intersection(e, d, 'w', i, j);
+			ft_intersection(e, d, 's', i, j);
+			j++;
+		}
+		i++;
+	}
 	mlx_put_image_to_window(d->mlx, d->win, d->img.img_ptr, 0, 0);
 	return (1);
 }
