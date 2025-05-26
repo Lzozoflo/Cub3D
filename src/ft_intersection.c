@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 13:16:30 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/05/26 11:06:20 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/26 12:19:19 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,6 @@ static void	ft_intersection_coord(t_exec *e, double t)
  * p.25 :	t <= 0 to check if intersection point is behind us.
  * p.25 :	iz >= 0 and iz < 1 because wall have size 1.
  * 			size 1 thanks to tab**
- * p.31 :	px and py
  */
 int	ft_intersection(t_exec *e, t_data *d, char c, int i, int j)
 {
@@ -118,17 +117,14 @@ int	ft_intersection(t_exec *e, t_data *d, char c, int i, int j)
 	ft_intersection_coord(e, t);
 	if (e->s.iz >= 0.0 && e->s.iz < 1.0)
 	{
-		if (e->s.px >= 0 && e->s.px < WIN_SIZE && e->s.py >= 0 && e->s.py < WIN_SIZE)
-		{
-			if (c == 'n')
-				ft_color_pixel(0xFFFFFF, i,j, d);
-			else if (c == 'e')
-				ft_color_pixel(0xFF0000, i, j, d);
-			else if (c == 'w')
-				ft_color_pixel(0x0000FF, i, j, d);
-			else if (c == 's')
-				ft_color_pixel(0xFF00FF, i, j, d);
-		}
+		if (c == 'n')
+			ft_color_pixel(0xFFFFFF, i, j, d);
+		else if (c == 'e')
+			ft_color_pixel(0xFF0000, i, j, d);
+		else if (c == 'w')
+			ft_color_pixel(0x0000FF, i, j, d);
+		else if (c == 's')
+			ft_color_pixel(0xFF00FF, i, j, d);
 	}
 	return (1);
 }
