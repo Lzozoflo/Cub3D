@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/05/26 11:10:38 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/26 11:33:16 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	ft_fov_h_and_v_ratio(t_exec *e)
  */
 void	ft_director_vector(t_exec *e, int i, int j, char c)
 {
+	// e->player.angle;
 	if (c == 'w')
 	{
 		e->player.dir_x = -1;
@@ -62,10 +63,6 @@ void	ft_director_vector(t_exec *e, int i, int j, char c)
 		e->player.dir_y = ((i - WIN_SIZE * 0.5) * e->s.rh);
 		e->player.dir_z = (WIN_SIZE * 0.5 - j) * e->s.rv;
 	}
-	// (void)c;
-	// e->player.dir_x = ((i - WIN_SIZE * 0.5) * e->s.rh);
-	// e->player.dir_y = -1;
-	// e->player.dir_z = (WIN_SIZE * 0.5 - j) * e->s.rv;
 }
 
 /**

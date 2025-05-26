@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/26 11:02:05 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/26 11:32:12 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,7 @@ struct		s_player
 	double			dir_y;
 	double			dir_x;
 	double			dir_z;
-	double		fov_x;
-	double		fov_y;
+	double		angle;
 	t_data		*data;
 };
 
