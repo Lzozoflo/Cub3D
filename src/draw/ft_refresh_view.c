@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:25:27 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/26 12:12:30 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/26 12:57:53 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,21 @@
 #include "ft_define.h"
 #include "libft.h"
 
-void	ft_refresh_view(t_data *data)
+void	ft_refresh_view(t_data *d)
 {
-	const size_t	res = WIN_SIZE * WIN_SIZE * data->img.bpp;
+	const size_t	res = (size_t)(WIN_SIZE * WIN_SIZE * d->img.bpp);
+	t_exec			*exec;
+	t_minimap		*m;
 
-	data->exec.player.angle = 0;
-	ft_bzero(data->img.addr, res);
-	ft_draw_sky_floor(data);
-	if (data->exec.zoom != -1)
-		ft_draw_map_tile(data);
-	ft_start(&data->exec, data);
-	mlx_put_image_to_window(data->mlx, data->win, data->img.img_ptr, 0, 0);
+	exec = &d->exec;
+	m = &exec->mini;
+	ft_bzero(d->img.addr, res);
+	ft_draw_sky_floor(d);
+	ft_start(&d->exec, d);
+	if (m->zoom != -1){
+		t_minimaps_set(m, &exec->player, m->zoom);
+		ft_draw_minimap(d, m);
+		ft_draw_circle(d, m);
+	}
+	mlx_put_image_to_window(d->mlx, d->win, d->img.img_ptr, 0, 0);
 }

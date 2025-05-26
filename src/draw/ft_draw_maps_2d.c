@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 08:01:22 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/19 10:34:55 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/26 12:42:06 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "ft_define.h"
 #include <math.h>
 
-static inline int	ft_color_for_square_px(int c)
+static inline unsigned int	ft_color_map_tile_px(int c)
 {
 	if (c == '1')
 		return (PX_REDO);
@@ -27,109 +27,75 @@ static inline int	ft_color_for_square_px(int c)
 	return (0);
 }
 
-void	ft_draw_square_px(t_pos pos, t_data *data, int c)
+void ft_draw_circle(t_data *data, t_minimap *m)
 {
-	const int	color = ft_color_for_square_px(c);
-	int			i;
-	int			j;
+	const int	radius = (int)(m->tile_size * RADIUSPLAYER);
+	const int	r2 = radius * radius;
+	const int	c = (int)m->center;
+	int dy;
+	int dx;
 
-	j = 0;
-	while (j < pos.size)
+	dy = -radius;
+	while (dy <= radius)
 	{
-		i = 0;
-		while (i < pos.size)
+		dx = -radius;
+		while (dx <= radius)
 		{
-			ft_color_pixel(color, pos.px_x + i, pos.px_y + j, data);
-			i++;
+			if (dx * dx + dy * dy <= r2)
+				ft_color_pixel(PX_GRAY_DARK, c + dx, c + dy, data);
+			dx++;
 		}
-		j++;
+		dy++;
 	}
 }
 
-static void	ft_draw_map(t_data *data, int y_start, int x_start, t_exec *exec)
+static void	ft_draw_minimap_x(t_data *data, t_minimap *m, int py, int tile_y)
 {
-	const char	*str = (const char *)exec->tab[y_start];
-	const int	max_width = exec->max_width;
-	t_pos		*pos;
-	int			i;
+	const char		**tab = (const char **)data->exec.tab;
+	const int		wmax = m->win_xy_max;
+	int				tile_x;
+	unsigned int	color;
+	int				px;
 
-	i = 9;
-	pos = &exec->pos;
-	while (y_start >= 0 && i-- && x_start < max_width)
+	px = m->win_xy_min;
+	while (px < wmax)
 	{
-		if (x_start >= 0 && x_start < max_width)
+
+		tile_x = floor((px - m->offset_x) * m->div) + m->tab_start_x;
+		if (tile_x < 0)
 		{
-			ft_draw_square_px(*pos, data, str[x_start]);
+			px++;
+			continue ;
 		}
-		pos->px_x += pos->size;
-		x_start++;
+		if (tile_x >= data->exec.max_width)
+			return ;
+		color = ft_color_map_tile_px(tab[tile_y][tile_x]);
+		if (color != 0)
+			ft_color_pixel(color, px, py, data);
+		px++;
 	}
-	t_pos_set_draw_max(pos, exec->zoom, 1);
-	pos->px_y += pos->size;
 }
 
-void	ft_draw_circle(t_data *data, int cx, int cy, int radius)
+void	ft_draw_minimap(t_data *data, t_minimap *m)
 {
-	int	x;
-	int	y;
+	const int		start_y = m->tab_start_y;
+	const double	offy = m->offset_y;
+	const int		wmax = m->win_xy_max;
+	int				tile_y;
+	int				py;
 
-	y = -radius;
-	while (y <= radius)
+	py = m->win_xy_min;
+	while (py < wmax)
 	{
-		x = -radius;
-		while (x <= radius)
+		tile_y = floor((py - offy) * m->div) + start_y;
+		if (tile_y < 0)
 		{
-			if (x * x + y * y <= radius * radius)
-				ft_color_pixel(PX_GRAY, cx + x, cy + y, data);
-			x++;
+			py++;
+			continue ;
 		}
-		y++;
+		if (tile_y >= data->exec.max_height)
+			return ;
+		ft_draw_minimap_x(data, m, py, tile_y);
+		py++;
 	}
 }
-
-void	ft_draw_map_tile(t_data *data)
-{
-	t_exec	*exec;
-	int		y_start;
-	int		x_start;
-	int		i;
-
-	i = 9;
-	exec = &data->exec;
-	t_pos_set_draw_max(&exec->pos, exec->zoom, 0);
-	x_start = round(exec->player.pos_x) - 4;
-	y_start = round(exec->player.pos_y) - 4;
-	while (i-- && y_start < exec->max_height)
-	{
-		ft_draw_map(data, y_start, x_start, exec);
-		y_start++;
-	}
-	t_pos_set_draw_max(&exec->pos, exec->zoom, 0);
-	i = exec->pos.size * 4.5;
-	y_start = exec->pos.px_y + i;
-	x_start = exec->pos.px_x + i;
-	if (exec->zoom == 1)
-		ft_draw_circle(data, x_start, y_start, exec->pos.size >> 1);
-	else if (exec->zoom == 0)
-		ft_draw_circle(data, x_start, y_start, exec->pos.size >> 1);
-}
-
-// void	ft_draw_square_px(t_data *data, int c)
-// {
-// 	const int	color = ft_color_for_square_px(c);
-// 	int			i;
-// 	int			j;
-// 	int			size = 20; // taille du carré à tester
-
-// 	j = 0;
-// 	while (j < size)
-// 	{
-// 		i = 0;
-// 		while (i < size)
-// 		{
-// 			ft_color_pixel(color, j, i, data);
-// 			i++;
-// 		}
-// 		j++;
-// 	}
-// }

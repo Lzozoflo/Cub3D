@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 15:19:37 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/18 15:59:47 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/26 12:24:37 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_is_camera_move(int keycode)
 	return (keycode == LEFT || keycode == RIGHT);
 }
 
-int	ft_refresh_event(int keycode)
+int	ft_is_refresh_event(int keycode)
 {
 	return (ft_is_player_move(keycode) || ft_is_camera_move(keycode)
 		|| keycode == M);

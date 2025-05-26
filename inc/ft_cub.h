@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/26 12:23:15 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/26 12:58:18 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,29 @@
 # include "mlx.h"
 
 //typedef of all structure
-typedef struct s_pos		t_pos;
-typedef struct s_gnl		t_gnl;
-typedef struct s_parsing	t_parsing;
-typedef struct s_image		t_image;
-typedef struct s_texture	t_texture;
-typedef struct s_player		t_player;
-typedef struct s_exec		t_exec;
-typedef struct s_data		t_data;
-typedef struct s_start		t_start;
+typedef struct s_minimap		t_minimap;
+typedef struct s_gnl			t_gnl;
+typedef struct s_parsing		t_parsing;
+typedef struct s_image			t_image;
+typedef struct s_texture		t_texture;
+typedef struct s_player			t_player;
+typedef struct s_exec			t_exec;
+typedef struct s_data			t_data;
 
-struct		s_pos
+struct		s_minimap
 {
-	int	px_y;
-	int	px_x;
-	int	size;
+	int		zoom;
+	int		tile_size;
+	int		tab_start_x;
+	int		tab_start_y;
+	int		tab_end_x;
+	int		tab_end_y;
+	int		win_xy_min;
+	int		win_xy_max;
+	double	center;
+	double	div;
+	double	offset_x;
+	double	offset_y;
 };
 
 struct		s_gnl
@@ -78,6 +86,7 @@ struct		s_player
 	t_data		*data;
 };
 
+typedef struct s_start		t_start;
 struct s_start
 {
 	int	nx, ny, sx, sy, ex, ey, ox, oy;
@@ -96,9 +105,8 @@ struct		s_exec
 	char			**tab;
 	t_texture		texture;
 	t_player		player;
-	t_pos			pos;
+	t_minimap		mini;
 	t_start			s;
-	int				zoom;
 };
 
 struct		s_image
@@ -141,7 +149,8 @@ int		ft_left_right(int keycode, t_exec *e, t_data *d);
 
 //------------[  ft_draw_maps_2d.c  ]
 
-void	ft_draw_map_tile(t_data *data);
+void	ft_draw_circle(t_data *data, t_minimap *m);
+void	ft_draw_minimap(t_data *data, t_minimap *m);
 
 //------------[  ft_draw_sky_floor.c  ]
 
@@ -212,7 +221,7 @@ int		ft_key_press(int keycode, void *param);
 
 int		ft_is_player_move(int keycode);
 int		ft_is_camera_move(int keycode);
-int		ft_refresh_event(int keycode);
+int		ft_is_refresh_event(int keycode);
 
 //------------[  ft_close.c  ]
 
@@ -221,7 +230,7 @@ int		ft_cross(t_data *data);
 
 //------------[  ft_color.c  ]
 
-void	ft_color_pixel(int color, int x, int y, t_data *data);
+void	ft_color_pixel(unsigned int color, int x, int y, t_data *data);
 
 //------------[  ft_error.c  ]
 
@@ -253,8 +262,9 @@ void	ft_clear_parsing(t_parsing *parsing);
 void	t_gnl_clear(t_parsing *parsing);
 int		t_gnl_add_end(t_parsing *parsing, char *str);
 
-//------------[  t_pos.c  ]
+//------------[  t_minimap.c  ]
 
-void	t_pos_set_draw_max(t_pos *pos, int zoom, int x);
+void	t_minimaps_set(t_minimap *mini, t_player *p, int zoom);
+
 
 #endif
