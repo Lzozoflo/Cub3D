@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/05/26 12:23:45 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/26 13:49:01 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,6 @@ void	ft_fov_h_and_v_ratio(t_exec *e)
  */
 void	ft_director_vector(t_exec *e, int i, int j, char c)
 {
-	int dx, dy;
-	dx = e->player.dir_x;
-	dy = e->player.dir_y;
 	// if (c == 'w')
 	// {
 	// 	e->player.dir_x = -1;
@@ -69,7 +66,16 @@ void	ft_director_vector(t_exec *e, int i, int j, char c)
 	e->player.dir_x = ((i - WIN_SIZE * 0.5) * e->s.rh);
 	e->player.dir_y = -1;
 	e->player.dir_z = (WIN_SIZE * 0.5 - j) * e->s.rv;
+}
 
+
+void	ft_move_l_r(t_exec *e)
+{
+	int	dx;
+	int	dy;
+
+	dx = e->player.dir_x;
+	dy = e->player.dir_y;
 	e->player.dir_x = cos(e->player.angle) * dx - sin(e->player.angle) * dy;
 	e->player.dir_y = sin(e->player.angle) * dx + cos(e->player.angle) * dy;
 }
@@ -85,16 +91,6 @@ void	ft_init_camera(t_exec *e)
 	e->s.cx = 0;
 	e->s.cy = 0;
 	e->s.cz = 0.5;
-}
-
-int	ft_left_right(int keycode, t_exec *e, t_data *d)
-{
-	if (keycode == 65363)
-		e->player.angle += 0.1;
-	else if (keycode == 65361)
-		e->player.angle -= 0.1;
-	ft_start(e, d);
-	return (0);
 }
 
 int	ft_start(t_exec *e, t_data *d)
@@ -113,6 +109,7 @@ int	ft_start(t_exec *e, t_data *d)
 		while (j < WIN_SIZE)
 		{
 			ft_director_vector(e, i, j, 'n');
+			ft_move_l_r(e);
 			ft_intersection(e, d, 'n', i, j);
 			ft_intersection(e, d, 'e', i, j);
 			ft_intersection(e, d, 'w', i, j);
@@ -123,3 +120,14 @@ int	ft_start(t_exec *e, t_data *d)
 	}
 	return (1);
 }
+
+
+
+/*
+| Orientation | Angle (en radians) | Angle (en degrés) |
+| ----------- | ------------------ | ----------------- |
+| N (Nord)    | π/2                | 90°               |
+| S (Sud)     | 3π/2               | 270°              |
+| E (Est)     | 0                  | 0°                |
+| W (Ouest)   | π                  | 180°              |
+*/

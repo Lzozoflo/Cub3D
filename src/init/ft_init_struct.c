@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_struct.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 13:26:06 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/21 12:53:11 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/26 13:54:33 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static void	ft_init_player(t_player *player)
 	player->dir_y = 0;
 	player->pos_x = 0;
 	player->pos_y = 0;
+	player->angle = 0;
 }
 
 static void	ft_init_exec(t_exec *exec)

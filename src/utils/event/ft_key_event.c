@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:59:35 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/26 12:58:46 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/26 13:44:41 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,19 @@ static int	ft_zoom_minimaps(t_data *data)
 	return (0);
 }
 
-static int	ft_arrow(int keycode, t_data *data)
+static int	ft_arrow(int keycode, t_data *data, t_player *player)
 {
 	(void)data;
 	if (keycode == LEFT)
 	{
+		player->angle -= 0.1;
+		printf("angle : %f\n", player->angle);
 		debug_put_str("[LEFT] is pressed", NULL, 2, 21);
 	}
 	else if (keycode == RIGHT)
 	{
+		player->angle += 0.1;
+		printf("angle : %f\n", player->angle);
 		debug_put_str("[RIGHT] is pressed", NULL, 2, 21);
 	}
 	return (1);
@@ -103,7 +107,7 @@ int	ft_key_press(int keycode, void *param)
 	}
 	if (ft_is_player_move(keycode) && ft_wasd(keycode, &data->exec.player) == 0)
 		return (1);
-	if (ft_is_camera_move(keycode) && ft_arrow(keycode, data) == -1)
+	if (ft_is_camera_move(keycode) && ft_arrow(keycode, data, &data->exec.player) == -1)
 		return (1);
 	if (keycode == M && ft_zoom_minimaps(data))
 		return (1);
