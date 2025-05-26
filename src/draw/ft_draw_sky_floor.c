@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:37:37 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/19 09:50:54 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/26 12:37:18 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_draw_sky_floor(t_data *data)
 	const unsigned int	colorsky = data->exec.sky;
 	const unsigned int	colorfloor = data->exec.floor;
 	const size_t		size = WIN_SIZE >> 1;
-	size_t				y;
+	size_t					y;
 	int					x;
 
 	y = 0;

@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/26 09:23:45 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/26 12:32:07 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,8 @@ struct		s_data
 
 //------------[  ft_draw_maps_2d.c  ]
 
-void	ft_draw_minimap(t_data *data, t_minimap *m, t_player  *p);
+void	ft_draw_circle(t_data *data, t_minimap *m);
+void	ft_draw_minimap(t_data *data, t_minimap *m);
 
 //------------[  ft_draw_sky_floor.c  ]
 
@@ -190,7 +191,7 @@ int		ft_key_press(int keycode, void *param);
 
 int		ft_is_player_move(int keycode);
 int		ft_is_camera_move(int keycode);
-int		ft_refresh_event(int keycode);
+int		ft_is_refresh_event(int keycode);
 
 //------------[  ft_close.c  ]
 
@@ -199,7 +200,7 @@ int		ft_cross(t_data *data);
 
 //------------[  ft_color.c  ]
 
-void	ft_color_pixel(int color, int x, int y, t_data *data);
+void	ft_color_pixel(unsigned int color, int x, int y, t_data *data);
 
 //------------[  ft_error.c  ]
 
@@ -234,4 +235,6 @@ int		t_gnl_add_end(t_parsing *parsing, char *str);
 //------------[  t_minimap.c  ]
 
 void	t_minimaps_set(t_minimap *mini, t_player *p, int zoom);
+
+
 #endif

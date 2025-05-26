@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 07:44:44 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/23 11:29:08 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/26 11:43:18 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static int	ft_search_player(char c, int y, int x, t_player *player)
 		player->dir_y = 1;
 	else
 		return (0);
-	player->pos_y = y + 0.55;
-	player->pos_x = x + 0.55;
+	player->pos_y = y + 0.5;
+	player->pos_x = x + 0.5;
 	return (1);
 }
 

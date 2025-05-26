@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 08:01:22 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/26 09:40:23 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/26 12:42:06 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "ft_define.h"
 #include <math.h>
 
-static inline int	ft_color_map_tile_px(int c)
+static inline unsigned int	ft_color_map_tile_px(int c)
 {
 	if (c == '1')
 		return (PX_REDO);
@@ -27,21 +27,48 @@ static inline int	ft_color_map_tile_px(int c)
 	return (0);
 }
 
-void	ft_draw_minimap_x(t_data *data, t_minimap *m, int py, int tile_y)
+void ft_draw_circle(t_data *data, t_minimap *m)
 {
-	const char **tab = (const char **)data->exec.tab;
-	int	tile_x;
-	int	color;
-	int	wmax;
-	int	px;
+	const int	radius = (int)(m->tile_size * RADIUSPLAYER);
+	const int	r2 = radius * radius;
+	const int	c = (int)m->center;
+	int dy;
+	int dx;
 
-	wmax = m->win_xy_max;
+	dy = -radius;
+	while (dy <= radius)
+	{
+		dx = -radius;
+		while (dx <= radius)
+		{
+			if (dx * dx + dy * dy <= r2)
+				ft_color_pixel(PX_GRAY_DARK, c + dx, c + dy, data);
+			dx++;
+		}
+		dy++;
+	}
+}
+
+static void	ft_draw_minimap_x(t_data *data, t_minimap *m, int py, int tile_y)
+{
+	const char		**tab = (const char **)data->exec.tab;
+	const int		wmax = m->win_xy_max;
+	int				tile_x;
+	unsigned int	color;
+	int				px;
+
 	px = m->win_xy_min;
 	while (px < wmax)
 	{
-		tile_x = (int)floor((px - m->offset_x) * m->div) + m->tab_start_x;
-		if (tile_x < 0 || tile_x > m->tab_end_x)
+
+		tile_x = floor((px - m->offset_x) * m->div) + m->tab_start_x;
+		if (tile_x < 0)
+		{
+			px++;
 			continue ;
+		}
+		if (tile_x >= data->exec.max_width)
+			return ;
 		color = ft_color_map_tile_px(tab[tile_y][tile_x]);
 		if (color != 0)
 			ft_color_pixel(color, px, py, data);
@@ -49,22 +76,26 @@ void	ft_draw_minimap_x(t_data *data, t_minimap *m, int py, int tile_y)
 	}
 }
 
-void	ft_draw_minimap(t_data *data, t_minimap *m, t_player *p)
+void	ft_draw_minimap(t_data *data, t_minimap *m)
 {
 	const int		start_y = m->tab_start_y;
 	const double	offy = m->offset_y;
+	const int		wmax = m->win_xy_max;
 	int				tile_y;
-	int				wmax;
 	int				py;
 
-	t_minimaps_set(m, p, m->zoom);
-	wmax = m->win_xy_max;
 	py = m->win_xy_min;
 	while (py < wmax)
 	{
-		tile_y = (int)floor((py - offy) * m->div) + start_y;
-		if (!(tile_y < 0 || tile_y > m->tab_end_y))
-			ft_draw_minimap_x(data, m, py, tile_y);
+		tile_y = floor((py - offy) * m->div) + start_y;
+		if (tile_y < 0)
+		{
+			py++;
+			continue ;
+		}
+		if (tile_y >= data->exec.max_height)
+			return ;
+		ft_draw_minimap_x(data, m, py, tile_y);
 		py++;
 	}
 }

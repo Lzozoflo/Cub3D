@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 09:34:57 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/19 13:58:35 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/26 12:33:55 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "libft.h"
 #include <stdint.h>
 
-int	ft_rgb(unsigned char r, unsigned char g, unsigned char b)
+static unsigned int	ft_rgb(unsigned char r, unsigned char g, unsigned char b)
 {
 	return ((r << 16) | (g << 8) | b);
 }

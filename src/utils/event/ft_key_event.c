@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:59:35 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/21 12:53:25 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/26 12:36:40 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ static int	ft_arrow(int keycode, t_data *data)
 	return (1);
 }
 
-int	ft_check_pos_colision(t_player *p, double x, double y)
+static int	ft_check_pos_colision(t_player *p, double x, double y)
 {
 	const t_exec	*exec = (const t_exec *)&p->data->exec;
 	const char		**tab = (const char **)exec->tab;
-	const int		cx = floor(x);
-	const int		cy = floor(y);
+	const int		cx = (int)(floor(x));
+	const int		cy = (int)(floor(y));
 
 	if (y < 0 || x < 0 || y >= exec->max_height || x >= exec->max_width)
 		return (1);
@@ -62,30 +62,31 @@ static int	ft_wasd(int keycode, t_player *player)
 	{
 		debug_put_str("[w] is pressed", NULL, 2, 21);
 		if (ft_check_pos_colision(player, player->pos_x, player->pos_y - MS))
-			return (1);
+			return (-1);
 		player->pos_y -= MS;
 	}
 	else if (keycode == A)
 	{
 		debug_put_str("[a] is pressed", NULL, 2, 21);
 		if (ft_check_pos_colision(player, player->pos_x - MS, player->pos_y))
-			return (1);
+			return (-1);
 		player->pos_x -= MS;
 	}
 	else if (keycode == S)
 	{
 		debug_put_str("[s] is pressed", NULL, 2, 21);
 		if (ft_check_pos_colision(player, player->pos_x , player->pos_y + MS))
-			return (1);
+			return (-1);
 		player->pos_y += MS;
 	}
 	else if (keycode == D)
 	{
 		debug_put_str("[d] is pressed", NULL, 2, 21);
 		if (ft_check_pos_colision(player, player->pos_x + MS, player->pos_y))
-			return (1);
+			return (-1);
 		player->pos_x += MS;
 	}
+	// printf("pos y: %f, pos x %f\n", player->pos_y, player->pos_x);
 	return (1);
 }
 
@@ -100,16 +101,16 @@ int	ft_key_press(int keycode, void *param)
 		mlx_loop_end(data->mlx);
 		ft_clean_close(data, 0);
 	}
-	if (ft_is_player_move(keycode) && ft_wasd(keycode, &data->exec.player) == -1)
+	if (ft_is_player_move(keycode) && ft_wasd(keycode, &data->exec.player) == 0)
 		return (1);
 	if (ft_is_camera_move(keycode) && ft_arrow(keycode, data) == -1)
-		return (-1);
+		return (1);
 	if (keycode == M && ft_zoom_minimaps(data))
-		return (-1);
-	if (ft_is_player_move(keycode) || ft_is_camera_move(keycode) || keycode == M)
+		return (1);
+	if (ft_is_refresh_event(keycode))
 	{
-		debug_put_str("ft_key_press -> refresh view", NULL, 2, 21);
 		ft_refresh_view(data);
+		debug_put_str("ft_key_press -> refresh view", NULL, 2, 21);
 	}
 	return (1);
 }
