@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/26 12:44:20 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/05/26 12:48:16 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ struct		s_player
 	t_data		*data;
 };
 
+typedef struct s_start		t_start;
 struct s_start
 {
 	int	nx, ny, sx, sy, ex, ey, ox, oy;
@@ -105,6 +106,7 @@ struct		s_exec
 	t_texture		texture;
 	t_player		player;
 	t_minimap		mini;
+	t_start			s;
 };
 
 struct		s_image
