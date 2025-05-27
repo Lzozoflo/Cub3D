@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 15:04:03 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/05/27 13:40:25 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/27 15:56:30 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	ft_north_and_south_walls(t_data *d, char **tab)
 		{
 			ft_north(&d->exec.cardi, index, y);
 			index++;
-			// break ;
+			break ;
 		}
 		y--;
 	}
@@ -77,7 +77,7 @@ void	ft_north_and_south_walls(t_data *d, char **tab)
 		{
 			ft_south(&d->exec.cardi, index, y);
 			index++;
-			// break ;
+			break ;
 		}
 		y++;
 	}
@@ -99,7 +99,7 @@ void	ft_east_and_west_walls(t_data *d, char **tab)
 		{
 			ft_west(&d->exec.cardi, index, x);
 			index++;
-			// break ;
+			break ;
 		}
 		x--;
 	}
@@ -111,7 +111,7 @@ void	ft_east_and_west_walls(t_data *d, char **tab)
 		{
 			ft_east(&d->exec.cardi, index, x);
 			index++;
-			// break ;
+			break ;
 		}
 		x++;
 	}
