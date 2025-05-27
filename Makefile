@@ -46,7 +46,9 @@ INC				:=		ft_cub.h						\
 SRC				:=		main.c							\
 						ft_start.c						\
 						ft_intersection.c				\
-						ft_dirc.c
+						ft_cardinals.c					\
+						ft_init_cardinals.c				\
+						ft_init_math.c
 
 SRC_DEBUG		:=		ft_debug_maps.c					\
 						ft_debug_str_int.c				\

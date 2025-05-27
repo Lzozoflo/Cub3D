@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/26 16:35:06 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/27 13:41:02 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 
 # include "X.h"
 # include "mlx.h"
+# include "ft_define.h"
 
 //typedef of all structure
 typedef struct s_plane			t_plane;
+typedef struct s_cardinals		t_cardinals;
 typedef struct s_minimap		t_minimap;
 typedef struct s_gnl			t_gnl;
 typedef struct s_parsing		t_parsing;
@@ -36,6 +38,13 @@ struct s_plane
 	int	d;
 };
 
+struct s_cardinals
+{
+	t_plane	*n;
+	t_plane	*w;
+	t_plane	*e;
+	t_plane	*s;
+};
 
 struct		s_minimap
 {
@@ -91,6 +100,7 @@ struct		s_player
 	double			pos_z;//a voir avec gigi//cam
 	double			pos_x;//cam
 	double			pos_y;//cam
+	char			pos;
 	double			dir_y;
 	double			dir_x;
 	double			dir_z;
@@ -118,6 +128,7 @@ struct		s_exec
 	unsigned int	floor;
 	unsigned int	sky;
 	char			**tab;
+	t_cardinals		cardi;
 	t_texture		texture;
 	t_player		player;
 	t_minimap		mini;
@@ -145,14 +156,31 @@ struct		s_data
 
 
 /*MATHS*/
-int		ft_start(t_exec *e, t_data *d);
-int		ft_intersection(t_exec *e, t_data *d, char c, int i, int j);
-void	ft_init_point(t_exec *e);
-void	ft_init_camera(t_exec *e);
-void	ft_fov_h_and_v_ratio(t_exec *e);
-double	ft_find_t(t_exec *e, char c);
-int		ft_left_right(int keycode, t_exec *e, t_data *d);
 
+//------------[  ft_start.c  ]
+int		ft_start(t_exec *e, t_data *d);
+
+//------------[  ft_init_math.c  ]
+void	ft_fov_h_and_v_ratio(t_exec *e);
+void	ft_director_vector(t_exec *e, int i, int j);
+void	ft_move_l_r(t_exec *e);
+void	ft_init_camera(t_exec *e);
+
+//------------[  ft_intersection.c  ]
+double	ft_find_t(t_exec *e, char c);
+int		ft_intersection(t_data *d, char c, int i, int j);
+
+//------------[  ft_cardinals.c  ]
+void	ft_init_point(t_exec *e);
+void	ft_north_and_south_walls(t_data *d, char **tab);
+void	ft_east_and_west_walls(t_data *d, char **tab);
+
+//------------[  ft_init_cardinals.c  ]
+int		ft_malloc_cardi(t_data *d);
+void	ft_west(t_cardinals *c, int index, int x);
+void	ft_east(t_cardinals *c, int index, int x);
+void	ft_north(t_cardinals *c, int index, int y);
+void	ft_south(t_cardinals *c, int index, int y);
 
 
 

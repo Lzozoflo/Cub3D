@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 13:16:30 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/05/26 16:34:35 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/05/27 11:15:56 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ static void	ft_find_t_w_s(t_exec *e, char c, double *n, double *d)
 		*d = ((e->s.s.a * e->player.dir_x) + (e->s.s.b * e->player.dir_y)
 				+ (e->s.s.c * e->player.dir_z));
 	}
+	else
+	{
+		*d = 0;
+		*n = 0;
+	}
 }
 
 /**
@@ -67,14 +72,16 @@ double	ft_find_t(t_exec *e, char c)
 	{
 		numerator = -((e->s.n.a * e->s.cx) + (e->s.n.b * e->s.cy) + (e->s.n.c
 					* e->s.cz) + e->s.n.d);
-		denominator = ((e->s.n.a * e->player.dir_x) + (e->s.n.b * e->player.dir_y)
+		denominator = ((e->s.n.a * e->player.dir_x)
+				+ (e->s.n.b * e->player.dir_y)
 				+ (e->s.n.c * e->player.dir_z));
 	}
 	else if (c == 'e')
 	{
 		numerator = -((e->s.e.a * e->s.cx) + (e->s.e.b * e->s.cy) + (e->s.e.c
 					* e->s.cz) + e->s.e.d);
-		denominator = ((e->s.e.a * e->player.dir_x) + (e->s.e.b * e->player.dir_y)
+		denominator = ((e->s.e.a * e->player.dir_x)
+				+ (e->s.e.b * e->player.dir_y)
 				+ (e->s.e.c * e->player.dir_z));
 	}
 	else
@@ -95,7 +102,7 @@ static void	ft_intersection_coord(t_exec *e, double t)
 {
 	e->s.ix = e->s.cx + t * e->player.dir_x;
 	e->s.iy = e->s.cy + t * e->player.dir_y;
-	e->s.iz = e->s.cz + t * e->player.dir_z;//peu etre return
+	e->s.iz = e->s.cz + t * e->player.dir_z;//peut etre return
 }
 
 /**
@@ -105,15 +112,15 @@ static void	ft_intersection_coord(t_exec *e, double t)
  * p.25 :	iz >= 0 and iz < 1 because wall have size 1.
  * 			size 1 thanks to tab**
  */
-int	ft_intersection(t_exec *e, t_data *d, char c, int i, int j)
+int	ft_intersection(t_data *d, char c, int i, int j)
 {
 	double	t;
 
-	t = ft_find_t(e, c);
+	t = ft_find_t(&d->exec, c);
 	if (t <= 0.0)
 		return (0);
-	ft_intersection_coord(e, t);
-	if (e->s.iz >= 0.0 && e->s.iz < 1.0)
+	ft_intersection_coord(&d->exec, t);
+	if (d->exec.s.iz >= 0.0 && d->exec.s.iz < 1.0)
 	{
 		if (c == 'n')
 			ft_color_pixel(0xFFFFFF, i, j, d);
