@@ -6,29 +6,12 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 15:04:03 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/03 10:10:18 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/03 10:16:10 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 #include "ft_define.h"
-
-// e->s.n.a = 0;
-// e->s.n.b = 1;
-// e->s.n.c = 0;
-// e->s.n.d = 3;
-// e->s.e.a = 1;
-// e->s.e.b = 0;
-// e->s.e.c = 0;
-// e->s.e.d = -3;
-// e->s.w.a = 1;
-// e->s.w.b = 0;
-// e->s.w.c = 0;
-// e->s.w.d = 3;
-// e->s.s.a = 0;
-// e->s.s.b = 1;
-// e->s.s.c = 0;
-// e->s.s.d = -3;
 
 void	ft_init_point(t_exec *e)
 {
@@ -50,6 +33,14 @@ void	ft_init_point(t_exec *e)
 	e->s.s.d = e->cardi.s.d;
 }
 
+/**
+ * @brief `search north and south wall`
+ *
+ * p.30 : "The simplest way to navigate planes is
+ * to start at the player position index (O),
+ *  then increment or decrement this according
+ * to the direction of the ray"
+ */
 void	ft_north_and_south_walls(t_data *d, char **tab)
 {
 	int	x;
@@ -78,6 +69,14 @@ void	ft_north_and_south_walls(t_data *d, char **tab)
 	}
 }
 
+/**
+ * @brief `search east and south west`
+ *
+ * p.30 : "The simplest way to navigate planes is
+ * to start at the player position index (O),
+ *  then increment or decrement this according
+ * to the direction of the ray"
+ */
 void	ft_east_and_west_walls(t_data *d, char **tab)
 {
 	int	x;

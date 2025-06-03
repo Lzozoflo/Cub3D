@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/03 10:09:29 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/03 10:48:36 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,8 +157,22 @@ struct		s_data
 
 /*MATHS*/
 
-//------------[  ft_start.c  ]
-int		ft_start(t_exec *e, t_data *d);
+//------------[  ft_cardinals.c  ]
+void	ft_init_point(t_exec *e);
+void	ft_north_and_south_walls(t_data *d, char **tab);
+void	ft_east_and_west_walls(t_data *d, char **tab);
+
+//------------[  ft_check_walls.c  ]
+int		ft_check_north(t_data *d);
+int		ft_check_south(t_data *d);
+int		ft_check_east(t_data *d);
+int		ft_check_west(t_data *d);
+
+//------------[  ft_init_cardinals.c  ]
+void	ft_west(t_cardinals *c, int x);
+void	ft_east(t_cardinals *c, int x);
+void	ft_north(t_cardinals *c, int y);
+void	ft_south(t_cardinals *c, int y);
 
 //------------[  ft_init_math.c  ]
 void	ft_fov_h_and_v_ratio(t_exec *e);
@@ -166,26 +180,15 @@ void	ft_director_vector(t_exec *e, int i, int j);
 void	ft_move_l_r(t_exec *e);
 void	ft_init_camera(t_exec *e);
 
+//------------[  ft_intersection.c  ]
+void	ft_choose_t(t_data *d, int i, int j);
+
 //------------[  ft_math_calculation.c  ]
 double	ft_find_t(t_exec *e, char c);
 void	ft_intersection_coord(t_exec *e, double t);
 
-//------------[  ft_intersection.c  ]
-void	ft_choose_t(t_data *d, int i, int j);
-
-//------------[  ft_cardinals.c  ]
-void	ft_init_point(t_exec *e);
-void	ft_north_and_south_walls(t_data *d, char **tab);
-void	ft_east_and_west_walls(t_data *d, char **tab);
-
-//------------[  ft_init_cardinals.c  ]
-int		ft_malloc_cardi(t_data *d);
-void	ft_west(t_cardinals *c, int x);
-void	ft_east(t_cardinals *c, int x);
-void	ft_north(t_cardinals *c, int y);
-void	ft_south(t_cardinals *c, int y);
-
-
+//------------[  ft_start.c  ]
+int		ft_start(t_exec *e, t_data *d);
 
 
 

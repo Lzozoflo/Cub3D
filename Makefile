@@ -49,7 +49,8 @@ SRC				:=		main.c							\
 						ft_cardinals.c					\
 						ft_init_cardinals.c				\
 						ft_init_math.c					\
-						ft_math_calculation.c
+						ft_math_calculation.c			\
+						ft_check_walls.c
 
 SRC_DEBUG		:=		ft_debug_maps.c					\
 						ft_debug_str_int.c				\
