@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/05/27 15:33:50 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/03 09:22:09 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,7 @@ int	ft_start(t_exec *e, t_data *d)
 		{
 			ft_director_vector(e, i, j);
 			ft_move_l_r(e);
-			ft_intersection(d, 'n', i, j);
-			ft_intersection(d, 'e', i, j);
-			ft_intersection(d, 'w', i, j);
-			ft_intersection(d, 's', i, j);
+			ft_choose_t(d, i, j);
 			j++;
 		}
 		i++;

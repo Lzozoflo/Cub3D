@@ -48,7 +48,8 @@ SRC				:=		main.c							\
 						ft_intersection.c				\
 						ft_cardinals.c					\
 						ft_init_cardinals.c				\
-						ft_init_math.c
+						ft_init_math.c					\
+						ft_math_calculation.c
 
 SRC_DEBUG		:=		ft_debug_maps.c					\
 						ft_debug_str_int.c				\

@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/27 13:41:02 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/03 09:13:25 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,9 +166,12 @@ void	ft_director_vector(t_exec *e, int i, int j);
 void	ft_move_l_r(t_exec *e);
 void	ft_init_camera(t_exec *e);
 
-//------------[  ft_intersection.c  ]
+//------------[  ft_math_calculation.c  ]
 double	ft_find_t(t_exec *e, char c);
-int		ft_intersection(t_data *d, char c, int i, int j);
+void	ft_intersection_coord(t_exec *e, double t);
+
+//------------[  ft_intersection.c  ]
+void	ft_choose_t(t_data *d, int i, int j);
 
 //------------[  ft_cardinals.c  ]
 void	ft_init_point(t_exec *e);
