@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 13:16:30 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/03 12:25:17 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/03 13:00:25 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static void	ft_intersection_north(t_data *d, double *t, double *choosen_t,
 			if (*t < *choosen_t)
 			{
 				*choosen_t = *t;
-				// *color = 0xFFFFFF;
 				*color = ft_texture(d, 'n');
 			}
 		}
@@ -46,7 +45,6 @@ static void	ft_intersection_east(t_data *d, double *t, double *choosen_t,
 			if (*t < *choosen_t)
 			{
 				*choosen_t = *t;
-				// *color = 0xFF0000;
 				*color = ft_texture(d, 'e');
 			}
 		}
@@ -65,7 +63,6 @@ static void	ft_intersection_west(t_data *d, double *t, double *choosen_t,
 			if (*t < *choosen_t)
 			{
 				*choosen_t = *t;
-				// *color = 0x0000FF;
 				*color = ft_texture(d, 'w');
 			}
 		}
@@ -84,7 +81,6 @@ static void	ft_intersection_south(t_data *d, double *t, double *choosen_t,
 			if (*t < *choosen_t)
 			{
 				*choosen_t = *t;
-				// *color = 0xFF00FF;
 				*color = ft_texture(d, 's');
 			}
 		}
