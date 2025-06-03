@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 10:58:58 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/03 12:53:20 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/03 15:41:54 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,29 @@
 #include <math.h>
 #include <unistd.h>
 
+/**
+ * @brief
+ *
+ * d->exec.texture.height - 1 - coord_y because else pixel are inverted
+ */
 static int	ft_color_texture(t_data *d, char c, int coord_x, int coord_y)
 {
 	int	color;
 
+	int	y;
+
+	y = d->exec.texture.height - 1 - coord_y;
 	if (c == 'n')
-		color = d->exec.texture.data_no[coord_y * d->exec.texture.width
+		color = d->exec.texture.data_no[y * d->exec.texture.width
 			+ coord_x];
 	else if (c == 's')
-		color = d->exec.texture.data_so[coord_y * d->exec.texture.width
+		color = d->exec.texture.data_so[y * d->exec.texture.width
 			+ coord_x];
 	else if (c == 'e')
-		color = d->exec.texture.data_ea[coord_y * d->exec.texture.width
+		color = d->exec.texture.data_ea[y * d->exec.texture.width
 			+ coord_x];
 	else
-		color = d->exec.texture.data_we[coord_y * d->exec.texture.width
+		color = d->exec.texture.data_we[y * d->exec.texture.width
 			+ coord_x];
 	return (color);
 }
@@ -70,11 +78,13 @@ int	ft_texture(t_data *d, char c)
 		x = d->exec.s.iy - floor(d->exec.s.iy);
 		y = d->exec.s.iz - floor(d->exec.s.iz);
 	}
-	coord_x = (int)x * d->exec.texture.width;
-	coord_y = (int)y * d->exec.texture.height;
-	color = ft_color_texture(d, c, x, y);
+	coord_x = (int)(x * d->exec.texture.width);
+	coord_y = (int)(y * d->exec.texture.height);
+	color = ft_color_texture(d, c, coord_x, coord_y);
 	return (color);
 }
+
+
 
 int	ft_init_textures_e_w(t_data *d)
 {
