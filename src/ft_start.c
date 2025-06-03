@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/03 09:22:09 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/03 10:10:27 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ int	ft_start(t_exec *e, t_data *d)
 	j = 0;
 	ft_init_camera(e);
 	ft_fov_h_and_v_ratio(e);
-	if (ft_malloc_cardi(d) == -1) //MUST ADD FREE
-		return (-1);
 	ft_north_and_south_walls(d, d->exec.tab);
 	ft_east_and_west_walls(d, d->exec.tab);
 	ft_init_point(e);

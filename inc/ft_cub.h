@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/03 09:13:25 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/03 10:09:29 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ struct s_plane
 
 struct s_cardinals
 {
-	t_plane	*n;
-	t_plane	*w;
-	t_plane	*e;
-	t_plane	*s;
+	t_plane	n;
+	t_plane	w;
+	t_plane	e;
+	t_plane	s;
 };
 
 struct		s_minimap
@@ -180,10 +180,10 @@ void	ft_east_and_west_walls(t_data *d, char **tab);
 
 //------------[  ft_init_cardinals.c  ]
 int		ft_malloc_cardi(t_data *d);
-void	ft_west(t_cardinals *c, int index, int x);
-void	ft_east(t_cardinals *c, int index, int x);
-void	ft_north(t_cardinals *c, int index, int y);
-void	ft_south(t_cardinals *c, int index, int y);
+void	ft_west(t_cardinals *c, int x);
+void	ft_east(t_cardinals *c, int x);
+void	ft_north(t_cardinals *c, int y);
+void	ft_south(t_cardinals *c, int y);
 
 
 

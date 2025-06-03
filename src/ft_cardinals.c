@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 15:04:03 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/03 09:21:35 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/03 10:10:18 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,51 +32,46 @@
 
 void	ft_init_point(t_exec *e)
 {
-	e->s.w.a = e->cardi.w[0].a;
-	e->s.w.b = e->cardi.w[0].b;
-	e->s.w.c = e->cardi.w[0].c;
-	e->s.w.d = e->cardi.w[0].d;
-	e->s.e.a = e->cardi.e[0].a;
-	e->s.e.b = e->cardi.e[0].b;
-	e->s.e.c = e->cardi.e[0].c;
-	e->s.e.d = e->cardi.e[0].d;
-	e->s.n.a = e->cardi.n[0].a;
-	e->s.n.b = e->cardi.n[0].b;
-	e->s.n.c = e->cardi.n[0].c;
-	e->s.n.d = e->cardi.n[0].d;
-	e->s.s.a = e->cardi.s[0].a;
-	e->s.s.b = e->cardi.s[0].b;
-	e->s.s.c = e->cardi.s[0].c;
-	e->s.s.d = e->cardi.s[0].d;
+	e->s.w.a = e->cardi.w.a;
+	e->s.w.b = e->cardi.w.b;
+	e->s.w.c = e->cardi.w.c;
+	e->s.w.d = e->cardi.w.d;
+	e->s.e.a = e->cardi.e.a;
+	e->s.e.b = e->cardi.e.b;
+	e->s.e.c = e->cardi.e.c;
+	e->s.e.d = e->cardi.e.d;
+	e->s.n.a = e->cardi.n.a;
+	e->s.n.b = e->cardi.n.b;
+	e->s.n.c = e->cardi.n.c;
+	e->s.n.d = e->cardi.n.d;
+	e->s.s.a = e->cardi.s.a;
+	e->s.s.b = e->cardi.s.b;
+	e->s.s.c = e->cardi.s.c;
+	e->s.s.d = e->cardi.s.d;
 }
 
 void	ft_north_and_south_walls(t_data *d, char **tab)
 {
 	int	x;
 	int	y;
-	int	index;
 
 	x = d->exec.player.pos_x;
 	y = d->exec.player.pos_y;
-	index = 0;
 	while (y > 0)
 	{
 		if (tab[y][x] == '1')
 		{
-			ft_north(&d->exec.cardi, index, y);
-			index++;
+			ft_north(&d->exec.cardi, y);
 			break ;
 		}
 		y--;
 	}
-	index = 0;
 	y = d->exec.player.pos_y;
 	while (y < d->exec.max_height)
 	{
 		if (tab[y][x] == '1')
 		{
-			ft_south(&d->exec.cardi, index, y);
-			index++;
+			ft_south(&d->exec.cardi, y);
 			break ;
 		}
 		y++;
@@ -87,29 +82,24 @@ void	ft_east_and_west_walls(t_data *d, char **tab)
 {
 	int	x;
 	int	y;
-	int	index;
 
 	x = d->exec.player.pos_x;
 	y = d->exec.player.pos_y;
-	index = 0;
 	while (x > 0)
 	{
 		if (tab[y][x] == '1')
 		{
-			ft_west(&d->exec.cardi, index, x);
-			index++;
+			ft_west(&d->exec.cardi, x);
 			break ;
 		}
 		x--;
 	}
-	index = 0;
 	x = d->exec.player.pos_x;
 	while (x < d->exec.max_width)
 	{
 		if (tab[y][x] == '1')
 		{
-			ft_east(&d->exec.cardi, index, x);
-			index++;
+			ft_east(&d->exec.cardi, x);
 			break ;
 		}
 		x++;
