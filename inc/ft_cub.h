@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/03 10:48:36 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/03 12:34:23 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,15 @@ struct		s_parsing
 struct		s_texture
 {
 	void	*texture_ea;
+	int		*data_ea;
 	void	*texture_no;
+	int		*data_no;
 	void	*texture_so;
+	int		*data_so;
 	void	*texture_we;
+	int		*data_we;
+	int		width;
+	int		height;
 };
 
 struct		s_player
@@ -111,7 +117,7 @@ struct		s_player
 typedef struct s_start		t_start;
 struct s_start
 {
-	double	cx, cy, cz, ix, iy, iz; //seulement iz util
+	double	cx, cy, cz, ix, iy, iz;
 	t_plane			n;
 	t_plane			s;
 	t_plane			e;
@@ -190,6 +196,9 @@ void	ft_intersection_coord(t_exec *e, double t);
 //------------[  ft_start.c  ]
 int		ft_start(t_exec *e, t_data *d);
 
+//------------[  ft_start.c  ]
+int	ft_init_textures(t_data *d);
+int		ft_texture(t_data *d, char c);
 
 
 

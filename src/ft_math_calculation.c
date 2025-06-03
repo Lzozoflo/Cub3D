@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 09:11:56 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/03 10:11:36 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/03 10:50:19 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,5 @@ void	ft_intersection_coord(t_exec *e, double t)
 {
 	e->s.ix = e->s.cx + t * e->player.dir_x;
 	e->s.iy = e->s.cy + t * e->player.dir_y;
-	e->s.iz = e->s.cz + t * e->player.dir_z; // peut etre return
+	e->s.iz = e->s.cz + t * e->player.dir_z;
 }
