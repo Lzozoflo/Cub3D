@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 13:16:30 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/03 09:21:55 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/03 09:28:17 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,13 @@ static void	ft_intersection_south(t_data *d, double *t, double *choosen_t,
 /**
  * @brief `if intersection, color + find the nearest t`
  *
+ * p.30 :	"So, simply stop at the first wall and compare
+ * the distance (t) of the closest wall on the x-axis with
+ * the one closest to the y-axis. We can therefore display
+ * a different color/texture depending on the cardinal point."
+ *
  * p.25 :	t <= 0 to check if intersection point is behind us.
+ *
  * p.25 :	iz >= 0 and iz < 1 because wall have size 1.
  * 			size 1 thanks to tab**
  */

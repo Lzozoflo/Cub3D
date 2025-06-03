@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 09:11:56 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/03 09:22:30 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/03 09:28:53 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,13 @@ static void	ft_find_t_w_s(t_exec *e, char c, double *n, double *d)
  * @brief `intersection between plane and straight line`
  *
  * p.23 :	-(aOx + bOy + cOz + d)	--> numerator
+ *
  *			/ (aux + buy + cuz)		--> denominator
  *
  * 			a, b, c, d : coord north, south, east or west
+ *
  * 			ux, uy, uz : vectore director = dir_x, dir_y, dir_z
+ *
  * 			Ox, Oy, Oz : camera = cx, cy, cz
  *
  * @return double @return t
@@ -92,7 +95,9 @@ double	ft_find_t(t_exec *e, char c)
  * @brief `intersection coord`
  *
  *p.23 :	I = O + u * t p.23
+
  *			u = dir
+
  *			O = camera = c
  */
 void	ft_intersection_coord(t_exec *e, double t)

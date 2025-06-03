@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 10:07:56 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/03 08:46:35 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/03 09:34:41 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
  * @brief `horizontal and vertical distance between radius + fov`
  *
  * p.11 PI / 3
- * p.13
+ * p.13 RH and RV
  */
 void	ft_fov_h_and_v_ratio(t_exec *e)
 {
@@ -83,6 +83,8 @@ void	ft_move_l_r(t_exec *e)
 	dy = e->player.dir_y;
 	e->player.dir_x = cos(e->player.angle) * dx - sin(e->player.angle) * dy;
 	e->player.dir_y = sin(e->player.angle) * dx + cos(e->player.angle) * dy;
+	// e->player.pos_x = cos(e->player.angle) * e->player.pos_x - sin(e->player.angle) * e->player.pos_y;
+	// e->player.pos_y = sin(e->player.angle) * e->player.pos_x + cos(e->player.angle) * e->player.pos_y;
 }
 
 /**
@@ -93,9 +95,6 @@ void	ft_move_l_r(t_exec *e)
  */
 void	ft_init_camera(t_exec *e)
 {
-	e->s.cx = 0;
-	e->s.cy = 0;
-	e->s.cz = 0.5;
 	e->s.cx = e->player.pos_x;
 	e->s.cy = e->player.pos_y;
 	e->s.cz = e->player.pos_z;
