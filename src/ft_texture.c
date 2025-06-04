@@ -37,7 +37,7 @@ static int	ft_color_texture(t_data *d, char c, double x, double y)
 				+ (coord_x * (d->exec.texture.north.bpp / 8)));
 		color = *(unsigned int *)d->exec.texture.north.addr + index;
 	}
-	if (c == 's')
+	else if (c == 's')
 	{
 		coord_x = floor(x * d->exec.texture.south.width);
 		coord_y = floor(y * d->exec.texture.south.height);
@@ -46,7 +46,7 @@ static int	ft_color_texture(t_data *d, char c, double x, double y)
 				+ (coord_x * (d->exec.texture.south.bpp / 8)));
 		color = *(unsigned int *)d->exec.texture.south.addr + index;
 	}
-	if (c == 'e')
+	else if (c == 'e')
 	{
 		coord_x = floor(x * d->exec.texture.east.width);
 		coord_y = floor(y * d->exec.texture.east.height);
