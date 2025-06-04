@@ -46,7 +46,7 @@ INC				:=		ft_cub.h						\
 SRC				:=		main.c							\
 						ft_start.c						\
 						ft_init_math.c					\
-						ft_cardinals.c					\
+						ft_walls.c					\
 						ft_init_planes.c				\
 						ft_intersection.c				\
 						ft_math_calculation.c			\

@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/04 13:40:42 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/04 15:08:30 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,24 @@ struct s_start
 	double			rv;
 };
 
+typedef struct s_wall		t_wall;
+
+struct s_wall
+{
+	double	dist_x; // distance pour passer d'une case a une autre en X
+	double	dist_y; // distance pour passer d'une case a une autre en X
+	int		hit; //booleen pour dire si toucher ou non
+	int		side;	//0 vertical ou 1 horizontal
+	double	side_x; // Distance entre la position actuelle et la prochaine frontière verticale
+	double	side_y; // Distance entre la position actuelle et la prochaine frontière horizontale
+	int		step_x; // Direction à prendre en X : +1 ou -1
+	int		step_y; // Direction à prendre en Y : +1 ou -1
+	int		pos_x;
+	int		pos_y;
+	double	dir_y;
+	double	dir_x;
+};
+
 struct		s_exec
 {
 	int				max_height;
@@ -144,6 +162,7 @@ struct		s_exec
 	unsigned int	floor;
 	unsigned int	sky;
 	char			**tab;
+	t_wall			wall;
 	t_cardinals		cardi;
 	t_texture		texture;
 	t_player		player;
@@ -162,12 +181,7 @@ struct		s_data
 };
 
 
-/*MATHS*/
-
-//------------[  ft_cardinals.c  ]
-void	ft_init_point(t_exec *e);
-void	ft_north_and_south_walls(t_data *d, char **tab);
-void	ft_east_and_west_walls(t_data *d, char **tab);
+				/*MATHS*/
 
 //------------[  ft_check_walls.c  ]
 int		ft_check_north(t_data *d);
@@ -205,6 +219,14 @@ int		ft_start(t_exec *e, t_data *d);
 //------------[  ft_start.c  ]
 int		ft_init_textures(t_data *d);
 int		ft_texture(t_data *d, char c);
+
+//------------[  ft_walls.c  ]
+void	ft_init_point(t_exec *e);
+void	ft_north_and_south_walls(t_data *d, char **tab);
+void	ft_east_and_west_walls(t_data *d, char **tab);
+
+
+
 
 
 
