@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/04 15:08:30 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/04 15:43:40 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,12 +147,14 @@ struct s_wall
 	int		side;	//0 vertical ou 1 horizontal
 	double	side_x; // Distance entre la position actuelle et la prochaine frontière verticale
 	double	side_y; // Distance entre la position actuelle et la prochaine frontière horizontale
-	int		step_x; // Direction à prendre en X : +1 ou -1
-	int		step_y; // Direction à prendre en Y : +1 ou -1
+	int		orientation_x; // orientation à prendre en X : +1 ou -1
+	int		orientation_y; // orientation à prendre en Y : +1 ou -1
 	int		pos_x;
 	int		pos_y;
 	double	dir_y;
 	double	dir_x;
+	double	t;
+	char	d;
 };
 
 struct		s_exec
@@ -221,6 +223,7 @@ int		ft_init_textures(t_data *d);
 int		ft_texture(t_data *d, char c);
 
 //------------[  ft_walls.c  ]
+void	ft_walls(t_data *d, int i, int j);
 void	ft_init_point(t_exec *e);
 void	ft_north_and_south_walls(t_data *d, char **tab);
 void	ft_east_and_west_walls(t_data *d, char **tab);

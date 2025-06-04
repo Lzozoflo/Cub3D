@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/04 14:29:20 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/04 15:43:51 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@ int	ft_start(t_exec *e, t_data *d)
 		return (-1);
 	}
 	ft_group_all_planes(d);
-	ft_north_and_south_walls(d, d->exec.tab); //ICI
-	ft_east_and_west_walls(d, d->exec.tab); //ICI
+
 	if (ft_init_textures(d) == -1)
 		return (-1);
 	while (i < WIN_SIZE)
@@ -60,9 +59,10 @@ int	ft_start(t_exec *e, t_data *d)
 		j = 0;
 		while (j < WIN_SIZE)
 		{
-			ft_director_vector(e, i, j);
 			ft_move_l_r(e);
 			ft_move_f_b(e);
+			ft_director_vector(e, i, j);
+			ft_walls(d, i ,j);
 			ft_choose_t(d, i, j);
 			j++;
 		}
@@ -71,3 +71,6 @@ int	ft_start(t_exec *e, t_data *d)
 	ft_free_cardi(e);
 	return (1);
 }
+
+// ft_north_and_south_walls(d, d->exec.tab); //ICI
+// 	ft_east_and_west_walls(d, d->exec.tab); //ICI
