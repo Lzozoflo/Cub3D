@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 13:36:49 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/04 13:39:06 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/04 16:41:08 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@
 /**
  * @brief `malloc struct t_plane`
  *
+ * p.30 : "Wall storage
+ * To think about optimization now, it is best to create 4 plan tables,
+ * 1 for each orientation (N, S, E and W).
+ * There will therefore be 2 tables of size w + 1 (E and W)
+ * and 2 tables of size h + 1 (N and S)"
  */
 int	ft_init_plane(t_exec *e)
 {
@@ -89,5 +94,4 @@ void	ft_group_all_planes(t_data *d)
 		ft_west(&d->exec.cardi, p);
 		p++;
 	}
-
 }

@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 10:07:56 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/04 12:26:18 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/04 16:36:42 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,16 @@ void	ft_move_l_r(t_exec *e)
 	dy = e->player.dir_y;
 	e->player.dir_x = cos(e->player.angle) * dx - sin(e->player.angle) * dy;
 	e->player.dir_y = sin(e->player.angle) * dx + cos(e->player.angle) * dy;
+}
+
+/**
+ * @brief `move back and forth`
+ */
+void	ft_move_f_b(t_exec *e)
+{
+	e->s.cx = e->s.cx + e->player.dir_x * e->player.moove;
+	e->s.cy = e->s.cy + e->player.dir_y * e->player.moove;
+	e->player.moove = 0;
 }
 
 /**

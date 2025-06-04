@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 17:32:29 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/27 09:34:26 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/04 15:52:00 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@
 # define PX_GRAY_DARK  0x444444
 
 // Mouvement speed
-# define MS 0.2
+# define MS 0.1
 # define RADIUSPLAYER 0.3
 //	number of tile on the minimaps
 # define MINIMAPS_SCREEN_TILES 10

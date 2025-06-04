@@ -6,11 +6,9 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 14:02:17 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/04 14:02:18 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/04 16:40:58 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #include "ft_cub.h"
 #include "ft_define.h"
@@ -43,7 +41,7 @@ void	ft_north(t_cardinals *c, int y)
 void	ft_south(t_cardinals *c, int y)
 {
 	c->s[y].a = 0;
-	c->s[y].b  = 1;
+	c->s[y].b = 1;
 	c->s[y].c = 0;
 	c->s[y].d = -(y + 1);
 }

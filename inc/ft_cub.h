@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/04 15:43:40 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/04 16:37:24 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,6 +195,7 @@ int		ft_check_west(t_data *d);
 void	ft_fov_h_and_v_ratio(t_exec *e);
 void	ft_director_vector(t_exec *e, int i, int j);
 void	ft_move_l_r(t_exec *e);
+void	ft_move_f_b(t_exec *e);
 void	ft_init_camera(t_exec *e);
 
 //------------[  ft_init_planes.c  ]
@@ -203,12 +204,9 @@ void	ft_east(t_cardinals *c, int x);
 void	ft_north(t_cardinals *c, int y);
 void	ft_south(t_cardinals *c, int y);
 
-//------------[  ft_intersection.c  ]
-void	ft_choose_t(t_data *d, int i, int j);
-
 //------------[  ft_math_calculation.c  ]
 double	ft_find_t(t_exec *e, char c);
-void	ft_intersection_coord(t_exec *e, double t);
+
 
 //------------[  ft_planes.c  ]
 int		ft_init_plane(t_exec *e);
@@ -224,9 +222,7 @@ int		ft_texture(t_data *d, char c);
 
 //------------[  ft_walls.c  ]
 void	ft_walls(t_data *d, int i, int j);
-void	ft_init_point(t_exec *e);
-void	ft_north_and_south_walls(t_data *d, char **tab);
-void	ft_east_and_west_walls(t_data *d, char **tab);
+
 
 
 

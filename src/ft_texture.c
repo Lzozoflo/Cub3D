@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 10:58:58 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/04 11:32:44 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/04 16:40:05 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	ft_color_texture(t_data *d, char c, double x, double y)
 		coord_y = floor(y * d->exec.texture.north.height);
 		y = d->exec.texture.north.height - 1 - coord_y;
 		index = ((y * d->exec.texture.north.line_len)
-				+ (coord_x * (d->exec.texture.north.bpp) / 8));
+				+ (coord_x * (d->exec.texture.north.bpp / 8)));
 		color = *(unsigned int *)d->exec.texture.north.addr + index;
 	}
 	if (c == 's')
@@ -53,7 +53,7 @@ static int	ft_color_texture(t_data *d, char c, double x, double y)
 		y = d->exec.texture.east.height - 1 - coord_y;
 		index = ((y * d->exec.texture.east.line_len)
 				+ (coord_x * (d->exec.texture.east.bpp / 8)));
-		color =*(unsigned int *)d->exec.texture.east.addr + index;
+		color = *(unsigned int *)d->exec.texture.east.addr + index;
 	}
 	else
 	{
@@ -62,7 +62,7 @@ static int	ft_color_texture(t_data *d, char c, double x, double y)
 		y = d->exec.texture.west.height - 1 - coord_y;
 		index = ((y * d->exec.texture.west.line_len)
 				+ (coord_x * (d->exec.texture.west.bpp / 8)));
-		color =*(unsigned int *)d->exec.texture.west.addr + index;
+		color = *(unsigned int *)d->exec.texture.west.addr + index;
 	}
 	return (color);
 }
@@ -90,7 +90,6 @@ int	ft_texture(t_data *d, char c)
 	double	y;
 	int		color;
 
-
 	if (c == 'n' || c == 's')
 	{
 		x = d->exec.s.ix - floor(d->exec.s.ix);
@@ -105,12 +104,11 @@ int	ft_texture(t_data *d, char c)
 	return (color);
 }
 
-
 int	ft_init_textures_e_w(t_data *d)
 {
 	d->exec.texture.east.img_ptr = mlx_xpm_file_to_image(d->mlx,
-		"./textures/east.xpm", &d->exec.texture.east.width,
-		&d->exec.texture.east.height);
+			"./textures/east.xpm", &d->exec.texture.east.width,
+			&d->exec.texture.east.height);
 	if (!d->exec.texture.east.img_ptr)
 	{
 		write(2, "Error loading east.xpm\n", 24);
@@ -119,7 +117,6 @@ int	ft_init_textures_e_w(t_data *d)
 	d->exec.texture.east.addr = mlx_get_data_addr(
 			d->exec.texture.east.img_ptr, &d->exec.texture.east.bpp,
 			&d->exec.texture.east.line_len, &d->exec.texture.east.endian);
-
 	d->exec.texture.west.img_ptr = mlx_xpm_file_to_image(d->mlx,
 			"./textures/west.xpm", &d->exec.texture.west.width,
 			&d->exec.texture.west.height);
@@ -147,7 +144,6 @@ int	ft_init_textures(t_data *d)
 	d->exec.texture.north.addr = mlx_get_data_addr(
 			d->exec.texture.north.img_ptr, &d->exec.texture.north.bpp,
 			&d->exec.texture.north.line_len, &d->exec.texture.north.endian);
-
 	d->exec.texture.south.img_ptr = mlx_xpm_file_to_image(d->mlx,
 			"./textures/south.xpm", &d->exec.texture.south.width,
 			&d->exec.texture.south.height);
@@ -159,7 +155,6 @@ int	ft_init_textures(t_data *d)
 	d->exec.texture.south.addr = mlx_get_data_addr(
 			d->exec.texture.south.img_ptr, &d->exec.texture.south.bpp,
 			&d->exec.texture.south.line_len, &d->exec.texture.south.endian);
-
 	if (ft_init_textures_e_w(d) == -1)
 		return (-1);
 	return (1);

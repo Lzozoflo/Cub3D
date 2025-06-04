@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/04 15:43:51 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/04 16:38:41 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,6 @@
 #include "ft_debug.h"
 #include "ft_define.h"
 #include <math.h>
-
-void	ft_move_f_b(t_exec *e)
-{
-	e->s.cx = e->s.cx + e->player.dir_x * e->player.moove;
-	e->s.cy = e->s.cy + e->player.dir_y * e->player.moove;
-	e->player.moove = 0;
-}
-
 
 /**@brief `begining of graphic and maths part`
  *
@@ -51,7 +43,6 @@ int	ft_start(t_exec *e, t_data *d)
 		return (-1);
 	}
 	ft_group_all_planes(d);
-
 	if (ft_init_textures(d) == -1)
 		return (-1);
 	while (i < WIN_SIZE)
@@ -62,8 +53,7 @@ int	ft_start(t_exec *e, t_data *d)
 			ft_move_l_r(e);
 			ft_move_f_b(e);
 			ft_director_vector(e, i, j);
-			ft_walls(d, i ,j);
-			ft_choose_t(d, i, j);
+			ft_walls(d, i, j);
 			j++;
 		}
 		i++;
@@ -71,6 +61,3 @@ int	ft_start(t_exec *e, t_data *d)
 	ft_free_cardi(e);
 	return (1);
 }
-
-// ft_north_and_south_walls(d, d->exec.tab); //ICI
-// 	ft_east_and_west_walls(d, d->exec.tab); //ICI
