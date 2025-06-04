@@ -47,11 +47,12 @@ SRC				:=		main.c							\
 						ft_start.c						\
 						ft_init_math.c					\
 						ft_cardinals.c					\
-						ft_init_cardinals.c				\
+						ft_init_planes.c				\
 						ft_intersection.c				\
 						ft_math_calculation.c			\
 						ft_check_walls.c				\
-						ft_texture.c
+						ft_texture.c					\
+						ft_planes.c
 
 SRC_DEBUG		:=		ft_debug_maps.c					\
 						ft_debug_str_int.c				\

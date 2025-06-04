@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 10:07:56 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/04 10:23:40 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/04 12:26:18 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_fov_h_and_v_ratio(t_exec *e)
  *
  * p.15
  *
- * (i - W *0.5) * Rh ; (H * 0.5 - j) * Rv
+ * (i - W *0.5) * Rh ; -1 ; (H * 0.5 - j) * Rv
  *
  */
 void	ft_director_vector(t_exec *e, int i, int j)

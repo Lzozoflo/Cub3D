@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 10:40:01 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/03 10:11:32 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/04 13:40:07 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,32 +16,32 @@
 
 void	ft_west(t_cardinals *c, int x)
 {
-	c->w.a = 1;
-	c->w.b = 0;
-	c->w.c = 0;
-	c->w.d = -x;
+	c->w[x].a = 1;
+	c->w[x].b = 0;
+	c->w[x].c = 0;
+	c->w[x].d = -x;
 }
 
 void	ft_east(t_cardinals *c, int x)
 {
-	c->e.a = 1;
-	c->e.b = 0;
-	c->e.c = 0;
-	c->e.d = -(x + 1);
+	c->e[x].a = 1;
+	c->e[x].b = 0;
+	c->e[x].c = 0;
+	c->e[x].d = -(x + 1);
 }
 
 void	ft_north(t_cardinals *c, int y)
 {
-	c->n.a = 0;
-	c->n.b = 1;
-	c->n.c = 0;
-	c->n.d = -y;
+	c->n[y].a = 0;
+	c->n[y].b = 1;
+	c->n[y].c = 0;
+	c->n[y].d = -y;
 }
 
 void	ft_south(t_cardinals *c, int y)
 {
-	c->s.a = 0;
-	c->s.b = 1;
-	c->s.c = 0;
-	c->s.d = -(y + 1);
+	c->s[y].a = 0;
+	c->s[y].b  = 1;
+	c->s[y].c = 0;
+	c->s[y].d = -(y + 1);
 }

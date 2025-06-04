@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 13:16:30 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/04 10:18:01 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/04 14:00:14 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	ft_intersection_north(t_data *d, double *t, double *choosen_t,
 	if (*t > 0.0)
 	{
 		ft_intersection_coord(&d->exec, *t);
-		if (d->exec.s.iz >= 0.0 && d->exec.s.iz < 1.0 && ft_check_north(d) == 1)
+		if (d->exec.s.iz >= 0.0 && d->exec.s.iz < 1.0) // && ft_check_north(d) == 1)
 		{
 			if (*t < *choosen_t)
 			{
@@ -42,7 +42,7 @@ static int	ft_intersection_east(t_data *d, double *t, double *choosen_t,
 	if (*t > 0.0)
 	{
 		ft_intersection_coord(&d->exec, *t);
-		if (d->exec.s.iz >= 0.0 && d->exec.s.iz < 1.0 && ft_check_east(d) == 1)
+		if (d->exec.s.iz >= 0.0 && d->exec.s.iz < 1.0) // && ft_check_east(d) == 1)
 		{
 			if (*t < *choosen_t)
 			{
@@ -62,7 +62,7 @@ static int	ft_intersection_west(t_data *d, double *t, double *choosen_t,
 	if (*t > 0.0)
 	{
 		ft_intersection_coord(&d->exec, *t);
-		if (d->exec.s.iz >= 0.0 && d->exec.s.iz < 1.0 && ft_check_west(d) == 1)
+		if (d->exec.s.iz >= 0.0 && d->exec.s.iz < 1.0) // && ft_check_west(d) == 1)
 		{
 			if (*t < *choosen_t)
 			{
@@ -82,7 +82,7 @@ static int	ft_intersection_south(t_data *d, double *t, double *choosen_t,
 	if (*t > 0.0)
 	{
 		ft_intersection_coord(&d->exec, *t);
-		if (d->exec.s.iz >= 0.0 && d->exec.s.iz < 1.0 && ft_check_south(d) == 1)
+		if (d->exec.s.iz >= 0.0 && d->exec.s.iz < 1.0) // && ft_check_south(d) == 1)
 		{
 			if (*t < *choosen_t)
 			{
@@ -135,4 +135,5 @@ void	ft_choose_t(t_data *d, int i, int j)
 		ft_color_pixel(color, i, j, d);
 		return ;
 	}
+	return;
 }

@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/04 11:29:23 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/04 13:40:42 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ struct s_plane
 
 struct s_cardinals
 {
-	t_plane	n;
-	t_plane	w;
-	t_plane	e;
-	t_plane	s;
+	t_plane	*n;
+	t_plane	*w;
+	t_plane	*e;
+	t_plane	*s;
 };
 
 struct		s_minimap
@@ -175,17 +175,17 @@ int		ft_check_south(t_data *d);
 int		ft_check_east(t_data *d);
 int		ft_check_west(t_data *d);
 
-//------------[  ft_init_cardinals.c  ]
-void	ft_west(t_cardinals *c, int x);
-void	ft_east(t_cardinals *c, int x);
-void	ft_north(t_cardinals *c, int y);
-void	ft_south(t_cardinals *c, int y);
-
 //------------[  ft_init_math.c  ]
 void	ft_fov_h_and_v_ratio(t_exec *e);
 void	ft_director_vector(t_exec *e, int i, int j);
 void	ft_move_l_r(t_exec *e);
 void	ft_init_camera(t_exec *e);
+
+//------------[  ft_init_planes.c  ]
+void	ft_west(t_cardinals *c, int x);
+void	ft_east(t_cardinals *c, int x);
+void	ft_north(t_cardinals *c, int y);
+void	ft_south(t_cardinals *c, int y);
 
 //------------[  ft_intersection.c  ]
 void	ft_choose_t(t_data *d, int i, int j);
@@ -194,11 +194,16 @@ void	ft_choose_t(t_data *d, int i, int j);
 double	ft_find_t(t_exec *e, char c);
 void	ft_intersection_coord(t_exec *e, double t);
 
+//------------[  ft_planes.c  ]
+int		ft_init_plane(t_exec *e);
+void	ft_free_cardi(t_exec *e);
+void	ft_group_all_planes(t_data *d);
+
 //------------[  ft_start.c  ]
 int		ft_start(t_exec *e, t_data *d);
 
 //------------[  ft_start.c  ]
-int	ft_init_textures(t_data *d);
+int		ft_init_textures(t_data *d);
 int		ft_texture(t_data *d, char c);
 
 

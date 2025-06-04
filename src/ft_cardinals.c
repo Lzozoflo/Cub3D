@@ -6,32 +6,12 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 15:04:03 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/03 10:16:10 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/04 13:57:57 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 #include "ft_define.h"
-
-void	ft_init_point(t_exec *e)
-{
-	e->s.w.a = e->cardi.w.a;
-	e->s.w.b = e->cardi.w.b;
-	e->s.w.c = e->cardi.w.c;
-	e->s.w.d = e->cardi.w.d;
-	e->s.e.a = e->cardi.e.a;
-	e->s.e.b = e->cardi.e.b;
-	e->s.e.c = e->cardi.e.c;
-	e->s.e.d = e->cardi.e.d;
-	e->s.n.a = e->cardi.n.a;
-	e->s.n.b = e->cardi.n.b;
-	e->s.n.c = e->cardi.n.c;
-	e->s.n.d = e->cardi.n.d;
-	e->s.s.a = e->cardi.s.a;
-	e->s.s.b = e->cardi.s.b;
-	e->s.s.c = e->cardi.s.c;
-	e->s.s.d = e->cardi.s.d;
-}
 
 /**
  * @brief `search north and south wall`
@@ -52,7 +32,10 @@ void	ft_north_and_south_walls(t_data *d, char **tab)
 	{
 		if (tab[y][x] == '1')
 		{
-			ft_north(&d->exec.cardi, y);
+			d->exec.s.n.a = d->exec.cardi.n[y].a;
+			d->exec.s.n.b = d->exec.cardi.n[y].b;
+			d->exec.s.n.c = d->exec.cardi.n[y].c;
+			d->exec.s.n.d = d->exec.cardi.n[y].d;
 			break ;
 		}
 		y--;
@@ -62,7 +45,10 @@ void	ft_north_and_south_walls(t_data *d, char **tab)
 	{
 		if (tab[y][x] == '1')
 		{
-			ft_south(&d->exec.cardi, y);
+			d->exec.s.s.a = d->exec.cardi.s[y].a;
+			d->exec.s.s.b = d->exec.cardi.s[y].b;
+			d->exec.s.s.c = d->exec.cardi.s[y].c;
+			d->exec.s.s.d = d->exec.cardi.s[y].d;
 			break ;
 		}
 		y++;
@@ -88,7 +74,10 @@ void	ft_east_and_west_walls(t_data *d, char **tab)
 	{
 		if (tab[y][x] == '1')
 		{
-			ft_west(&d->exec.cardi, x);
+			d->exec.s.e.a = d->exec.cardi.e[x].a;
+			d->exec.s.e.b = d->exec.cardi.e[x].b;
+			d->exec.s.e.c = d->exec.cardi.e[x].c;
+			d->exec.s.e.d = d->exec.cardi.e[x].d;
 			break ;
 		}
 		x--;
@@ -98,7 +87,10 @@ void	ft_east_and_west_walls(t_data *d, char **tab)
 	{
 		if (tab[y][x] == '1')
 		{
-			ft_east(&d->exec.cardi, x);
+			d->exec.s.w.a = d->exec.cardi.w[x].a;
+			d->exec.s.w.b = d->exec.cardi.w[x].b;
+			d->exec.s.w.c = d->exec.cardi.w[x].c;
+			d->exec.s.w.d = d->exec.cardi.w[x].d;
 			break ;
 		}
 		x++;
