@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 14:02:49 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/04 15:21:42 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/04 15:29:51 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,68 +98,66 @@ void	ft_east_and_west_walls(t_data *d, char **tab)
 	}
 }
 
-/**
- * @brief
- *
- * p.30 : "looking at the u sign" --> step_x and step_y 1 or -1
- */
-void	ft_walls(t_data *d)
-{
-	t_wall	w;
 
-	// 1- Trouver la case où se trouve le joueur (int pour case)
-	w.pos_x = (int)d->exec.player.pos_x;
-	w.pos_y = (int)d->exec.player.pos_y;
+// void	ft_init_wall(t_wall *w)
+// {
+// 	// 1- Trouver la case où se trouve le joueur (int pour case)
+// 	w->pos_x = (int)d->exec.player.pos_x;
+// 	w->pos_y = (int)d->exec.player.pos_y;
+// 	// 2- Direction du rayon
+// 	w->dir_x = d->exec.player.dir_x;
+// 	w->dir_y = d->exec.player.dir_y;
+// 	// 3- Calculer la distance pour avancer d’une case sur X et Y
+// 	w->dist_x = fabs(1 / w->dir_x);
+// 	w->dist_y = fabs(1 / w->dir_y);
+// 	// 4- Déterminer le pas (step) sur X et Y (1 ou -1)
+// 	if (w->dir_x < 0)
+// 		w->step_x = -1;
+// 	else
+// 		w->step_x = 1;
+// 	if (w->dir_y < 0)
+// 		w->step_y = -1;
+// 	else
+// 		w->step_y = 1;
+// 	// 5- Calculer la distance entre la position du joueur et
+// 	//la première frontière sur X et Y
+// 	if (w->step_x == -1)
+// 		w->side_x = (d->exec.player.pos_x - w->pos_x) * w->dist_x;
+// 	else
+// 		w->side_x = (w->pos_x + 1.0 - d->exec.player.pos_x) * w->dist_x;
 
-	// 2- Direction du rayon
-	w.dir_x = d->exec.player.dir_x;
-	w.dir_y = d->exec.player.dir_y;
+// 	if (w->step_y == -1)
+// 		w->side_y = (d->exec.player.pos_y - w->pos_y) * w->dist_y;
+// 	else
+// 		w->side_y = (w->pos_y + 1.0 - d->exec.player.pos_y) * w->dist_y;
+// }
 
-	// 3- Calculer la distance pour avancer d’une case sur X et Y
-	w.dist_x = fabs(1 / w.dir_x);
-	w.dist_y = fabs(1 / w.dir_y);
+// /**
+//  * @brief
+//  *
+//  * p.30 : "looking at the u sign" --> step_x and step_y 1 or -1
+//  */
+// void	ft_walls(t_data *d)
+// {
+// 	t_wall	w;
 
-	// 4- Déterminer le pas (step) sur X et Y (1 ou -1)
-	if (w.dir_x < 0)
-		w.step_x = -1;
-	else
-		w.step_x = 1;
-	if (w.dir_y < 0)
-		w.step_y = -1;
-	else
-		w.step_y = 1;
-
-	// 5- Calculer la distance entre la position du joueur et
-	//la première frontière sur X et Y
-
-
-	if (w.step_x == -1)
-		w.side_x = (d->exec.player.pos_x - w.pos_x) * w.dist_x;
-	else
-		w.side_x = (w.pos_x + 1.0 - d->exec.player.pos_x) * w.dist_x;
-
-	if (w.step_y == -1)
-		w.side_y = (d->exec.player.pos_y - w.pos_y) * w.dist_y;
-	else
-		w.side_y = (w.pos_y + 1.0 - d->exec.player.pos_y) * w.dist_y;
-
-	// 6- Boucle DDA, avancer case par case jusqu'à toucher un mur
-	w.hit = 0;
-	while (w.hit == 0)
-	{
-		if (w.side_x < w.side_y)
-		{
-			w.side_x += w.dist_x;
-			w.pos_x += w.step_x;
-			w.side = 0; // mur vertical
-		}
-		else
-		{
-			w.side_y += w.dist_y;
-			w.pos_y += w.step_y;
-			w.side = 1; // mur horizontal (corrigé ici, tu avais 0 au lieu de 1)
-		}
-		if (d->exec.tab[w.pos_y][w.pos_x] == '1')
-			w.hit = 1;
-	}
-}
+// 	ft_init_wall(&w);
+// 	w.hit = 0;
+// 	while (w.hit == 0)
+// 	{
+// 		if (w.side_x < w.side_y)
+// 		{
+// 			w.side_x += w.dist_x;
+// 			w.pos_x += w.step_x;
+// 			w.side = 0;
+// 		}
+// 		else
+// 		{
+// 			w.side_y += w.dist_y;
+// 			w.pos_y += w.step_y;
+// 			w.side = 1;
+// 		}
+// 		if (d->exec.tab[w.pos_y][w.pos_x] == '1')
+// 			w.hit = 1;
+// 	}
+// }
