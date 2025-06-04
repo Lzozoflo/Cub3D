@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 13:16:30 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/03 15:32:50 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/04 10:18:01 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "ft_define.h"
 #include <math.h>
 
-static void	ft_intersection_north(t_data *d, double *t, double *choosen_t,
+static int	ft_intersection_north(t_data *d, double *t, double *choosen_t,
 		int *color)
 {
 	*t = ft_find_t(&d->exec, 'n');
@@ -28,12 +28,14 @@ static void	ft_intersection_north(t_data *d, double *t, double *choosen_t,
 			{
 				*choosen_t = *t;
 				*color = ft_texture(d, 'n');
+				return (1);
 			}
 		}
 	}
+	return (0);
 }
 
-static void	ft_intersection_east(t_data *d, double *t, double *choosen_t,
+static int	ft_intersection_east(t_data *d, double *t, double *choosen_t,
 		int *color)
 {
 	*t = ft_find_t(&d->exec, 'e');
@@ -46,12 +48,14 @@ static void	ft_intersection_east(t_data *d, double *t, double *choosen_t,
 			{
 				*choosen_t = *t;
 				*color = ft_texture(d, 'e');
+				return (1);
 			}
 		}
 	}
+	return (0);
 }
 
-static void	ft_intersection_west(t_data *d, double *t, double *choosen_t,
+static int	ft_intersection_west(t_data *d, double *t, double *choosen_t,
 		int *color)
 {
 	*t = ft_find_t(&d->exec, 'w');
@@ -64,12 +68,14 @@ static void	ft_intersection_west(t_data *d, double *t, double *choosen_t,
 			{
 				*choosen_t = *t;
 				*color = ft_texture(d, 'w');
+				return (1);
 			}
 		}
 	}
+	return (0);
 }
 
-static void	ft_intersection_south(t_data *d, double *t, double *choosen_t,
+static int	ft_intersection_south(t_data *d, double *t, double *choosen_t,
 		int *color)
 {
 	*t = ft_find_t(&d->exec, 's');
@@ -82,9 +88,11 @@ static void	ft_intersection_south(t_data *d, double *t, double *choosen_t,
 			{
 				*choosen_t = *t;
 				*color = ft_texture(d, 's');
+				return (1);
 			}
 		}
 	}
+	return (0);
 }
 
 /**
@@ -107,11 +115,24 @@ void	ft_choose_t(t_data *d, int i, int j)
 	int		color;
 
 	choosen_t = 1e30;
-	color = 0;
-	ft_intersection_north(d, &t, &choosen_t, &color);
-	ft_intersection_east(d, &t, &choosen_t, &color);
-	ft_intersection_west(d, &t, &choosen_t, &color);
-	ft_intersection_south(d, &t, &choosen_t, &color);
-	if (color != 0)
+	if (ft_intersection_north(d, &t, &choosen_t, &color) == 1)
+	{
 		ft_color_pixel(color, i, j, d);
+		return ;
+	}
+	if (ft_intersection_east(d, &t, &choosen_t, &color) == 1)
+	{
+		ft_color_pixel(color, i, j, d);
+		return ;
+	}
+	if (ft_intersection_west(d, &t, &choosen_t, &color) == 1)
+	{
+		ft_color_pixel(color, i, j, d);
+		return ;
+	}
+	if (ft_intersection_south(d, &t, &choosen_t, &color) == 1)
+	{
+		ft_color_pixel(color, i, j, d);
+		return ;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/03 15:45:55 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/04 11:29:23 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,17 @@ typedef struct s_player			t_player;
 typedef struct s_exec			t_exec;
 typedef struct s_data			t_data;
 
+
+struct		s_image
+{
+	void	*img_ptr;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+	int		width;
+	int		height;
+};
 
 struct s_plane
 {
@@ -89,16 +100,14 @@ struct		s_parsing
 
 struct		s_texture
 {
+	t_image	north;
+	t_image	south;
+	t_image	east;
+	t_image	west;
 	void	*texture_ea;
-	int		*data_ea;
 	void	*texture_no;
-	int		*data_no;
 	void	*texture_so;
-	int		*data_so;
 	void	*texture_we;
-	int		*data_we;
-	int		width;
-	int		height;
 };
 
 struct		s_player
@@ -140,15 +149,6 @@ struct		s_exec
 	t_player		player;
 	t_minimap		mini;
 	t_start			s;
-};
-
-struct		s_image
-{
-	void	*img_ptr;
-	char	*addr;
-	int		bpp;
-	int		line_len;
-	int		endian;
 };
 
 struct		s_data
