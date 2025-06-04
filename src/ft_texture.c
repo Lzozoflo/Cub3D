@@ -35,7 +35,7 @@ static int	ft_color_texture(t_data *d, char c, double x, double y)
 		y = d->exec.texture.north.height - 1 - coord_y;
 		index = ((y * d->exec.texture.north.line_len)
 				+ (coord_x * (d->exec.texture.north.bpp / 8)));
-		color = *(unsigned int *)d->exec.texture.north.addr + index;
+		color = *(unsigned int *)(d->exec.texture.north.addr + index);
 	}
 	else if (c == 's')
 	{
@@ -44,7 +44,7 @@ static int	ft_color_texture(t_data *d, char c, double x, double y)
 		y = d->exec.texture.south.height - 1 - coord_y;
 		index = ((y * d->exec.texture.south.line_len)
 				+ (coord_x * (d->exec.texture.south.bpp / 8)));
-		color = *(unsigned int *)d->exec.texture.south.addr + index;
+		color = *(unsigned int *)(d->exec.texture.south.addr + index);
 	}
 	else if (c == 'e')
 	{
@@ -53,7 +53,7 @@ static int	ft_color_texture(t_data *d, char c, double x, double y)
 		y = d->exec.texture.east.height - 1 - coord_y;
 		index = ((y * d->exec.texture.east.line_len)
 				+ (coord_x * (d->exec.texture.east.bpp / 8)));
-		color = *(unsigned int *)d->exec.texture.east.addr + index;
+		color = *(unsigned int *)(d->exec.texture.east.addr + index);
 	}
 	else
 	{
@@ -62,7 +62,7 @@ static int	ft_color_texture(t_data *d, char c, double x, double y)
 		y = d->exec.texture.west.height - 1 - coord_y;
 		index = ((y * d->exec.texture.west.line_len)
 				+ (coord_x * (d->exec.texture.west.bpp / 8)));
-		color = *(unsigned int *)d->exec.texture.west.addr + index;
+		color = *(unsigned int *)(d->exec.texture.west.addr + index);
 	}
 	return (color);
 }
