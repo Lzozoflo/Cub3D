@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 14:02:49 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/05 13:07:02 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/06/05 13:13:30 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@
  * 5- Calculate the distance between the player's position
  * and the first boundary on X and Y
  */
-static void	ft_init_wall(t_data *d, t_wall *w)
+static void	ft_init_wall(t_player *p, t_wall *w)
 {
-	w->pos_x = floor(d->exec.player.pos_x);
-	w->pos_y = floor(d->exec.player.pos_y);
-	w->dir_x = d->exec.player.dir_x;
-	w->dir_y = d->exec.player.dir_y;
+	w->pos_x = floor(p->pos_x);
+	w->pos_y = floor(p->pos_y);
+	w->dir_x = p->dir_x;
+	w->dir_y = p->dir_y;
 	w->dist_x = fabs(1 / w->dir_x);
 	w->dist_y = fabs(1 / w->dir_y);
 	if (w->dir_x < 0)
@@ -49,19 +49,19 @@ static void	ft_init_wall(t_data *d, t_wall *w)
 	else
 		w->orientation_y = 1;
 	if (w->orientation_x == -1)
-		w->side_x = (d->exec.player.pos_x - w->pos_x) * w->dist_x;
+		w->side_x = (p->pos_x - w->pos_x) * w->dist_x;
 	else
-		w->side_x = (w->pos_x + 1.0 - d->exec.player.pos_x) * w->dist_x;
+		w->side_x = (w->pos_x + 1.0 - p->pos_x) * w->dist_x;
 	if (w->orientation_y == -1)
-		w->side_y = (d->exec.player.pos_y - w->pos_y) * w->dist_y;
+		w->side_y = (p->pos_y - w->pos_y) * w->dist_y;
 	else
-		w->side_y = (w->pos_y + 1.0 - d->exec.player.pos_y) * w->dist_y;
+		w->side_y = (w->pos_y + 1.0 - p->pos_y) * w->dist_y;
 }
 
 /**
  * @brief `check if hit a wall`
  */
-static void	ft_check_if_wall(t_data *d, t_wall *w)
+static void	ft_check_if_wall(char **tab, t_wall *w)
 {
 	w->hit = 0;
 	while (w->hit == 0)
@@ -78,7 +78,7 @@ static void	ft_check_if_wall(t_data *d, t_wall *w)
 			w->pos_y += w->orientation_y;
 			w->side = 1;
 		}
-		if (d->exec.tab[w->pos_y][w->pos_x] == '1')
+		if (tab[w->pos_y][w->pos_x] == '1')
 			w->hit = 1;
 	}
 }
@@ -132,8 +132,8 @@ static void	ft_intersection_coord(t_exec *e, double t)
  */
 void	ft_walls(t_data *d, int y, int x, t_u_texture *u)
 {
-	ft_init_wall(d, &d->w);
-	ft_check_if_wall(d, &d->w);
+	ft_init_wall(&d->exec.player, &d->w);
+	ft_check_if_wall(d->exec.tab, &d->w);
 	ft_each_side(&d->w);
 	ft_intersection_coord(&d->exec, d->w.t);
 	u->c = d->w.d;

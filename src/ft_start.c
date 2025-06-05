@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/05 13:09:15 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/06/05 13:17:43 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,20 @@
 */
 int	ft_start(t_exec *e, t_data *d)
 {
+	t_u_texture	u;
 	int			y;
 	int			x;
 
 	ft_init_camera(e);
-	ft_fov_h_and_v_ratio(e);
-	if (ft_init_plane(e) == -1)
-	{
-		ft_free_cardi(e);
-		return (-1);
-	}
+	// ft_fov_h_and_v_ratio(e); // in main
+	// if (ft_init_plane(e) == -1)
+	// {
+	// 	ft_free_cardi(e);
+	// 	return (-1);
+	// }
 	ft_group_all_planes(d);
+	// if (ft_init_textures(d, &d->exec.texture) == -1) // in main
+	// 	return (-1);
 	y = 0;
 	while (y < WIN_SIZE)
 	{
@@ -50,11 +53,11 @@ int	ft_start(t_exec *e, t_data *d)
 			ft_move_l_r(e);
 			ft_move_f_b(e);
 			ft_director_vector(e, y, x);
-			ft_walls(d, y, x, &d->u);
+			ft_walls(d, y, x, &u);
 			x++;
 		}
 		y++;
 	}
-	ft_free_cardi(e);
+	// ft_free_cardi(e);
 	return (1);
 }
