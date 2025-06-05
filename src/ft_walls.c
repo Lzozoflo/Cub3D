@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 14:02:49 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/05 12:24:23 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/06/05 13:07:02 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,19 +130,17 @@ static void	ft_intersection_coord(t_exec *e, double t)
  *p.30 : "For an intersection to be considered valid,
  * t must be positive and Iz must be between 0 inclusive and 1."
  */
-void	ft_walls(t_data *d, int y, int x)
+void	ft_walls(t_data *d, int y, int x, t_u_texture *u)
 {
-	t_wall	w;
-	int		color;
-
-	ft_init_wall(d, &w);
-	ft_check_if_wall(d, &w);
-	ft_each_side(&w);
-	ft_intersection_coord(&d->exec, w.t);
+	ft_init_wall(d, &d->w);
+	ft_check_if_wall(d, &d->w);
+	ft_each_side(&d->w);
+	ft_intersection_coord(&d->exec, d->w.t);
+	u->c = d->w.d;
 	if (d->exec.s.iz >= 0.0 && d->exec.s.iz < 1.0
-		&& w.t > 0) // && ft_check_east(d) == 1)
+		&& d->w.t > 0) // && ft_check_east(d) == 1)
 	{
-		color = ft_texture(d, w.d);
-		ft_color_pixel(color, y, x, d);
+		ft_texture(d, u);
+		ft_color_pixel(u->color, y, x, d);
 	}
 }

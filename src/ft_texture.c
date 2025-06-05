@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 10:58:58 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/05 12:24:32 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/06/05 12:59:01 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,61 +16,39 @@
 #include <math.h>
 #include <unistd.h>
 
-
-// static int	ft_color_texture(t_data *d, char c, double x, double y)
-// {
-
-// }
+static void	ft_color_texture(const t_image *img, t_u_texture *u)
+{
+	u->coord_x = floor(u->x * img->width);
+	u->coord_y = floor(u->y * img->height);
+	u->y = img->height - 1 - u->coord_y;
+	u->index = ((u->y * img->line_len)
+			+ (u->coord_x * (img->bpp)));
+	u->color = *(unsigned int *)(img->addr + u->index);
+}
 
 /**
  * @brief
  *
- * d->exec.texture.height - 1 - coord_y because else pixel are inverted
+ * t->height - 1 - coord_y because else pixel are inverted
  */
-static int	ft_color_texture(t_data *d, char c, double x, double y)
+static void	ft_search_color_texture(t_data *d, t_u_texture *u)
 {
-	int	color;
-	int	index;
-	int	coord_x;
-	int	coord_y;
-
-	if (c == 'n')
+	if (u->c == 'n')
 	{
-		coord_x = floor(x * d->exec.texture.north.width);
-		coord_y = floor(y * d->exec.texture.north.height);
-		y = d->exec.texture.north.height - 1 - coord_y;
-		index = ((y * d->exec.texture.north.line_len)
-				+ (coord_x * (d->exec.texture.north.bpp / 8)));
-		color = *(unsigned int *)(d->exec.texture.north.addr + index);
+		ft_color_texture(&d->exec.texture.north, u);
 	}
-	else if (c == 's')
+	else if (u->c == 's')
 	{
-		coord_x = floor(x * d->exec.texture.south.width);
-		coord_y = floor(y * d->exec.texture.south.height);
-		y = d->exec.texture.south.height - 1 - coord_y;
-		index = ((y * d->exec.texture.south.line_len)
-				+ (coord_x * (d->exec.texture.south.bpp / 8)));
-		color = *(unsigned int *)(d->exec.texture.south.addr + index);
+		ft_color_texture(&d->exec.texture.south, u);
 	}
-	else if (c == 'e')
+	else if (u->c == 'e')
 	{
-		coord_x = floor(x * d->exec.texture.east.width);
-		coord_y = floor(y * d->exec.texture.east.height);
-		y = d->exec.texture.east.height - 1 - coord_y;
-		index = ((y * d->exec.texture.east.line_len)
-				+ (coord_x * (d->exec.texture.east.bpp / 8)));
-		color = *(unsigned int *)(d->exec.texture.east.addr + index);
+		ft_color_texture(&d->exec.texture.east, u);
 	}
 	else
 	{
-		coord_x = floor(x * d->exec.texture.west.width);
-		coord_y = floor(y * d->exec.texture.west.height);
-		y = d->exec.texture.west.height - 1 - coord_y;
-		index = ((y * d->exec.texture.west.line_len)
-				+ (coord_x * (d->exec.texture.west.bpp / 8)));
-		color = *(unsigned int *)(d->exec.texture.west.addr + index);
+		ft_color_texture(&d->exec.texture.west, u);
 	}
-	return (color);
 }
 
 /**
@@ -90,76 +68,18 @@ static int	ft_color_texture(t_data *d, char c, double x, double y)
  * respectively the width and height of the texture to have
  * the coordinate of the box where to find the color in the texture image.
  */
-int	ft_texture(t_data *d, char c)
+void	ft_texture(t_data *d, t_u_texture *u)
 {
-	double	x;
-	double	y;
 
-	if (c == 'n' || c == 's')
+	if (u->c == 'n' || u->c == 's')
 	{
-		x = d->exec.s.ix - floor(d->exec.s.ix);
-		y = d->exec.s.iz - floor(d->exec.s.iz);
+		u->x = d->exec.s.ix - floor(d->exec.s.ix);
+		u->y = d->exec.s.iz - floor(d->exec.s.iz);
 	}
 	else
 	{
-		x = d->exec.s.iy - floor(d->exec.s.iy);
-		y = d->exec.s.iz - floor(d->exec.s.iz);
+		u->x = d->exec.s.iy - floor(d->exec.s.iy);
+		u->y = d->exec.s.iz - floor(d->exec.s.iz);
 	}
-	return (ft_color_texture(d, c, x, y));
-}
-
-int	ft_init_textures_e_w(t_data *d)
-{
-	d->exec.texture.east.img_ptr = mlx_xpm_file_to_image(d->mlx,
-			"./textures/east.xpm", &d->exec.texture.east.width,
-			&d->exec.texture.east.height);
-	if (!d->exec.texture.east.img_ptr)
-	{
-		write(2, "Error loading east.xpm\n", 24);
-		return (-1);
-	}
-	d->exec.texture.east.addr = mlx_get_data_addr(
-			d->exec.texture.east.img_ptr, &d->exec.texture.east.bpp,
-			&d->exec.texture.east.line_len, &d->exec.texture.east.endian);
-	d->exec.texture.west.img_ptr = mlx_xpm_file_to_image(d->mlx,
-			"./textures/west.xpm", &d->exec.texture.west.width,
-			&d->exec.texture.west.height);
-	if (!d->exec.texture.west.img_ptr)
-	{
-		write(2, "Error loading west.xpm\n", 24);
-		return (-1);
-	}
-	d->exec.texture.west.addr = mlx_get_data_addr(
-			d->exec.texture.west.img_ptr, &d->exec.texture.west.bpp,
-			&d->exec.texture.west.line_len, &d->exec.texture.west.endian);
-	return (1);
-}
-
-int	ft_init_textures(t_data *d)
-{
-	d->exec.texture.north.img_ptr = mlx_xpm_file_to_image(d->mlx,
-			"./textures/north.xpm", &d->exec.texture.north.width,
-			&d->exec.texture.north.height);
-	if (!d->exec.texture.north.img_ptr)
-	{
-		write(2, "Error loading north.xpm\n", 24);
-		return (-1);
-	}
-	d->exec.texture.north.addr = mlx_get_data_addr(
-			d->exec.texture.north.img_ptr, &d->exec.texture.north.bpp,
-			&d->exec.texture.north.line_len, &d->exec.texture.north.endian);
-	d->exec.texture.south.img_ptr = mlx_xpm_file_to_image(d->mlx,
-			"./textures/south.xpm", &d->exec.texture.south.width,
-			&d->exec.texture.south.height);
-	if (!d->exec.texture.south.img_ptr)
-	{
-		write(2, "Error loading south.xpm\n", 24);
-		return (-1);
-	}
-	d->exec.texture.south.addr = mlx_get_data_addr(
-			d->exec.texture.south.img_ptr, &d->exec.texture.south.bpp,
-			&d->exec.texture.south.line_len, &d->exec.texture.south.endian);
-	if (ft_init_textures_e_w(d) == -1)
-		return (-1);
-	return (1);
+	return (ft_search_color_texture(d, u));
 }

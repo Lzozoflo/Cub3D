@@ -64,7 +64,8 @@ SRC_DRAW		:=		ft_draw_maps_2d.c				\
 
 
 SRC_INIT		:=		ft_init_mlx.c					\
-						ft_init_struct.c
+						ft_init_struct.c				\
+						ft_init_textures.c
 
 
 SRC_PARSING		:=		ft_check_format_save_color.c	\

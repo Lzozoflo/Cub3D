@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/05 12:21:03 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/06/05 13:09:20 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_image			t_image;
 typedef struct s_u_texture		t_u_texture;
 typedef struct s_texture		t_texture;
 typedef struct s_player			t_player;
+typedef struct s_wall			t_wall;
 typedef struct s_exec			t_exec;
 typedef struct s_data			t_data;
 
@@ -110,7 +111,7 @@ struct		s_parsing
 
 struct s_u_texture
 {
-	char	c; //
+	char	c;
 	double	x;
 	double	y;
 	int		color;
@@ -159,7 +160,6 @@ struct s_start
 	double			rv;
 };
 
-typedef struct s_wall		t_wall;
 
 struct s_wall
 {
@@ -186,7 +186,7 @@ struct		s_exec
 	unsigned int	floor;
 	unsigned int	sky;
 	char			**tab;
-	t_wall			wall;
+	// t_wall			wall; not used
 	t_cardinals		cardi;
 	t_texture		texture;
 	t_player		player;
@@ -202,6 +202,8 @@ struct		s_data
 	t_image		img;
 	t_parsing	parsing;
 	t_exec		exec;
+	t_wall		w;
+	t_u_texture	u;
 };
 
 
@@ -239,11 +241,13 @@ void	ft_group_all_planes(t_data *d);
 int		ft_start(t_exec *e, t_data *d);
 
 //------------[  ft_start.c  ]
-int		ft_init_textures(t_data *d);
-int		ft_texture(t_data *d, char c);
+int		ft_init_textures(t_data *d, t_texture *t);
+void	ft_texture(t_data *d, t_u_texture *u);
+
 
 //------------[  ft_walls.c  ]
-void	ft_walls(t_data *d, int i, int j);
+void	ft_walls(t_data *d, int y, int x, t_u_texture *u);
+
 
 
 

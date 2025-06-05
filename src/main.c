@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:58:30 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/05 09:36:32 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/06/05 13:02:32 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	main(int ac, char **av, char **env)
 		return (1);
 	}
 	if (!ft_init_mlx(&data))
+		return (1);
+	if (ft_init_textures(&data, &data.exec.texture) == -1)
 		return (1);
 	ft_print_settings();
 	//mlx_hook(data.win, 2, 1L << 0, ft_left_right, &data);

@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/05 12:24:25 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/06/05 13:09:15 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ int	ft_start(t_exec *e, t_data *d)
 		return (-1);
 	}
 	ft_group_all_planes(d);
-	if (ft_init_textures(d) == -1)
-		return (-1);
 	y = 0;
 	while (y < WIN_SIZE)
 	{
@@ -52,7 +50,7 @@ int	ft_start(t_exec *e, t_data *d)
 			ft_move_l_r(e);
 			ft_move_f_b(e);
 			ft_director_vector(e, y, x);
-			ft_walls(d, y, x);
+			ft_walls(d, y, x, &d->u);
 			x++;
 		}
 		y++;
