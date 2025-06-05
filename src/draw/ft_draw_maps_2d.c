@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 08:01:22 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/26 12:42:06 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/06/05 10:00:01 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,22 @@
 #include "ft_define.h"
 #include <math.h>
 
-static inline unsigned int	ft_color_map_tile_px(int c)
+static inline unsigned int	ft_color_map_tile_px(int c, t_minimap *m)
 {
-	if (c == '1')
-		return (PX_REDO);
-	else if (c == '0')
-		return (PX_GREEN);
+
+	if (c == '0')
+		return (m->color_minimap[0]);
+	else if (c == '1')
+		return (m->color_minimap[1]);
 	else if (ft_is_player_char(c))
-		return (PX_BLUE);
+		return (m->color_minimap[2]);
+	return (0);
+	// if (c == '1')
+	// 	return (PX_REDO);
+	// else if (c == '0')
+	// 	return (PX_GREEN);
+	// else if (ft_is_player_char(c))
+	// 	return (PX_BLUE);
 	return (0);
 }
 
@@ -69,7 +77,7 @@ static void	ft_draw_minimap_x(t_data *data, t_minimap *m, int py, int tile_y)
 		}
 		if (tile_x >= data->exec.max_width)
 			return ;
-		color = ft_color_map_tile_px(tab[tile_y][tile_x]);
+		color = ft_color_map_tile_px(tab[tile_y][tile_x], m);
 		if (color != 0)
 			ft_color_pixel(color, px, py, data);
 		px++;

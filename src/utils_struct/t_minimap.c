@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 10:48:27 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/26 12:35:03 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/06/05 10:50:27 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,3 +44,4 @@ void	t_minimaps_set(t_minimap *mini, t_player *p, int zoom)
 	mini->win_xy_max = size_tile * 9.5;
 	t_minimap_set_plane(mini, p->pos_x, p->pos_y, size_tile);
 }
+

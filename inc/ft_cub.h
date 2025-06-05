@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cub.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/04 16:37:24 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/05 12:21:03 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,12 @@
 //typedef of all structure
 typedef struct s_plane			t_plane;
 typedef struct s_cardinals		t_cardinals;
+typedef struct s_rgb			t_rgb;
 typedef struct s_minimap		t_minimap;
 typedef struct s_gnl			t_gnl;
 typedef struct s_parsing		t_parsing;
 typedef struct s_image			t_image;
+typedef struct s_u_texture		t_u_texture;
 typedef struct s_texture		t_texture;
 typedef struct s_player			t_player;
 typedef struct s_exec			t_exec;
@@ -57,20 +59,28 @@ struct s_cardinals
 	t_plane	*s;
 };
 
+struct		s_rgb
+{
+	unsigned int r;
+	unsigned int g;
+	unsigned int b;
+};
+
 struct		s_minimap
 {
-	int		zoom;
-	int		tile_size;
-	int		tab_start_x;
-	int		tab_start_y;
-	int		tab_end_x;
-	int		tab_end_y;
-	int		win_xy_min;
-	int		win_xy_max;
-	double	center;
-	double	div;
-	double	offset_x;
-	double	offset_y;
+	unsigned int	color_minimap[5];
+	int				zoom;
+	int				tile_size;
+	int				tab_start_x;
+	int				tab_start_y;
+	int				tab_end_x;
+	int				tab_end_y;
+	int				win_xy_min;
+	int				win_xy_max;
+	double			center;
+	double			div;
+	double			offset_x;
+	double			offset_y;
 };
 
 struct		s_gnl
@@ -97,6 +107,18 @@ struct		s_parsing
 	int				max_width;
 	int				max_height;
 };
+
+struct s_u_texture
+{
+	char	c; //
+	double	x;
+	double	y;
+	int		color;
+	int		index;
+	int		coord_x;
+	int		coord_y;
+};
+
 
 struct		s_texture
 {
@@ -346,9 +368,11 @@ void	ft_clear_parsing(t_parsing *parsing);
 void	t_gnl_clear(t_parsing *parsing);
 int		t_gnl_add_end(t_parsing *parsing, char *str);
 
+//------------[  t_minimap_set_color.c  ]
+void	t_minimap_set_color(t_exec *exec, t_minimap *m);
+
 //------------[  t_minimap.c  ]
 
 void	t_minimaps_set(t_minimap *mini, t_player *p, int zoom);
-
 
 #endif

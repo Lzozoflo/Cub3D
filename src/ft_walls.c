@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_walls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 14:02:49 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/04 16:41:33 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/05 12:24:23 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ static void	ft_intersection_coord(t_exec *e, double t)
  *p.30 : "For an intersection to be considered valid,
  * t must be positive and Iz must be between 0 inclusive and 1."
  */
-void	ft_walls(t_data *d, int i, int j)
+void	ft_walls(t_data *d, int y, int x)
 {
 	t_wall	w;
 	int		color;
@@ -143,6 +143,6 @@ void	ft_walls(t_data *d, int i, int j)
 		&& w.t > 0) // && ft_check_east(d) == 1)
 	{
 		color = ft_texture(d, w.d);
-		ft_color_pixel(color, i, j, d);
+		ft_color_pixel(color, y, x, d);
 	}
 }

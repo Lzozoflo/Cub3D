@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_start.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/04 16:38:41 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/05 12:24:25 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,9 @@
 */
 int	ft_start(t_exec *e, t_data *d)
 {
-	int	i;
-	int	j;
+	int			y;
+	int			x;
 
-	i = 0;
-	j = 0;
 	ft_init_camera(e);
 	ft_fov_h_and_v_ratio(e);
 	if (ft_init_plane(e) == -1)
@@ -45,18 +43,19 @@ int	ft_start(t_exec *e, t_data *d)
 	ft_group_all_planes(d);
 	if (ft_init_textures(d) == -1)
 		return (-1);
-	while (i < WIN_SIZE)
+	y = 0;
+	while (y < WIN_SIZE)
 	{
-		j = 0;
-		while (j < WIN_SIZE)
+		x = 0;
+		while (x < WIN_SIZE)
 		{
 			ft_move_l_r(e);
 			ft_move_f_b(e);
-			ft_director_vector(e, i, j);
-			ft_walls(d, i, j);
-			j++;
+			ft_director_vector(e, y, x);
+			ft_walls(d, y, x);
+			x++;
 		}
-		i++;
+		y++;
 	}
 	ft_free_cardi(e);
 	return (1);

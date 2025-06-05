@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_texture.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 10:58:58 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/04 16:40:05 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/05 12:24:32 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 #include "ft_define.h"
 #include <math.h>
 #include <unistd.h>
+
+
+// static int	ft_color_texture(t_data *d, char c, double x, double y)
+// {
+
+// }
 
 /**
  * @brief
@@ -88,7 +94,6 @@ int	ft_texture(t_data *d, char c)
 {
 	double	x;
 	double	y;
-	int		color;
 
 	if (c == 'n' || c == 's')
 	{
@@ -100,8 +105,7 @@ int	ft_texture(t_data *d, char c)
 		x = d->exec.s.iy - floor(d->exec.s.iy);
 		y = d->exec.s.iz - floor(d->exec.s.iz);
 	}
-	color = ft_color_texture(d, c, x, y);
-	return (color);
+	return (ft_color_texture(d, c, x, y));
 }
 
 int	ft_init_textures_e_w(t_data *d)

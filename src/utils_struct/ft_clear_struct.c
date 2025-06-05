@@ -6,12 +6,20 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 07:48:13 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/18 07:53:08 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/06/05 12:24:42 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 #include "libft.h"
+
+// static void	ft_clear_image(t_image *img)
+// {
+// 	if (img->img_ptr)
+// 		free();
+// 	if (img->addr)
+
+// }
 
 static void	ft_clear_texture(t_texture *texture)
 {
