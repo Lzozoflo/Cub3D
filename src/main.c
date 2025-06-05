@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:58:30 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/05 13:18:10 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/06/05 13:23:53 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ int	main(int ac, char **av, char **env)
 		ft_free_cardi(&data.exec);
 		return (1);
 	}
+	ft_group_all_planes(&data);
 	ft_print_settings();
 	ft_fov_h_and_v_ratio(&data.exec);
 	t_minimap_set_color(&data.exec, &data.exec.mini);
 	ft_refresh_view(&data);
 	mlx_loop(data.mlx);
-
 }
 
 	// ft_draw_map_2d(&data);

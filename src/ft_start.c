@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/05 13:17:43 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/06/05 13:23:58 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ft_start(t_exec *e, t_data *d)
 	// 	ft_free_cardi(e);
 	// 	return (-1);
 	// }
-	ft_group_all_planes(d);
+	// ft_group_all_planes(d);// in main
 	// if (ft_init_textures(d, &d->exec.texture) == -1) // in main
 	// 	return (-1);
 	y = 0;
