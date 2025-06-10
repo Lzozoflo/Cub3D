@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/04 16:38:41 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/10 13:13:30 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,24 @@
 
 /**@brief `begining of graphic and maths part`
  *
- * ft_fov_h_and_v_ratio : horizontal and vertical distance
- * between radius + fov (p.11 and p.13)
+ * `(p.17) - ft_init_camera
  *
- * ft_group_all_planes : create all possible planes (p.30)
+ * `(p.11 and p.13) - ft_fov_h_and_v_ratio` : horizontal and vertical distance
+ * between radius + fov
  *
- * ft_director_vector : calculate radius. (p.15)
+ * `(p.30) - ft_init_plane & ft_group_all_planes` : create all possible planes
  *
- * ft_choose_t : calculate t (distance between us and wall)
- * and recover color to print pixel (p.25 and p.30)
+ * `(p.15) - double loop` : "To create our direction vectors,
+ * we simply need to put an increment on the x (which we will call i)
+ * and another for the y (j)."
+ *
+ * `(p.29) - ft_move_l_r : z rotation matrix
+ *
+ * 'X - ft_move_f_b'
+ *
+ * `(p.15) - ft_director_vector` : calculate radius.
+ *
+ * 'X - ft_walls'
  *
 */
 int	ft_start(t_exec *e, t_data *d)
