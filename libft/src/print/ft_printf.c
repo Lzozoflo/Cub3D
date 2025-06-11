@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mathildelaussel <mathildelaussel@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 17:00:01 by fcretin           #+#    #+#             */
-/*   Updated: 2024/12/10 16:07:18 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/06/11 10:57:24 by mathildelau      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdarg.h> //DELETE
 
 static int	ft_ptr_format(const char format, va_list args)
 {

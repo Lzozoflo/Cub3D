@@ -3,18 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_planes.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mathildelaussel <mathildelaussel@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 13:36:49 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/10 13:13:26 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/11 15:14:13 by mathildelau      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
-#include "ft_debug.h"
-#include "ft_define.h"
 #include <stdlib.h>
-#include <math.h>
 
 /**
  * @brief `malloc struct t_plane`
@@ -83,15 +80,15 @@ void	ft_group_all_planes(t_data *d)
 	p = 0;
 	while (p < d->exec.max_height)
 	{
-		ft_north(&d->exec.cardi, p);
-		ft_south(&d->exec.cardi, p);
+		ft_north_plane(&d->exec.cardi, p);
+		ft_south_plane(&d->exec.cardi, p);
 		p++;
 	}
 	p = 0;
 	while (p < d->exec.max_width)
 	{
-		ft_east(&d->exec.cardi, p);
-		ft_west(&d->exec.cardi, p);
+		ft_east_plane(&d->exec.cardi, p);
+		ft_west_plane(&d->exec.cardi, p);
 		p++;
 	}
 }

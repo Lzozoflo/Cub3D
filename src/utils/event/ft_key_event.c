@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_key_event.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mathildelaussel <mathildelaussel@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:59:35 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/03 14:24:59 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/11 11:05:22 by mathildelau      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int	ft_key_press(int keycode, void *param)
 	debug_put_int("ft_key_press -> keycode", keycode, 200, 200);
 	if (keycode == ESC)
 	{
-		mlx_loop_end(data->mlx);
+		//mlx_loop_end(data->mlx);
 		ft_clean_close(data, 0);
 	}
 	if (ft_is_player_move(keycode) && ft_wasd(keycode, &data->exec.player) == 0)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cub.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mathildelaussel <mathildelaussel@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/04 16:37:24 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/11 15:40:01 by mathildelau      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,20 +141,14 @@ typedef struct s_wall		t_wall;
 
 struct s_wall
 {
-	double	dist_x; // distance pour passer d'une case a une autre en X
-	double	dist_y; // distance pour passer d'une case a une autre en X
-	int		hit; //booleen pour dire si toucher ou non
-	int		side;	//0 vertical ou 1 horizontal
-	double	side_x; // Distance entre la position actuelle et la prochaine frontière verticale
-	double	side_y; // Distance entre la position actuelle et la prochaine frontière horizontale
-	int		orientation_x; // orientation à prendre en X : +1 ou -1
-	int		orientation_y; // orientation à prendre en Y : +1 ou -1
-	int		pos_x;
-	int		pos_y;
-	double	dir_y;
-	double	dir_x;
-	double	t;
-	char	d;
+	int 	x_check;
+	int 	y_check;
+	double	t_n;
+	double	t_s;
+	double	t_e;
+	double	t_w;
+	double	t_min;
+	char	face;
 };
 
 struct		s_exec
@@ -191,22 +185,22 @@ int		ft_check_south(t_data *d);
 int		ft_check_east(t_data *d);
 int		ft_check_west(t_data *d);
 
-//------------[  ft_init_math.c  ]
+//------------[  ft_init_planes.c  ]
+void	ft_west_plane(t_cardinals *c, int x);
+void	ft_east_plane(t_cardinals *c, int x);
+void	ft_north_plane(t_cardinals *c, int y);
+void	ft_south_plane(t_cardinals *c, int y);
+
+//------------[  ft_math_calculation.c  ]
 void	ft_fov_h_and_v_ratio(t_exec *e);
 void	ft_director_vector(t_exec *e, int i, int j);
 void	ft_move_l_r(t_exec *e);
 void	ft_move_f_b(t_exec *e);
 void	ft_init_camera(t_exec *e);
 
-//------------[  ft_init_planes.c  ]
-void	ft_west(t_cardinals *c, int x);
-void	ft_east(t_cardinals *c, int x);
-void	ft_north(t_cardinals *c, int y);
-void	ft_south(t_cardinals *c, int y);
-
-//------------[  ft_math_calculation.c  ]
-double	ft_find_t(t_exec *e, char c);
-
+//------------[  ft_math_calculation_walls.c  ]
+double 	ft_find_plane_intersection(t_exec *e, t_plane *plane);
+void	ft_intersection_coord(t_exec *e, double t);
 
 //------------[  ft_planes.c  ]
 int		ft_init_plane(t_exec *e);
@@ -216,9 +210,17 @@ void	ft_group_all_planes(t_data *d);
 //------------[  ft_start.c  ]
 int		ft_start(t_exec *e, t_data *d);
 
-//------------[  ft_start.c  ]
+//------------[  ft_init_textures.c  ]
 int		ft_init_textures(t_data *d);
+
+//------------[  ft_texture.c  ]
 int		ft_texture(t_data *d, char c);
+
+//------------[  ft_wall_intersection.c  ]
+void	ft_north_wall(t_data *d, int y);
+void	ft_south_wall(t_data *d, int y);
+void	ft_east_wall(t_data *d, int x);
+void	ft_west_wall(t_data *d, int x);
 
 //------------[  ft_walls.c  ]
 void	ft_walls(t_data *d, int i, int j);
