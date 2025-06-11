@@ -6,7 +6,7 @@
 /*   By: mathildelaussel <mathildelaussel@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/11 15:12:16 by mathildelau      ###   ########.fr       */
+/*   Updated: 2025/06/11 16:20:00 by mathildelau      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ int	ft_start(t_exec *e, t_data *d)
 		j = 0;
 		while (j < WIN_SIZE)
 		{
+			ft_director_vector(e, i, j);
 			ft_move_l_r(e);
 			ft_move_f_b(e);
-			ft_director_vector(e, i, j);
 			ft_walls(d, i, j);
 			j++;
 		}

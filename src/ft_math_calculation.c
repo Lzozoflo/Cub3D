@@ -6,7 +6,7 @@
 /*   By: mathildelaussel <mathildelaussel@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 10:07:56 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/11 15:13:25 by mathildelau      ###   ########.fr       */
+/*   Updated: 2025/06/11 16:19:42 by mathildelau      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,16 @@ void	ft_director_vector(t_exec *e, int i, int j)
  */
 void	ft_move_l_r(t_exec *e)
 {
-	int	dx;
-	int	dy;
+	double	dx;
+	double	dy;
 
 	dx = e->player.dir_x;
 	dy = e->player.dir_y;
 	e->player.dir_x = cos(e->player.angle) * dx - sin(e->player.angle) * dy;
 	e->player.dir_y = sin(e->player.angle) * dx + cos(e->player.angle) * dy;
+
+	e->player.angle = 0;
+
 }
 
 /**

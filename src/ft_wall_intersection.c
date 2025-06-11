@@ -6,12 +6,28 @@
 /*   By: mathildelaussel <mathildelaussel@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 15:39:02 by mathildelau       #+#    #+#             */
-/*   Updated: 2025/06/11 15:39:11 by mathildelau      ###   ########.fr       */
+/*   Updated: 2025/06/11 16:00:01 by mathildelau      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 
+/**
+ * @brief `check north intersection`
+ * 
+ * (p.30) : "For an intersection to be considered valid,
+ * t must be positive and Iz must be between 0 inclusive and 1."
+ * --> t (p.23)
+ * --> Iz (p.23)
+ * 
+ * (p.31) - Checks in the map (cast int): "After finding an intersection with a plan, 
+ * you need to look to see if there is a wall at that location on the map. 
+ * When looking North, you must check the box (Ix, Iy - 1)."
+ * 
+ * (p.30) - Route of plans : "So, we just stop at the first wall 
+ * and compare the distance (t) of the nearest wall on the x-axis 
+ * with the one closest to the y-axis."
+ */
 void	ft_north_wall(t_data *d, int y)
 {
 	d->exec.wall.t_n = ft_find_plane_intersection(&d->exec,
@@ -33,6 +49,22 @@ void	ft_north_wall(t_data *d, int y)
 	}
 }
 
+/**
+ * @brief `check south intersection`
+ * 
+ * (p.30) : "For an intersection to be considered valid,
+ * t must be positive and Iz must be between 0 inclusive and 1."
+ * --> t (p.23)
+ * --> Iz (p.23)
+ * 
+ * (p.31) - Checks in the map (cast int): "After finding an intersection with a plan, 
+ * you need to look to see if there is a wall at that location on the map. 
+ * When looking South, you must check the box (Ix, Iy)."
+ * 
+ * (p.30) - Route of plans : "So, we just stop at the first wall 
+ * and compare the distance (t) of the nearest wall on the x-axis 
+ * with the one closest to the y-axis."
+ */
 void	ft_south_wall(t_data *d, int y)
 {
 	d->exec.wall.t_s = ft_find_plane_intersection(&d->exec,
@@ -54,6 +86,22 @@ void	ft_south_wall(t_data *d, int y)
 	}
 }
 
+/**
+ * @brief `check east intersection`
+ * 
+ * (p.30) : "For an intersection to be considered valid,
+ * t must be positive and Iz must be between 0 inclusive and 1."
+ * --> t (p.23)
+ * --> Iz (p.23)
+ * 
+ * (p.31) - Checks in the map (cast int): "After finding an intersection with a plan, 
+ * you need to look to see if there is a wall at that location on the map. 
+ * When looking East, you must check the box (Ix, Iy)."
+ * 
+ * (p.30) - Route of plans : "So, we just stop at the first wall 
+ * and compare the distance (t) of the nearest wall on the x-axis 
+ * with the one closest to the y-axis."
+ */
 void	ft_east_wall(t_data *d, int x)
 {
 	d->exec.wall.t_e = ft_find_plane_intersection(&d->exec,
@@ -76,6 +124,22 @@ void	ft_east_wall(t_data *d, int x)
 	}
 }
 
+/**
+ * @brief `check west intersection`
+ * 
+ * (p.30) : "For an intersection to be considered valid,
+ * t must be positive and Iz must be between 0 inclusive and 1."
+ * --> t (p.23)
+ * --> Iz (p.23)
+ * 
+ * (p.31) - Checks in the map (cast int): "After finding an intersection with a plan, 
+ * you need to look to see if there is a wall at that location on the map. 
+ * When looking West, you must check the box (Ix - 1, Iy)."
+ * 
+ * (p.30) - Route of plans : "So, we just stop at the first wall 
+ * and compare the distance (t) of the nearest wall on the x-axis 
+ * with the one closest to the y-axis."
+ */
 void	ft_west_wall(t_data *d, int x)
 {
 	d->exec.wall.t_w = ft_find_plane_intersection(&d->exec,

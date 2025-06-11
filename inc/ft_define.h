@@ -6,7 +6,7 @@
 /*   By: mathildelaussel <mathildelaussel@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 17:32:29 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/11 14:15:25 by mathildelau      ###   ########.fr       */
+/*   Updated: 2025/06/11 16:02:42 by mathildelau      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 # define D 2 // 100 //2 macos
 # define S 1 // 115 //1 macos
 // Key Code moving camera
-# define LEFT 65361
-# define RIGHT 65363
+# define LEFT 123// 65361 //123 macos
+# define RIGHT 124// 65363 //124macos
 // Key Code
 # define M 46 // 109 //46macos
 
