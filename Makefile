@@ -3,7 +3,7 @@
 NAME			:=	Cub3D
 INCLUDES		=	-I $(HEADERS_DIR) -I $(D_INC_LIBFT)
 CC				:=	cc
-CFLAGS			:=	-Wall -Wextra -Werror -g3
+CFLAGS			:=	-Wall -Wextra -Werror -O3 -march=native -ffast-math -flto
 CFLAGSS			:=	-Weverything -Wno-padded -Wno-reserved-id-macro -Wno-strict-prototypes
 RM				:=	rm -fr
 MLX_FLAG		:=	-Lminilibx-linux -lmlx -lX11 -lXext
