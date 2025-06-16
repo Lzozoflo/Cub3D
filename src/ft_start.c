@@ -6,14 +6,27 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/16 14:03:41 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/16 15:33:01 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
+#include <stdlib.h>
 
-
-#include <stdlib.h> //maybe delete
+/**
+ * @brief `calculate all radius for opti`
+ *
+ * `(p.15) - double loop` :"To create our direction vectors,
+ * we simply need to put an increment on the x (which we will call i)
+ * and another for the y (j)."
+ *
+ * `(p.30) - Radius precalculation`
+ * "First, it is very important to calculate the radii beforehand.
+ * As shown here, radii can be calculated before the graph loop.
+ * We therefore create them with a North orientation and then simply
+ * turn the ray towards our direction just before using it in the algorithm.
+ * This saves all the creation time during the loop."
+ */
 int	ft_calculate_all_radius(t_exec *e)
 {
 	int	i;
@@ -38,10 +51,26 @@ int	ft_calculate_all_radius(t_exec *e)
 	return (1);
 }
 
+void	ft_free_radius(t_radius *r)
+{
+	int	i;
+
+	if (r->ray)
+		return;
+	i = 0;
+	while (i < WIN_SIZE_SCALE)
+	{
+		if (r->ray[i])
+			free(r->ray[i]);
+		i++;
+	}
+	free(r->ray);
+	r->ray = NULL;
+}
+
 /**
  * @brief `init param`
  *
- * `(p.17) - ft_init_camera`
  *
  * `(p.11 and p.13) - ft_fov_h_and_v_ratio` : horizontal and vertical distance
  * between radius + fov
@@ -55,7 +84,7 @@ int	ft_init_start(t_exec *e, t_data *d)
 		return (-1);
 	if (ft_init_plane(e) == -1)
 	{
-		//ft_free_radius() //to create
+		ft_free_radius(&e->radius);
 		ft_free_cardi(e);
 		return (-1);
 	}
@@ -65,18 +94,13 @@ int	ft_init_start(t_exec *e, t_data *d)
 	return (0);
 }
 
-
 /**@brief `begining of graphic and maths part`
  *
- * `(p.15) - double loop` : "To create our direction vectors,
- * we simply need to put an increment on the x (which we will call i)
- * and another for the y (j)."
+ * `(p.17) - ft_init_camera`
  *
  * `(p.29) - ft_move_l_r : z rotation matrix`
  *
  * `X - ft_move_f_b`
- *
- * `(p.15) - ft_director_vector` : calculate radius.
  *
  * `X - ft_walls`
  *
@@ -94,8 +118,8 @@ int	ft_start(t_exec *e, t_data *d)
 		j = 0;
 		while (j < WIN_SIZE_SCALE)
 		{
-			ft_move_l_r(e, i , j);
-			ft_move_f_b(e, i , j);
+			ft_move_l_r(e, i, j);
+			ft_move_f_b(e, i, j);
 			ft_walls(d, i, j);
 			j++;
 		}

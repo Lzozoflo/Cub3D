@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 10:07:56 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/16 14:03:08 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/16 15:33:05 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,12 @@ void	ft_move_l_r(t_exec *e, int i, int j)
 	double	dx;
 	double	dy;
 
-	dx =  e->radius.ray[i][j].dir_x;
-	dy =  e->radius.ray[i][j].dir_y;
-	e->radius.ray[i][j].dir_x = cos(e->player.angle) * dx - sin(e->player.angle) * dy;
-	e->radius.ray[i][j].dir_y = sin(e->player.angle) * dx + cos(e->player.angle) * dy;
-
-	e->player.angle = 0;
+	dx = e->radius.ray[i][j].dir_x;
+	dy = e->radius.ray[i][j].dir_y;
+	e->radius.ray[i][j].dir_x = cos(e->player.angle) * dx
+		- sin(e->player.angle) * dy;
+	e->radius.ray[i][j].dir_y = sin(e->player.angle) * dx
+		+ cos(e->player.angle) * dy;
 }
 
 /**

@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 08:01:22 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/16 10:28:58 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/16 14:26:41 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 static inline unsigned int	ft_color_map_tile_px(int c, t_minimap *m)
 {
-
 	if (c == '0')
 		return (m->color_minimap[0]);
 	else if (c == '1')
@@ -35,13 +34,13 @@ static inline unsigned int	ft_color_map_tile_px(int c, t_minimap *m)
 	return (0);
 }
 
-void ft_draw_circle(t_data *data, t_minimap *m)
+void	ft_draw_circle(t_data *data, t_minimap *m)
 {
 	const int	radius = (int)(m->tile_size * RADIUSPLAYER);
 	const int	r2 = radius * radius;
 	const int	c = (int)m->center;
-	int dy;
-	int dx;
+	int			dy;
+	int			dx;
 
 	dy = -radius;
 	while (dy <= radius)
@@ -68,7 +67,6 @@ static void	ft_draw_minimap_x(t_data *data, t_minimap *m, int py, int tile_y)
 	px = m->win_xy_min;
 	while (px < wmax)
 	{
-
 		tile_x = floor((px - m->offset_x) * m->div) + m->tab_start_x;
 		if (tile_x < 0)
 		{

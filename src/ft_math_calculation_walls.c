@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 09:11:56 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/16 12:44:30 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/16 14:13:33 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ double	ft_find_plane_intersection_e_w(t_exec *e, t_plane *plane, int i, int j)
 	double	denominator;
 
 	numerator = -((plane->a * e->s.cx) + plane->d);
-	denominator = (plane->a *e->radius.ray[i][j].dir_x);
+	denominator = (plane->a * e->radius.ray[i][j].dir_x);
 	if (denominator == 0)
 		return (-1);
 	return (numerator / denominator);

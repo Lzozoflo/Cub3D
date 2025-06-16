@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/16 13:45:52 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/16 15:22:11 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,26 +48,26 @@ struct		s_image
 
 struct		s_rgb
 {
-	unsigned int r;
-	unsigned int g;
-	unsigned int b;
+	unsigned int	r;
+	unsigned int	g;
+	unsigned int	b;
 };
 
 struct		s_minimap
 {
 	unsigned int	color_minimap[5];
-	int		zoom;
-	int		tile_size;
-	int		tab_start_x;
-	int		tab_start_y;
-	int		tab_end_x;
-	int		tab_end_y;
-	int		win_xy_min;
-	int		win_xy_max;
-	double	center;
-	double	div;
-	double	offset_x;
-	double	offset_y;
+	int				zoom;
+	int				tile_size;
+	int				tab_start_x;
+	int				tab_start_y;
+	int				tab_end_x;
+	int				tab_end_y;
+	int				win_xy_min;
+	int				win_xy_max;
+	double			center;
+	double			div;
+	double			offset_x;
+	double			offset_y;
 };
 
 struct		s_gnl
@@ -164,8 +164,8 @@ struct s_start
 
 struct s_wall
 {
-	int 	x_check;
-	int 	y_check;
+	int		x_check;
+	int		y_check;
 	double	t_n;
 	double	t_s;
 	double	t_e;
@@ -200,7 +200,6 @@ struct		s_data
 	t_exec		exec;
 };
 
-
 				/*MATHS*/
 
 //------------[  ft_init_planes.c  ]
@@ -211,7 +210,6 @@ void	ft_south_plane(t_cardinals *c, int y);
 
 //------------[  ft_math_calculation.c  ]
 void	ft_fov_h_and_v_ratio(t_exec *e);
-void	ft_director_vector(t_exec *e, t_player *p, int i, int j);
 void	ft_move_l_r(t_exec *e, int i, int j);
 void	ft_move_f_b(t_exec *e, int i, int j);
 void	ft_init_camera(t_exec *e);
@@ -226,9 +224,14 @@ int		ft_init_plane(t_exec *e);
 void	ft_free_cardi(t_exec *e);
 void	ft_group_all_planes(t_data *d);
 
+//------------[  ft_radius.c  ]
+int		ft_calculate_all_radius(t_exec *e);
+void	ft_director_vector(t_exec *e, t_player *p, int i, int j);
+
 //------------[  ft_start.c  ]
 int		ft_init_start(t_exec *e, t_data *d);
 int		ft_start(t_exec *e, t_data *d);
+void	ft_free_radius(t_radius *r);
 
 //------------[  ft_init_textures.c  ]
 int		ft_init_textures(t_data *d);
@@ -244,12 +247,6 @@ void	ft_west_wall(t_exec *e, int x, int i, int j);
 
 //------------[  ft_walls.c  ]
 void	ft_walls(t_data *d, int i, int j);
-
-
-
-
-
-
 
 /*-----------------src/draw-----------------*/
 
@@ -319,8 +316,11 @@ void	ft_find_player_pos(char **tab, t_player *player);
 int		ft_parsing_cub(t_data *data, char *scene_cub);
 
 /*-----------------src/utils-----------------*/
-//------------[  event/ft_key_event.c  ]
+//------------[  event/ft_wasd.c  ]
+int		ft_wasd(int keycode, t_player *player);
 
+//------------[  event/ft_key_event.c  ]
+int		ft_check_pos_colision(t_player *p, double x, double y);
 int		ft_key_press(int keycode, void *param);
 
 //------------[  event/ft_is_event.c  ]
@@ -374,6 +374,5 @@ void	t_minimap_set_color(t_exec *exec, t_minimap *m);
 //------------[  t_minimap.c  ]
 
 void	t_minimaps_set(t_minimap *mini, t_player *p, int zoom);
-
 
 #endif

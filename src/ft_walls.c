@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 14:02:49 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/16 14:09:57 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/16 14:24:04 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,7 @@ static void	ft_color_scale(t_data *d, int i, int j, int color)
 		}
 		k++;
 	}
-
 }
-
 
 /**
  * @brief `color pixel with color of texture if intersection`
@@ -71,12 +69,11 @@ static void	ft_color_wall(t_data *d, int i, int j)
 
 	if (d->exec.wall.t_min < 0)
 		return ;
-	ft_intersection_coord(&d->exec, d->exec.wall.t_min, i , j);
+	ft_intersection_coord(&d->exec, d->exec.wall.t_min, i, j);
 	if (d->exec.s.iz >= 0.0 && d->exec.s.iz < 1.0)
 	{
 		color = ft_texture(d, d->exec.wall.face);
 		ft_color_scale(d, i, j, color);
-
 	}
 }
 

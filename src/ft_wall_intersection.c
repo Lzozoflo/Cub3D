@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 15:39:02 by mathildelau       #+#    #+#             */
-/*   Updated: 2025/06/16 13:42:54 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/16 14:23:37 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
  * --> t (p.23)
  * --> Iz (p.23)
  *
- * (p.31) - Checks in the map (cast int): "After finding an intersection with a plan,
+ * (p.31) - Checks in the map (cast int):
+ * "After finding an intersection with a plan,
  * you need to look to see if there is a wall at that location on the map.
  * When looking North, you must check the box (Ix, Iy - 1)."
  *
@@ -56,7 +57,8 @@ void	ft_north_wall(t_exec *e, int y, int i, int j)
  * --> t (p.23)
  * --> Iz (p.23)
  *
- * (p.31) - Checks in the map (cast int): "After finding an intersection with a plan,
+ * (p.31) - Checks in the map (cast int):
+ * "After finding an intersection with a plan,
  * you need to look to see if there is a wall at that location on the map.
  * When looking South, you must check the box (Ix, Iy)."
  *
@@ -69,7 +71,7 @@ void	ft_south_wall(t_exec *e, int y, int i, int j)
 	e->wall.t_s = ft_find_plane_intersection_n_s(e, &e->cardi.s[y], i, j);
 	if (e->wall.t_s > 0)
 	{
-		ft_intersection_coord(e, e->wall.t_s, i , j);
+		ft_intersection_coord(e, e->wall.t_s, i, j);
 		e->wall.x_check = (int)(e->s.ix);
 		if (e->wall.x_check >= 0 && e->wall.x_check < e->max_width && y >= 0
 			&& y < e->max_height && e->tab[y][e->wall.x_check] == '1')
@@ -92,7 +94,8 @@ void	ft_south_wall(t_exec *e, int y, int i, int j)
  * --> t (p.23)
  * --> Iz (p.23)
  *
- * (p.31) - Checks in the map (cast int): "After finding an intersection with a plan,
+ * (p.31) - Checks in the map (cast int):
+ * "After finding an intersection with a plan,
  * you need to look to see if there is a wall at that location on the map.
  * When looking East, you must check the box (Ix, Iy)."
  *
@@ -102,7 +105,7 @@ void	ft_south_wall(t_exec *e, int y, int i, int j)
  */
 void	ft_east_wall(t_exec *e, int x, int i, int j)
 {
-	e->wall.t_e = ft_find_plane_intersection_e_w(e, &e->cardi.e[x], i , j);
+	e->wall.t_e = ft_find_plane_intersection_e_w(e, &e->cardi.e[x], i, j);
 	if (e->wall.t_e > 0)
 	{
 		ft_intersection_coord(e, e->wall.t_e, i, j);
@@ -129,7 +132,8 @@ void	ft_east_wall(t_exec *e, int x, int i, int j)
  * --> t (p.23)
  * --> Iz (p.23)
  *
- * (p.31) - Checks in the map (cast int): "After finding an intersection with a plan,
+ * (p.31) - Checks in the map (cast int):
+ * "After finding an intersection with a plan,
  * you need to look to see if there is a wall at that location on the map.
  * When looking West, you must check the box (Ix - 1, Iy)."
  *

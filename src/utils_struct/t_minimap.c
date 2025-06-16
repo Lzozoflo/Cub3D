@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   t_minimap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 10:48:27 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/26 12:35:03 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/06/16 14:28:55 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "ft_debug.h"
 #include "ft_define.h"
 #include <math.h>
-
 
 static void	t_minimap_set_plane(t_minimap *m, double x, double y, int ts)
 {
