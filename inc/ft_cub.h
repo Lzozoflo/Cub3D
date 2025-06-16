@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/16 12:38:24 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/16 13:45:52 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_exec			t_exec;
 typedef struct s_data			t_data;
 typedef struct s_radius			t_radius;
 typedef struct s_ray			t_ray;
+typedef struct s_start			t_start;
 
 struct		s_image
 {
@@ -43,34 +44,6 @@ struct		s_image
 	int		endian;
 	int		width;
 	int		height;
-};
-
-struct s_plane
-{
-	int	a;
-	int	b;
-	int	c;
-	int	d;
-};
-
-struct s_cardinals
-{
-	t_plane	*n;
-	t_plane	*w;
-	t_plane	*e;
-	t_plane	*s;
-};
-
-struct s_ray
-{
-	double		dir_y;
-	double		dir_x;
-	double		dir_z;
-};
-
-struct s_radius
-{
-	t_ray	**ray;
 };
 
 struct		s_rgb
@@ -134,11 +107,39 @@ struct		s_texture
 	void	*texture_we;
 };
 
+struct s_plane
+{
+	int	a;
+	int	b;
+	int	c;
+	int	d;
+};
+
+struct s_cardinals
+{
+	t_plane	*n;
+	t_plane	*w;
+	t_plane	*e;
+	t_plane	*s;
+};
+
+struct s_ray
+{
+	double		dir_y;
+	double		dir_x;
+	double		dir_z;
+};
+
+struct s_radius
+{
+	t_ray	**ray;
+};
+
 struct		s_player
 {
-	double			pos_z;//a voir avec gigi//cam
-	double			pos_x;//cam
-	double			pos_y;//cam
+	double			pos_z;
+	double			pos_x;
+	double			pos_y;
 	char			pos;
 	double			dir_y;
 	double			dir_x;
@@ -148,14 +149,14 @@ struct		s_player
 	t_data			*data;
 };
 
-typedef struct s_start		t_start;
 struct s_start
 {
-	double	cx, cy, cz, ix, iy, iz;
-	t_plane			n;
-	t_plane			s;
-	t_plane			e;
-	t_plane			w;
+	double			cx;
+	double			cy;
+	double			cz;
+	double			ix;
+	double			iy;
+	double			iz;
 	double			fov;
 	double			rh;
 	double			rv;
@@ -202,12 +203,6 @@ struct		s_data
 
 				/*MATHS*/
 
-//------------[  ft_check_walls.c  ]
-int		ft_check_north(t_data *d);
-int		ft_check_south(t_data *d);
-int		ft_check_east(t_data *d);
-int		ft_check_west(t_data *d);
-
 //------------[  ft_init_planes.c  ]
 void	ft_west_plane(t_cardinals *c, int x);
 void	ft_east_plane(t_cardinals *c, int x);
@@ -220,7 +215,6 @@ void	ft_director_vector(t_exec *e, t_player *p, int i, int j);
 void	ft_move_l_r(t_exec *e, int i, int j);
 void	ft_move_f_b(t_exec *e, int i, int j);
 void	ft_init_camera(t_exec *e);
-t_ray	rotate_ray(t_ray r, double theta);
 
 //------------[  ft_math_calculation_walls.c  ]
 double	ft_find_plane_intersection_n_s(t_exec *e, t_plane *plane, int i, int j);
@@ -243,10 +237,10 @@ int		ft_init_textures(t_data *d);
 int		ft_texture(t_data *d, char c);
 
 //------------[  ft_wall_intersection.c  ]
-void	ft_north_wall(t_data *d, int y, int i, int j);
-void	ft_south_wall(t_data *d, int y, int i, int j);
-void	ft_east_wall(t_data *d, int x, int i, int j);
-void	ft_west_wall(t_data *d, int x, int i, int j);
+void	ft_north_wall(t_exec *e, int y, int i, int j);
+void	ft_south_wall(t_exec *e, int y, int i, int j);
+void	ft_east_wall(t_exec *e, int x, int i, int j);
+void	ft_west_wall(t_exec *e, int x, int i, int j);
 
 //------------[  ft_walls.c  ]
 void	ft_walls(t_data *d, int i, int j);

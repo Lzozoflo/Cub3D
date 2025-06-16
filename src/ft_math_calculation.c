@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 10:07:56 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/16 12:00:12 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/16 13:34:03 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,22 @@
 /**
  * @brief `horizontal and vertical distance between radius + fov`
  *
- * p.11 PI / 3
- * p.13 RH and RV
+ * `p.11 FOV` - "The FOV can be set to 60 degrees or 𝜋 / 3 radians
+ * (standard field of view)."
+ *
+ * `p.13 RH and RV`
+
+ * R_H = 2 * tan(FOV / 2) / W
+ * RV = 2 * tan(FOV * H / (W * 2)) / H
+ *
+ * --> true RV : 2 * tan(e->s.fov * WIN_SIZE / (2.0 * WIN_SIZE)) / WIN_SIZE;
+ * we can simplify
  */
 void	ft_fov_h_and_v_ratio(t_exec *e)
 {
-	e->s.fov = PI / 3;
+	e->s.fov = PI * 0.33;
 	e->s.rh = 2 * tan(e->s.fov * 0.5) / WIN_SIZE;
-	e->s.rv = 2 * tan(e->s.fov * WIN_SIZE / (2.0 * WIN_SIZE)) / WIN_SIZE;
+	e->s.rv = 2 * tan(e->s.fov * 0.5) / WIN_SIZE;
 }
 
 /**

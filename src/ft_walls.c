@@ -6,20 +6,20 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 14:02:49 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/16 11:52:49 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/16 13:45:02 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 
-static void	ft_init_wall(t_data *d)
+static void	ft_init_wall(t_wall *w)
 {
-	d->exec.wall.t_n = -1;
-	d->exec.wall.t_s = -1;
-	d->exec.wall.t_e = -1;
-	d->exec.wall.t_w = -1;
-	d->exec.wall.t_min = -1;
-	d->exec.wall.face = 0;
+	w->t_n = -1;
+	w->t_s = -1;
+	w->t_e = -1;
+	w->t_w = -1;
+	w->t_min = -1;
+	w->face = 0;
 }
 
 /**
@@ -55,17 +55,17 @@ void	ft_walls(t_data *d, int i, int j)
 
 	x = 0;
 	y = 0;
-	ft_init_wall(d);
+	ft_init_wall(&d->exec.wall);
 	while (y < d->exec.max_height)
 	{
-		ft_north_wall(d, y, i, j);
-		ft_south_wall(d, y, i ,j);
+		ft_north_wall(&d->exec, y, i, j);
+		ft_south_wall(&d->exec, y, i, j);
 		y++;
 	}
 	while (x < d->exec.max_width)
 	{
-		ft_east_wall(d, x, i ,j);
-		ft_west_wall(d, x, i ,j);
+		ft_east_wall(&d->exec, x, i, j);
+		ft_west_wall(&d->exec, x, i, j);
 		x++;
 	}
 	ft_color_wall(d, i, j);

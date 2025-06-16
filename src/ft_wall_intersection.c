@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 15:39:02 by mathildelau       #+#    #+#             */
-/*   Updated: 2025/06/16 12:39:38 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/16 13:42:54 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,21 @@
  * and compare the distance (t) of the nearest wall on the x-axis
  * with the one closest to the y-axis."
  */
-void	ft_north_wall(t_data *d, int y, int i, int j)
+void	ft_north_wall(t_exec *e, int y, int i, int j)
 {
-	d->exec.wall.t_n = ft_find_plane_intersection_n_s(&d->exec,
-		&d->exec.cardi.n[y], i, j);
-	if (d->exec.wall.t_n > 0)
+	e->wall.t_n = ft_find_plane_intersection_n_s(e, &e->cardi.n[y], i, j);
+	if (e->wall.t_n > 0)
 	{
-		ft_intersection_coord(&d->exec, d->exec.wall.t_n, i, j);
-		d->exec.wall.x_check = (int)(d->exec.s.ix);
-		if (d->exec.wall.x_check >= 0 && d->exec.wall.x_check < d->exec.max_width && y >= 0
-			&& y < d->exec.max_height && d->exec.tab[y][d->exec.wall.x_check] == '1')
+		ft_intersection_coord(e, e->wall.t_n, i, j);
+		e->wall.x_check = (int)(e->s.ix);
+		if (e->wall.x_check >= 0 && e->wall.x_check < e->max_width && y >= 0
+			&& y < e->max_height && e->tab[y][e->wall.x_check] == '1')
 		{
-			if (d->exec.wall.t_min < 0
-				|| d->exec.wall.t_n < d->exec.wall.t_min)
+			if (e->wall.t_min < 0
+				|| e->wall.t_n < e->wall.t_min)
 			{
-				d->exec.wall.t_min = d->exec.wall.t_n;
-				d->exec.wall.face = 'n';
+				e->wall.t_min = e->wall.t_n;
+				e->wall.face = 'n';
 			}
 		}
 	}
@@ -65,22 +64,21 @@ void	ft_north_wall(t_data *d, int y, int i, int j)
  * and compare the distance (t) of the nearest wall on the x-axis
  * with the one closest to the y-axis."
  */
-void	ft_south_wall(t_data *d, int y, int i, int j)
+void	ft_south_wall(t_exec *e, int y, int i, int j)
 {
-	d->exec.wall.t_s = ft_find_plane_intersection_n_s(&d->exec,
-		&d->exec.cardi.s[y], i, j);
-	if (d->exec.wall.t_s > 0)
+	e->wall.t_s = ft_find_plane_intersection_n_s(e, &e->cardi.s[y], i, j);
+	if (e->wall.t_s > 0)
 	{
-		ft_intersection_coord(&d->exec, d->exec.wall.t_s, i , j);
-		d->exec.wall.x_check = (int)(d->exec.s.ix);
-		if (d->exec.wall.x_check >= 0 && d->exec.wall.x_check < d->exec.max_width && y >= 0
-			&& y < d->exec.max_height && d->exec.tab[y][d->exec.wall.x_check] == '1')
+		ft_intersection_coord(e, e->wall.t_s, i , j);
+		e->wall.x_check = (int)(e->s.ix);
+		if (e->wall.x_check >= 0 && e->wall.x_check < e->max_width && y >= 0
+			&& y < e->max_height && e->tab[y][e->wall.x_check] == '1')
 		{
-			if (d->exec.wall.t_min < 0
-				|| d->exec.wall.t_s < d->exec.wall.t_min)
+			if (e->wall.t_min < 0
+				|| e->wall.t_s < e->wall.t_min)
 			{
-				d->exec.wall.t_min = d->exec.wall.t_s;
-				d->exec.wall.face = 's';
+				e->wall.t_min = e->wall.t_s;
+				e->wall.face = 's';
 			}
 		}
 	}
@@ -102,23 +100,22 @@ void	ft_south_wall(t_data *d, int y, int i, int j)
  * and compare the distance (t) of the nearest wall on the x-axis
  * with the one closest to the y-axis."
  */
-void	ft_east_wall(t_data *d, int x, int i, int j)
+void	ft_east_wall(t_exec *e, int x, int i, int j)
 {
-	d->exec.wall.t_e = ft_find_plane_intersection_e_w(&d->exec,
-		&d->exec.cardi.e[x], i , j);
-	if (d->exec.wall.t_e > 0)
+	e->wall.t_e = ft_find_plane_intersection_e_w(e, &e->cardi.e[x], i , j);
+	if (e->wall.t_e > 0)
 	{
-		ft_intersection_coord(&d->exec, d->exec.wall.t_e, i, j);
-		d->exec.wall.y_check = (int)(d->exec.s.iy);
-		if (x >= 0 && x < d->exec.max_width && d->exec.wall.y_check >= 0
-			&& d->exec.wall.y_check < d->exec.max_height
-			&& d->exec.tab[d->exec.wall.y_check][x] == '1')
+		ft_intersection_coord(e, e->wall.t_e, i, j);
+		e->wall.y_check = (int)(e->s.iy);
+		if (x >= 0 && x < e->max_width && e->wall.y_check >= 0
+			&& e->wall.y_check < e->max_height
+			&& e->tab[e->wall.y_check][x] == '1')
 		{
-			if (d->exec.wall.t_min < 0
-				|| d->exec.wall.t_e < d->exec.wall.t_min)
+			if (e->wall.t_min < 0
+				|| e->wall.t_e < e->wall.t_min)
 			{
-				d->exec.wall.t_min = d->exec.wall.t_e;
-				d->exec.wall.face = 'e';
+				e->wall.t_min = e->wall.t_e;
+				e->wall.face = 'e';
 			}
 		}
 	}
@@ -140,23 +137,22 @@ void	ft_east_wall(t_data *d, int x, int i, int j)
  * and compare the distance (t) of the nearest wall on the x-axis
  * with the one closest to the y-axis."
  */
-void	ft_west_wall(t_data *d, int x, int i, int j)
+void	ft_west_wall(t_exec *e, int x, int i, int j)
 {
-	d->exec.wall.t_w = ft_find_plane_intersection_e_w(&d->exec,
-		&d->exec.cardi.w[x], i, j);
-	if (d->exec.wall.t_w > 0)
+	e->wall.t_w = ft_find_plane_intersection_e_w(e, &e->cardi.w[x], i, j);
+	if (e->wall.t_w > 0)
 	{
-		ft_intersection_coord(&d->exec, d->exec.wall.t_w, i, j);
-		d->exec.wall.y_check = (int)(d->exec.s.iy);
-		if (x >= 0 && x < d->exec.max_width && d->exec.wall.y_check >= 0
-			&& d->exec.wall.y_check < d->exec.max_height
-			&& d->exec.tab[d->exec.wall.y_check][x] == '1')
+		ft_intersection_coord(e, e->wall.t_w, i, j);
+		e->wall.y_check = (int)(e->s.iy);
+		if (x >= 0 && x < e->max_width && e->wall.y_check >= 0
+			&& e->wall.y_check < e->max_height
+			&& e->tab[e->wall.y_check][x] == '1')
 		{
-			if (d->exec.wall.t_min < 0
-				|| d->exec.wall.t_w < d->exec.wall.t_min)
+			if (e->wall.t_min < 0
+				|| e->wall.t_w < e->wall.t_min)
 			{
-				d->exec.wall.t_min = d->exec.wall.t_w;
-				d->exec.wall.face = 'w';
+				e->wall.t_min = e->wall.t_w;
+				e->wall.face = 'w';
 			}
 		}
 	}
