@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/16 12:00:21 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/16 14:03:41 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ int	ft_calculate_all_radius(t_exec *e)
 
 	i = 0;
 	e->radius.ray = NULL;
-	e->radius.ray = malloc(sizeof(t_ray *) * WIN_SIZE);
+	e->radius.ray = malloc(sizeof(t_ray *) * WIN_SIZE_SCALE);
 	if (e->radius.ray == NULL)
 		return (-1);
-	while (i < WIN_SIZE)
+	while (i < WIN_SIZE_SCALE)
 	{
-		e->radius.ray[i] = malloc(sizeof(t_ray) * WIN_SIZE);
+		e->radius.ray[i] = malloc(sizeof(t_ray) * WIN_SIZE_SCALE);
 		j = 0;
-		while (j < WIN_SIZE)
+		while (j < WIN_SIZE_SCALE)
 		{
 			ft_director_vector(e, &e->player, i, j);
 			j++;
@@ -89,10 +89,10 @@ int	ft_start(t_exec *e, t_data *d)
 	i = 0;
 	j = 0;
 	ft_init_camera(e);
-	while (i < WIN_SIZE)
+	while (i < WIN_SIZE_SCALE)
 	{
 		j = 0;
-		while (j < WIN_SIZE)
+		while (j < WIN_SIZE_SCALE)
 		{
 			ft_move_l_r(e, i , j);
 			ft_move_f_b(e, i , j);

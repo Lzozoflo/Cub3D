@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 10:07:56 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/16 13:34:03 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/16 14:03:08 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 void	ft_fov_h_and_v_ratio(t_exec *e)
 {
 	e->s.fov = PI * 0.33;
-	e->s.rh = 2 * tan(e->s.fov * 0.5) / WIN_SIZE;
-	e->s.rv = 2 * tan(e->s.fov * 0.5) / WIN_SIZE;
+	e->s.rh = 2 * tan(e->s.fov * 0.5) / (WIN_SIZE_SCALE);
+	e->s.rv = 2 * tan(e->s.fov * 0.5) / (WIN_SIZE_SCALE);
 }
 
 /**
@@ -47,26 +47,26 @@ void	ft_director_vector(t_exec *e, t_player *p, int i, int j)
 	if (p->pos == 'w')
 	{
 		e->radius.ray[i][j].dir_x = -1;
-		e->radius.ray[i][j].dir_y = ((i - WIN_SIZE * 0.5) * e->s.rh);
-		e->radius.ray[i][j].dir_z = (WIN_SIZE * 0.5 - j) * e->s.rv;
+		e->radius.ray[i][j].dir_y = ((i - WIN_SIZE_SCALE * 0.5) * e->s.rh);
+		e->radius.ray[i][j].dir_z = (WIN_SIZE_SCALE * 0.5 - j) * e->s.rv;
 	}
 	else if (p->pos == 's')
 	{
-		e->radius.ray[i][j].dir_x = ((i - WIN_SIZE * 0.5) * e->s.rh);
+		e->radius.ray[i][j].dir_x = ((i - WIN_SIZE_SCALE * 0.5) * e->s.rh);
 		e->radius.ray[i][j].dir_y = 1;
-		e->radius.ray[i][j].dir_z = (WIN_SIZE * 0.5 - j) * e->s.rv;
+		e->radius.ray[i][j].dir_z = (WIN_SIZE_SCALE * 0.5 - j) * e->s.rv;
 	}
 	else if (p->pos == 'n')
 	{
-		e->radius.ray[i][j].dir_x = ((i - WIN_SIZE * 0.5) * e->s.rh);
+		e->radius.ray[i][j].dir_x = ((i - WIN_SIZE_SCALE * 0.5) * e->s.rh);
 		e->radius.ray[i][j].dir_y = -1;
-		e->radius.ray[i][j].dir_z = (WIN_SIZE * 0.5 - j) * e->s.rv;
+		e->radius.ray[i][j].dir_z = (WIN_SIZE_SCALE * 0.5 - j) * e->s.rv;
 	}
 	else if (p->pos == 'e')
 	{
 		e->radius.ray[i][j].dir_x = 1;
-		e->radius.ray[i][j].dir_y = ((i - WIN_SIZE * 0.5) * e->s.rh);
-		e->radius.ray[i][j].dir_z = (WIN_SIZE * 0.5 - j) * e->s.rv;
+		e->radius.ray[i][j].dir_y = ((i - WIN_SIZE_SCALE * 0.5) * e->s.rh);
+		e->radius.ray[i][j].dir_z = (WIN_SIZE_SCALE * 0.5 - j) * e->s.rv;
 	}
 }
 
