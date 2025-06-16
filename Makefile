@@ -46,7 +46,6 @@
 
 
 # SRC				:=		main.c							\
-# 						ft_check_walls.c				\
 # 						ft_init_planes.c				\
 # 						ft_init_textures.c				\
 # 						ft_math_calculation_walls.c		\
@@ -262,7 +261,6 @@ INC				:=		ft_cub.h						\
 
 
 SRC				:=		main.c							\
-						ft_check_walls.c				\
 						ft_init_planes.c				\
 						ft_init_textures.c				\
 						ft_math_calculation_walls.c		\

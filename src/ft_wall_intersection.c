@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 15:39:02 by mathildelau       #+#    #+#             */
-/*   Updated: 2025/06/16 11:52:19 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/16 12:39:38 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
  */
 void	ft_north_wall(t_data *d, int y, int i, int j)
 {
-	d->exec.wall.t_n = ft_find_plane_intersection(&d->exec,
+	d->exec.wall.t_n = ft_find_plane_intersection_n_s(&d->exec,
 		&d->exec.cardi.n[y], i, j);
 	if (d->exec.wall.t_n > 0)
 	{
@@ -67,7 +67,7 @@ void	ft_north_wall(t_data *d, int y, int i, int j)
  */
 void	ft_south_wall(t_data *d, int y, int i, int j)
 {
-	d->exec.wall.t_s = ft_find_plane_intersection(&d->exec,
+	d->exec.wall.t_s = ft_find_plane_intersection_n_s(&d->exec,
 		&d->exec.cardi.s[y], i, j);
 	if (d->exec.wall.t_s > 0)
 	{
@@ -104,7 +104,7 @@ void	ft_south_wall(t_data *d, int y, int i, int j)
  */
 void	ft_east_wall(t_data *d, int x, int i, int j)
 {
-	d->exec.wall.t_e = ft_find_plane_intersection(&d->exec,
+	d->exec.wall.t_e = ft_find_plane_intersection_e_w(&d->exec,
 		&d->exec.cardi.e[x], i , j);
 	if (d->exec.wall.t_e > 0)
 	{
@@ -142,7 +142,7 @@ void	ft_east_wall(t_data *d, int x, int i, int j)
  */
 void	ft_west_wall(t_data *d, int x, int i, int j)
 {
-	d->exec.wall.t_w = ft_find_plane_intersection(&d->exec,
+	d->exec.wall.t_w = ft_find_plane_intersection_e_w(&d->exec,
 		&d->exec.cardi.w[x], i, j);
 	if (d->exec.wall.t_w > 0)
 	{

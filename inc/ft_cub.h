@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/16 11:55:49 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/16 12:38:24 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,7 +223,8 @@ void	ft_init_camera(t_exec *e);
 t_ray	rotate_ray(t_ray r, double theta);
 
 //------------[  ft_math_calculation_walls.c  ]
-double	ft_find_plane_intersection(t_exec *e, t_plane *plane, int i, int j);
+double	ft_find_plane_intersection_n_s(t_exec *e, t_plane *plane, int i, int j);
+double	ft_find_plane_intersection_e_w(t_exec *e, t_plane *plane, int i, int j);
 void	ft_intersection_coord(t_exec *e, double t, int i, int j);
 
 //------------[  ft_planes.c  ]
