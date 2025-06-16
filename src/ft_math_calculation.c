@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_math_calculation.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mathildelaussel <mathildelaussel@studen    +#+  +:+       +#+        */
+/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 10:07:56 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/11 16:19:42 by mathildelau      ###   ########.fr       */
+/*   Updated: 2025/06/16 12:00:12 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 void	ft_fov_h_and_v_ratio(t_exec *e)
 {
 	e->s.fov = PI / 3;
-	e->s.rh = 2 * tan(e->s.fov / 2) / WIN_SIZE;
+	e->s.rh = 2 * tan(e->s.fov * 0.5) / WIN_SIZE;
 	e->s.rv = 2 * tan(e->s.fov * WIN_SIZE / (2.0 * WIN_SIZE)) / WIN_SIZE;
 }
 
@@ -34,31 +34,31 @@ void	ft_fov_h_and_v_ratio(t_exec *e)
  * (i - W *0.5) * Rh ; -1 ; (H * 0.5 - j) * Rv
  *
  */
-void	ft_director_vector(t_exec *e, int i, int j)
+void	ft_director_vector(t_exec *e, t_player *p, int i, int j)
 {
-	if (e->player.pos == 'w')
+	if (p->pos == 'w')
 	{
-		e->player.dir_x = -1;
-		e->player.dir_y = ((i - WIN_SIZE * 0.5) * e->s.rh);
-		e->player.dir_z = (WIN_SIZE * 0.5 - j) * e->s.rv;
+		e->radius.ray[i][j].dir_x = -1;
+		e->radius.ray[i][j].dir_y = ((i - WIN_SIZE * 0.5) * e->s.rh);
+		e->radius.ray[i][j].dir_z = (WIN_SIZE * 0.5 - j) * e->s.rv;
 	}
-	else if (e->player.pos == 's')
+	else if (p->pos == 's')
 	{
-		e->player.dir_x = ((i - WIN_SIZE * 0.5) * e->s.rh);
-		e->player.dir_y = 1;
-		e->player.dir_z = (WIN_SIZE * 0.5 - j) * e->s.rv;
+		e->radius.ray[i][j].dir_x = ((i - WIN_SIZE * 0.5) * e->s.rh);
+		e->radius.ray[i][j].dir_y = 1;
+		e->radius.ray[i][j].dir_z = (WIN_SIZE * 0.5 - j) * e->s.rv;
 	}
-	else if (e->player.pos == 'n')
+	else if (p->pos == 'n')
 	{
-		e->player.dir_x = ((i - WIN_SIZE * 0.5) * e->s.rh);
-		e->player.dir_y = -1;
-		e->player.dir_z = (WIN_SIZE * 0.5 - j) * e->s.rv;
+		e->radius.ray[i][j].dir_x = ((i - WIN_SIZE * 0.5) * e->s.rh);
+		e->radius.ray[i][j].dir_y = -1;
+		e->radius.ray[i][j].dir_z = (WIN_SIZE * 0.5 - j) * e->s.rv;
 	}
-	else if (e->player.pos == 'e')
+	else if (p->pos == 'e')
 	{
-		e->player.dir_x = 1;
-		e->player.dir_y = ((i - WIN_SIZE * 0.5) * e->s.rh);
-		e->player.dir_z = (WIN_SIZE * 0.5 - j) * e->s.rv;
+		e->radius.ray[i][j].dir_x = 1;
+		e->radius.ray[i][j].dir_y = ((i - WIN_SIZE * 0.5) * e->s.rh);
+		e->radius.ray[i][j].dir_z = (WIN_SIZE * 0.5 - j) * e->s.rv;
 	}
 }
 
@@ -72,27 +72,26 @@ void	ft_director_vector(t_exec *e, int i, int j)
  * 0		0	  1
  *
  */
-void	ft_move_l_r(t_exec *e)
+void	ft_move_l_r(t_exec *e, int i, int j)
 {
 	double	dx;
 	double	dy;
 
-	dx = e->player.dir_x;
-	dy = e->player.dir_y;
-	e->player.dir_x = cos(e->player.angle) * dx - sin(e->player.angle) * dy;
-	e->player.dir_y = sin(e->player.angle) * dx + cos(e->player.angle) * dy;
+	dx =  e->radius.ray[i][j].dir_x;
+	dy =  e->radius.ray[i][j].dir_y;
+	e->radius.ray[i][j].dir_x = cos(e->player.angle) * dx - sin(e->player.angle) * dy;
+	e->radius.ray[i][j].dir_y = sin(e->player.angle) * dx + cos(e->player.angle) * dy;
 
 	e->player.angle = 0;
-
 }
 
 /**
  * @brief `move back and forth`
  */
-void	ft_move_f_b(t_exec *e)
+void	ft_move_f_b(t_exec *e, int i, int j)
 {
-	e->s.cx = e->s.cx + e->player.dir_x * e->player.moove;
-	e->s.cy = e->s.cy + e->player.dir_y * e->player.moove;
+	e->s.cx = e->s.cx + e->radius.ray[i][j].dir_x * e->player.moove;
+	e->s.cy = e->s.cy + e->radius.ray[i][j].dir_y * e->player.moove;
 	e->player.moove = 0;
 }
 

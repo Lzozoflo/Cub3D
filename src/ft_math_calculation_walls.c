@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_math_calculation_walls.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mathildelaussel <mathildelaussel@studen    +#+  +:+       +#+        */
+/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 09:11:56 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/11 15:13:05 by mathildelau      ###   ########.fr       */
+/*   Updated: 2025/06/16 11:49:21 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@
 
  *			O = camera = c
  */
-void	ft_intersection_coord(t_exec *e, double t)
+void	ft_intersection_coord(t_exec *e, double t, int i, int j)
 {
-	e->s.ix = e->s.cx + t * e->player.dir_x;
-	e->s.iy = e->s.cy + t * e->player.dir_y;
-	e->s.iz = e->s.cz + t * e->player.dir_z;
+	e->s.ix = e->s.cx + t * e->radius.ray[i][j].dir_x;
+	e->s.iy = e->s.cy + t * e->radius.ray[i][j].dir_y;
+	e->s.iz = e->s.cz + t * e->radius.ray[i][j].dir_z;
 }
 
 /**
@@ -43,15 +43,15 @@ void	ft_intersection_coord(t_exec *e, double t)
  *
  * @return double @return t
  */
-double	ft_find_plane_intersection(t_exec *e, t_plane *plane)
+double	ft_find_plane_intersection(t_exec *e, t_plane *plane, int i, int j)
 {
 	double	numerator;
 	double	denominator;
 
 	numerator = -((plane->a * e->s.cx) + (plane->b * e->s.cy) + (plane->c
 				* e->s.cz) + plane->d);
-	denominator = (plane->a * e->player.dir_x) + (plane->b * e->player.dir_y)
-		+ (plane->c * e->player.dir_z);
+	denominator = (plane->a *e->radius.ray[i][j].dir_x) + (plane->b * e->radius.ray[i][j].dir_y)
+		+ (plane->c * e->radius.ray[i][j].dir_z);
 	if (denominator == 0)
 		return (-1);
 	return (numerator / denominator);

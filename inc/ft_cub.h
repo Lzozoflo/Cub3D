@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/16 10:16:30 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/16 11:55:49 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,19 @@
 //typedef of all structure
 typedef struct s_plane			t_plane;
 typedef struct s_cardinals		t_cardinals;
+typedef struct s_rgb			t_rgb;
 typedef struct s_minimap		t_minimap;
 typedef struct s_gnl			t_gnl;
 typedef struct s_parsing		t_parsing;
 typedef struct s_image			t_image;
+typedef struct s_u_texture		t_u_texture;
 typedef struct s_texture		t_texture;
 typedef struct s_player			t_player;
+typedef struct s_wall			t_wall;
 typedef struct s_exec			t_exec;
 typedef struct s_data			t_data;
-
+typedef struct s_radius			t_radius;
+typedef struct s_ray			t_ray;
 
 struct		s_image
 {
@@ -57,8 +61,28 @@ struct s_cardinals
 	t_plane	*s;
 };
 
+struct s_ray
+{
+	double		dir_y;
+	double		dir_x;
+	double		dir_z;
+};
+
+struct s_radius
+{
+	t_ray	**ray;
+};
+
+struct		s_rgb
+{
+	unsigned int r;
+	unsigned int g;
+	unsigned int b;
+};
+
 struct		s_minimap
 {
+	unsigned int	color_minimap[5];
 	int		zoom;
 	int		tile_size;
 	int		tab_start_x;
@@ -137,8 +161,6 @@ struct s_start
 	double			rv;
 };
 
-typedef struct s_wall		t_wall;
-
 struct s_wall
 {
 	int 	x_check;
@@ -160,6 +182,7 @@ struct		s_exec
 	char			**tab;
 	t_wall			wall;
 	t_cardinals		cardi;
+	t_radius		radius;
 	t_texture		texture;
 	t_player		player;
 	t_minimap		mini;
@@ -193,14 +216,15 @@ void	ft_south_plane(t_cardinals *c, int y);
 
 //------------[  ft_math_calculation.c  ]
 void	ft_fov_h_and_v_ratio(t_exec *e);
-void	ft_director_vector(t_exec *e, int i, int j);
-void	ft_move_l_r(t_exec *e);
-void	ft_move_f_b(t_exec *e);
+void	ft_director_vector(t_exec *e, t_player *p, int i, int j);
+void	ft_move_l_r(t_exec *e, int i, int j);
+void	ft_move_f_b(t_exec *e, int i, int j);
 void	ft_init_camera(t_exec *e);
+t_ray	rotate_ray(t_ray r, double theta);
 
 //------------[  ft_math_calculation_walls.c  ]
-double 	ft_find_plane_intersection(t_exec *e, t_plane *plane);
-void	ft_intersection_coord(t_exec *e, double t);
+double	ft_find_plane_intersection(t_exec *e, t_plane *plane, int i, int j);
+void	ft_intersection_coord(t_exec *e, double t, int i, int j);
 
 //------------[  ft_planes.c  ]
 int		ft_init_plane(t_exec *e);
@@ -218,10 +242,10 @@ int		ft_init_textures(t_data *d);
 int		ft_texture(t_data *d, char c);
 
 //------------[  ft_wall_intersection.c  ]
-void	ft_north_wall(t_data *d, int y);
-void	ft_south_wall(t_data *d, int y);
-void	ft_east_wall(t_data *d, int x);
-void	ft_west_wall(t_data *d, int x);
+void	ft_north_wall(t_data *d, int y, int i, int j);
+void	ft_south_wall(t_data *d, int y, int i, int j);
+void	ft_east_wall(t_data *d, int x, int i, int j);
+void	ft_west_wall(t_data *d, int x, int i, int j);
 
 //------------[  ft_walls.c  ]
 void	ft_walls(t_data *d, int i, int j);
@@ -348,6 +372,9 @@ void	ft_clear_parsing(t_parsing *parsing);
 
 void	t_gnl_clear(t_parsing *parsing);
 int		t_gnl_add_end(t_parsing *parsing, char *str);
+
+//------------[  t_minimap_set_color.c  ]
+void	t_minimap_set_color(t_exec *exec, t_minimap *m);
 
 //------------[  t_minimap.c  ]
 

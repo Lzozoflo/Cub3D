@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_walls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mathildelaussel <mathildelaussel@studen    +#+  +:+       +#+        */
+/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 14:02:49 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/11 16:01:06 by mathildelau      ###   ########.fr       */
+/*   Updated: 2025/06/16 11:52:49 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	ft_init_wall(t_data *d)
  *
  *p.30 : "For an intersection to be considered valid,
  * t must be positive and Iz must be between 0 inclusive and 1."
- * and "We can therefore display a different color/texture 
+ * and "We can therefore display a different color/texture
  * depending on the cardinal point."
  */
 static void	ft_color_wall(t_data *d, int i, int j)
@@ -35,7 +35,7 @@ static void	ft_color_wall(t_data *d, int i, int j)
 	int	color;
 	if (d->exec.wall.t_min < 0)
 		return ;
-	ft_intersection_coord(&d->exec, d->exec.wall.t_min);
+	ft_intersection_coord(&d->exec, d->exec.wall.t_min, i , j);
 	if (d->exec.s.iz >= 0.0 && d->exec.s.iz < 1.0)
 	{
 		color = ft_texture(d, d->exec.wall.face);
@@ -58,14 +58,14 @@ void	ft_walls(t_data *d, int i, int j)
 	ft_init_wall(d);
 	while (y < d->exec.max_height)
 	{
-		ft_north_wall(d, y);
-		ft_south_wall(d, y);
+		ft_north_wall(d, y, i, j);
+		ft_south_wall(d, y, i ,j);
 		y++;
 	}
 	while (x < d->exec.max_width)
 	{
-		ft_east_wall(d, x);
-		ft_west_wall(d, x);
+		ft_east_wall(d, x, i ,j);
+		ft_west_wall(d, x, i ,j);
 		x++;
 	}
 	ft_color_wall(d, i, j);

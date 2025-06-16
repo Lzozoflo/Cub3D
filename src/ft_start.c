@@ -6,11 +6,37 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/16 10:18:37 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/16 12:00:21 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
+
+
+#include <stdlib.h> //maybe delete
+int	ft_calculate_all_radius(t_exec *e)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	e->radius.ray = NULL;
+	e->radius.ray = malloc(sizeof(t_ray *) * WIN_SIZE);
+	if (e->radius.ray == NULL)
+		return (-1);
+	while (i < WIN_SIZE)
+	{
+		e->radius.ray[i] = malloc(sizeof(t_ray) * WIN_SIZE);
+		j = 0;
+		while (j < WIN_SIZE)
+		{
+			ft_director_vector(e, &e->player, i, j);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
 
 /**
  * @brief `init param`
@@ -24,10 +50,12 @@
  */
 int	ft_init_start(t_exec *e, t_data *d)
 {
-
 	ft_fov_h_and_v_ratio(e);
+	if (ft_calculate_all_radius(e) == -1)
+		return (-1);
 	if (ft_init_plane(e) == -1)
 	{
+		//ft_free_radius() //to create
 		ft_free_cardi(e);
 		return (-1);
 	}
@@ -36,6 +64,7 @@ int	ft_init_start(t_exec *e, t_data *d)
 		return (-1);
 	return (0);
 }
+
 
 /**@brief `begining of graphic and maths part`
  *
@@ -65,9 +94,8 @@ int	ft_start(t_exec *e, t_data *d)
 		j = 0;
 		while (j < WIN_SIZE)
 		{
-			ft_director_vector(e, i, j);
-			ft_move_l_r(e);
-			ft_move_f_b(e);
+			ft_move_l_r(e, i , j);
+			ft_move_f_b(e, i , j);
 			ft_walls(d, i, j);
 			j++;
 		}
