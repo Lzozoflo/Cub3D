@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_start.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mathildelaussel <mathildelaussel@studen    +#+  +:+       +#+        */
+/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/11 16:20:00 by mathildelau      ###   ########.fr       */
+/*   Updated: 2025/06/16 10:18:37 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /**
  * @brief `init param`
- * 
+ *
  * `(p.17) - ft_init_camera`
  *
  * `(p.11 and p.13) - ft_fov_h_and_v_ratio` : horizontal and vertical distance
@@ -22,9 +22,9 @@
  *
  * `(p.30) - ft_init_plane & ft_group_all_planes` : create all possible planes
  */
-static int	ft_init_start(t_exec *e, t_data *d)
+int	ft_init_start(t_exec *e, t_data *d)
 {
-	ft_init_camera(e);
+
 	ft_fov_h_and_v_ratio(e);
 	if (ft_init_plane(e) == -1)
 	{
@@ -59,8 +59,7 @@ int	ft_start(t_exec *e, t_data *d)
 
 	i = 0;
 	j = 0;
-	if (ft_init_start(e, d) == -1)
-		return (-1);
+	ft_init_camera(e);
 	while (i < WIN_SIZE)
 	{
 		j = 0;
@@ -74,6 +73,5 @@ int	ft_start(t_exec *e, t_data *d)
 		}
 		i++;
 	}
-	ft_free_cardi(e);
 	return (1);
 }

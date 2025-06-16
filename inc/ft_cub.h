@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cub.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mathildelaussel <mathildelaussel@studen    +#+  +:+       +#+        */
+/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/11 15:40:01 by mathildelau      ###   ########.fr       */
+/*   Updated: 2025/06/16 10:16:30 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,6 +208,7 @@ void	ft_free_cardi(t_exec *e);
 void	ft_group_all_planes(t_data *d);
 
 //------------[  ft_start.c  ]
+int		ft_init_start(t_exec *e, t_data *d);
 int		ft_start(t_exec *e, t_data *d);
 
 //------------[  ft_init_textures.c  ]
