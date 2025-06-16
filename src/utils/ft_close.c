@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_close.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mathildelaussel <mathildelaussel@studen    +#+  +:+       +#+        */
+/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 08:46:51 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/11 11:05:13 by mathildelau      ###   ########.fr       */
+/*   Updated: 2025/06/16 10:02:44 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_clean_close(t_data *data, int error)
 		mlx_destroy_image(data->mlx, data->img.img_ptr);
 	if (data->mlx)
 	{
-		//mlx_destroy_display(data->mlx);
+		mlx_destroy_display(data->mlx);
 		free(data->mlx);
 	}
 	ft_clear_parsing(&data->parsing);
@@ -34,7 +34,7 @@ int	ft_clean_close(t_data *data, int error)
 
 int	ft_cross(t_data *data)
 {
-	//mlx_loop_end(data->mlx);
+	mlx_loop_end(data->mlx);
 	ft_clean_close(data, 0);
 	exit (0);
 }

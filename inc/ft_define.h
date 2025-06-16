@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_define.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mathildelaussel <mathildelaussel@studen    +#+  +:+       +#+        */
+/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 17:32:29 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/11 16:02:42 by mathildelau      ###   ########.fr       */
+/*   Updated: 2025/06/16 10:03:56 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,34 @@
 # define FT_DEFINE_H
 
 // Window params
-# define WIN_SIZE 600
+# define WIN_SIZE 2000
 # define WIN_NAME "Cub3D"
 
 // Key_press
-# define ESC 53 // 65307 //53 macos
+# define ESC 65307
 // Key Code moving player
-# define A 0 // 97  //0 macos
-# define W 13 // 119 //13 macos
-# define D 2 // 100 //2 macos
-# define S 1 // 115 //1 macos
+# define A 97
+# define W 119
+# define D 100
+# define S 115
 // Key Code moving camera
-# define LEFT 123// 65361 //123 macos
-# define RIGHT 124// 65363 //124macos
+# define LEFT 65361
+# define RIGHT 65363
 // Key Code
-# define M 46 // 109 //46macos
+# define M 109
+
+// // Key_press macos
+// # define ESC 53
+// // Key Code moving player
+// # define A 0
+// # define W 13
+// # define D 2
+// # define S 1
+// // Key Code moving camera
+// # define LEFT 123
+// # define RIGHT 124
+// // Key Code
+// # define M 46
 
 // Color square px
 	// Red
