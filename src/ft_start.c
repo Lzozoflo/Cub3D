@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/16 15:54:13 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/17 13:28:36 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	ft_calculate_all_radius(t_exec *e)
 		j = 0;
 		while (j < WIN_SIZE_SCALE)
 		{
+			//ft_director_vector(e, i, j);
 			ft_director_vector(e, &e->player, i, j);
 			j++;
 		}
@@ -113,6 +114,7 @@ int	ft_start(t_exec *e, t_data *d)
 
 	i = 0;
 	j = 0;
+	ft_draw_sky_floor_shadow(d);
 	ft_init_camera(e);
 	while (i < WIN_SIZE_SCALE)
 	{

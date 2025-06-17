@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 17:32:29 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/16 15:45:24 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/17 13:06:28 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define WIN_SIZE 2000
 # define WIN_SIZE_SCALE (WIN_SIZE / SCALE)
 # define WIN_NAME "Cub3D"
+# define MAX_D 10.0
 
 // Key_press
 # define ESC 65307

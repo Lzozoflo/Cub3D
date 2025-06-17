@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 14:02:49 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/16 14:24:04 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/17 13:28:50 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ static void	ft_color_wall(t_data *d, int i, int j)
 	if (d->exec.s.iz >= 0.0 && d->exec.s.iz < 1.0)
 	{
 		color = ft_texture(d, d->exec.wall.face);
+		color = ft_shadow(color, d);
 		ft_color_scale(d, i, j, color);
 	}
 }

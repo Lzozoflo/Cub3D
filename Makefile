@@ -266,6 +266,7 @@ SRC				:=		main.c							\
 						ft_math_calculation_walls.c		\
 						ft_math_calculation.c			\
 						ft_planes.c						\
+						ft_shadow.c 					\
 						ft_start.c						\
 						ft_texture.c					\
 						ft_wall_intersection.c			\

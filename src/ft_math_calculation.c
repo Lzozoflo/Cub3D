@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 10:07:56 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/16 16:51:50 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/17 13:32:52 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,40 +35,88 @@ void	ft_fov_h_and_v_ratio(t_exec *e)
 }
 
 /**
+ * @brief `normalize`
+ *
+ * `(p.37) - Twilight`
+ *
+ * "Note: Remember to normalize the ray vectors when creating
+ * so that t represents the distance with the intersection afterwards."
+ *
+ * Normalized vector: u = u / |u|
+ *
+ * normalize : |u| = sqrt(x² + y² + z²)
+ */
+static void	ft_normalize(t_ray *ray)
+{
+	double	normalize;
+
+	normalize = sqrt(ray->dir_x * ray->dir_x
+			+ ray->dir_y * ray->dir_y + ray->dir_z * ray->dir_z);
+	if (normalize != 0.0)
+	{
+		ray->dir_x /= normalize;
+		ray->dir_y /= normalize;
+		ray->dir_z /= normalize;
+	}
+}
+/**
  * @brief `calculate radius`
  *
- * p.15
+ * `p.15 - Radius`
  *
  * (i - W *0.5) * Rh ; -1 ; (H * 0.5 - j) * Rv
  *
  */
 void	ft_director_vector(t_exec *e, t_player *p, int i, int j)
 {
+	t_ray	*ray;
+
+	ray = &e->radius.ray[i][j];
 	if (p->pos == 'w')
 	{
-		e->radius.ray[i][j].dir_x = -1;
-		e->radius.ray[i][j].dir_y = ((i - WIN_SIZE_SCALE * 0.5) * e->s.rh);
-		e->radius.ray[i][j].dir_z = (WIN_SIZE_SCALE * 0.5 - j) * e->s.rv;
+		ray->dir_x = -1;
+		ray->dir_y = ((i - WIN_SIZE_SCALE * 0.5) * e->s.rh);
+		ray->dir_z = (WIN_SIZE_SCALE * 0.5 - j) * e->s.rv;
 	}
 	else if (p->pos == 's')
 	{
-		e->radius.ray[i][j].dir_x = ((i - WIN_SIZE_SCALE * 0.5) * e->s.rh);
-		e->radius.ray[i][j].dir_y = 1;
-		e->radius.ray[i][j].dir_z = (WIN_SIZE_SCALE * 0.5 - j) * e->s.rv;
+		ray->dir_x = ((i - WIN_SIZE_SCALE * 0.5) * e->s.rh);
+		ray->dir_y = 1;
+		ray->dir_z = (WIN_SIZE_SCALE * 0.5 - j) * e->s.rv;
 	}
 	else if (p->pos == 'n')
 	{
-		e->radius.ray[i][j].dir_x = ((i - WIN_SIZE_SCALE * 0.5) * e->s.rh);
-		e->radius.ray[i][j].dir_y = -1;
-		e->radius.ray[i][j].dir_z = (WIN_SIZE_SCALE * 0.5 - j) * e->s.rv;
+		ray->dir_x = ((i - WIN_SIZE_SCALE * 0.5) * e->s.rh);
+		ray->dir_y = -1;
+		ray->dir_z = (WIN_SIZE_SCALE * 0.5 - j) * e->s.rv;
 	}
 	else if (p->pos == 'e')
 	{
-		e->radius.ray[i][j].dir_x = 1;
-		e->radius.ray[i][j].dir_y = ((i - WIN_SIZE_SCALE * 0.5) * e->s.rh);
-		e->radius.ray[i][j].dir_z = (WIN_SIZE_SCALE * 0.5 - j) * e->s.rv;
+		ray->dir_x = 1;
+		ray->dir_y = ((i - WIN_SIZE_SCALE * 0.5) * e->s.rh);
+		ray->dir_z = (WIN_SIZE_SCALE * 0.5 - j) * e->s.rv;
 	}
+	ft_normalize(ray);
 }
+
+// void	ft_director_vector(t_exec *e, int i, int j)
+// {
+// 	t_ray	*ray;
+// 	double	normalize;
+
+// 	ray = &e->radius.ray[i][j];
+// 	ray->dir_x = (i - WIN_SIZE_SCALE * 0.5) * e->s.rh;
+// 	ray->dir_y = -1.0;
+// 	ray->dir_z = (WIN_SIZE_SCALE * 0.5 - j) * e->s.rv;
+// 	normalize = sqrt(ray->dir_x * ray->dir_x
+// 			+ ray->dir_y * ray->dir_y + ray->dir_z * ray->dir_z);
+// 	if (normalize != 0.0)
+// 	{
+// 		ray->dir_x /= normalize;
+// 		ray->dir_y /= normalize;
+// 		ray->dir_z /= normalize;
+// 	}
+// }
 
 /**
  * @brief `rotate in place`
@@ -82,9 +130,9 @@ void	ft_director_vector(t_exec *e, t_player *p, int i, int j)
  */
 void	ft_move_l_r(t_exec *e, int i, int j)
 {
-	double	dx;
-	double	dy;
-	t_radius *r;
+	double		dx;
+	double		dy;
+	t_radius	*r;
 
 	r = &e->radius;
 	dx = e->radius.ray[i][j].dir_x;

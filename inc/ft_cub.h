@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/16 15:22:11 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/17 13:05:14 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,9 +224,14 @@ int		ft_init_plane(t_exec *e);
 void	ft_free_cardi(t_exec *e);
 void	ft_group_all_planes(t_data *d);
 
+//------------[  ft_shadow.c  ]
+void	ft_draw_sky_floor_shadow(t_data *data);
+int	ft_shadow(int color, t_data *d);
+
 //------------[  ft_radius.c  ]
 int		ft_calculate_all_radius(t_exec *e);
 void	ft_director_vector(t_exec *e, t_player *p, int i, int j);
+// void	ft_director_vector(t_exec *e, int i, int j);
 
 //------------[  ft_start.c  ]
 int		ft_init_start(t_exec *e, t_data *d);
@@ -255,9 +260,9 @@ void	ft_walls(t_data *d, int i, int j);
 void	ft_draw_circle(t_data *data, t_minimap *m);
 void	ft_draw_minimap(t_data *data, t_minimap *m);
 
-//------------[  ft_draw_sky_floor.c  ]
+// //------------[  ft_draw_sky_floor.c  ]
 
-void	ft_draw_sky_floor(t_data *data);
+// void	ft_draw_sky_floor(t_data *data);
 
 //------------[  ft_refresh_view.c  ]
 
