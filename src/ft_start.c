@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/17 13:28:36 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/18 11:08:15 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	ft_calculate_all_radius(t_exec *e)
 		j = 0;
 		while (j < WIN_SIZE_SCALE)
 		{
-			//ft_director_vector(e, i, j);
+			//ft_director_vector2(e, i, j);
 			ft_director_vector(e, &e->player, i, j);
 			j++;
 		}
@@ -96,6 +96,7 @@ int	ft_init_start(t_exec *e, t_data *d)
 	return (0);
 }
 
+
 /**@brief `begining of graphic and maths part`
  *
  * `(p.17) - ft_init_camera`
@@ -109,20 +110,23 @@ int	ft_init_start(t_exec *e, t_data *d)
 */
 int	ft_start(t_exec *e, t_data *d)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	//t_ray	radius;
 
 	i = 0;
 	j = 0;
+
 	ft_draw_sky_floor_shadow(d);
 	ft_init_camera(e);
+
+	ft_move(e, i, j);
 	while (i < WIN_SIZE_SCALE)
 	{
 		j = 0;
 		while (j < WIN_SIZE_SCALE)
 		{
-			ft_move_f_b(e, i, j);
-			ft_move_l_r(e, i, j);
+			ft_rotate(e, i, j);
 			ft_walls(d, i, j);
 			j++;
 		}

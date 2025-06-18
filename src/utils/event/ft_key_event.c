@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:59:35 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/16 16:43:37 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/18 10:47:10 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ static int	ft_arrow(int keycode, t_data *data, t_player *player)
 	(void)data;
 	if (keycode == LEFT)
 	{
-		player->angle -= 0.015;
+		player->angle -= ROTATION;
 		debug_put_str("[LEFT] is pressed", NULL, 2, 21);
 	}
 	else if (keycode == RIGHT)
 	{
-		player->angle += 0.015;
+		player->angle += ROTATION;
 		debug_put_str("[RIGHT] is pressed", NULL, 2, 21);
 	}
 	while (player->angle < 0)
