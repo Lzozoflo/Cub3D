@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:02:50 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/17 13:27:16 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/18 15:54:30 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,20 +120,15 @@ int	ft_shadow(int color, t_data *d)
 	int		b;
 	double	factor;
 
-	if (d->exec.wall.t_min > MAX_D)
-		color = 0x000000;
-	else
-	{
-		factor = 1.0 - (d->exec.wall.t_min / MAX_D);
-		if (factor < 0.0)
-			factor = 0.0;
-		r = color / 0x10000;
-		g = (color / 0x100) % 0x100;
-		b = color % 0x100;
-		r = r * factor;
-		g = g * factor;
-		b = b * factor;
-		color = (r * 0x10000) + (g * 0x100) + b;
-	}
+	factor = 1.0 - (d->exec.wall.t_min / MAX_D);
+	if (factor < 0.0)
+		factor = 0.0;
+	r = color / 0x10000;
+	g = (color / 0x100) % 0x100;
+	b = color % 0x100;
+	r = r * factor;
+	g = g * factor;
+	b = b * factor;
+	color = (r * 0x10000) + (g * 0x100) + b;
 	return (color);
 }

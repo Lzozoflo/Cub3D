@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/18 14:27:28 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/18 15:46:11 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "X.h"
 # include "mlx.h"
 # include "ft_define.h"
+# include <sys/types.h>
 
 //typedef of all structure
 typedef struct s_plane			t_plane;

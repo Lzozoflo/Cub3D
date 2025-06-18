@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/18 13:36:47 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/18 15:49:46 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	ft_start(t_exec *e, t_data *d)
 
 	i = 0;
 	j = 0;
-	ft_draw_sky_floor_shadow(d);
+	//ft_draw_sky_floor_shadow(d);
 	ft_init_camera(e);
 	if (ft_rotate_radius(e) == -1)
 		return (-1);
