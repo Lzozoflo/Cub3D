@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:02:50 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/18 16:01:10 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/18 16:07:09 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,24 @@ int	ft_color_shadow_floor(const unsigned int colorfloor, size_t y,
 	r = (colorfloor / 0x10000) * factor;
 	g = ((colorfloor / 0x100) % 0x100) * factor;
 	b = (colorfloor % 0x100) * factor;
+	shadow_color = (r * 0x10000) + (g * 0x100) + b;
+	return (shadow_color);
+}
+
+int	ft_color_shadow_ceiling(const unsigned int colorceiling, size_t y, const size_t half)
+{
+	int		r;
+	int		g;
+	int		b;
+	int		shadow_color;
+	double	factor;
+
+	factor = ((double)(half - y) / (double)half);
+	if (factor > 1.0)
+		factor = 1.0;
+	r = (colorceiling / 0x10000) * factor;
+	g = ((colorceiling / 0x100) % 0x100) * factor;
+	b = (colorceiling % 0x100) * factor;
 	shadow_color = (r * 0x10000) + (g * 0x100) + b;
 	return (shadow_color);
 }

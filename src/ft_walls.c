@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 14:02:49 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/18 16:01:05 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/18 16:07:00 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ static void	ft_color_wall(t_data *d, int i, int j, t_ray radius)
 	}
 	else if ((size_t)j < half)
 	{
-		color = ft_color_shadow_floor( d->exec.sky, j, half);
+		color = ft_color_shadow_ceiling( d->exec.sky, j, half);
 		ft_color_scale(d, i, j, color);
 		// color = ft_shadow(d->exec.sky, d);
 		// ft_color_scale(d, i, j, color);

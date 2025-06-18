@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/18 16:01:17 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/18 16:04:58 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -235,8 +235,9 @@ void	ft_free_cardi(t_exec *e);
 void	ft_group_all_planes(t_data *d);
 
 //------------[  ft_shadow.c  ]
-int	ft_color_shadow_floor(const unsigned int colorfloor, size_t y,
+int		ft_color_shadow_floor(const unsigned int colorfloor, size_t y,
 	const size_t half);
+int		ft_color_shadow_ceiling(const unsigned int colorceiling, size_t y, const size_t half);
 void	ft_draw_sky_floor_shadow(t_data *data);
 int		ft_shadow(int color, t_data *d);
 
