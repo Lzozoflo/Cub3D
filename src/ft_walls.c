@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 14:02:49 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/18 15:55:44 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/18 15:59:58 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,25 @@ static void	ft_color_scale(t_data *d, int i, int j, int color)
 	}
 }
 
+static int	ft_color_shadow_floor(const unsigned int colorfloor, size_t y,
+	const size_t half)
+{
+int		r;
+int		g;
+int		b;
+int		shadow_color;
+double	factor;
+
+factor = ((double)(y - half) / (double)half);
+if (factor > 1.0)
+	factor = 1.0;
+r = (colorfloor / 0x10000) * factor;
+g = ((colorfloor / 0x100) % 0x100) * factor;
+b = (colorfloor % 0x100) * factor;
+shadow_color = (r * 0x10000) + (g * 0x100) + b;
+return (shadow_color);
+}
+
 /**
  * @brief `color pixel with color of texture if intersection`
  *
@@ -82,12 +101,13 @@ static void	ft_color_wall(t_data *d, int i, int j, t_ray radius)
 		ft_color_scale(d, i, j, 0x000000);
 	else if ((size_t)j > half)
 	{
-		//color = ft_shadow(d->exec.floor, d);
-		ft_color_scale(d, i, j, d->exec.floor);
+		color = ft_color_shadow_floor(d->exec.floor, j, half);
+		ft_color_scale(d, i, j,color);
 	}
-	else
+	else if ((size_t)j < half)
 	{
-		ft_color_scale(d, i, j, d->exec.sky);
+		color = ft_color_shadow_floor( d->exec.sky, j, half);
+		ft_color_scale(d, i, j, color);
 		// color = ft_shadow(d->exec.sky, d);
 		// ft_color_scale(d, i, j, color);
 	}
