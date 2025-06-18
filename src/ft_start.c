@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/18 12:03:37 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/18 12:28:38 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,61 +14,6 @@
 #include <stdlib.h>
 #include <math.h>
 
-/**
- * @brief `calculate all radius for opti`
- *
- * `(p.15) - double loop` :"To create our direction vectors,
- * we simply need to put an increment on the x (which we will call i)
- * and another for the y (j)."
- *
- * `(p.30) - Radius precalculation`
- * "First, it is very important to calculate the radii beforehand.
- * As shown here, radii can be calculated before the graph loop.
- * We therefore create them with a North orientation and then simply
- * turn the ray towards our direction just before using it in the algorithm.
- * This saves all the creation time during the loop."
- */
-int	ft_calculate_all_radius(t_exec *e)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	e->radius.ray = NULL;
-	e->radius.ray = malloc(sizeof(t_ray *) * WIN_SIZE_SCALE);
-	if (e->radius.ray == NULL)
-		return (-1);
-	while (i < WIN_SIZE_SCALE)
-	{
-		e->radius.ray[i] = malloc(sizeof(t_ray) * WIN_SIZE_SCALE);
-		j = 0;
-		while (j < WIN_SIZE_SCALE)
-		{
-			//ft_director_vector2(e, i, j);
-			ft_director_vector(e, &e->player, i, j);
-			j++;
-		}
-		i++;
-	}
-	return (1);
-}
-
-void	ft_free_radius(t_radius *r)
-{
-	int	i;
-
-	if (r->ray)
-		return ;
-	i = 0;
-	while (i < WIN_SIZE_SCALE)
-	{
-		if (r->ray[i])
-			free(r->ray[i]);
-		i++;
-	}
-	free(r->ray);
-	r->ray = NULL;
-}
 
 /**
  * @brief `init param`
@@ -117,13 +62,15 @@ int	ft_start(t_exec *e, t_data *d)
 	j = 0;
 	ft_draw_sky_floor_shadow(d);
 	ft_init_camera(e);
+	if (ft_rotate_radius(e) == -1)
+		return (-1);
 	ft_move(e);
-	while (i < WIN_SIZE_SCALE)
+	while (i < (WIN_SIZE / SCALE))
 	{
 		j = 0;
-		while (j < WIN_SIZE_SCALE)
+		while (j < (WIN_SIZE / SCALE))
 		{
-			radius = ft_rotate(e, i, j);
+			radius = e->all_r.ray[i][j]; //(e, i, j);
 			ft_walls(d, i, j, radius);
 			j++;
 		}

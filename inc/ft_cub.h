@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/18 11:58:08 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/18 12:29:37 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,6 +186,7 @@ struct		s_exec
 	t_wall			wall;
 	t_cardinals		cardi;
 	t_radius		radius;
+	t_radius		all_r;
 	t_texture		texture;
 	t_player		player;
 	t_minimap		mini;
@@ -204,6 +205,10 @@ struct		s_data
 
 				/*MATHS*/
 
+//------------[  ft_all_radius.c  ]
+int		ft_calculate_all_radius(t_exec *e);
+void	ft_free_radius(t_radius *r);
+
 //------------[  ft_init_planes.c  ]
 void	ft_west_plane(t_cardinals *c, int x);
 void	ft_east_plane(t_cardinals *c, int x);
@@ -220,7 +225,7 @@ double	ft_find_plane_intersection_e_w(t_exec *e, t_plane *plane, t_ray radius);
 void	ft_intersection_coord(t_exec *e, double t, t_ray radius);
 
 //------------[  ft_move_rotate.c  ]
-t_ray	ft_rotate(t_exec *e, int i, int j);
+int		ft_rotate_radius(t_exec *e);
 void	ft_move(t_exec *e);
 
 //------------[  ft_planes.c  ]
@@ -240,7 +245,6 @@ void	ft_director_vector2(t_exec *e, int i, int j);
 //------------[  ft_start.c  ]
 int		ft_init_start(t_exec *e, t_data *d);
 int		ft_start(t_exec *e, t_data *d);
-void	ft_free_radius(t_radius *r);
 
 //------------[  ft_init_textures.c  ]
 int		ft_init_textures(t_data *d);

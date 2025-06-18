@@ -6,12 +6,13 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 11:57:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/18 12:00:21 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/18 12:29:28 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 #include <math.h>
+#include <stdlib.h>
 
 /**
  * @brief `rotate in place`
@@ -23,18 +24,38 @@
  * 0		0	  1
  *
  */
-t_ray	ft_rotate(t_exec *e, int i, int j)
+int	ft_rotate_radius(t_exec *e)
 {
+	int		i;
+	int		j;
 	t_ray	base;
-	t_ray	rotated;
 
-	base = e->radius.ray[i][j];
-	rotated.dir_x = base.dir_x * cos(e->player.angle)
-		- base.dir_y * sin(e->player.angle);
-	rotated.dir_y = base.dir_x * sin(e->player.angle)
-		+ base.dir_y * cos(e->player.angle);
-	rotated.dir_z = base.dir_z;
-	return (rotated);
+	i = 0;
+	j = 0;
+
+	e->all_r.ray = NULL;
+	e->all_r.ray = malloc(sizeof(t_ray *) * (WIN_SIZE / SCALE));
+	if (e->all_r.ray == NULL)
+		return (-1);
+	while (i < (WIN_SIZE / SCALE))
+	{
+		e->all_r.ray[i] = malloc(sizeof(t_ray) * (WIN_SIZE / SCALE));
+		if (e->all_r.ray[i] == NULL)
+			return (-1);
+		j = 0;
+		while (j < (WIN_SIZE / SCALE))
+		{
+			base = e->radius.ray[i][j];
+			e->all_r.ray [i][j].dir_x = base.dir_x * cos(e->player.angle)
+				- base.dir_y * sin(e->player.angle);
+			e->all_r.ray [i][j].dir_y = base.dir_x * sin(e->player.angle)
+				+ base.dir_y * cos(e->player.angle);
+			e->all_r.ray [i][j].dir_z = base.dir_z;
+			j++;
+		}
+		i++;
+	}
+	return (1);
 }
 
 /**
