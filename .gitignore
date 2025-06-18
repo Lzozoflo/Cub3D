@@ -8,7 +8,10 @@ deps
 error
 
 minilibx-linux
+minilibx_macos
+
 Cub3D
 fr.subject.pdf
-mlx.h
-x.h
+inc/mlx.h
+inc/x.h
+

@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 14:02:49 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/18 16:07:00 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/18 16:27:34 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,14 @@ static void	ft_color_scale(t_data *d, int i, int j, int color)
  */
 static void	ft_color_wall(t_data *d, int i, int j, t_ray radius)
 {
-	const size_t		half = (WIN_SIZE / SCALE) >> 1;
-	int	color;
+	int					color;
+	const size_t		half = (WIN_SIZE / SCALE) >> 1; //mettre dans data
 
 	if (d->exec.wall.t_min < 0)
 		return ;
 	ft_intersection_coord(&d->exec, d->exec.wall.t_min, radius);
-	if (d->exec.s.iz >= 0.0 && d->exec.s.iz < 1.0 && d->exec.wall.t_min <= MAX_D)
+	if (d->exec.s.iz >= 0.0 && d->exec.s.iz < 1.0
+		&& d->exec.wall.t_min <= MAX_D)
 	{
 		color = ft_texture(d, d->exec.wall.face);
 		color = ft_shadow(color, d);
@@ -83,14 +84,12 @@ static void	ft_color_wall(t_data *d, int i, int j, t_ray radius)
 	else if ((size_t)j > half)
 	{
 		color = ft_color_shadow_floor(d->exec.floor, j, half);
-		ft_color_scale(d, i, j,color);
+		ft_color_scale(d, i, j, color);
 	}
 	else if ((size_t)j < half)
 	{
-		color = ft_color_shadow_ceiling( d->exec.sky, j, half);
+		color = ft_color_shadow_ceiling(d->exec.sky, j, half);
 		ft_color_scale(d, i, j, color);
-		// color = ft_shadow(d->exec.sky, d);
-		// ft_color_scale(d, i, j, color);
 	}
 }
 
@@ -121,4 +120,3 @@ void	ft_walls(t_data *d, int i, int j, t_ray radius)
 	}
 	ft_color_wall(d, i, j, radius);
 }
-

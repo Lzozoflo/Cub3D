@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 11:57:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/18 12:29:28 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/18 16:17:58 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	ft_rotate_radius(t_exec *e)
 
 	i = 0;
 	j = 0;
-
 	e->all_r.ray = NULL;
 	e->all_r.ray = malloc(sizeof(t_ray *) * (WIN_SIZE / SCALE));
 	if (e->all_r.ray == NULL)

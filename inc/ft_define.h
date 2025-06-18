@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 17:32:29 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/18 14:11:55 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/18 16:22:13 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define FT_DEFINE_H
 
 // Window params
-# define SCALE 2
-# define WIN_SIZE 400
+# define SCALE 3
+# define WIN_SIZE 1000
 # define WIN_NAME "Cub3D"
 # define MAX_D 10.0
 
@@ -68,7 +68,6 @@
 # define RADIUSPLAYER 0.3
 //	number of tile on the minimaps
 # define MINIMAPS_SCREEN_TILES 10
-
 
 //	Error message
 # define ERROR_EXTENSION " has a bad extension."

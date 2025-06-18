@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:25:27 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/17 14:38:03 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/18 16:25:53 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,10 @@ void	ft_refresh_view(t_data *d)
 {
 	t_exec			*exec;
 	t_minimap		*m;
-	// const size_t	res = (size_t)(WIN_SIZE * WIN_SIZE * d->img.bpp);
 
 	exec = &d->exec;
 	m = &exec->mini;
-	// ft_bzero(d->img.addr, res);
-	//ft_draw_sky_floor(d);
-	ft_start(&d->exec, d);
+	ft_start(exec, d);
 	if (m->zoom != -1)
 	{
 		t_minimaps_set(m, &exec->player, m->zoom);

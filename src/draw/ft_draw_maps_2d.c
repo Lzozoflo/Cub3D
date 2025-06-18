@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 08:01:22 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/16 14:26:41 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/18 16:25:29 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,6 @@ static inline unsigned int	ft_color_map_tile_px(int c, t_minimap *m)
 		return (m->color_minimap[1]);
 	else if (ft_is_player_char(c))
 		return (m->color_minimap[2]);
-	return (0);
-	// if (c == '1')
-	// 	return (PX_REDO);
-	// else if (c == '0')
-	// 	return (PX_GREEN);
-	// else if (ft_is_player_char(c))
-	// 	return (PX_BLUE);
 	return (0);
 }
 
