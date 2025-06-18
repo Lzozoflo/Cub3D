@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 14:02:49 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/18 15:59:58 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/18 16:01:05 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,25 +53,6 @@ static void	ft_color_scale(t_data *d, int i, int j, int color)
 		}
 		k++;
 	}
-}
-
-static int	ft_color_shadow_floor(const unsigned int colorfloor, size_t y,
-	const size_t half)
-{
-int		r;
-int		g;
-int		b;
-int		shadow_color;
-double	factor;
-
-factor = ((double)(y - half) / (double)half);
-if (factor > 1.0)
-	factor = 1.0;
-r = (colorfloor / 0x10000) * factor;
-g = ((colorfloor / 0x100) % 0x100) * factor;
-b = (colorfloor % 0x100) * factor;
-shadow_color = (r * 0x10000) + (g * 0x100) + b;
-return (shadow_color);
 }
 
 /**

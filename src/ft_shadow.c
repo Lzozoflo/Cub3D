@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:02:50 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/18 15:54:30 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/18 16:01:10 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	ft_draw_sky(t_data *data)
 	}
 }
 
-static int	ft_color_shadow_floor(const unsigned int colorfloor, size_t y,
+int	ft_color_shadow_floor(const unsigned int colorfloor, size_t y,
 		const size_t half)
 {
 	int		r;
@@ -120,15 +120,15 @@ int	ft_shadow(int color, t_data *d)
 	int		b;
 	double	factor;
 
-	factor = 1.0 - (d->exec.wall.t_min / MAX_D);
-	if (factor < 0.0)
-		factor = 0.0;
-	r = color / 0x10000;
-	g = (color / 0x100) % 0x100;
-	b = color % 0x100;
-	r = r * factor;
-	g = g * factor;
-	b = b * factor;
-	color = (r * 0x10000) + (g * 0x100) + b;
+		factor = 1.0 - (d->exec.wall.t_min / MAX_D);
+		if (factor < 0.0)
+			factor = 0.0;
+		r = color / 0x10000;
+		g = (color / 0x100) % 0x100;
+		b = color % 0x100;
+		r = r * factor;
+		g = g * factor;
+		b = b * factor;
+		color = (r * 0x10000) + (g * 0x100) + b;
 	return (color);
 }
