@@ -265,6 +265,7 @@ SRC				:=		main.c							\
 						ft_init_textures.c				\
 						ft_math_calculation_walls.c		\
 						ft_math_calculation.c			\
+						ft_move_rotate.c				\
 						ft_planes.c						\
 						ft_shadow.c 					\
 						ft_start.c						\

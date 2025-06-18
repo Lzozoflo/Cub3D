@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 14:02:49 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/17 13:28:50 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/18 11:17:56 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,13 @@ static void	ft_color_scale(t_data *d, int i, int j, int color)
  * and "We can therefore display a different color/texture
  * depending on the cardinal point."
  */
-static void	ft_color_wall(t_data *d, int i, int j)
+static void	ft_color_wall(t_data *d, int i, int j, t_ray radius)
 {
 	int	color;
 
 	if (d->exec.wall.t_min < 0)
 		return ;
-	ft_intersection_coord(&d->exec, d->exec.wall.t_min, i, j);
+	ft_intersection_coord(&d->exec, d->exec.wall.t_min, radius);
 	if (d->exec.s.iz >= 0.0 && d->exec.s.iz < 1.0)
 	{
 		color = ft_texture(d, d->exec.wall.face);
@@ -83,7 +83,7 @@ static void	ft_color_wall(t_data *d, int i, int j)
  *
  * (p.30) - "Route of plans"
  */
-void	ft_walls(t_data *d, int i, int j)
+void	ft_walls(t_data *d, int i, int j, t_ray radius)
 {
 	int	x;
 	int	y;
@@ -93,15 +93,15 @@ void	ft_walls(t_data *d, int i, int j)
 	ft_init_wall(&d->exec.wall);
 	while (y < d->exec.max_height)
 	{
-		ft_north_wall(&d->exec, y, i, j);
-		ft_south_wall(&d->exec, y, i, j);
+		ft_north_wall(&d->exec, y, radius);
+		ft_south_wall(&d->exec, y, radius);
 		y++;
 	}
 	while (x < d->exec.max_width)
 	{
-		ft_east_wall(&d->exec, x, i, j);
-		ft_west_wall(&d->exec, x, i, j);
+		ft_east_wall(&d->exec, x, radius);
+		ft_west_wall(&d->exec, x, radius);
 		x++;
 	}
-	ft_color_wall(d, i, j);
+	ft_color_wall(d, i, j, radius);
 }

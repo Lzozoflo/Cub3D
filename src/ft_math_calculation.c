@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 10:07:56 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/18 10:58:01 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/18 12:01:30 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ static void	ft_normalize(t_ray *ray)
 		ray->dir_z /= normalize;
 	}
 }
+
 /**
  * @brief `calculate radius`
  *
@@ -116,46 +117,6 @@ void	ft_director_vector2(t_exec *e, int i, int j)
 		ray->dir_y /= normalize;
 		ray->dir_z /= normalize;
 	}
-}
-
-/**
- * @brief `rotate in place`
- *
- * p.29 : rotation matrix z
- *
- * cos𝜃	-sin𝜃	0
- * sin𝜃	cos𝜃	0
- * 0		0	  1
- *
- */
-void	ft_rotate(t_exec *e, int i, int j)
-{
-	t_ray	base;
-	t_ray	rotated;
-
-	base = e->radius.ray[i][j];
-	rotated.dir_x = base.dir_x * cos(e->player.angle)
-		- base.dir_y * sin(e->player.angle);
-	rotated.dir_y = base.dir_x * sin(e->player.angle)
-		+ base.dir_y * cos(e->player.angle);
-	rotated.dir_z = base.dir_z;
-	e->player.dir_x = rotated.dir_x;
-	e->player.dir_y = rotated.dir_y;
-	e->player.dir_z = rotated.dir_z;
-}
-
-/**
- * @brief `move back and forth`
- */
-void	ft_move(t_exec *e, int i, int j)
-{
-	(void)i;
-	(void)j;
-	e->s.cx = e->s.cx + e->player.dir_x * e->player.moove;
-	e->s.cy = e->s.cy + e->player.dir_y * e->player.moove;
-	e->player.moove = 0;
-	// e->s.cx = e->s.cx + e->radius.ray[i][j].dir_x * e->player.moove;
-	// e->s.cy = e->s.cy + e->radius.ray[i][j].dir_y * e->player.moove;
 }
 
 /**

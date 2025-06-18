@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 09:55:51 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/26 13:25:16 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/18 11:24:16 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@
  *
  *
  */
-# define DEBUG 21
+# define DEBUG 0
 
 /*
  *---------------src/debug/ft_debug_tab_ptr.c

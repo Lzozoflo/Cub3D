@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 17:32:29 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/18 10:59:34 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/18 11:34:23 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 // Window params
 # define SCALE 2
-# define WIN_SIZE 500
+# define WIN_SIZE 200
 # define WIN_SIZE_SCALE (WIN_SIZE / SCALE)
 # define WIN_NAME "Cub3D"
 # define MAX_D 10.0
@@ -64,7 +64,7 @@
 # define PX_GRAY_DARK  0x444444
 
 // Mouvement speed
-# define MS 0.1
+# define MS 0.05
 # define ROTATION 0.05
 # define RADIUSPLAYER 0.3
 //	number of tile on the minimaps

@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 09:11:56 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/18 10:50:48 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/18 12:01:43 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,11 @@
 
  *			O = camera = c
  */
-void	ft_intersection_coord(t_exec *e, double t, int i, int j)
+void	ft_intersection_coord(t_exec *e, double t, t_ray radius)
 {
-	(void)i;
-	(void)j;
-	e->s.ix = e->s.cx + t * e->player.dir_x;
-	e->s.iy = e->s.cy + t * e->player.dir_y;
-	e->s.iz = e->s.cz + t * e->player.dir_z;
-	// e->s.ix = e->s.cx + t * e->radius.ray[i][j].dir_x;
-	// e->s.iy = e->s.cy + t * e->radius.ray[i][j].dir_y;
-	// e->s.iz = e->s.cz + t * e->radius.ray[i][j].dir_z;
+	e->s.ix = e->s.cx + t * radius.dir_x;
+	e->s.iy = e->s.cy + t * radius.dir_y;
+	e->s.iz = e->s.cz + t * radius.dir_z;
 }
 
 /**
@@ -56,16 +51,13 @@ void	ft_intersection_coord(t_exec *e, double t, int i, int j)
  *
  * @return double @return t
  */
-double	ft_find_plane_intersection_n_s(t_exec *e, t_plane *plane, int i, int j)
+double	ft_find_plane_intersection_n_s(t_exec *e, t_plane *plane, t_ray radius)
 {
 	double	numerator;
 	double	denominator;
-	(void)i;
-	(void)j;
 
 	numerator = -((plane->b * e->s.cy) + plane->d);
-	denominator = (plane->b * e->player.dir_y);
-	// denominator = (plane->b * e->radius.ray[i][j].dir_y);
+	denominator = (plane->b * radius.dir_y);
 	if (denominator == 0)
 		return (-1);
 	return (numerator / denominator);
@@ -94,16 +86,13 @@ double	ft_find_plane_intersection_n_s(t_exec *e, t_plane *plane, int i, int j)
  *
  * @return double @return t
  */
-double	ft_find_plane_intersection_e_w(t_exec *e, t_plane *plane, int i, int j)
+double	ft_find_plane_intersection_e_w(t_exec *e, t_plane *plane, t_ray radius)
 {
 	double	numerator;
 	double	denominator;
-	(void)i;
-	(void)j;
 
 	numerator = -((plane->a * e->s.cx) + plane->d);
-	denominator = (plane->a * e->player.dir_x);
-	// denominator = (plane->a * e->radius.ray[i][j].dir_x);
+	denominator = (plane->a * radius.dir_x);
 	if (denominator == 0)
 		return (-1);
 	return (numerator / denominator);

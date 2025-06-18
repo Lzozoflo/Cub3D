@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/18 10:06:42 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/18 11:58:08 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,14 +212,16 @@ void	ft_south_plane(t_cardinals *c, int y);
 
 //------------[  ft_math_calculation.c  ]
 void	ft_fov_h_and_v_ratio(t_exec *e);
-void	ft_rotate(t_exec *e, int i, int j);
-void	ft_move(t_exec *e, int i, int j);
 void	ft_init_camera(t_exec *e);
 
 //------------[  ft_math_calculation_walls.c  ]
-double	ft_find_plane_intersection_n_s(t_exec *e, t_plane *plane, int i, int j);
-double	ft_find_plane_intersection_e_w(t_exec *e, t_plane *plane, int i, int j);
-void	ft_intersection_coord(t_exec *e, double t, int i, int j);
+double	ft_find_plane_intersection_n_s(t_exec *e, t_plane *plane, t_ray radius);
+double	ft_find_plane_intersection_e_w(t_exec *e, t_plane *plane, t_ray radius);
+void	ft_intersection_coord(t_exec *e, double t, t_ray radius);
+
+//------------[  ft_move_rotate.c  ]
+t_ray	ft_rotate(t_exec *e, int i, int j);
+void	ft_move(t_exec *e);
 
 //------------[  ft_planes.c  ]
 int		ft_init_plane(t_exec *e);
@@ -247,13 +249,13 @@ int		ft_init_textures(t_data *d);
 int		ft_texture(t_data *d, char c);
 
 //------------[  ft_wall_intersection.c  ]
-void	ft_north_wall(t_exec *e, int y, int i, int j);
-void	ft_south_wall(t_exec *e, int y, int i, int j);
-void	ft_east_wall(t_exec *e, int x, int i, int j);
-void	ft_west_wall(t_exec *e, int x, int i, int j);
+void	ft_north_wall(t_exec *e, int y, t_ray radius);
+void	ft_south_wall(t_exec *e, int y, t_ray radius);
+void	ft_east_wall(t_exec *e, int x, t_ray radius);
+void	ft_west_wall(t_exec *e, int x, t_ray radius);
 
 //------------[  ft_walls.c  ]
-void	ft_walls(t_data *d, int i, int j);
+void	ft_walls(t_data *d, int i, int j, t_ray radius);
 
 /*-----------------src/draw-----------------*/
 
