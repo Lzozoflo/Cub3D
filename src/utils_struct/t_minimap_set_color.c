@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 10:51:48 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/16 14:30:00 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/18 13:08:20 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,9 @@ unsigned int	generate_unique_color(unsigned int base, unsigned int base2,
 
 void	t_minimap_set_color(t_exec *exec, t_minimap *m)
 {
+	m->color_minimap[0] = 0;
+	m->color_minimap[1] = 0;
+	m->color_minimap[2] = 0;
 	m->color_minimap[0] = generate_unique_color(exec->floor, exec->sky, m);
 	m->color_minimap[1] = generate_unique_color(exec->floor, exec->sky, m);
 	m->color_minimap[2] = generate_unique_color(exec->floor, exec->sky, m);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parsing_cub.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 09:39:16 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/18 15:25:09 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/06/18 14:26:52 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,18 @@
 #include "ft_define.h"
 #include "libft.h"
 #include <fcntl.h>
+
+static void	ft_init_player_angle(t_player *player)
+{
+	if (player->pos == 'n')
+		player->angle = 0;
+	else if (player->pos == 's')
+		player->angle = PI;
+	else if (player->pos == 'e')
+		player->angle = PI / 2;
+	else if (player->pos == 'w')
+		player->angle = -PI / 2;
+}
 
 static int	ft_keep_and_trash_parsing(t_parsing *parsing, t_exec *exec)
 {
@@ -38,6 +50,7 @@ static int	ft_keep_and_trash_parsing(t_parsing *parsing, t_exec *exec)
 	if (!exec->texture.texture_we)
 		return (1);
 	ft_find_player_pos(exec->tab, &exec->player);
+	ft_init_player_angle(&exec->player);
 	ft_clear_parsing(parsing);
 	return (0);
 }

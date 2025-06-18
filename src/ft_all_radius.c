@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 12:07:54 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/18 12:29:12 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/18 14:27:35 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,7 @@ int	ft_calculate_all_radius(t_exec *e)
 		j = 0;
 		while (j < (WIN_SIZE / SCALE))
 		{
-			//ft_director_vector2(e, i, j);
-			ft_director_vector(e, &e->player, i, j);
+			ft_director_vector(e, i, j);
 			j++;
 		}
 		i++;

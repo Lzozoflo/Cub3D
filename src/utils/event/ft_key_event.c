@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:59:35 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/18 10:47:10 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/18 13:47:37 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ int	ft_key_press(int keycode, void *param)
 	t_data		*data;
 
 	data = (t_data *)param;
+
+
 	debug_put_int("ft_key_press -> keycode", keycode, 200, 200);
 	if (keycode == ESC)
 	{

@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/18 12:29:37 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/18 14:27:28 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -239,8 +239,7 @@ int		ft_shadow(int color, t_data *d);
 
 //------------[  ft_radius.c  ]
 int		ft_calculate_all_radius(t_exec *e);
-void	ft_director_vector(t_exec *e, t_player *p, int i, int j);
-void	ft_director_vector2(t_exec *e, int i, int j);
+void	ft_director_vector(t_exec *e, int i, int j);
 
 //------------[  ft_start.c  ]
 int		ft_init_start(t_exec *e, t_data *d);

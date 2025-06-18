@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 10:07:56 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/18 12:13:54 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/18 14:28:06 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,13 @@ void	ft_fov_h_and_v_ratio(t_exec *e)
 }
 
 /**
- * @brief `normalize`
+ * @brief `calculate radius`
+ *
+ * `p.15 - Radius`
+ *
+ * (i - W *0.5) * Rh ; -1 ; (H * 0.5 - j) * Rv
+ *
+ * `normalize`
  *
  * `(p.37) - Twilight`
  *
@@ -45,62 +51,9 @@ void	ft_fov_h_and_v_ratio(t_exec *e)
  * Normalized vector: u = u / |u|
  *
  * normalize : |u| = sqrt(x² + y² + z²)
- */
-static void	ft_normalize(t_ray *ray)
-{
-	double	normalize;
-
-	normalize = sqrt(ray->dir_x * ray->dir_x
-			+ ray->dir_y * ray->dir_y + ray->dir_z * ray->dir_z);
-	if (normalize != 0.0)
-	{
-		ray->dir_x /= normalize;
-		ray->dir_y /= normalize;
-		ray->dir_z /= normalize;
-	}
-}
-
-/**
- * @brief `calculate radius`
- *
- * `p.15 - Radius`
- *
- * (i - W *0.5) * Rh ; -1 ; (H * 0.5 - j) * Rv
  *
  */
-void	ft_director_vector(t_exec *e, t_player *p, int i, int j)
-{
-	t_ray	*ray;
-
-	ray = &e->radius.ray[i][j];
-	if (p->pos == 'w')
-	{
-		ray->dir_x = -1;
-		ray->dir_y = ((i - (WIN_SIZE / SCALE) * 0.5) * e->s.rh);
-		ray->dir_z = ((WIN_SIZE / SCALE) * 0.5 - j) * e->s.rv;
-	}
-	else if (p->pos == 's')
-	{
-		ray->dir_x = ((i - (WIN_SIZE / SCALE) * 0.5) * e->s.rh);
-		ray->dir_y = 1;
-		ray->dir_z = ((WIN_SIZE / SCALE) * 0.5 - j) * e->s.rv;
-	}
-	else if (p->pos == 'n')
-	{
-		ray->dir_x = ((i - (WIN_SIZE / SCALE) * 0.5) * e->s.rh);
-		ray->dir_y = -1;
-		ray->dir_z = ((WIN_SIZE / SCALE) * 0.5 - j) * e->s.rv;
-	}
-	else if (p->pos == 'e')
-	{
-		ray->dir_x = 1;
-		ray->dir_y = ((i - (WIN_SIZE / SCALE) * 0.5) * e->s.rh);
-		ray->dir_z = ((WIN_SIZE / SCALE) * 0.5 - j) * e->s.rv;
-	}
-	ft_normalize(ray);
-}
-
-void	ft_director_vector2(t_exec *e, int i, int j)
+void	ft_director_vector(t_exec *e, int i, int j)
 {
 	t_ray	*ray;
 	double	normalize;
