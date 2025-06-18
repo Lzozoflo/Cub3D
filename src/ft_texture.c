@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 10:58:58 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/18 14:38:06 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/18 16:48:03 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	ft_north_south_textures_color(t_data *d, char c, double x, double y)
 		coord_x = floor(x * d->exec.texture.north.width);
 		coord_y = floor(y * d->exec.texture.north.height);
 		index = ((coord_y * d->exec.texture.north.line_len)
-				+ (coord_x * (d->exec.texture.north.bpp / 8)));
+				+ (coord_x * d->exec.texture.north.bpp));
 		color = *(unsigned int *)(d->exec.texture.north.addr + index);
 	}
 	else if (c == 's')
@@ -44,7 +44,7 @@ static int	ft_north_south_textures_color(t_data *d, char c, double x, double y)
 		coord_y = floor(y * d->exec.texture.south.height);
 		y = d->exec.texture.south.height - 1 - coord_y;
 		index = ((y * d->exec.texture.south.line_len)
-				+ (coord_x * (d->exec.texture.south.bpp / 8)));
+				+ (coord_x * d->exec.texture.south.bpp));
 		color = *(unsigned int *)(d->exec.texture.south.addr + index);
 	}
 	return (color);
@@ -73,7 +73,7 @@ static int	ft_east_west_textures_color(t_data *d, char c, double x, double y)
 		coord_y = floor(y * d->exec.texture.east.height);
 		coord_x = d->exec.texture.east.width - 1 - coord_x;
 		index = ((coord_y * d->exec.texture.east.line_len)
-				+ (coord_x * (d->exec.texture.east.bpp / 8)));
+				+ (coord_x * d->exec.texture.east.bpp));
 		color = *(unsigned int *)(d->exec.texture.east.addr + index);
 	}
 	else if (c == 'w')
@@ -82,7 +82,7 @@ static int	ft_east_west_textures_color(t_data *d, char c, double x, double y)
 		coord_y = floor(y * d->exec.texture.west.height);
 		y = d->exec.texture.west.height - 1 - coord_y;
 		index = ((y * d->exec.texture.west.line_len)
-				+ (coord_x * (d->exec.texture.west.bpp / 8)));
+				+ (coord_x * d->exec.texture.west.bpp));
 		color = *(unsigned int *)(d->exec.texture.west.addr + index);
 	}
 	return (color);
