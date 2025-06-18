@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:06:29 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/18 16:17:20 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/18 16:34:36 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	ft_s(t_player *player)
 	debug_put_str("[s] is pressed", NULL, 2, 21);
 	if (ft_check_pos_colision(player, player->pos_x, player->pos_y + MS))
 		return (-1);
-	player->pos_x = player->pos_x + sin(player->angle) * MS;
+	player->pos_x = player->pos_x - sin(player->angle) * MS;
 	player->pos_y = player->pos_y + cos(player->angle) * MS;
 	return (1);
 }

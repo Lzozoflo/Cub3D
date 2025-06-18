@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/18 16:22:31 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/18 16:29:06 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	ft_start(t_exec *e, t_data *d)
 		j = 0;
 		while (j < (WIN_SIZE / SCALE))
 		{
-			radius = e->all_r.ray[i][j];
+			radius = e->all_r.ray[i][j];	// mlx_mouse_hook(data->win, NULL, data);
 			ft_walls(d, i, j, radius);
 			j++;
 		}
