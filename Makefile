@@ -28,9 +28,9 @@
 # D_DRAW			:=		draw/
 # D_INIT			:=		init/
 # D_UTILS			:=		utils/
-# D_PARSING		:=		parsing/
-# D_U_EVENT		:=		event/
-# D_STRUCT		:=		utils_struct/
+# D_PARSING			:=		parsing/
+# D_U_EVENT			:=		event/
+# D_STRUCT			:=		utils_struct/
 
 
 # #############################################################################################
@@ -41,8 +41,8 @@
 
 
 # INC				:=		ft_cub.h						\
-# 						ft_debug.h						\
-# 						ft_define.h
+# 							ft_debug.h						\
+# 							ft_define.h
 
 
 # SRC				:=		main.c							\
@@ -246,6 +246,7 @@ D_UTILS			:=		utils/
 D_PARSING		:=		parsing/
 D_U_EVENT		:=		event/
 D_STRUCT		:=		utils_struct/
+D_RAYCAST		:=		raycast/
 
 
 #############################################################################################
@@ -260,10 +261,18 @@ INC				:=		ft_cub.h						\
 						ft_define.h
 
 
-SRC				:=		main.c							\
-						ft_all_radius.c					\
-						ft_init_planes.c				\
-						ft_init_textures.c				\
+SRC				:=		main.c
+
+
+SRC_DEBUG		:=		ft_debug_maps.c					\
+						ft_debug_str_int.c				\
+						ft_debug_tab_ptr.c
+
+
+SRC_DRAW		:=		ft_draw_maps_2d.c				\
+						ft_refresh_view.c
+
+SRC_RAYCAST		:=		ft_all_radius.c					\
 						ft_math_calculation_walls.c		\
 						ft_math_calculation.c			\
 						ft_move_rotate.c				\
@@ -274,18 +283,10 @@ SRC				:=		main.c							\
 						ft_wall_intersection.c			\
 						ft_walls.c
 
-SRC_DEBUG		:=		ft_debug_maps.c					\
-						ft_debug_str_int.c				\
-						ft_debug_tab_ptr.c
-
-
-SRC_DRAW		:=		ft_draw_maps_2d.c				\
-						ft_draw_sky_floor.c				\
-						ft_refresh_view.c
-
-
 SRC_INIT		:=		ft_init_mlx.c					\
-						ft_init_struct.c
+						ft_init_planes.c				\
+						ft_init_struct.c				\
+						ft_init_textures.c
 
 
 SRC_PARSING		:=		ft_check_format_save_color.c	\
@@ -331,6 +332,7 @@ SRC_STRUCT		:=		ft_clear_struct.c				\
 SRCS			=		$(SRC)													\
 						$(addprefix $(D_DEBUG), $(SRC_DEBUG))					\
 						$(addprefix $(D_DRAW), $(SRC_DRAW))						\
+						$(addprefix $(D_DRAW)$(D_RAYCAST), $(SRC_RAYCAST))		\
 						$(addprefix $(D_INIT), $(SRC_INIT))						\
 						$(addprefix $(D_PARSING), $(SRC_PARSING))				\
 						$(addprefix $(D_UTILS), $(SRC_UTILS))					\

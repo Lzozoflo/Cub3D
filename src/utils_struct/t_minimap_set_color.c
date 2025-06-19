@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   t_minimap_set_color.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 10:51:48 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/18 13:08:20 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/19 10:07:36 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "ft_define.h"
 #include <math.h>
 
-unsigned char	check_value(int value)
+static unsigned char	check_value(int value)
 {
 	if (value < 0)
 		return (0);
@@ -24,7 +24,7 @@ unsigned char	check_value(int value)
 	return ((unsigned char)value);
 }
 
-int	is_color_used(unsigned int color, t_minimap *m)
+static  int	is_color_used(unsigned int color, t_minimap *m)
 {
 	int	i;
 
@@ -37,7 +37,7 @@ int	is_color_used(unsigned int color, t_minimap *m)
 	return (0);
 }
 
-unsigned int	generate_next_variant(unsigned int b1, unsigned int b2, int i)
+static unsigned int	generate_next_variant(unsigned int b1, unsigned int b2, int i)
 {
 	t_rgb			base1;
 	t_rgb			base2;
@@ -57,7 +57,7 @@ unsigned int	generate_next_variant(unsigned int b1, unsigned int b2, int i)
 	return (r_new << 16 | g_new << 8 | b_new);
 }
 
-unsigned int	generate_unique_color(unsigned int base, unsigned int base2,
+static unsigned int	generate_unique_color(unsigned int base, unsigned int base2,
 		t_minimap *m)
 {
 	unsigned int	variant;

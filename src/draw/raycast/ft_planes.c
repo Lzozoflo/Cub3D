@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_planes.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mathildelaussel <mathildelaussel@studen    +#+  +:+       +#+        */
+/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 13:36:49 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/11 15:14:13 by mathildelau      ###   ########.fr       */
+/*   Updated: 2025/06/19 10:30:01 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_shadow.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:02:50 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/18 16:23:43 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/19 10:18:39 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "ft_define.h"
 #include "libft.h"
 
-int	ft_color_shadow_floor(const unsigned int colorfloor, size_t y,
+int	ft_color_shadow_floor(const unsigned int colorfloor, int y,
 		const size_t half)
 {
 	int		r;
@@ -26,15 +26,15 @@ int	ft_color_shadow_floor(const unsigned int colorfloor, size_t y,
 	factor = ((double)(y - half) / (double)half);
 	if (factor > 1.0)
 		factor = 1.0;
-	r = (colorfloor / 0x10000) * factor;
-	g = ((colorfloor / 0x100) % 0x100) * factor;
-	b = (colorfloor % 0x100) * factor;
+	r = (int)((colorfloor / 0x10000) * factor);
+	g = (int)(((colorfloor / 0x100) % 0x100) * factor);
+	b = (int)((colorfloor % 0x100) * factor);
 	shadow_color = (r * 0x10000) + (g * 0x100) + b;
 	return (shadow_color);
 }
 
 int	ft_color_shadow_ceiling(const unsigned int colorceiling,
-	size_t y, const size_t half)
+	int y, const size_t half)
 {
 	int		r;
 	int		g;
@@ -45,9 +45,9 @@ int	ft_color_shadow_ceiling(const unsigned int colorceiling,
 	factor = ((double)(half - y) / (double)half);
 	if (factor > 1.0)
 		factor = 1.0;
-	r = (colorceiling / 0x10000) * factor;
-	g = ((colorceiling / 0x100) % 0x100) * factor;
-	b = (colorceiling % 0x100) * factor;
+	r = (int)((colorceiling / 0x10000) * factor);
+	g = (int)(((colorceiling / 0x100) % 0x100) * factor);
+	b = (int)((colorceiling % 0x100) * factor);
 	shadow_color = (r * 0x10000) + (g * 0x100) + b;
 	return (shadow_color);
 }
@@ -80,12 +80,9 @@ int	ft_shadow(int color, t_data *d)
 	factor = 1.0 - (d->exec.wall.t_min / MAX_D);
 	if (factor < 0.0)
 		factor = 0.0;
-	r = color / 0x10000;
-	g = (color / 0x100) % 0x100;
-	b = color % 0x100;
-	r = r * factor;
-	g = g * factor;
-	b = b * factor;
+	r = (int)((color / 0x10000) * factor);
+	g = (int)(((color / 0x100) % 0x100) * factor);
+	b = (int)((color % 0x100) * factor);
 	color = (r * 0x10000) + (g * 0x100) + b;
 	return (color);
 }

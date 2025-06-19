@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_textures.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 15:07:45 by mathildelau       #+#    #+#             */
-/*   Updated: 2025/06/18 16:50:56 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/19 10:10:35 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 #include <unistd.h>
 
-void	ft_cal_texture(t_data *d)
+static void	ft_cal_texture(t_data *d)
 {
 	d->exec.texture.east.bpp = d->exec.texture.east.bpp >> 3;
 	d->exec.texture.west.bpp = d->exec.texture.west.bpp >> 3;

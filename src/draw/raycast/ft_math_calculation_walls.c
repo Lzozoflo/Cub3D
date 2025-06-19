@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_math_calculation_walls.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 09:11:56 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/18 12:01:43 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/19 10:29:45 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

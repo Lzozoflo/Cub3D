@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_draw_sky_floor.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:37:37 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/16 14:25:02 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/19 10:19:09 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_draw_sky_floor(t_data *data)
 	const unsigned int	colorsky = data->exec.sky;
 	const unsigned int	colorfloor = data->exec.floor;
 	const size_t		size = WIN_SIZE >> 1;
-	size_t				y;
+	int				y;
 	int					x;
 
 	y = 0;

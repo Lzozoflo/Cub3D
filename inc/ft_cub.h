@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cub.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/18 16:23:19 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/19 10:19:29 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -235,10 +235,10 @@ void	ft_free_cardi(t_exec *e);
 void	ft_group_all_planes(t_data *d);
 
 //------------[  ft_shadow.c  ]
-int		ft_color_shadow_floor(const unsigned int colorfloor, size_t y,
+int		ft_color_shadow_floor(const unsigned int colorfloor, int y,
 			const size_t half);
 int		ft_color_shadow_ceiling(const unsigned int colorceiling,
-			size_t y, const size_t half);
+			int y, const size_t half);
 int		ft_shadow(int color, t_data *d);
 
 //------------[  ft_radius.c  ]
@@ -270,10 +270,6 @@ void	ft_walls(t_data *d, int i, int j, t_ray radius);
 
 void	ft_draw_circle(t_data *data, t_minimap *m);
 void	ft_draw_minimap(t_data *data, t_minimap *m);
-
-//------------[  ft_draw_sky_floor.c  ]
-
-void	ft_draw_sky_floor(t_data *data);
 
 //------------[  ft_refresh_view.c  ]
 
