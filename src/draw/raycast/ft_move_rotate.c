@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 11:57:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/23 13:32:55 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 13:50:57 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,11 @@ static void	ft_calculate_rotate_radius(int i, int j, t_exec *e)
 	e->all_r.ray [i][j].dir_y = base.dir_x * sin(e->player.angle)
 		+ base.dir_y * cos(e->player.angle);
 	e->all_r.ray [i][j].dir_z = base.dir_z;
+	// e->all_r.ray [i][j].dir_x = base.dir_x;
+	// e->all_r.ray [i][j].dir_y = base.dir_y * cos(e->player.angle_x) - base.dir_z * sin(e->player.angle_x);
+	// e->all_r.ray [i][j].dir_z = base.dir_y * sin(e->player.angle_x) + base.dir_z * cos(e->player.angle_x);
+
+
 }
 
 /**

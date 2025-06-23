@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/23 13:25:32 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 13:38:53 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,5 @@ int	ft_start(t_exec *e, t_data *d)
 		}
 		i++;
 	}
-	ft_free_rotate_radius(&d->exec.all_r, d->win_scale);
 	return (1);
 }

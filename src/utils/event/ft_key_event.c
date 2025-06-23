@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:59:35 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/23 10:46:19 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 13:50:52 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,18 @@ int	ft_handle_keys(void *param)
 		if (p->angle >= 2 * PI)
 			p->angle -= 2 * PI;
 	}
+	// if (data->exec.keys.up)
+	// {
+	// 	p->angle_x -= ROTATION;
+	// 	if (p->angle_x < 0)
+	// 		p->angle_x += 2 * PI;
+	// }
+	// if (data->exec.keys.down)
+	// {
+	// 	p->angle_x += ROTATION;
+	// 	if (p->angle_x >= 2 * PI)
+	// 		p->angle_x -= 2 * PI;
+	// }
 	ft_zoom_minimaps(data);
 	ft_refresh_view(data);
 	return (0);
@@ -91,6 +103,10 @@ int	ft_key_press(int keycode, void *param)
 		data->exec.keys.left = 1;
 	else if (keycode == RIGHT)
 		data->exec.keys.right = 1;
+	else if (keycode == UP)
+		data->exec.keys.up = 1;
+	else if (keycode == DOWN)
+		data->exec.keys.down = 1;
 	else if (keycode == M)
 		data->exec.keys.m = 1;
 	return (1);
@@ -113,6 +129,10 @@ int	ft_key_release(int keycode, void *param)
 		data->exec.keys.left = 0;
 	else if (keycode == RIGHT)
 		data->exec.keys.right = 0;
+	else if (keycode == UP)
+		data->exec.keys.up = 0;
+	else if (keycode == DOWN)
+		data->exec.keys.down = 0;
 	else if (keycode == M)
 		data->exec.keys.m = 0;
 	return (1);
