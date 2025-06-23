@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/23 10:19:19 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 10:44:05 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,7 +178,8 @@ struct s_wall
 	char	face;
 };
 
-struct s_keys {
+struct s_keys
+{
 	int		w;
 	int		a;
 	int		s;
@@ -187,7 +188,6 @@ struct s_keys {
 	int		right;
 	int		m;
 };
-
 
 struct		s_exec
 {

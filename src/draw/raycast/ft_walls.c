@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 14:02:49 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/23 10:41:03 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 10:42:19 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,6 @@ static void	ft_color_wall(t_data *d, int i, int j, t_ray radius)
 	int					color;
 	const size_t		half = d->win_scale >> 1;
 
-	if (d->exec.wall.t_min < 0)
-		return ;
 	ft_intersection_coord(&d->exec, d->exec.wall.t_min, radius);
 	if (d->exec.s.iz >= 0.0 && d->exec.s.iz < 1.0
 		&& d->exec.wall.t_min <= MAX_D)
@@ -99,6 +97,11 @@ static void	ft_color_wall(t_data *d, int i, int j, t_ray radius)
  * @brief `main of wall`
  *
  * (p.30) - "Route of plans"
+ *
+ * (p.30) : "For an intersection to be considered valid,
+ * t must be positive and Iz must be between 0 inclusive and 1."
+ * and "We can therefore display a different color/texture
+ * depending on the cardinal point."
  */
 void	ft_walls(t_data *d, int i, int j, t_ray radius)
 {
@@ -120,5 +123,6 @@ void	ft_walls(t_data *d, int i, int j, t_ray radius)
 		ft_west_wall(&d->exec, x, radius);
 		x++;
 	}
-	ft_color_wall(d, i, j, radius);
+	if (d->exec.wall.t_min > 0)
+		ft_color_wall(d, i, j, radius);
 }

@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:59:35 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/23 10:19:40 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 10:46:19 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,16 @@ static int	ft_zoom_minimaps(t_data *data)
 	int	*value;
 
 	value = &data->exec.mini.zoom;
-	if (*value == -1)
-		*value = 0;
-	else if (*value == 0)
-		*value = 1;
-	else
-		*value = -1;
+	if (data->exec.keys.m)
+	{
+		if (*value == -1)
+			*value = 0;
+		else if (*value == 0)
+			*value = 1;
+		else
+			*value = -1;
+		data->exec.keys.m = 0;
+	}
 	return (0);
 }
 
@@ -63,11 +67,7 @@ int	ft_handle_keys(void *param)
 		if (p->angle >= 2 * PI)
 			p->angle -= 2 * PI;
 	}
-	if (data->exec.keys.m)
-	{
-		ft_zoom_minimaps(data);
-		data->exec.keys.m = 0;
-	}
+	ft_zoom_minimaps(data);
 	ft_refresh_view(data);
 	return (0);
 }

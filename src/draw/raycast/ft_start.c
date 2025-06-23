@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/23 08:52:19 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 10:52:40 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	ft_init_start(t_exec *e, t_data *d)
 	return (0);
 }
 
+#include <stdlib.h>
 /**@brief `begining of graphic and maths part`
  *
  * `(p.17) - ft_init_camera`
@@ -70,7 +71,7 @@ int	ft_start(t_exec *e, t_data *d)
 		while (j < d->win_scale)
 		{
 			radius = e->all_r.ray[i][j];
-			// mlx_mouse_hook(data->win, NULL, data);
+			//mlx_mouse_hook(d->win, NULL, d);
 			ft_walls(d, i, j, radius);
 			j++;
 		}
