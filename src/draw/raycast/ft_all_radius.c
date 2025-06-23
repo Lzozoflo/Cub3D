@@ -6,12 +6,25 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 12:07:54 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/23 11:46:06 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 12:58:03 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 #include <stdlib.h>
+
+
+static void	ft_free_ray(int i, t_exec *e)
+{
+	while (i > 0)
+	{
+		free(e->radius.ray[i]);
+		e->radius.ray[i] = NULL;
+		i++;
+	}
+	free(e->radius.ray);
+	e->radius.ray = NULL;
+}
 
 /**
  * @brief `calculate all radius for opti`
@@ -41,7 +54,10 @@ int	ft_calculate_all_radius(t_exec *e, int win_scale)
 	{
 		e->radius.ray[i] = malloc(sizeof(t_ray) * win_scale);
 		if (e->radius.ray[i] == NULL)
+		{
+			ft_free_ray(i, e);
 			return (-1);
+		}
 		j = 0;
 		while (j < win_scale)
 		{
