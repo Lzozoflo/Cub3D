@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/23 08:04:10 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 08:49:37 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,29 +205,33 @@ struct		s_data
 	int			win_scale;
 };
 
-				/*MATHS*/
+/*-----------------src/draw-----------------*/
+//------------[  ft_draw_maps_2d.c  ]
 
+void	ft_draw_circle(t_data *data, t_minimap *m);
+void	ft_draw_minimap(t_data *data, t_minimap *m);
+
+//------------[  ft_refresh_view.c  ]
+
+int		ft_refresh_view(t_data *data);
+
+/*-----------------src/draw/raycast-----------------*/
 //------------[  ft_all_radius.c  ]
 int		ft_calculate_all_radius(t_exec *e, int win_scale);
 void	ft_free_radius(t_radius *r, int win_scale);
 
-//------------[  ft_init_planes.c  ]
-void	ft_west_plane(t_cardinals *c, int x);
-void	ft_east_plane(t_cardinals *c, int x);
-void	ft_north_plane(t_cardinals *c, int y);
-void	ft_south_plane(t_cardinals *c, int y);
+//------------[  ft_math_calculation_walls.c  ]
+void	ft_intersection_coord(t_exec *e, double t, t_ray radius);
+double	ft_find_plane_intersection_n_s(t_exec *e, t_plane *plane, t_ray radius);
+double	ft_find_plane_intersection_e_w(t_exec *e, t_plane *plane, t_ray radius);
 
 //------------[  ft_math_calculation.c  ]
 void	ft_fov_h_and_v_ratio(t_exec *e, int win_scale);
 void	ft_director_vector(t_exec *e, int i, int j, int win_scale);
 void	ft_init_camera(t_exec *e);
 
-//------------[  ft_math_calculation_walls.c  ]
-double	ft_find_plane_intersection_n_s(t_exec *e, t_plane *plane, t_ray radius);
-double	ft_find_plane_intersection_e_w(t_exec *e, t_plane *plane, t_ray radius);
-void	ft_intersection_coord(t_exec *e, double t, t_ray radius);
-
 //------------[  ft_move_rotate.c  ]
+void	ft_free_rotate_radius(t_radius *all_r, int win_scale);
 int		ft_rotate_radius(t_exec *e, int win_scale);
 void	ft_move(t_exec *e);
 
@@ -247,9 +251,6 @@ int		ft_shadow(int color, t_data *d);
 int		ft_init_start(t_exec *e, t_data *d);
 int		ft_start(t_exec *e, t_data *d);
 
-//------------[  ft_init_textures.c  ]
-int		ft_init_textures(t_data *d);
-
 //------------[  ft_texture.c  ]
 int		ft_texture(t_data *d, char c);
 
@@ -262,27 +263,24 @@ void	ft_west_wall(t_exec *e, int x, t_ray radius);
 //------------[  ft_walls.c  ]
 void	ft_walls(t_data *d, int i, int j, t_ray radius);
 
-/*-----------------src/draw-----------------*/
-
-//------------[  ft_draw_maps_2d.c  ]
-
-void	ft_draw_circle(t_data *data, t_minimap *m);
-void	ft_draw_minimap(t_data *data, t_minimap *m);
-
-//------------[  ft_refresh_view.c  ]
-
-void	ft_refresh_view(t_data *data);
-
 /*-----------------src/init-----------------*/
+//------------[  ft_init_mlx.c  ]
+
+int		ft_init_mlx(t_data *data);
+
+//------------[  ft_init_planes.c  ]
+void	ft_west_plane(t_cardinals *c, int x);
+void	ft_east_plane(t_cardinals *c, int x);
+void	ft_north_plane(t_cardinals *c, int y);
+void	ft_south_plane(t_cardinals *c, int y);
 
 //------------[  ft_init_struct.c  ]
 
 void	ft_init_parsing(t_parsing *parsing);
 void	ft_init_data(t_data *data);
 
-//------------[  ft_init_mlx.c  ]
-
-int		ft_init_mlx(t_data *data);
+//------------[  ft_init_textures.c  ]
+int		ft_init_textures(t_data *d);
 
 /*-----------------src/parsing-----------------*/
 //------------[  ft_check_format_save_color.c  ]

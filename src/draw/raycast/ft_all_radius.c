@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 12:07:54 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/23 08:02:13 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 09:06:54 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	ft_free_radius(t_radius *r, int win_scale)
 {
 	int	i;
 
-	if (r->ray)
+	if (!r->ray)
 		return ;
 	i = 0;
 	while (i < win_scale)

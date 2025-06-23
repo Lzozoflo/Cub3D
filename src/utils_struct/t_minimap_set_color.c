@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   t_minimap_set_color.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 10:51:48 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/19 10:07:36 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/06/23 08:24:21 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static unsigned char	check_value(int value)
 	return ((unsigned char)value);
 }
 
-static  int	is_color_used(unsigned int color, t_minimap *m)
+static	int	is_color_used(unsigned int color, t_minimap *m)
 {
 	int	i;
 
@@ -37,7 +37,8 @@ static  int	is_color_used(unsigned int color, t_minimap *m)
 	return (0);
 }
 
-static unsigned int	generate_next_variant(unsigned int b1, unsigned int b2, int i)
+static unsigned int	generate_next_variant(unsigned int b1,
+		unsigned int b2, int i)
 {
 	t_rgb			base1;
 	t_rgb			base2;

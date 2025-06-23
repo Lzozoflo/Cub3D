@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 13:26:06 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/23 07:53:49 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 08:44:10 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ static void	ft_init_player(t_player *player)
 
 static void	ft_init_exec(t_exec *exec)
 {
-	exec->floor = 0;
 	exec->max_height = 0;
 	exec->max_width = 0;
+	exec->floor = 0;
 	exec->sky = 0;
 	exec->tab = NULL;
 	exec->mini.zoom = -1;

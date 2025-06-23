@@ -6,11 +6,12 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:58:30 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/23 08:05:34 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 09:11:40 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
+#include <stdlib.h>
 
 int	main(int ac, char **av, char **env)
 {
@@ -28,11 +29,18 @@ int	main(int ac, char **av, char **env)
 		return (1);
 	ft_print_settings();
 	if (ft_init_start(&data.exec, &data) == -1)
+	{
 		return (-1);
+	}
 	t_minimap_set_color(&data.exec, &data.exec.mini);
-	ft_refresh_view(&data);
+	if (ft_refresh_view(&data) == -1)
+	{
+		ft_free_cardi(&data.exec);
+		ft_free_radius(&data.exec.radius, data.win_scale);
+		return (1);
+	}
 	mlx_loop(data.mlx);
 	ft_free_cardi(&data.exec);
 	ft_free_radius(&data.exec.radius, data.win_scale);
-	//free all_radius
+	ft_free_rotate_radius(&data.exec.all_r, data.win_scale);
 }

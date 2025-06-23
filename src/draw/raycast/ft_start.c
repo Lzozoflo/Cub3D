@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/23 08:06:00 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 08:52:19 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ int	ft_init_start(t_exec *e, t_data *d)
 {
 	ft_fov_h_and_v_ratio(e, d->win_scale);
 	if (ft_calculate_all_radius(e, d->win_scale) == -1)
+	{
+		ft_free_radius(&e->radius, d->win_scale);
 		return (-1);
+	}
 	if (ft_init_plane(e) == -1)
 	{
 		ft_free_radius(&e->radius, d->win_scale);
@@ -66,11 +69,13 @@ int	ft_start(t_exec *e, t_data *d)
 		j = 0;
 		while (j < d->win_scale)
 		{
-			radius = e->all_r.ray[i][j];	// mlx_mouse_hook(data->win, NULL, data);
+			radius = e->all_r.ray[i][j];
+			// mlx_mouse_hook(data->win, NULL, data);
 			ft_walls(d, i, j, radius);
 			j++;
 		}
 		i++;
 	}
+	ft_free_rotate_radius(&d->exec.all_r, d->win_scale);
 	return (1);
 }

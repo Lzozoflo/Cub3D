@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 14:02:49 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/23 08:04:51 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 08:44:46 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static void	ft_init_wall(t_wall *w)
 {
+	w->x_check = 0;
+	w->y_check = 0;
 	w->t_n = -1;
 	w->t_s = -1;
 	w->t_e = -1;
@@ -66,7 +68,7 @@ static void	ft_color_scale(t_data *d, int i, int j, int color)
 static void	ft_color_wall(t_data *d, int i, int j, t_ray radius)
 {
 	int					color;
-	const size_t		half = d->win_scale >> 1; //mettre dans data
+	const size_t		half = d->win_scale >> 1;
 
 	if (d->exec.wall.t_min < 0)
 		return ;
