@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 13:26:06 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/23 08:44:10 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 10:02:31 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,12 @@ static void	ft_init_exec(t_exec *exec)
 	exec->mini.zoom = -1;
 	ft_init_texture(&exec->texture);
 	ft_init_player(&exec->player);
+	exec->keys.w = 0;
+	exec->keys.a = 0;
+	exec->keys.s = 0;
+	exec->keys.d = 0;
+	exec->keys.left = 0;
+	exec->keys.right = 0;
 }
 
 void	ft_init_parsing(t_parsing *parsing)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_key_event.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:59:35 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/19 10:29:10 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/06/23 10:19:40 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,26 +30,6 @@ static int	ft_zoom_minimaps(t_data *data)
 	return (0);
 }
 
-static int	ft_arrow(int keycode, t_data *data, t_player *player)
-{
-	(void)data;
-	if (keycode == LEFT)
-	{
-		player->angle -= ROTATION;
-		debug_put_str("[LEFT] is pressed", NULL, 2, 21);
-	}
-	else if (keycode == RIGHT)
-	{
-		player->angle += ROTATION;
-		debug_put_str("[RIGHT] is pressed", NULL, 2, 21);
-	}
-	while (player->angle < 0)
-		player->angle += 2 * PI;
-	while (player->angle >= 2 * PI)
-		player->angle -= 2 * PI;
-	return (1);
-}
-
 int	ft_check_pos_colision(t_player *p, double x, double y)
 {
 	const t_exec	*exec = (const t_exec *)&p->data->exec;
@@ -62,28 +42,78 @@ int	ft_check_pos_colision(t_player *p, double x, double y)
 	return (tab[cy][cx] == '1');
 }
 
-int	ft_key_press(int keycode, void *param)
+int	ft_handle_keys(void *param)
 {
 	t_data		*data;
+	t_player	*p;
 
 	data = (t_data *)param;
-	debug_put_int("ft_key_press -> keycode", keycode, 200, 200);
+	p = &data->exec.player;
+	if (ft_wasd(data, p) == -1)
+		return (-1);
+	if (data->exec.keys.left)
+	{
+		p->angle -= ROTATION;
+		if (p->angle < 0)
+			p->angle += 2 * PI;
+	}
+	if (data->exec.keys.right)
+	{
+		p->angle += ROTATION;
+		if (p->angle >= 2 * PI)
+			p->angle -= 2 * PI;
+	}
+	if (data->exec.keys.m)
+	{
+		ft_zoom_minimaps(data);
+		data->exec.keys.m = 0;
+	}
+	ft_refresh_view(data);
+	return (0);
+}
+
+int	ft_key_press(int keycode, void *param)
+{
+	t_data	*data;
+
+	data = (t_data *)param;
 	if (keycode == ESC)
-	{
-		mlx_loop_end(data->mlx);
 		ft_clean_close(data, 0);
-	}
-	if (ft_is_player_move(keycode) && ft_wasd(keycode, &data->exec.player) == 0)
-		return (1);
-	if (ft_is_camera_move(keycode)
-		&& ft_arrow(keycode, data, &data->exec.player) == -1)
-		return (1);
-	if (keycode == M && ft_zoom_minimaps(data))
-		return (1);
-	if (ft_is_refresh_event(keycode))
-	{
-		ft_refresh_view(data);
-		debug_put_str("ft_key_press -> refresh view", NULL, 2, 21);
-	}
+	if (keycode == W)
+		data->exec.keys.w = 1;
+	else if (keycode == A)
+		data->exec.keys.a = 1;
+	else if (keycode == S)
+		data->exec.keys.s = 1;
+	else if (keycode == D)
+		data->exec.keys.d = 1;
+	else if (keycode == LEFT)
+		data->exec.keys.left = 1;
+	else if (keycode == RIGHT)
+		data->exec.keys.right = 1;
+	else if (keycode == M)
+		data->exec.keys.m = 1;
+	return (1);
+}
+
+int	ft_key_release(int keycode, void *param)
+{
+	t_data	*data;
+
+	data = (t_data *)param;
+	if (keycode == W)
+		data->exec.keys.w = 0;
+	else if (keycode == A)
+		data->exec.keys.a = 0;
+	else if (keycode == S)
+		data->exec.keys.s = 0;
+	else if (keycode == D)
+		data->exec.keys.d = 0;
+	else if (keycode == LEFT)
+		data->exec.keys.left = 0;
+	else if (keycode == RIGHT)
+		data->exec.keys.right = 0;
+	else if (keycode == M)
+		data->exec.keys.m = 0;
 	return (1);
 }

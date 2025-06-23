@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/23 08:49:37 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 10:19:19 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_data			t_data;
 typedef struct s_radius			t_radius;
 typedef struct s_ray			t_ray;
 typedef struct s_start			t_start;
+typedef struct s_keys			t_keys;
 
 struct		s_image
 {
@@ -177,8 +178,20 @@ struct s_wall
 	char	face;
 };
 
+struct s_keys {
+	int		w;
+	int		a;
+	int		s;
+	int		d;
+	int		left;
+	int		right;
+	int		m;
+};
+
+
 struct		s_exec
 {
+	t_keys			keys;
 	int				max_height;
 	int				max_width;
 	unsigned int	floor;
@@ -325,11 +338,17 @@ int		ft_parsing_cub(t_data *data, char *scene_cub);
 
 /*-----------------src/utils-----------------*/
 //------------[  event/ft_wasd.c  ]
-int		ft_wasd(int keycode, t_player *player);
+int		ft_w(t_player *player);
+int		ft_s(t_player *player);
+int		ft_a(t_player *player);
+int		ft_d(t_player *player);
+int		ft_wasd(t_data *data, t_player *p);
 
 //------------[  event/ft_key_event.c  ]
 int		ft_check_pos_colision(t_player *p, double x, double y);
 int		ft_key_press(int keycode, void *param);
+int		ft_key_release(int keycode, void *param);
+int		ft_handle_keys(void *param);
 
 //------------[  event/ft_is_event.c  ]
 

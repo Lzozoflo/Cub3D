@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:06:29 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/18 16:41:40 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 10:18:20 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "ft_cub.h"
 #include <math.h>
 
-static int	ft_w(t_player *player)
+int	ft_w(t_player *player)
 {
 	double	pos_x;
 	double	pos_y;
@@ -30,7 +30,7 @@ static int	ft_w(t_player *player)
 	return (1);
 }
 
-static int	ft_a(t_player *player)
+int	ft_a(t_player *player)
 {
 	double	pos_x;
 	double	pos_y;
@@ -45,7 +45,7 @@ static int	ft_a(t_player *player)
 	return (1);
 }
 
-static int	ft_s(t_player *player)
+int	ft_s(t_player *player)
 {
 	double	pos_x;
 	double	pos_y;
@@ -60,7 +60,7 @@ static int	ft_s(t_player *player)
 	return (1);
 }
 
-static int	ft_d(t_player *player)
+int	ft_d(t_player *player)
 {
 	double	pos_x;
 	double	pos_y;
@@ -75,15 +75,27 @@ static int	ft_d(t_player *player)
 	return (1);
 }
 
-int	ft_wasd(int keycode, t_player *player)
+int	ft_wasd(t_data *data, t_player *p)
 {
-	if (keycode == W && ft_w(player) == -1)
-		return (-1);
-	else if (keycode == A && ft_a(player) == -1)
-		return (-1);
-	else if (keycode == S && ft_s(player) == -1)
-		return (-1);
-	else if (keycode == D && ft_d(player) == -1)
-		return (-1);
+	if (data->exec.keys.w)
+	{
+		if (ft_w(p) == -1)
+			return (-1);
+	}
+	if (data->exec.keys.a)
+	{
+		if (ft_a(p) == -1)
+			return (-1);
+	}
+	if (data->exec.keys.s)
+	{
+		if (ft_s(p) == -1)
+			return (-1);
+	}
+	if (data->exec.keys.d)
+	{
+		if (ft_d(p) == -1)
+			return (-1);
+	}
 	return (1);
 }
