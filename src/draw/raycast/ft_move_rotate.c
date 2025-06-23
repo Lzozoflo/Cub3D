@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 11:57:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/23 07:44:27 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 08:04:12 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
  * 0		0	  1
  *
  */
-int	ft_rotate_radius(t_exec *e)
+int	ft_rotate_radius(t_exec *e, int win_scale)
 {
 	int		i;
 	int		j;
@@ -33,16 +33,16 @@ int	ft_rotate_radius(t_exec *e)
 	i = 0;
 	j = 0;
 	e->all_r.ray = NULL;
-	e->all_r.ray = malloc(sizeof(t_ray *) * (WIN_SIZE / SCALE));
+	e->all_r.ray = malloc(sizeof(t_ray *) * win_scale);
 	if (e->all_r.ray == NULL)
 		return (-1);
-	while (i < (WIN_SIZE / SCALE))
+	while (i < win_scale)
 	{
-		e->all_r.ray[i] = malloc(sizeof(t_ray) * (WIN_SIZE / SCALE));
+		e->all_r.ray[i] = malloc(sizeof(t_ray) * win_scale);
 		if (e->all_r.ray[i] == NULL)
 			return (-1);
 		j = 0;
-		while (j < (WIN_SIZE / SCALE))
+		while (j < win_scale)
 		{
 			base = e->radius.ray[i][j];
 			e->all_r.ray [i][j].dir_x = base.dir_x * cos(e->player.angle)

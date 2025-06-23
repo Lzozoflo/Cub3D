@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 12:07:54 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/23 07:44:00 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 08:02:13 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,25 @@
  * turn the ray towards our direction just before using it in the algorithm.
  * This saves all the creation time during the loop."
  */
-int	ft_calculate_all_radius(t_exec *e)
+int	ft_calculate_all_radius(t_exec *e, int win_scale)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	e->radius.ray = NULL;
-	e->radius.ray = malloc(sizeof(t_ray *) * (WIN_SIZE / SCALE));
+	e->radius.ray = malloc(sizeof(t_ray *) * win_scale);
 	if (e->radius.ray == NULL)
 		return (-1);
-	while (i < (WIN_SIZE / SCALE))
+	while (i < win_scale)
 	{
-		e->radius.ray[i] = malloc(sizeof(t_ray) * (WIN_SIZE / SCALE));
+		e->radius.ray[i] = malloc(sizeof(t_ray) * win_scale);
 		if (e->radius.ray[i] == NULL)
 			return (-1);
 		j = 0;
-		while (j < (WIN_SIZE / SCALE))
+		while (j < win_scale)
 		{
-			ft_director_vector(e, i, j);
+			ft_director_vector(e, i, j, win_scale);
 			j++;
 		}
 		i++;
@@ -53,14 +53,14 @@ int	ft_calculate_all_radius(t_exec *e)
 	return (1);
 }
 
-void	ft_free_radius(t_radius *r)
+void	ft_free_radius(t_radius *r, int win_scale)
 {
 	int	i;
 
 	if (r->ray)
 		return ;
 	i = 0;
-	while (i < (WIN_SIZE / SCALE))
+	while (i < win_scale)
 	{
 		if (r->ray[i])
 			free(r->ray[i]);

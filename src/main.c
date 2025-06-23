@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:58:30 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/18 16:22:51 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 08:05:34 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ int	main(int ac, char **av, char **env)
 	ft_refresh_view(&data);
 	mlx_loop(data.mlx);
 	ft_free_cardi(&data.exec);
-	ft_free_radius(&data.exec.radius);
+	ft_free_radius(&data.exec.radius, data.win_scale);
 	//free all_radius
 }

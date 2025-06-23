@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/23 07:45:33 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 08:06:00 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@
  */
 int	ft_init_start(t_exec *e, t_data *d)
 {
-	ft_fov_h_and_v_ratio(e);
-	if (ft_calculate_all_radius(e) == -1)
+	ft_fov_h_and_v_ratio(e, d->win_scale);
+	if (ft_calculate_all_radius(e, d->win_scale) == -1)
 		return (-1);
 	if (ft_init_plane(e) == -1)
 	{
-		ft_free_radius(&e->radius);
+		ft_free_radius(&e->radius, d->win_scale);
 		ft_free_cardi(e);
 		return (-1);
 	}
@@ -58,13 +58,13 @@ int	ft_start(t_exec *e, t_data *d)
 	i = 0;
 	j = 0;
 	ft_init_camera(e);
-	if (ft_rotate_radius(e) == -1)
+	if (ft_rotate_radius(e, d->win_scale) == -1)
 		return (-1);
 	ft_move(e);
-	while (i < (WIN_SIZE / SCALE))
+	while (i < d->win_scale)
 	{
 		j = 0;
-		while (j < (WIN_SIZE / SCALE))
+		while (j < d->win_scale)
 		{
 			radius = e->all_r.ray[i][j];	// mlx_mouse_hook(data->win, NULL, data);
 			ft_walls(d, i, j, radius);
