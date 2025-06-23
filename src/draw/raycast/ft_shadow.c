@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_shadow.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:02:50 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/19 10:18:39 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/06/23 07:45:03 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
-#include "ft_define.h"
-#include "libft.h"
 
 int	ft_color_shadow_floor(const unsigned int colorfloor, int y,
 		const size_t half)

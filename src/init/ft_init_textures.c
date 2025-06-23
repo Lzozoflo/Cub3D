@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_textures.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 15:07:45 by mathildelau       #+#    #+#             */
-/*   Updated: 2025/06/19 10:10:35 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/06/23 07:51:45 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	ft_init_textures_e_w(t_data *d)
 			d->exec.texture.east.img_ptr, &d->exec.texture.east.bpp,
 			&d->exec.texture.east.line_len, &d->exec.texture.east.endian);
 	d->exec.texture.west.img_ptr = mlx_xpm_file_to_image(d->mlx,
-		d->exec.texture.texture_we, &d->exec.texture.west.width,
+			d->exec.texture.texture_we, &d->exec.texture.west.width,
 			&d->exec.texture.west.height);
 	if (!d->exec.texture.west.img_ptr)
 	{
@@ -52,7 +52,7 @@ static int	ft_init_textures_e_w(t_data *d)
 int	ft_init_textures(t_data *d)
 {
 	d->exec.texture.north.img_ptr = mlx_xpm_file_to_image(d->mlx,
-		d->exec.texture.texture_no, &d->exec.texture.north.width,
+			d->exec.texture.texture_no, &d->exec.texture.north.width,
 			&d->exec.texture.north.height);
 	if (!d->exec.texture.north.img_ptr)
 	{
@@ -63,7 +63,7 @@ int	ft_init_textures(t_data *d)
 			d->exec.texture.north.img_ptr, &d->exec.texture.north.bpp,
 			&d->exec.texture.north.line_len, &d->exec.texture.north.endian);
 	d->exec.texture.south.img_ptr = mlx_xpm_file_to_image(d->mlx,
-		d->exec.texture.texture_so, &d->exec.texture.south.width,
+			d->exec.texture.texture_so, &d->exec.texture.south.width,
 			&d->exec.texture.south.height);
 	if (!d->exec.texture.south.img_ptr)
 	{

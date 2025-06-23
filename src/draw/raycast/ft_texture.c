@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_texture.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 10:58:58 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/19 10:28:17 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/06/23 07:50:39 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@ static int	ft_north_south_textures_color(t_data *d, char c, double x, double y)
 		coord_x = floor(x * d->exec.texture.north.width);
 		coord_y = floor(y * d->exec.texture.north.height);
 		y = d->exec.texture.north.height - 1 - coord_y;
+		x = d->exec.texture.north.width - 1 - coord_x;
 		index = ((y * d->exec.texture.north.line_len)
-				+ (coord_x * d->exec.texture.north.bpp));
+				+ (x * d->exec.texture.north.bpp));
 		color = *(unsigned int *)(d->exec.texture.north.addr + index);
 	}
 	else if (c == 's')

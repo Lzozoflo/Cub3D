@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 13:26:06 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/16 14:35:42 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 07:53:49 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,5 @@ void	ft_init_data(t_data *data)
 	ft_init_parsing(&data->parsing);
 	ft_init_exec(&data->exec);
 	data->exec.player.data = data;
+	data->win_scale = WIN_SIZE / SCALE;
 }

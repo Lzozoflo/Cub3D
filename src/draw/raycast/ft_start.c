@@ -6,13 +6,11 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/18 16:29:06 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 07:45:33 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
-#include <stdlib.h>
-#include <math.h>
 
 /**
  * @brief `init param`
