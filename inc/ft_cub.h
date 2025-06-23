@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/23 13:42:54 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 13:54:12 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,8 +187,8 @@ struct s_keys
 	int		d;
 	int		left;
 	int		right;
-	int		up;
-	int		down;
+	// int		up; // ICI
+	// int		down;
 	int		m;
 };
 

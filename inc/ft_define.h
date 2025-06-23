@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 17:32:29 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/23 13:45:39 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 13:54:19 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@
 // Key Code moving camera
 # define LEFT 65361
 # define RIGHT 65363
-# define UP 65362
-# define DOWN 65364
+// # define UP 65362 //ICI
+// # define DOWN 65364
 // Key Code
 # define M 109
 
