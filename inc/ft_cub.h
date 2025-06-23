@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/23 11:37:47 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 13:16:18 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -266,6 +266,10 @@ int		ft_start(t_exec *e, t_data *d);
 
 //------------[  ft_texture.c  ]
 int		ft_texture(t_data *d, char c);
+
+//------------[  ft_texture_utils.c  ]
+void	ft_destroy_textures(t_data *d);
+void	ft_cal_texture(t_data *d);
 
 //------------[  ft_wall_intersection.c  ]
 void	ft_north_wall(t_exec *e, int y, t_ray radius);

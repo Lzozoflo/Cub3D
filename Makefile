@@ -280,6 +280,7 @@ SRC_RAYCAST		:=		ft_all_radius.c					\
 						ft_shadow.c 					\
 						ft_start.c						\
 						ft_texture.c					\
+						ft_textures_utils.c				\
 						ft_wall_intersection.c			\
 						ft_walls.c
 

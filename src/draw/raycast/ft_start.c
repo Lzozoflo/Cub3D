@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/23 13:05:09 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 13:08:21 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,10 @@ int	ft_init_start(t_exec *e, t_data *d)
 	}
 	ft_group_all_planes(d);
 	if (ft_init_textures(d) == -1)
+	{
+		ft_clean_close(d, 1);
 		return (-1);
+	}
 	return (0);
 }
 
