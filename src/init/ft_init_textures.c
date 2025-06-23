@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 15:07:45 by mathildelau       #+#    #+#             */
-/*   Updated: 2025/06/23 13:20:55 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 13:22:22 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ int	ft_init_textures(t_data *d)
 			&d->exec.texture.north.line_len, &d->exec.texture.north.endian);
 	if (!d->exec.texture.north.addr)
 		return (-1);
-	if (ft_init_texture_south(d) == -1 || ft_init_texture_east(d) == -1 || ft_init_texture_west(d) == -1)
+	if (ft_init_texture_south(d) == -1 || ft_init_texture_east(d) == -1
+		|| ft_init_texture_west(d) == -1)
 		return (-1);
 	ft_cal_texture(d);
 	return (1);

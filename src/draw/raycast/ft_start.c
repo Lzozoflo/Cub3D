@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/23 13:08:21 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 13:25:32 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,10 @@ int	ft_start(t_exec *e, t_data *d)
 	j = 0;
 	ft_init_camera(e);
 	if (ft_rotate_radius(e, d->win_scale) == -1)
+	{
+		ft_clean_close(d, 1);
 		return (-1);
+	}
 	ft_move(e);
 	while (i < d->win_scale)
 	{

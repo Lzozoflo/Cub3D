@@ -284,7 +284,8 @@ SRC_RAYCAST		:=		ft_all_radius.c					\
 						ft_wall_intersection.c			\
 						ft_walls.c
 
-SRC_INIT		:=		ft_init_mlx.c					\
+SRC_INIT		:=		ft_init_exec_struct.c			\
+						ft_init_mlx.c					\
 						ft_init_planes.c				\
 						ft_init_struct.c				\
 						ft_init_textures.c

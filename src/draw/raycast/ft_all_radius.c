@@ -6,13 +6,12 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 12:07:54 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/23 12:58:03 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 13:31:04 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 #include <stdlib.h>
-
 
 static void	ft_free_ray(int i, t_exec *e)
 {
@@ -20,7 +19,7 @@ static void	ft_free_ray(int i, t_exec *e)
 	{
 		free(e->radius.ray[i]);
 		e->radius.ray[i] = NULL;
-		i++;
+		i--;
 	}
 	free(e->radius.ray);
 	e->radius.ray = NULL;
@@ -46,7 +45,6 @@ int	ft_calculate_all_radius(t_exec *e, int win_scale)
 	int	j;
 
 	i = 0;
-	e->radius.ray = NULL;
 	e->radius.ray = malloc(sizeof(t_ray *) * win_scale);
 	if (e->radius.ray == NULL)
 		return (-1);

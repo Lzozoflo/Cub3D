@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/23 13:16:18 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 13:23:41 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -281,6 +281,12 @@ void	ft_west_wall(t_exec *e, int x, t_ray radius);
 void	ft_walls(t_data *d, int i, int j, t_ray radius);
 
 /*-----------------src/init-----------------*/
+//------------[  ft_init_exec_struct.c  ]
+void	ft_init_keys(t_exec *exec);
+void	ft_init_textures_img(t_exec *exec);
+void	ft_init_cardi(t_exec *exec);
+void	ft_init_ray(t_exec *exec);
+
 //------------[  ft_init_mlx.c  ]
 
 int		ft_init_mlx(t_data *data);

@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 13:36:49 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/23 13:07:34 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 13:21:56 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_init_plane(t_exec *e)
 	if (e->cardi.e == NULL)
 		return (-1);
 	e->cardi.w = malloc(sizeof(t_plane) * (e->max_width + 1));
-	if( e->cardi.w == NULL)
+	if (e->cardi.w == NULL)
 		return (-1);
 	return (1);
 }

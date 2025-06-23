@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 13:26:06 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/23 12:49:59 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 13:24:44 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,39 +30,6 @@ static void	ft_init_player(t_player *player)
 	player->dir_y = 0;
 	player->angle = 0;
 	player->moove = 0;
-}
-
-static void	ft_init_keys(t_exec *exec)
-{
-	exec->keys.w = 0;
-	exec->keys.a = 0;
-	exec->keys.s = 0;
-	exec->keys.d = 0;
-	exec->keys.left = 0;
-	exec->keys.right = 0;
-	exec->keys.m = 0;
-}
-
-static void	ft_init_textures_img(t_exec *exec)
-{
-	exec->texture.north.img_ptr = NULL;
-	exec->texture.south.img_ptr = NULL;
-	exec->texture.east.img_ptr = NULL;
-	exec->texture.west.img_ptr = NULL;
-}
-
-static void	ft_init_cardi(t_exec *exec)
-{
-	exec->cardi.n = NULL;
-	exec->cardi.s = NULL;
-	exec->cardi.w = NULL;
-	exec->cardi.e = NULL;
-}
-
-static void	ft_init_ray(t_exec *exec)
-{
-	exec->radius.ray = NULL;
-	exec->all_r.ray = NULL;
 }
 
 static void	ft_init_exec(t_exec *exec)
