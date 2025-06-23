@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/23 11:45:45 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 13:05:09 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ int	ft_init_start(t_exec *e, t_data *d)
 	}
 	if (ft_init_plane(e) == -1)
 	{
-		ft_free_radius(&e->radius, d->win_scale);
-		ft_free_cardi(e);
+		ft_clean_close(d, 1);
 		return (-1);
 	}
 	ft_group_all_planes(d);
