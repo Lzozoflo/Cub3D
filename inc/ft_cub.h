@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/23 13:54:12 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 14:00:03 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,10 +147,8 @@ struct		s_player
 	double			dir_x;
 	double			dir_z;
 	double			angle;
-	double			angle_x;
+	// double			angle_x; //ICI
 	int				moove;
-	double			plane_x;
-	double			plane_y;
 	t_data			*data;
 };
 

@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/23 13:38:53 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 13:57:22 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	ft_init_start(t_exec *e, t_data *d)
 	if (ft_calculate_all_radius(e, d->win_scale) == -1)
 	{
 		ft_clean_close(d, 1);
-		ft_free_radius(&e->radius, d->win_scale);
 		return (-1);
 	}
 	if (ft_init_plane(e) == -1)
