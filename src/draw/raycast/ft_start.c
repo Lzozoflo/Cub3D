@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/23 10:52:40 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 11:45:45 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	ft_init_start(t_exec *e, t_data *d)
 	ft_fov_h_and_v_ratio(e, d->win_scale);
 	if (ft_calculate_all_radius(e, d->win_scale) == -1)
 	{
+		ft_clean_close(d, 1);
 		ft_free_radius(&e->radius, d->win_scale);
 		return (-1);
 	}
@@ -41,7 +42,6 @@ int	ft_init_start(t_exec *e, t_data *d)
 	return (0);
 }
 
-#include <stdlib.h>
 /**@brief `begining of graphic and maths part`
  *
  * `(p.17) - ft_init_camera`

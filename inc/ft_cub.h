@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/23 10:44:05 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 11:37:47 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -293,6 +293,7 @@ void	ft_init_parsing(t_parsing *parsing);
 void	ft_init_data(t_data *data);
 
 //------------[  ft_init_textures.c  ]
+void	ft_destroy_textures(t_data *d);
 int		ft_init_textures(t_data *d);
 
 /*-----------------src/parsing-----------------*/

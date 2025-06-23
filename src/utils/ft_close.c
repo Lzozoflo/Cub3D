@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 08:46:51 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/16 10:02:44 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 11:37:06 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	ft_clean_close(t_data *data, int error)
 	ft_clear_exec(&data->exec);
 	printf("Exiting program.\n");
 	exit(error);
+	return (0);
 }
 
 int	ft_cross(t_data *data)

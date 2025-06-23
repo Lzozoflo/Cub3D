@@ -6,12 +6,24 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 15:07:45 by mathildelau       #+#    #+#             */
-/*   Updated: 2025/06/23 07:51:45 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 11:37:08 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 #include <unistd.h>
+
+void	ft_destroy_textures(t_data *d)
+{
+	if (d->exec.texture.north.img_ptr)
+		mlx_destroy_image(d->mlx, d->exec.texture.north.img_ptr);
+	if (d->exec.texture.south.img_ptr)
+		mlx_destroy_image(d->mlx, d->exec.texture.south.img_ptr);
+	if (d->exec.texture.east.img_ptr)
+		mlx_destroy_image(d->mlx, d->exec.texture.east.img_ptr);
+	if (d->exec.texture.west.img_ptr)
+		mlx_destroy_image(d->mlx, d->exec.texture.west.img_ptr);
+}
 
 static void	ft_cal_texture(t_data *d)
 {
