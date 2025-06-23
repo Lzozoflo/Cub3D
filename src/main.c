@@ -6,20 +6,12 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:58:30 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/23 11:42:28 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/23 12:43:06 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 #include <stdlib.h>
-
-static void	ft_end(t_data *data)
-{
-	ft_free_cardi(&data->exec);
-	ft_free_radius(&data->exec.radius, data->win_scale);
-	ft_free_rotate_radius(&data->exec.all_r, data->win_scale);
-	ft_destroy_textures(data);
-}
 
 int	main(int ac, char **av, char **env)
 {
@@ -50,7 +42,5 @@ int	main(int ac, char **av, char **env)
 	mlx_loop_hook(data.mlx, ft_handle_keys, &data);
 	mlx_hook(data.win, KeyPress, KeyPressMask, ft_key_press, &data);
 	mlx_hook(data.win, KeyRelease, KeyReleaseMask, ft_key_release, &data);
-	ft_end(&data);
 	mlx_loop(data.mlx);
-
 }
