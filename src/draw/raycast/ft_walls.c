@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 14:02:49 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/25 13:18:53 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/25 15:45:51 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,33 +103,32 @@ static void	ft_color_wall(t_data *d, int i, int j, t_ray radius)
  * and "We can therefore display a different color/texture
  * depending on the cardinal point."
  */
+
 void	ft_walls(t_data *d, int i, int j, t_ray radius)
 {
-	t_exec *e = &d->exec;
-	int	x;
-	int	y;
+	t_exec	*e;
+	int		x;
+	int		y;
 
-	x = 0;
+	e = &d->exec;
 	y = 0;
+	x = 0;
+
 	ft_init_wall(&e->wall);
 	while (y < e->max_height)
 	{
-		ft_north_wall(e, y, radius);
-		// if (e->wall.t_min >= MAX_D + 1)
-			// break ;
-		ft_south_wall(e, y, radius);
-		// if (e->wall.t_min >= MAX_D + 1)
-			// break ;
+		if (radius.dir_y > 0)
+			ft_north_wall(e, y, radius);
+		if (radius.dir_y < 0)
+			ft_south_wall(e, y, radius);
 		y++;
 	}
 	while (x < e->max_width)
 	{
-		ft_east_wall(e, x, radius);
-		// if (e->wall.t_min >= MAX_D + 1)
-			// break ;
-		ft_west_wall(e, x, radius);
-		// if (e->wall.t_min >= MAX_D + 1)
-			// break ;
+		if (radius.dir_x < 0)
+			ft_east_wall(e, x, radius);
+		if (radius.dir_x > 0)
+			ft_west_wall(e, x, radius);
 		x++;
 	}
 	if (e->wall.t_min > 0)
