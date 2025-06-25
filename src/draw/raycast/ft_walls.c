@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 14:02:49 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/25 17:12:49 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/06/25 17:32:41 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,24 +96,25 @@ static void	ft_color_wall(t_data *d, int i, int j, t_ray radius)
 void	ft_east_west_walls(t_data *d, t_ray radius)
 {
 	int		x;
+	int		k = 0;
 	t_exec	*e;
 
 	e = &d->exec;
 	x = e->player.pos_x;
 	if (radius.dir_x < 0)
 	{
-		while (x >= 0)
+		while (x >= 0 && k < MAX_D + 1)
 		{
-			ft_east_wall(e, x, radius);
-			x--;
+			ft_east_wall(e, x--, radius);
+			k++;
 		}
 	}
 	else if (radius.dir_x > 0)
 	{
-		while (x < e->max_width)
+		while (x < e->max_width && k < MAX_D + 1)
 		{
-			ft_west_wall(e, x, radius);
-			x++;
+			ft_west_wall(e, x++, radius);
+			k++;
 		}
 	}
 }
@@ -141,6 +142,7 @@ void	ft_east_west_walls(t_data *d, t_ray radius)
 void	ft_walls(t_data *d, int i, int j, t_ray radius)
 {
 	t_exec	*e;
+	int		k = 0;
 	int		y;
 
 	e = &d->exec;
@@ -148,18 +150,18 @@ void	ft_walls(t_data *d, int i, int j, t_ray radius)
 	ft_init_wall(&e->wall);
 	if (radius.dir_y < 0)
 	{
-		while (y >= 0)
+		while (y >= 0 && k < MAX_D + 1)
 		{
-			ft_south_wall(e, y, radius);
-			y--;
+			ft_south_wall(e, y--, radius);
+			k++;
 		}
 	}
 	else if (radius.dir_y > 0)
 	{
-		while (y < e->max_height)
+		while (y < e->max_height && k < MAX_D + 1)
 		{
-			ft_north_wall(e, y, radius);
-			y++;
+			ft_north_wall(e, y++, radius);
+			k++;
 		}
 	}
 	ft_east_west_walls(d, radius);
