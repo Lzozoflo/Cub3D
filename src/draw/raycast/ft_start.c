@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/25 15:31:08 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/25 15:52:56 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,22 +91,12 @@ int	ft_init_start(t_exec *e, t_data *d)
  * `X - ft_walls`
  *
 */
-
-// double	ft_normalize_angle(double angle)
-// {
-// 	while (angle < 0)
-// 		angle += 2 * PI;
-// 	while (angle >= 2 * PI)
-// 		angle -= 2 * PI;
-// 	return (angle);
-// }
-
 void	ft_start(t_exec *e, t_data *d)
 {
-	int		win_scale = d->win_scale;
-	int		i;
-	int		j;
-	t_ray	radius;
+	const int		win_scale = d->win_scale;
+	int				i;
+	int				j;
+	t_ray			radius;
 
 	i = 0;
 	j = 0;
@@ -119,23 +109,9 @@ void	ft_start(t_exec *e, t_data *d)
 		while (j < win_scale)
 		{
 			radius = e->all_r.ray[i][j];
-			// radius_angle = atan2(radius.dir_y, radius.dir_x);
-			// radius_angle = ft_normalize_angle(radius_angle);
-
-			// int in_range = 0;
-			// if (e->player.l_angle > e->player.r_angle)
-			// {
-			// 	in_range = (radius_angle >= e->player.l_angle && radius_angle <= e->player.r_angle);
-			// }
-			// else
-			// {
-			// 	in_range = (radius_angle >= e->player.l_angle || radius_angle <= e->player.r_angle);
-			// }
-			// if (in_range)
-				ft_walls(d, i, j, radius);
+			ft_walls(d, i, j, radius);
 			j++;
 		}
 		i++;
 	}
 }
-

@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 14:02:49 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/25 15:45:51 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/25 16:07:22 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,44 +93,76 @@ static void	ft_color_wall(t_data *d, int i, int j, t_ray radius)
 	}
 }
 
+void	ft_east_west_walls(t_data *d, t_ray radius)
+{
+	int		x;
+	t_exec	*e;
+
+	e = &d->exec;
+	x = e->player.pos_x;
+	if (radius.dir_x < 0)
+	{
+		while (x >= 0)
+		{
+			ft_east_wall(e, x, radius);
+			x--;
+		}
+	}
+	else if (radius.dir_x > 0)
+	{
+		while (x < e->max_width)
+		{
+			ft_west_wall(e, x, radius);
+			x++;
+		}
+	}
+}
+
 /**
  * @brief `main of wall`
  *
  * (p.30) - "Route of plans"
+ * The easiest way to go through the planes is to start at
+ * the index of the player's position (O), then increment or
+ * decrement it according to the direction of the radius
+ * (looking at the sign of u).
+ * Thus, it is sufficient to stop at the first wall and
+ * compare the distance (t) of the nearest wall on the’axe
+ * of x with that closest to the’axe of y. It will therefore
+ * be possible to display a different color/texture according
+ * to the cardinal point.
  *
  * (p.30) : "For an intersection to be considered valid,
  * t must be positive and Iz must be between 0 inclusive and 1."
  * and "We can therefore display a different color/texture
  * depending on the cardinal point."
+ *
  */
-
 void	ft_walls(t_data *d, int i, int j, t_ray radius)
 {
 	t_exec	*e;
-	int		x;
 	int		y;
 
 	e = &d->exec;
-	y = 0;
-	x = 0;
-
+	y = e->player.pos_y;
 	ft_init_wall(&e->wall);
-	while (y < e->max_height)
+	if (radius.dir_y < 0)
 	{
-		if (radius.dir_y > 0)
-			ft_north_wall(e, y, radius);
-		if (radius.dir_y < 0)
+		while (y >= 0)
+		{
 			ft_south_wall(e, y, radius);
-		y++;
+			y--;
+		}
 	}
-	while (x < e->max_width)
+	else if (radius.dir_y > 0)
 	{
-		if (radius.dir_x < 0)
-			ft_east_wall(e, x, radius);
-		if (radius.dir_x > 0)
-			ft_west_wall(e, x, radius);
-		x++;
+		while (y < e->max_height)
+		{
+			ft_north_wall(e, y, radius);
+			y++;
+		}
 	}
+	ft_east_west_walls(d, radius);
 	if (e->wall.t_min > 0)
 		ft_color_wall(d, i, j, radius);
 }
