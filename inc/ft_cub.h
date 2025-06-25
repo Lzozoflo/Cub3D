@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cub.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/25 11:40:44 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/06/25 13:35:14 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,8 @@ struct		s_player
 	double			dir_x;
 	double			dir_z;
 	double			angle;
+	double			l_angle;
+	double			r_angle;
 	int				moove;
 	t_data			*data;
 };

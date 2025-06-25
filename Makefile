@@ -146,9 +146,9 @@ DEPS				:=		$(addprefix $(DEPS_DIR), $(DEPS_FILES))
 
 all : $(NAME)
 
+$(NAME): $(OBJS) libft/libft.a minilibx-linux/libmlx.a
+	$(CC) $(CFLAGS) $(OBJS) $(MLX_FLAG) $(NAME_LIB) -o $(NAME) -lm
 
-$(NAME)				:	libmlx libft $(OBJS)
-			$(CC) $(CFLAGS) $(OBJS) $(MLX_FLAG) $(NAME_LIB) -o $(NAME)  -lm
 
 $(DEPS_DIR) 		:
 		mkdir -p $(DEPS_DIR)
@@ -158,8 +158,9 @@ $(OBJS_DIR)%.o		:	$(D_SRC)%.c Makefile | $(DEPS_DIR)
 			@mkdir -p $(dir $(DEPS_DIR)$*)
 			$(CC) $(CFLAGS) $(INCLUDES) -MP -MMD -MF $(DEPS_DIR)$*.d -c $< -o $@
 
-libmlx			:
-			$(MAKE) -C minilibx-linux
+minilibx-linux/libmlx.a:
+	$(MAKE) -C minilibx-linux
+
 
 #############################################################################################
 #																							#
@@ -174,7 +175,7 @@ D_INC_LIBFT		=		./libft/inc/
 NAME_LIB		=		./libft/libft.a
 
 
-libft			:
+libft/libft.a		:
 			$(MAKE) -C libft
 
 

@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_start.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/25 10:49:32 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/06/25 13:59:41 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 #include <stdlib.h>
+#include <math.h>
 
 static void	ft_free_rotate_ray(t_radius *all_r, int i)
 {
@@ -90,26 +91,45 @@ int	ft_init_start(t_exec *e, t_data *d)
  * `X - ft_walls`
  *
 */
+
+#include <stdio.h>
 void	ft_start(t_exec *e, t_data *d)
 {
+	int		win_scale = d->win_scale;
 	int		i;
 	int		j;
 	t_ray	radius;
+	// double radius_angle;
 
 	i = 0;
 	j = 0;
 	ft_init_camera(e);
-	ft_rotate_radius(e, d->win_scale);
+	ft_rotate_radius(e, win_scale);
 	ft_move(e);
-	while (i < d->win_scale)
+	e->player.l_angle = e->player.angle - (e->s.fov * 0.5);
+
+	e->player.r_angle = e->player.angle + (e->s.fov * 0.5);
+	printf("left angle : %f\n", e->player.l_angle);
+	printf("fov angle : %f\n", e->s.fov);
+	printf("right angle : %f\n", e->player.r_angle);
+	while (i < win_scale)
 	{
 		j = 0;
-		while (j < d->win_scale)
+		while (j < win_scale)
 		{
 			radius = e->all_r.ray[i][j];
-			ft_walls(d, i, j, radius);
+			// radius_angle = atan2f(radius.dir_y, radius.dir_x);
+			// if (radius_angle >= e->player.l_angle && radius_angle <= e->player.r_angle)
+				ft_walls(d, i, j, radius);
 			j++;
 		}
 		i++;
 	}
 }
+
+
+// e->all_r.ray [i][j].dir_x = base.dir_x * cos(e->player.angle)
+// 	- base.dir_y * sin(e->player.angle);
+// e->all_r.ray [i][j].dir_y = base.dir_x * sin(e->player.angle)
+// 	+ base.dir_y * cos(e->player.angle);
+// e->all_r.ray [i][j].dir_z = base.dir_z;
