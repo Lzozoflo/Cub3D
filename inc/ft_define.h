@@ -6,12 +6,17 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 17:32:29 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/25 11:08:37 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/06/25 12:03:03 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_DEFINE_H
 # define FT_DEFINE_H
+
+// Mouvement speed
+# define MS 0.2
+# define ROTATION 0.2
+# define RADIUSPLAYER 0.3
 
 // Window params
 # define SCALE 3
@@ -35,10 +40,6 @@
 // Color player minimaps px
 # define PX_GRAY_DARK  0x444444
 
-// Mouvement speed
-# define MS 0.05
-# define ROTATION 0.05
-# define RADIUSPLAYER 0.3
 //	number of tile on the minimaps
 # define MINIMAPS_SCREEN_TILES 10
 
