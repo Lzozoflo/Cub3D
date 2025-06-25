@@ -6,11 +6,12 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 15:39:02 by mathildelau       #+#    #+#             */
-/*   Updated: 2025/06/18 11:18:33 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/25 16:42:12 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
+#include "ft_define.h"
 
 /**
  * @brief `check north intersection`
@@ -32,7 +33,7 @@
 void	ft_north_wall(t_exec *e, int y, t_ray radius)
 {
 	e->wall.t_n = ft_find_plane_intersection_n_s(e, &e->cardi.n[y], radius);
-	if (e->wall.t_n > 0)
+	if (e->wall.t_n > 0 && e->wall.t_n < MAX_D)
 	{
 		ft_intersection_coord(e, e->wall.t_n, radius);
 		e->wall.x_check = (int)(e->s.ix);
@@ -69,7 +70,7 @@ void	ft_north_wall(t_exec *e, int y, t_ray radius)
 void	ft_south_wall(t_exec *e, int y, t_ray radius)
 {
 	e->wall.t_s = ft_find_plane_intersection_n_s(e, &e->cardi.s[y], radius);
-	if (e->wall.t_s > 0)
+	if (e->wall.t_s > 0 && e->wall.t_s < MAX_D)
 	{
 		ft_intersection_coord(e, e->wall.t_s, radius);
 		e->wall.x_check = (int)(e->s.ix);
@@ -106,7 +107,7 @@ void	ft_south_wall(t_exec *e, int y, t_ray radius)
 void	ft_east_wall(t_exec *e, int x, t_ray radius)
 {
 	e->wall.t_e = ft_find_plane_intersection_e_w(e, &e->cardi.e[x], radius);
-	if (e->wall.t_e > 0)
+	if (e->wall.t_e > 0 && e->wall.t_e < MAX_D)
 	{
 		ft_intersection_coord(e, e->wall.t_e, radius);
 		e->wall.y_check = (int)(e->s.iy);
@@ -144,7 +145,7 @@ void	ft_east_wall(t_exec *e, int x, t_ray radius)
 void	ft_west_wall(t_exec *e, int x, t_ray radius)
 {
 	e->wall.t_w = ft_find_plane_intersection_e_w(e, &e->cardi.w[x], radius);
-	if (e->wall.t_w > 0)
+	if (e->wall.t_w > 0 && e->wall.t_w < MAX_D)
 	{
 		ft_intersection_coord(e, e->wall.t_w, radius);
 		e->wall.y_check = (int)(e->s.iy);

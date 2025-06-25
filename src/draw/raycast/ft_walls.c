@@ -6,7 +6,7 @@
 /*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 14:02:49 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/25 16:07:22 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/25 16:43:49 by mlaussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,14 @@ static void	ft_color_wall(t_data *d, int i, int j, t_ray radius)
 
 	ft_intersection_coord(&d->exec, d->exec.wall.t_min, radius);
 	if (d->exec.s.iz >= 0.0 && d->exec.s.iz < 1.0
-		&& d->exec.wall.t_min <= MAX_D)
+		&& d->exec.wall.t_min < MAX_D)
 	{
 		color = ft_texture(d, d->exec.wall.face);
 		color = ft_shadow(color, d);
 		ft_color_scale(d, i, j, color);
 	}
 	else if (d->exec.s.iz >= 0.0 && d->exec.s.iz < 1.0
-		&& d->exec.wall.t_min > MAX_D)
+		&& d->exec.wall.t_min >= MAX_D)
 		ft_color_scale(d, i, j, 0x000000);
 	else if ((size_t)j > half)
 	{
