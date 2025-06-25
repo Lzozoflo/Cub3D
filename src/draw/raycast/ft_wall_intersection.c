@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_wall_intersection.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 15:39:02 by mathildelau       #+#    #+#             */
-/*   Updated: 2025/06/25 16:42:12 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/25 17:08:45 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

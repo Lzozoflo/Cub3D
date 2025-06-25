@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_walls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 14:02:49 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/25 16:43:49 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/25 17:12:49 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	ft_init_wall(t_wall *w)
 	w->t_s = -1;
 	w->t_e = -1;
 	w->t_w = -1;
-	w->t_min = -1;
+	w->t_min = MAX_D;
 	w->face = 0;
 }
 
@@ -79,7 +79,7 @@ static void	ft_color_wall(t_data *d, int i, int j, t_ray radius)
 		ft_color_scale(d, i, j, color);
 	}
 	else if (d->exec.s.iz >= 0.0 && d->exec.s.iz < 1.0
-		&& d->exec.wall.t_min >= MAX_D)
+		&& d->exec.wall.t_min == MAX_D)
 		ft_color_scale(d, i, j, 0x000000);
 	else if ((size_t)j > half)
 	{
