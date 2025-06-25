@@ -6,15 +6,14 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/25 11:04:42 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/06/25 11:40:44 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_CUB_H
 # define FT_CUB_H
 
-# include "X.h"
-# include "mlx.h"
+# include "../minilibx-linux/mlx.h"
 # include "ft_define.h"
 # include <sys/types.h>
 

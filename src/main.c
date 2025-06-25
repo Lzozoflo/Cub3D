@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:58:30 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/25 10:48:20 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/06/25 11:41:38 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(int ac, char **av, char **env)
 	t_minimap_set_color(&data.exec, &data.exec.mini);
 	ft_refresh_view(&data);
 	mlx_loop_hook(data.mlx, ft_handle_keys, &data);
-	mlx_hook(data.win, KeyPress, KeyPressMask, ft_key_press, &data);
-	mlx_hook(data.win, KeyRelease, KeyReleaseMask, ft_key_release, &data);
+	mlx_hook(data.win, 2, 1L << 0, ft_key_press, &data);
+	mlx_hook(data.win, 3, 1L << 1, ft_key_release, &data);
 	mlx_loop(data.mlx);
 }
