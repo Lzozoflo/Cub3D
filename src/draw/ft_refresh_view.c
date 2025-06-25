@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_refresh_view.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:25:27 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/23 08:32:26 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/25 10:49:59 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,14 @@
 #include "ft_define.h"
 #include "libft.h"
 
-int	ft_refresh_view(t_data *d)
+void	ft_refresh_view(t_data *d)
 {
 	t_exec			*exec;
 	t_minimap		*m;
 
 	exec = &d->exec;
 	m = &exec->mini;
-	if (ft_start(exec, d) == -1)
-		return (-1);
+	ft_start(exec, d);
 	if (m->zoom != -1)
 	{
 		t_minimaps_set(m, &exec->player, m->zoom);
@@ -30,5 +29,4 @@ int	ft_refresh_view(t_data *d)
 		ft_draw_circle(d, m);
 	}
 	mlx_put_image_to_window(d->mlx, d->win, d->img.img_ptr, 0, 0);
-	return (1);
 }

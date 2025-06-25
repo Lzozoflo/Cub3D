@@ -3,14 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   ft_start.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/23 13:57:22 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/25 10:49:32 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
+#include <stdlib.h>
+
+static void	ft_free_rotate_ray(t_radius *all_r, int i)
+{
+	while (i > 0)
+	{
+		free(all_r->ray[i]);
+		all_r->ray[i] = NULL;
+		i--;
+	}
+	free(all_r->ray);
+	all_r->ray = NULL;
+}
+
+static int	ft_init_rotate_radius(t_exec *e, int win_scale)
+{
+	int		i;
+
+	i = 0;
+	e->all_r.ray = malloc(sizeof(t_ray *) * win_scale);
+	if (e->all_r.ray == NULL)
+		return (-1);
+	while (i < win_scale)
+	{
+		e->all_r.ray[i] = malloc(sizeof(t_ray) * win_scale);
+		if (e->all_r.ray[i] == NULL)
+		{
+			ft_free_rotate_ray(&e->all_r, i);
+			return (-1);
+		}
+		i++;
+	}
+	return (0);
+}
 
 /**
  * @brief `init param`
@@ -40,6 +74,8 @@ int	ft_init_start(t_exec *e, t_data *d)
 		ft_clean_close(d, 1);
 		return (-1);
 	}
+	if (ft_init_rotate_radius(e, d->win_scale) == -1)
+		return (-1);
 	return (0);
 }
 
@@ -54,7 +90,7 @@ int	ft_init_start(t_exec *e, t_data *d)
  * `X - ft_walls`
  *
 */
-int	ft_start(t_exec *e, t_data *d)
+void	ft_start(t_exec *e, t_data *d)
 {
 	int		i;
 	int		j;
@@ -63,11 +99,7 @@ int	ft_start(t_exec *e, t_data *d)
 	i = 0;
 	j = 0;
 	ft_init_camera(e);
-	if (ft_rotate_radius(e, d->win_scale) == -1)
-	{
-		ft_clean_close(d, 1);
-		return (-1);
-	}
+	ft_rotate_radius(e, d->win_scale);
 	ft_move(e);
 	while (i < d->win_scale)
 	{
@@ -75,11 +107,9 @@ int	ft_start(t_exec *e, t_data *d)
 		while (j < d->win_scale)
 		{
 			radius = e->all_r.ray[i][j];
-			//mlx_mouse_hook(d->win, NULL, d);
 			ft_walls(d, i, j, radius);
 			j++;
 		}
 		i++;
 	}
-	return (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cub.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/23 14:04:29 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/25 11:04:42 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,6 @@ struct		s_player
 	double			dir_x;
 	double			dir_z;
 	double			angle;
-	// double			angle_x; //ICI
 	int				moove;
 	t_data			*data;
 };
@@ -185,8 +184,6 @@ struct s_keys
 	int		d;
 	int		left;
 	int		right;
-	// int		up; // ICI
-	// int		down;
 	int		m;
 };
 
@@ -227,7 +224,7 @@ void	ft_draw_minimap(t_data *data, t_minimap *m);
 
 //------------[  ft_refresh_view.c  ]
 
-int		ft_refresh_view(t_data *data);
+void	ft_refresh_view(t_data *data);
 
 /*-----------------src/draw/raycast-----------------*/
 //------------[  ft_all_radius.c  ]
@@ -263,7 +260,7 @@ int		ft_shadow(int color, t_data *d);
 
 //------------[  ft_start.c  ]
 int		ft_init_start(t_exec *e, t_data *d);
-int		ft_start(t_exec *e, t_data *d);
+void	ft_start(t_exec *e, t_data *d);
 
 //------------[  ft_texture.c  ]
 int		ft_texture(t_data *d, char c);

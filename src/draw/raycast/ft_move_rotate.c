@@ -3,29 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_move_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 11:57:09 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/23 13:54:03 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/25 11:04:50 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 #include <math.h>
 #include <stdlib.h>
-
-void	ft_free_rotate_ray(t_radius *all_r, int i)
-{
-	while (i > 0)
-	{
-		free(all_r->ray[i]);
-		all_r->ray[i] = NULL;
-		i--;
-	}
-	free(all_r->ray);
-	all_r->ray = NULL;
-
-}
 
 void	ft_free_rotate_radius(t_radius *all_r, int win_scale)
 {
@@ -63,9 +50,6 @@ static void	ft_calculate_rotate_radius(int i, int j, t_exec *e)
 	e->all_r.ray [i][j].dir_y = base.dir_x * sin(e->player.angle)
 		+ base.dir_y * cos(e->player.angle);
 	e->all_r.ray [i][j].dir_z = base.dir_z;
-	// e->all_r.ray [i][j].dir_x = base.dir_x; //ICI
-	// e->all_r.ray [i][j].dir_y = base.dir_y * cos(e->player.angle_x) - base.dir_z * sin(e->player.angle_x);
-	// e->all_r.ray [i][j].dir_z = base.dir_y * sin(e->player.angle_x) + base.dir_z * cos(e->player.angle_x);
 }
 
 /**
@@ -84,17 +68,8 @@ int	ft_rotate_radius(t_exec *e, int win_scale)
 	int		j;
 
 	i = 0;
-	e->all_r.ray = malloc(sizeof(t_ray *) * win_scale);
-	if (e->all_r.ray == NULL)
-		return (-1);
 	while (i < win_scale)
 	{
-		e->all_r.ray[i] = malloc(sizeof(t_ray) * win_scale);
-		if (e->all_r.ray[i] == NULL)
-		{
-			ft_free_rotate_ray(&e->all_r, i);
-			return (-1);
-		}
 		j = 0;
 		while (j < win_scale)
 		{

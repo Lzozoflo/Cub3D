@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_exec_struct.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 13:22:43 by mlaussel          #+#    #+#             */
-/*   Updated: 2025/06/23 13:54:58 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/25 11:04:53 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ void	ft_init_keys(t_exec *exec)
 	exec->keys.d = 0;
 	exec->keys.left = 0;
 	exec->keys.right = 0;
-	// exec->keys.up = 0; // ICI
-	// exec->keys.down = 0;
 	exec->keys.m = 0;
 }
 
