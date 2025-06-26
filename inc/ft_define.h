@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_define.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaussel <mlaussel@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 17:32:29 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/25 14:42:09 by mlaussel         ###   ########.fr       */
+/*   Updated: 2025/06/26 07:55:22 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define FT_DEFINE_H
 
 // Mouvement speed
-# define MS 0.2
-# define ROTATION 0.2
+# define MS 0.01
+# define ROTATION 0.01
 # define RADIUSPLAYER 0.3
 
 // Window params
