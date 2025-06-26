@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 17:32:29 by fcretin           #+#    #+#             */
-/*   Updated: 2025/06/26 10:32:30 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/06/26 13:46:45 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 # define FT_DEFINE_H
 
 // Mouvement speed
-# define MS 0.02
-# define ROTATION 0.02
-# define RADIUSPLAYER 0.3
+// # define MS 0.02
+// # define ROTATION 0.02
+# define MS 0.1
+# define ROTATION 0.1
 
 // Window params
 # define SCALE 3
@@ -42,6 +43,7 @@
 
 //	number of tile on the minimaps
 # define MINIMAPS_SCREEN_TILES 10
+# define RADIUSPLAYER 0.3
 
 //	Error message
 # define ERROR_EXTENSION " has a bad extension."
