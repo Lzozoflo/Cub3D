@@ -6,12 +6,11 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 12:20:43 by fcretin           #+#    #+#             */
-/*   Updated: 2025/05/17 17:23:40 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/06/27 12:01:06 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
-// #include "ft_debug.h"
 #include "libft.h"
 
 static int	check_surroundings(t_parsing *parsing, char **tab, int y, int x)

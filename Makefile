@@ -97,7 +97,6 @@ SRC_UTILS		:=		ft_close.c						\
 
 SRC_U_EVENT		:=		ft_is_event.c					\
 						ft_key_event.c					\
-						ft_mouse_event.c				\
 						ft_wasd.c
 
 
